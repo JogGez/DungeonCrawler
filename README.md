@@ -1,2 +1,2 @@
 # JavaProject
-The game of games
+Semester Projekt i OOP
