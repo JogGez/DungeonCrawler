@@ -17,7 +17,7 @@ public class Command
     // Getter for commandWord
     public CommandWord getCommandWord()
     {
-        return commandWord;
+        return commandWords;
     }
     // Getter for secondWord
     public String getSecondWord()
