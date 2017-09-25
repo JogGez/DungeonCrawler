@@ -17,7 +17,7 @@ public class Game
         parser = new Parser();
     }
 
-    // Method that creates all the rooms in the game
+    // Method that creates all the room in the game
     private void createRooms()
     {
         // Create 5 instances of the class Room
