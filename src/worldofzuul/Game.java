@@ -1,7 +1,7 @@
 package worldofzuul;
 
 // Class used to run the game
-public class Gameplay
+public class Game
 {
     // Parser for handling the user input
     private Parser parser;
