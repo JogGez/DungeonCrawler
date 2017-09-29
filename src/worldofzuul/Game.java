@@ -171,5 +171,13 @@ public class Game
         {
             return true;
         }
+    
+    
+    
+    
+    public player()
+    {
+        
+    }
     }
 }
