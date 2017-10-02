@@ -17,6 +17,7 @@ public class Player {
     private String name;
     private int health;
     private int score;
+    private boolean isDead = false;
     // 
     public String getName() 
     {
@@ -37,6 +38,11 @@ public class Player {
     {
         this.health = health;
     }
+    public int health()
+    {
+        int hp = 100;
+        return hp;
+    }
 
     public int getScore() 
     {
@@ -46,6 +52,36 @@ public class Player {
     public void setScore(int score) 
     {
         this.score = score;
+    }
+    
+    public void attack(Player pc)
+    {
+        // Calculate damage dealt.
+        //Should most likly be put under default weapons (Hands/Swords/Mace etc.)
+        int damage = 0;
+        damage = 10;
+        pc.takeDamage(damage);
+    }
+    
+    public void takeDamage(int damage)
+    {
+        //Checks damage taken, if 0 or less, return isDead
+        if (health - damage <= 0)
+        {
+        health = 0;
+        isDead = true;
+        }
+        else
+        {
+            // Otherwise minus health with damage taken
+            health -= damage;
+        }
+    }
+    
+    // State of death
+    public boolean isDead()
+    {
+        return isDead;
     }
     
 }
