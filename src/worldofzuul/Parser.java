@@ -62,4 +62,9 @@ public class Parser
     {
         commands.showAll();
     }
+    // We are creating the method to get name from the user
+    public String playerName()    
+    { 
+        return reader.nextLine();
+    }
 }

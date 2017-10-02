@@ -7,6 +7,8 @@ public class Game
     private Parser parser;
     // Stores what room we are currently in
     private Room currentRoom;
+    // We are storing the class player's name for player.
+    private Player player;
         
     // Constructor that launches the class when instantiated through our Main Method
     public Game() 
@@ -57,7 +59,12 @@ public class Game
     {            
         // Call printWelcome() method used to write a welcome message
         printWelcome();
-
+        // Calls on the constructor player, and creates the object player
+        player = new Player();
+        //Prints out the string  beneath
+        System.out.print("Enter your name here: ");
+        // Gets the name from the parser class, which reads the next input line from the user. Which is going to be the current name for the player.
+        player.setName(parser.playerName());
         // Boolean with 
         boolean finished = false;
         // While loop that runs through the entirety of the game. (until the user types "quit")
@@ -171,13 +178,7 @@ public class Game
         {
             return true;
         }
+          
     
-    
-    
-    
-    public player()
-    {
-        
-    }
     }
 }

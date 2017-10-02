@@ -5,41 +5,47 @@
  */
 package worldofzuul;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Jonathan
  */
 public class Player {
-    // Scanner for player input name
-   Scanner input = new Scanner(System.in);
-   // String name of the player
-   private String name;
-   // To show player health
-   private int health;
-   // Player's inventory
-   private int[] inventory;
-   // Power of the player
-   private int power;
-   
-   public Player(String name)
-   {
-       // String that gives the user info
-       System.out.print("Write your name here");
-       // Gets the next string input
-       String playerName = input.next();
-       // Gets the input and sets it to be name
-       name = playerName;
-       this.name = name;
-   }
-   
-   // Constructor method?
-   public Player(int[] inventory)
-   {
-       //Creating the array
-       inventory = new int[]
-       {0, 0, 0};
-       this.inventory = inventory;
-   }
+    
+    // We aren't making the system print out a line, because later on it would
+    // result in a error. Therefore we are going to create a seperate class under game => play.
+    // this method under game, calls for our parser (which is our primary scanner class) that gets the users next input, and makes it a string that is used for the name. 
+    private String name;
+    private int health;
+    private int score;
+    // 
+    public String getName() 
+    {
+        return name;
+    }
+    // Used in game class under play method to set the name, which is made in parser (our scanner)
+    public void setName(String name) 
+    {
+        this.name = name;
+    }
+
+    public int getHealth() 
+    {
+        return health;
+    }
+
+    public void setHealth(int health) 
+    {
+        this.health = health;
+    }
+
+    public int getScore() 
+    {
+        return score;
+    }
+
+    public void setScore(int score) 
+    {
+        this.score = score;
+    }
+    
 }
