@@ -65,6 +65,8 @@ public class Game
         System.out.print("Enter your name here: ");
         // Gets the name from the parser class, which reads the next input line from the user. Which is going to be the current name for the player.
         player.setName(parser.playerName());
+        // I want to create a command that the user can write to print out his health
+        player.setHealth(100);
         // Boolean with 
         boolean finished = false;
         // While loop that runs through the entirety of the game. (until the user types "quit")
@@ -75,8 +77,8 @@ public class Game
             // Set the finished boolean to true or false, depending on the command
             finished = processCommand(command);
         }
-        // Writes the last output before closing the application
-        System.out.println("Thank you for playing.  Good bye.");
+        // Writes the last output before closing the application, also says goodbye to the username
+        System.out.println("Thank you for playing. " + player.getName() +  " Good bye.");
     }
 
      // Method that prints a welcome message to the screen
@@ -114,6 +116,10 @@ public class Game
         else if (commandWord == CommandWord.GO) 
         {
             goRoom(command);
+        }
+         else if (commandWord == CommandWord.HEALTH)
+        {
+                System.out.println(player.getHealth());
         }
         // Checks if the command is Quit and sets the boolean to true
         else if (commandWord == CommandWord.QUIT) 
