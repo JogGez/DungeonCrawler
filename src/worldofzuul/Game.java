@@ -80,10 +80,12 @@ public class Game
             {
                 finished = processCommand(command);    
             } 
-            else 
+            // checks if player has 0 health
+            else if (player.isDead())
             {
-                // Stops the game if you reach 0 health
-                finished = player.isDead();     
+                // Stops the game if you reach 0 health, and then pritns out the line
+                finished = player.isDead();
+                System.out.println("You have died :(");
             }
             
             
@@ -130,11 +132,11 @@ public class Game
             goRoom(command);
         }
         // Shows the players current health
-         else if (commandWord == CommandWord.HEALTH)
+        else if (commandWord == CommandWord.HEALTH)
         {
                 System.out.println("your current health is " + player.getHealth());
         } 
-         else if (commandWord == CommandWord.ATTACK)
+        else if (commandWord == CommandWord.ATTACK)
         {
                 System.out.println("You hit yourself in the face.");
                 System.out.println("You take " + player.attack(player) + " points of damage, your health is now " + player.getHealth());
