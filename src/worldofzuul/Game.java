@@ -75,7 +75,19 @@ public class Game
             // Call the parser object that waits for the user to type a command
             Command command = parser.getCommand();
             // Set the finished boolean to true or false, depending on the command
-            finished = processCommand(command);
+            // Checks if commandWord quit
+            if (processCommand(command)) 
+            {
+                finished = processCommand(command);    
+            } 
+            else 
+            {
+                // Stops the game if you reach 0 health
+                finished = player.isDead();     
+            }
+            
+            
+           
         }
         // Writes the last output before closing the application, also says goodbye to the username
         System.out.println("Thank you for playing. " + player.getName() +  " Good bye.");
@@ -117,9 +129,15 @@ public class Game
         {
             goRoom(command);
         }
+        // Shows the players current health
          else if (commandWord == CommandWord.HEALTH)
         {
-                System.out.println(player.getHealth());
+                System.out.println("your current health is " + player.getHealth());
+        } 
+         else if (commandWord == CommandWord.ATTACK)
+        {
+                System.out.println("You hit yourself in the face.");
+                System.out.println("You take " + player.attack(player) + " points of damage, your health is now " + player.getHealth());
         }
         // Checks if the command is Quit and sets the boolean to true
         else if (commandWord == CommandWord.QUIT) 
