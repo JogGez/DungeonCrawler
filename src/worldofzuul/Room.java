@@ -11,7 +11,16 @@ public class Room
     private String description;
     // A HashMap list of exits from the room
     private HashMap<String, Room> exits;
-
+    
+    private String content; /* Should this be a String ? Could it be an ArrayList of the object 'Item'?
+                            Or an ArrayList of different objects? [Monster] + [Item] + [Guide/wizard..]
+                            Should it random how many I
+                            Or different ArrayList -> One ArrayList of monster-objects [0-2?]
+                            & an ArrayList of item-objects [0 to 2?]
+                            & Guide/Wizard [0 to 1?]
+                            */
+    
+    
     // Constructor method that add a description to the room and instantiates the HashMap for exits
     public Room(String description) 
     {
