@@ -9,6 +9,7 @@ package worldofzuul;
  *
  * @author John
  */
+// Helper class
 public class Helper {
     private String name;
     private String answer;
