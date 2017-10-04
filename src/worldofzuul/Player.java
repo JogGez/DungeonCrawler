@@ -54,17 +54,17 @@ public class Player {
         this.score = score;
     }
     
-    // Might change to none void, but atm I don't need to return it.
     // Most of the things underneath can be moved into a different class
-    // all the way to after isDead part.
-    public double attack(Player pc)
+    // all the way to return isDead part.
+    // gives the player the power to "attack" monster
+    public double power(Monster npc)
     {
         // Calculate damage dealt.
         //Should most likly be put under default weapons (Hands/Swords/Mace etc.)
         // Manipulation of the damage
         // Makes the damage be a bit more random
         double damage = Math.round((Math.random() * (15 - 5)));
-        pc.takeDamage(damage);
+        npc.takeDamage(damage);
         return damage;
     }
     // I thought about making it a none void, but the example i saw, did it with void.

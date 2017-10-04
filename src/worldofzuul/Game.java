@@ -9,6 +9,8 @@ public class Game
     private Room currentRoom;
     // We are storing the class player's name for player.
     private Player player;
+    // Stores the monster/monsters we can meet
+    private Monster monster;
         
     // Constructor that launches the class when instantiated through our Main Method
     public Game() 
@@ -59,13 +61,17 @@ public class Game
     {            
         // Call printWelcome() method used to write a welcome message
         printWelcome();
+        // Calls for the monster constructor, and creates the object monster
+        monster = new Monster();
+        // Sets its health to 150
+        monster.setHealth(150);
         // Calls on the constructor player, and creates the object player
         player = new Player();
         //Prints out the string  beneath
         System.out.print("Enter your name here: ");
         // Gets the name from the parser class, which reads the next input line from the user. Which is going to be the current name for the player.
         player.setName(parser.playerName());
-        // I want to create a command that the user can write to print out his health
+        // Sets the players health to 100, default
         player.setHealth(100);
         // Boolean with 
         boolean finished = false;
@@ -87,7 +93,10 @@ public class Game
                 finished = player.isDead();
                 System.out.println("You have died :(");
             }
-            
+            else if (monster.isDead())
+            {
+                System.out.println("You have defeated the monster! God bless you.");
+            }
             
            
         }
@@ -138,8 +147,7 @@ public class Game
         } 
         else if (commandWord == CommandWord.ATTACK)
         {
-                System.out.println("You hit yourself in the face.");
-                System.out.println("You take " + player.attack(player) + " points of damage, your health is now " + player.getHealth());
+                System.out.println("You deal " + player.power(monster) + " the monster's health is now " + monster.getHealth());
         }
         // Checks if the command is Quit and sets the boolean to true
         else if (commandWord == CommandWord.QUIT) 

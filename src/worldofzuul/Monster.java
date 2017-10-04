@@ -63,7 +63,7 @@ public class Monster {
         this.description = description;
     }
     
-    
+        // Gives the "power" to attack the player class
         public double power(Player pc)
     {
         // Calculate damage dealt.
