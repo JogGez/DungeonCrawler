@@ -9,6 +9,7 @@ package worldofzuul;
  *
  * @author Computer
  */
+//Monster Class
 public class Monster {
     private String name;
     private int health;
