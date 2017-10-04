@@ -1,5 +1,6 @@
 package worldofzuul;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,6 +12,8 @@ public class Room
     private String description;
     // A HashMap list of exits from the room
     private HashMap<String, Room> exits;
+    private ArrayList < Monster > monsterNPC = new ArrayList();
+    private ArrayList < Helper > helperNPC = new ArrayList();
     
     private String content; /* Should this be a String ? Could it be an ArrayList of the object 'Item'?
                             Or an ArrayList of different objects? [Monster] + [Item] + [Guide/wizard..]
