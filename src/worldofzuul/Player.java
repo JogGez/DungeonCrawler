@@ -57,18 +57,19 @@ public class Player {
     // Might change to none void, but atm I don't need to return it.
     // Most of the things underneath can be moved into a different class
     // all the way to after isDead part.
-    public void attack(Player pc)
+    public double attack(Player pc)
     {
         // Calculate damage dealt.
         //Should most likly be put under default weapons (Hands/Swords/Mace etc.)
         // Manipulation of the damage
-        int damage = 0;
-        damage = 10;
+        // Makes the damage be a bit more random
+        double damage = Math.round((Math.random() * (15 - 5)));
         pc.takeDamage(damage);
+        return damage;
     }
     // I thought about making it a none void, but the example i saw, did it with void.
     // Might change.
-    public void takeDamage(int damage)
+    public void takeDamage(double damage)
     {
         //Checks damage taken, if 0 or less, return isDead
         if (health - damage <= 0)
