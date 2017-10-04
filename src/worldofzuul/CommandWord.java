@@ -3,7 +3,7 @@ package worldofzuul;
 // Enum of all the available commands in the game
 public enum CommandWord
 {
-    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?");
+    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?"), HEALTH("hp"), ATTACK("attack");
     
     private String commandString;
     
