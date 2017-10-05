@@ -101,7 +101,7 @@ public class Game
            
         }
         // Writes the last output before closing the application, also says goodbye to the username
-        System.out.println("Thank you for playing. " + player.getName() +  " Good bye.");
+        System.out.println("Thank you for playing " + player.getName() + ". Good bye!");
     }
 
      // Method that prints a welcome message to the screen
