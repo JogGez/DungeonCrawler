@@ -25,15 +25,17 @@ public class Game
     private void createRooms()
     {
         // Create 8 instances of the class Room
-        Room dungeon, chapel, dormitory, lab, bath, library, kitchen, forge, 
+        Room cave, chapel, dormitory, lab, bath, library, kitchen, forge, 
       
         // Initializes the 5 rooms and sets a description for each
-        dungeon = new Room("inside the dungeon");
+        cave = new Room("inside the cave");
         chapel = new Room("in a lecture theatre");
         dormitory = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         bath = new Room("in the bathroom");
         library = new Room("in the library");
+        kitchen = new Room("in the kitchen");
+        forge = new Room("in the forge");
         
         // Adds 3 exits to the room "outside"
         outside.setExit("east", theatre);
