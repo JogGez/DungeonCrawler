@@ -8,6 +8,8 @@ import java.util.Iterator;
 // Class that hold the information about a room
 public class Room 
 {
+    //Room name
+    private String name;
     // String description of the room
     private String description;
     // A HashMap list of exits from the room
