@@ -29,14 +29,14 @@ public class Game
       
         // Initializes the 5 rooms and sets a description for each
         outside = new Room("outside the cave entrance");
-        cave = new Room("memes");
-        chapel = new Room("in a lecture theatre");
-        dormitory = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
+        cave = new Room("Inside the cave");
+        chapel = new Room("in the old chapel");
+        dormitory = new Room("in the old forgotten dormitory");
+        lab = new Room("in the abboned lab");
         bath = new Room("in the bathroom");
-        library = new Room("in the library");
-        kitchen = new Room("in the kitchen");
-        forge = new Room("in the forge");
+        library = new Room("in the dusty library");
+        kitchen = new Room("in the smelly kitchen");
+        forge = new Room("in the cold forge");
         
         // Adds 3 exits to the room "outside"
         outside.setExit("east", chapel);
