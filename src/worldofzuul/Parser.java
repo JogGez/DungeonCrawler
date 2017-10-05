@@ -29,7 +29,7 @@ public class Parser
 
         // Sets inputLine String to the value entered on the keyboard
         inputLine = reader.nextLine();
-
+        inputLine = inputLine.toLowerCase();
         // Initialize a new Scanner that reads the String inputLine
         // by doing this we can split the inputLine into seperate words
         Scanner tokenizer = new Scanner(inputLine);
