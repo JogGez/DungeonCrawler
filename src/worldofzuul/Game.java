@@ -67,8 +67,8 @@ public class Game
         printWelcome();
         // Calls for the monster constructor, and creates the object monster
         monster = new Monster();
-        // Sets its health to 150
-        monster.setHealth(150);
+        // Sets its health to 15
+        monster.setHealth(15);
         // Calls on the constructor player, and creates the object player
         player = new Player();
         //Prints out the string  beneath
@@ -96,10 +96,6 @@ public class Game
                 // Stops the game if you reach 0 health, and then pritns out the line
                 finished = player.isDead();
                 System.out.println("You have died :(");
-            }
-            else if (monster.isDead())
-            {
-                System.out.println("You have defeated the monster! God bless you.");
             }
             
            
@@ -149,9 +145,12 @@ public class Game
         {
                 System.out.println("your current health is " + player.getHealth());
         } 
-        else if (commandWord == CommandWord.ATTACK)
+        else if (commandWord == CommandWord.ATTACK && !monster.isDead())
         {
                 System.out.println("You deal " + player.power(monster) + " the monster's health is now " + monster.getHealth());
+                if (monster.isDead()) {
+                System.out.println("You have defeated the monster! God bless you.");
+                }
         }
         // Checks if the command is Quit and sets the boolean to true
         else if (commandWord == CommandWord.QUIT) 
