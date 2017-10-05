@@ -15,6 +15,8 @@ public class Room
     // A HashMap list of exits from the room
     private HashMap<String, Room> exits;
     
+    private String [] itemsInRoom = new String[2];
+    
     // Creates a no-args constructor to genereate a number between 0-3.
     public Room()
     {
@@ -25,12 +27,16 @@ public class Room
             switch(randomThing1)
             {
                 case 0: 
+                    itemsInRoom[i] = "Empty";
                     break;
                 case  1: System.out.println("There is a monster!");
+                    itemsInRoom[i] = "Monster";
                     break;
                 case 2: System.out.println("There is a chest");
+                    itemsInRoom[i] = "Chest";
                     break;
                 case 3: System.out.println("There is another person in the room");
+                    itemsInRoom[i] = "Helper";
                     break;
             
             }
