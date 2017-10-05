@@ -25,10 +25,11 @@ public class Game
     private void createRooms()
     {
         // Create 8 instances of the class Room
-        Room cave, chapel, dormitory, lab, bath, library, kitchen, forge, 
+        Room outside, chapel, dormitory, lab, bath, library, kitchen, forge, cave;
       
         // Initializes the 5 rooms and sets a description for each
-        cave = new Room("inside the cave");
+        outside = new Room("outside the cave entrance");
+        cave = new Room("memes");
         chapel = new Room("in a lecture theatre");
         dormitory = new Room("in the campus pub");
         lab = new Room("in a computing lab");
@@ -38,22 +39,22 @@ public class Game
         forge = new Room("in the forge");
         
         // Adds 3 exits to the room "outside"
-        outside.setExit("east", theatre);
+        outside.setExit("east", chapel);
         outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        outside.setExit("west", dormitory);
 
         // Adds 1 exits to the room "theatre"
-        theatre.setExit("west", outside);
+        chapel.setExit("west", outside);
 
         // Adds 1 exits to the room "pub"
-        pub.setExit("east", outside);
+        dormitory.setExit("east", outside);
 
         // Adds 2 exits to the room "lab"
         lab.setExit("north", outside);
-        lab.setExit("east", office);
+        lab.setExit("east", kitchen);
 
         // Adds 1 exits to the room "office"
-        office.setExit("west", lab);
+        kitchen.setExit("west", lab);
 
         // Sets the current room to "outside"
         currentRoom = outside;
