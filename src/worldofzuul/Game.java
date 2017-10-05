@@ -29,10 +29,10 @@ public class Game
       
         // Initializes the 5 rooms and sets a description for each
         outside = new Room("outside the cave entrance");
-        cave = new Room("Inside the cave");
+        cave = new Room("inside the cave");
         chapel = new Room("in the old chapel");
         dormitory = new Room("in the old forgotten dormitory");
-        lab = new Room("in the abboned lab");
+        lab = new Room("in the abandoned lab");
         bath = new Room("in the bathroom");
         library = new Room("in the dusty library");
         kitchen = new Room("in the smelly kitchen");
@@ -67,8 +67,8 @@ public class Game
         printWelcome();
         // Calls for the monster constructor, and creates the object monster
         monster = new Monster();
-        // Sets its health to 150
-        monster.setHealth(150);
+        // Sets its health to 15
+        monster.setHealth(15);
         // Calls on the constructor player, and creates the object player
         player = new Player();
         //Prints out the string  beneath
@@ -97,15 +97,11 @@ public class Game
                 finished = player.isDead();
                 System.out.println("You have died :(");
             }
-            else if (monster.isDead())
-            {
-                System.out.println("You have defeated the monster! God bless you.");
-            }
             
            
         }
         // Writes the last output before closing the application, also says goodbye to the username
-        System.out.println("Thank you for playing. " + player.getName() +  " Good bye.");
+        System.out.println("Thank you for playing " + player.getName() + ". Good bye!");
     }
 
      // Method that prints a welcome message to the screen
@@ -149,9 +145,12 @@ public class Game
         {
                 System.out.println("your current health is " + player.getHealth());
         } 
-        else if (commandWord == CommandWord.ATTACK)
+        else if (commandWord == CommandWord.ATTACK && !monster.isDead())
         {
                 System.out.println("You deal " + player.power(monster) + " the monster's health is now " + monster.getHealth());
+                if (monster.isDead()) {
+                System.out.println("You have defeated the monster! God bless you.");
+                }
         }
         // Checks if the command is Quit and sets the boolean to true
         else if (commandWord == CommandWord.QUIT) 
