@@ -29,10 +29,10 @@ public class Game
       
         // Initializes the 5 rooms and sets a description for each
         outside = new Room("outside the cave entrance");
-        cave = new Room("Inside the cave");
+        cave = new Room("inside the cave");
         chapel = new Room("in the old chapel");
         dormitory = new Room("in the old forgotten dormitory");
-        lab = new Room("in the abboned lab");
+        lab = new Room("in the abandoned lab");
         bath = new Room("in the bathroom");
         library = new Room("in the dusty library");
         kitchen = new Room("in the smelly kitchen");
