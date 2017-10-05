@@ -14,16 +14,35 @@ public class Room
     private String description;
     // A HashMap list of exits from the room
     private HashMap<String, Room> exits;
-    private ArrayList < Monster > monsterNPC = new ArrayList();
-    private ArrayList < Helper > helperNPC = new ArrayList();
     
-    private String content; /* Should this be a String ? Could it be an ArrayList of the object 'Item'?
-                            Or an ArrayList of different objects? [Monster] + [Item] + [Guide/wizard..]
-                            Should it random how many I
-                            Or different ArrayList -> One ArrayList of monster-objects [0-2?]
-                            & an ArrayList of item-objects [0 to 2?]
-                            & Guide/Wizard [0 to 1?]
-                            */
+    private String [] itemsInRoom = new String[2];
+    
+    // Creates a no-args constructor to genereate a number between 0-3.
+    public Room()
+    {
+      
+        for (int i = 0; i < 2; i++) //int er counter
+        {
+            int randomThing1 = (int)(Math.random()*4);
+            switch(randomThing1)
+            {
+                case 0: 
+                    itemsInRoom[i] = "Empty";
+                    break;
+                case  1: System.out.println("There is a monster!");
+                    itemsInRoom[i] = "Monster";
+                    break;
+                case 2: System.out.println("There is a chest");
+                    itemsInRoom[i] = "Chest";
+                    break;
+                case 3: System.out.println("There is another person in the room");
+                    itemsInRoom[i] = "Helper";
+                    break;
+            
+            }
+        }
+           
+    }
     
     
     // Constructor method that add a description to the room and instantiates the HashMap for exits
