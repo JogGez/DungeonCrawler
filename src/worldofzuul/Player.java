@@ -63,7 +63,7 @@ public class Player {
         //Should most likly be put under default weapons (Hands/Swords/Mace etc.)
         // Manipulation of the damage
         // Makes the damage be a bit more random
-        double damage = Math.round((Math.random() * (15 - 5)));
+        double damage = Math.round((Math.random() * 4 + 3));
         npc.takeDamage(damage);
         return damage;
     }
