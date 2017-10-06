@@ -84,7 +84,7 @@ public class Player {
         }
     }
     
-    // State of death
+    // State of death just testing
     public boolean isDead()
     {
         return isDead;
