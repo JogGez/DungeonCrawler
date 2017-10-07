@@ -5,6 +5,9 @@ import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
 
+/**
+ * The type Room.
+ */
 // Class that hold the information about a room
 public class Room 
 {
@@ -16,8 +19,11 @@ public class Room
     private HashMap<String, Room> exits;
     
     private String [] itemsInRoom = new String[2];
-    
-    // Creates a no-args constructor to genereate a number between 0-3.
+
+    /**
+     * Instantiates a new Room.
+     */
+// Creates a no-args constructor to genereate a number between 0-3.
     public Room()
     {
       
@@ -43,28 +49,49 @@ public class Room
         }
            
     }
-    
-    
-    // Constructor method that add a description to the room and instantiates the HashMap for exits
+
+
+    /**
+     * Instantiates a new Room.
+     *
+     * @param description the description
+     */
+// Constructor method that add a description to the room and instantiates the HashMap for exits
     public Room(String description) 
     {
         this.description = description;
         exits = new HashMap<String, Room>();
     }
 
-    // Adds a exit to the list
+    /**
+     * Sets exit.
+     *
+     * @param direction the direction
+     * @param neighbor  the neighbor
+     */
+// Adds a exit to the list
     public void setExit(String direction, Room neighbor) 
     {
         exits.put(direction, neighbor);
     }
 
-    // returns the description set for the room
+    /**
+     * Gets short description.
+     *
+     * @return the short description
+     */
+// returns the description set for the room
     public String getShortDescription()
     {
         return description;
     }
 
-    // returns a longer description of the room
+    /**
+     * Gets long description.
+     *
+     * @return the long description
+     */
+// returns a longer description of the room
     public String getLongDescription()
     {
         return "You are " + description + ".\n" + getExitString();
@@ -82,8 +109,14 @@ public class Room
         return returnString;
     }
 
-    
-   // return the exit for a given direction
+
+    /**
+     * Gets exit.
+     *
+     * @param direction the direction
+     * @return the exit
+     */
+// return the exit for a given direction
     public Room getExit(String direction) 
     {
         return exits.get(direction);

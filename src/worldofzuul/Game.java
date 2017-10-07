@@ -1,6 +1,13 @@
 package worldofzuul;
 
-// Class used to run the game
+
+/**
+ * Class used to get the game running.
+ *
+ * @author JogGez
+ * @version 1.0
+ * @since 2017-09-22
+ */
 public class Game
 {
     // Parser for handling the user input
@@ -11,9 +18,14 @@ public class Game
     private Player player;
     // Stores the monster/monsters we can meet
     private Monster monster;
-        
-    // Constructor that launches the class when instantiated through our Main Method
-    public Game() 
+
+
+    /**
+     * Class constructor.
+     *
+     * Used to create the rooms and initialize the Parser.
+     */
+    public Game()
     {
         // Runs the createRooms() method
         createRooms();
@@ -21,7 +33,9 @@ public class Game
         parser = new Parser();
     }
 
-    // Method that creates all the room in the game
+    /**
+     * Method used to create all the rooms in the game.
+     */
     private void createRooms()
     {
         // Create 8 instances of the class Room
@@ -60,7 +74,10 @@ public class Game
         currentRoom = outside;
     }
 
-    // Method that starts the game and runs till the end of the game
+    /**
+     * Method that starts the game and runs till the end of the game.
+     *
+     */
     public void play() 
     {            
         // Call printWelcome() method used to write a welcome message
@@ -104,7 +121,9 @@ public class Game
         System.out.println("Thank you for playing " + player.getName() + ". Good bye!");
     }
 
-     // Method that prints a welcome message to the screen
+    /**
+     * Method that prints a welcome message to the screen.
+     */
     private void printWelcome()
     {
         System.out.println();
@@ -115,7 +134,11 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
-    // This method processes the command recieved from the parser and returns whether or not to quit
+    /**
+     * This method processes the command recieved from the parser and returns whether or not to quit.
+     *
+     * @param command command to process.
+     */
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
@@ -160,7 +183,9 @@ public class Game
         return wantToQuit;
     }
 
-     // Method that prints a help message to the screen
+    /**
+     * Method that prints a help message to the screen.
+     */
     private void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
@@ -171,7 +196,11 @@ public class Game
         parser.showCommands();
     }
 
-    // Method for moving around the rooms
+    /**
+     * Method for moving around the rooms.
+     *
+     * @param command go command.
+     */
     private void goRoom(Command command) 
     {
         // Checkes if the command has a second word and if not prints a message to the screen
@@ -198,11 +227,20 @@ public class Game
             // Sets the currentRoom to the placeholder and prints out a message
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+
+
         }
+
     }
 
-    // This is the quit method that return a true or false value. 
-    // This will return a boolean value of true if there is no other words then quit
+    /**
+     * This is the quit method that return a true or false value.
+     * This will return a boolean value of true if there is no other words then quit.
+     *
+     * @param command quit command.
+     * @return boolean
+     */
+
     private boolean quit(Command command) 
     {
         // Checks if command says more that "quit", and cancels the request if so

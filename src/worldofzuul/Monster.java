@@ -6,6 +6,7 @@
 package worldofzuul;
 
 /**
+ * The type Monster.
  *
  * @author Computer
  */
@@ -17,53 +18,104 @@ public class Monster {
     private String description;
     private boolean isDead = false;
 
-    public String getName() 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
+    public String getName()
     {
         return name;
     }
 
-    public void setName(String name) 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name)
     {
         this.name = name;
     }
 
-    public int getHealth() 
+    /**
+     * Gets health.
+     *
+     * @return the health
+     */
+    public int getHealth()
     {
         return health;
     }
 
-    public void setHealth(int health) 
+    /**
+     * Sets health.
+     *
+     * @param health the health
+     */
+    public void setHealth(int health)
     {
         this.health = health;
     }
-    
+
+    /**
+     * Health int.
+     *
+     * @return the int
+     */
     public int health()
     {
         int hp = 150;
         return hp;
     }
 
-    public int getPower() 
+    /**
+     * Gets power.
+     *
+     * @return the power
+     */
+    public int getPower()
     {
         return power;
     }
 
-    public void setPower(int power) 
+    /**
+     * Sets power.
+     *
+     * @param power the power
+     */
+    public void setPower(int power)
     {
         this.power = power;
     }
 
-    public String getDescription() 
+    /**
+     * Gets description.
+     *
+     * @return the description
+     */
+    public String getDescription()
     {
         return description;
     }
 
-    public void setDescription(String description) 
+    /**
+     * Sets description.
+     *
+     * @param description the description
+     */
+    public void setDescription(String description)
     {
         this.description = description;
     }
-    
-        // Gives the "power" to attack the player class
+
+    /**
+     * Power double.
+     *
+     * @param pc the pc
+     * @return the double
+     */
+// Gives the "power" to attack the player class
         public double power(Player pc)
     {
         // Calculate damage dealt.
@@ -74,7 +126,13 @@ public class Monster {
         pc.takeDamage(damage);
         return damage;
     }
-        public void takeDamage(double damage)
+
+    /**
+     * Take damage.
+     *
+     * @param damage the damage
+     */
+    public void takeDamage(double damage)
     {
         //Checks damage taken, if 0 or less, return isDead
         if (health - damage <= 0)
@@ -88,8 +146,13 @@ public class Monster {
             health -= damage;
         }
     }
-    
-    // State of death
+
+    /**
+     * Is dead boolean.
+     *
+     * @return the boolean
+     */
+// State of death
     public boolean isDead()
     {
         return isDead;

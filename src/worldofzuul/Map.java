@@ -6,6 +6,7 @@
 package worldofzuul;
 
 /**
+ * The type Map.
  *
  * @author Linea Hoffmann
  */

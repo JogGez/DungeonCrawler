@@ -2,13 +2,19 @@ package worldofzuul;
 
 import java.util.HashMap;
 
+/**
+ * The type Command words.
+ */
 // Class that holds a list of all the available words/commands
 public class CommandWords
 {
     // Declaring objects for later instantiation
     private HashMap<String, CommandWord> validCommands;
 
-    // Constructor that initiates the valid commands HashMap and fills it with all the commands from the CommandWord enum
+    /**
+     * Instantiates a new Command words.
+     */
+// Constructor that initiates the valid commands HashMap and fills it with all the commands from the CommandWord enum
     public CommandWords()
     {
         validCommands = new HashMap<String, CommandWord>();
@@ -23,7 +29,13 @@ public class CommandWords
         }
     }
 
-    // Method that checks if a given String command is valid and the returns the actual CommandWord object 
+    /**
+     * Gets command word.
+     *
+     * @param commandWord the command word
+     * @return the command word
+     */
+// Method that checks if a given String command is valid and the returns the actual CommandWord object
     public CommandWord getCommandWord(String commandWord)
     {
         CommandWord command = validCommands.get(commandWord);
@@ -36,14 +48,23 @@ public class CommandWords
             return CommandWord.UNKNOWN;
         }
     }
-    
-    // Method that checks if a given String command is valid and then returns a boolean
+
+    /**
+     * Is command boolean.
+     *
+     * @param aString the a string
+     * @return the boolean
+     */
+// Method that checks if a given String command is valid and then returns a boolean
     public boolean isCommand(String aString)
     {
         return validCommands.containsKey(aString);
     }
 
-    // Method that prints all the available commands to the screen
+    /**
+     * Show all.
+     */
+// Method that prints all the available commands to the screen
     public void showAll() 
     {
         for(String command : validCommands.keySet()) 

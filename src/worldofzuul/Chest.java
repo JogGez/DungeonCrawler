@@ -6,6 +6,7 @@
 package worldofzuul;
 
 /**
+ * The type Chest.
  *
  * @author Frederik
  */

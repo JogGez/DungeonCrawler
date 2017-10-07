@@ -6,6 +6,7 @@
 package worldofzuul;
 
 /**
+ * The type Player.
  *
  * @author Jonathan
  */
@@ -18,43 +19,86 @@ public class Player {
     private int health;
     private int score;
     private boolean isDead = false;
-    // 
+
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() 
     {
         return name;
     }
-    // Used in game class under play method to set the name, which is made in parser (our scanner)
+
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+// Used in game class under play method to set the name, which is made in parser (our scanner)
     public void setName(String name) 
     {
         this.name = name;
     }
 
-    public int getHealth() 
+    /**
+     * Gets health.
+     *
+     * @return the health
+     */
+    public int getHealth()
     {
         return health;
     }
 
-    public void setHealth(int health) 
+    /**
+     * Sets health.
+     *
+     * @param health the health
+     */
+    public void setHealth(int health)
     {
         this.health = health;
     }
+
+    /**
+     * Health int.
+     *
+     * @return the int
+     */
     public int health()
     {
         int hp = 100;
         return hp;
     }
 
-    public int getScore() 
+    /**
+     * Gets score.
+     *
+     * @return the score
+     */
+    public int getScore()
     {
         return score;
     }
 
-    public void setScore(int score) 
+    /**
+     * Sets score.
+     *
+     * @param score the score
+     */
+    public void setScore(int score)
     {
         this.score = score;
     }
-    
-    // Most of the things underneath can be moved into a different class
+
+    /**
+     * Power double.
+     *
+     * @param npc the npc
+     * @return the double
+     */
+// Most of the things underneath can be moved into a different class
     // all the way to return isDead part.
     // gives the player the power to "attack" monster
     public double power(Monster npc)
@@ -67,7 +111,13 @@ public class Player {
         npc.takeDamage(damage);
         return damage;
     }
-    // I thought about making it a none void, but the example i saw, did it with void.
+
+    /**
+     * Take damage.
+     *
+     * @param damage the damage
+     */
+// I thought about making it a none void, but the example i saw, did it with void.
     // Might change.
     public void takeDamage(double damage)
     {
@@ -83,8 +133,13 @@ public class Player {
             health -= damage;
         }
     }
-    
-    // State of death
+
+    /**
+     * Is dead boolean.
+     *
+     * @return the boolean
+     */
+// State of death
     public boolean isDead()
     {
         return isDead;
