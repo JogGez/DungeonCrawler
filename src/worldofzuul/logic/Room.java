@@ -82,7 +82,7 @@ public class Room
         if (content instanceof Monster)
         {
           Monster monster = (Monster)content;
-          monster.getName();
+          monster.setName("Monster");
           String checkOut = monster.getName();
           return  checkOut;
         }

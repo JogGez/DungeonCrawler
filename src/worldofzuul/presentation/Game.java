@@ -140,15 +140,15 @@ public class Game
         else if (commandWord == CommandWord.HEALTH)
         {
                 System.out.println("your current health is " + player.getHealth());
-        } 
-//        else if (commandWord == CommandWord.ATTACK && !monster.isDead())
+        }         
+//        else if (commandWord == CommandWord.ATTACK)
 //        {
 //                System.out.println("You deal " + player.power(monster) + " the monster's health is now " + monster.getHealth());
 //                if (monster.isDead()) {
 //                System.out.println("You have defeated the monster! God bless you.");
 //                }
 //        }
-        // Checks if the command is Quit and sets the boolean to true
+         //Checks if the command is Quit and sets the boolean to true
         else if (commandWord == CommandWord.QUIT) 
         {
             wantToQuit = quit(command);
@@ -284,8 +284,8 @@ public class Game
             if (player.getLocation().x == room.getLocation().x && player.getLocation().y == room.getLocation().y)
             {
                 if (room.checkOut() == "Monster")
-                {
-
+                {  
+                    System.out.println("There is a monster, you can either attack or flee!");
                 }
                 if (room.checkOut() == "Helper")
                 {
