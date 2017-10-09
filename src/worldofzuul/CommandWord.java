@@ -1,9 +1,8 @@
 package worldofzuul;
 
 /**
- * The enum Command word.
+ * Enum of all the available commands in the game.
  */
-// Enum of all the available commands in the game
 public enum CommandWord
 {
     /**

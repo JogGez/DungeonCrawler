@@ -11,7 +11,8 @@ package worldofzuul;
  * @author Computer
  */
 //Monster Class
-public class Monster {
+public class Monster
+{
     private String name;
     private int health;
     private int power;

@@ -26,7 +26,6 @@ public class Room
 // Creates a no-args constructor to genereate a number between 0-3.
     public Room()
     {
-      
         for (int i = 0; i < 2; i++) //int er counter
         {
             int randomThing1 = (int)(Math.random()*4);
@@ -44,10 +43,8 @@ public class Room
                 case 3: System.out.println("There is another person in the room");
                     itemsInRoom[i] = "Helper";
                     break;
-            
             }
         }
-           
     }
 
 

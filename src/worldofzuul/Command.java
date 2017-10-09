@@ -1,9 +1,8 @@
 package worldofzuul;
 
 /**
- * The type Command.
+ * The type Command. Used to hold and evaluate user input
  */
-// Class used to hold the user input
 public class Command
 {
     // Declaring objects for later instantiation
@@ -16,7 +15,6 @@ public class Command
      * @param commandWord the command word
      * @param secondWord  the second word
      */
-// Constructor that sets the commandWord and the secondWord
     public Command(CommandWord commandWord, String secondWord)
     {
         this.commandWord = commandWord;
@@ -28,7 +26,6 @@ public class Command
      *
      * @return the command word
      */
-// Getter for commandWord
     public CommandWord getCommandWord()
     {
         return commandWord;
@@ -39,29 +36,26 @@ public class Command
      *
      * @return the second word
      */
-// Getter for secondWord
     public String getSecondWord()
     {
         return secondWord;
     }
 
     /**
-     * Is unknown boolean.
+     * Check if command is valid.
      *
      * @return the boolean
      */
-// Returns a boolean value whether or not the command is valid
     public boolean isUnknown()
     {
         return (commandWord == CommandWord.UNKNOWN);
     }
 
     /**
-     * Has second word boolean.
+     * Check if command has a second word.
      *
      * @return the boolean
      */
-// Returns a boolean value whether or not the command contains a second word
     public boolean hasSecondWord()
     {
         return (secondWord != null);

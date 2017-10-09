@@ -4,9 +4,8 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 /**
- * The type Parser.
+ * Class used to handle user input.
  */
-// Class used to handle user input
 public class Parser 
 {
     // Declaring objects for later instantiation
@@ -16,7 +15,6 @@ public class Parser
     /**
      * Instantiates a new Parser.
      */
-// Constructor that instantiates the CommandWords object and the Scanner
     public Parser() 
     {
         commands = new CommandWords();
@@ -24,11 +22,10 @@ public class Parser
     }
 
     /**
-     * Gets command.
+     * Gets the input from the user.
      *
      * @return the command
      */
-// Method that gets the input from the keyboard
     public Command getCommand() 
     {
         // Create 3 Strings to contain the input from the user
@@ -62,12 +59,11 @@ public class Parser
     }
 
     /**
-     * Instantiates a new Parser.
+     * Instantiates a new Parser object with parameterized constructor(parameters) .
      *
      * @param commands the commands
      * @param reader   the reader
      */
-// Constructor overloading used to pass existing CommandWords object and Scanner
     public Parser(CommandWords commands, Scanner reader)
     {
         this.commands = commands;
@@ -75,20 +71,18 @@ public class Parser
     }
 
     /**
-     * Show commands.
+     * Print all available commands to the console through the CommandWords class.
      */
-// Method that calls the CommandWords object showAll() method that prints all the available command to the screen
     public void showCommands()
     {
         commands.showAll();
     }
 
     /**
-     * Player name string.
+     * Get the Player name from user input.
      *
      * @return the string
      */
-// We are creating the method to get name from the user
     public String playerName()    
     { 
         return reader.nextLine();

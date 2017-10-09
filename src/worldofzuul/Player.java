@@ -20,6 +20,14 @@ public class Player {
     private int score;
     private boolean isDead = false;
 
+    public Player(String name)
+    {
+        this.name = name;
+        this.health = 100;
+        this.score = 0;
+        this.isDead = false;
+    }
+
     /**
      * Gets name.
      *
@@ -29,18 +37,7 @@ public class Player {
     {
         return name;
     }
-
-    /**
-     * Sets name.
-     *
-     * @param name the name
-     */
-// Used in game class under play method to set the name, which is made in parser (our scanner)
-    public void setName(String name) 
-    {
-        this.name = name;
-    }
-
+    
     /**
      * Gets health.
      *

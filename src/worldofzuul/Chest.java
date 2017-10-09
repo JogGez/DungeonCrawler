@@ -10,6 +10,7 @@ package worldofzuul;
  *
  * @author Frederik
  */
-public class Chest {
+public class Chest
+{
     
 }
