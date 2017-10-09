@@ -87,11 +87,11 @@ public class Game
         // Sets its health to 15
         monster.setHealth(15);
         // Calls on the constructor player, and creates the object player
-        player = new Player();
+        player = new Player(parser.playerName());
         //Prints out the string  beneath
         System.out.print("Enter your name here: ");
         // Gets the name from the parser class, which reads the next input line from the user. Which is going to be the current name for the player.
-        player.setName(parser.playerName());
+
         // Sets the players health to 100, default
         player.setHealth(100);
         // Boolean with 

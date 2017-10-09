@@ -37,7 +37,7 @@ public class Player {
     {
         return name;
     }
-    
+
     /**
      * Gets health.
      *
