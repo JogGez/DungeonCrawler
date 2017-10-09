@@ -7,6 +7,8 @@ package worldofzuul.logic;
 
 import worldofzuul.logic.Monster;
 
+import java.awt.*;
+
 /**
  * The type Player.
  *
@@ -22,12 +24,25 @@ public class Player {
     private int score;
     private boolean isDead = false;
 
+    public Point getLocation()
+    {
+        return location;
+    }
+
+    public void setLocation(Point location)
+    {
+        this.location = location;
+    }
+
+    private Point location;
+
     public Player(String name)
     {
         this.name = name;
         this.health = 100;
         this.score = 0;
         this.isDead = false;
+        this.location = new Point(0,0);
     }
 
     /**

@@ -9,6 +9,9 @@ public enum CommandWord
      * Go command word.
      */
     GO("go"), /**
+     * Show command word.
+     */
+    SHOW("show"), /**
      * Quit command word.
      */
     QUIT("quit"), /**

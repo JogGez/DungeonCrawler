@@ -1,5 +1,6 @@
 package worldofzuul.logic;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
@@ -17,6 +18,8 @@ public class Room
     private String description;
     // A HashMap list of exits from the room
     private HashMap<String, Room> exits;
+
+    private Point location;
     
     private ArrayList<RoomContent> content = new ArrayList<>();
     
@@ -28,8 +31,10 @@ public class Room
      * Instantiates a new Room.
      */
 // Creates a no-args constructor to genereate a number between 0-3.
-    public Room()
+    public Room(Point p)
     {
+        location = p;
+
         for (int i = 0; i < 2; i++) //int er counter
         {
             int randomThing1 = (int)(Math.random()*4);
@@ -126,6 +131,11 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+
+    public Point getLocation()
+    {
+        return location;
     }
 }
 
