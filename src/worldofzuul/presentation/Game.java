@@ -193,11 +193,6 @@ public class Game
                     printMe.add(0,mapString);
                 }
 
-
-
-
-
-
                 System.out.println("--------------------------------------------");
 
                 for (String s : printMe)
@@ -205,8 +200,10 @@ public class Game
 
                 System.out.println("--------------------------------------------");
                 break;
-            case "health":
-
+            case "exits":
+                for(String s : checkExits())
+                    System.out.print(s + "    ");
+                System.out.println("");
                 break;
 
 
@@ -316,4 +313,23 @@ public class Game
           
     
     }
+
+    public ArrayList<String> checkExits()
+    {
+        ArrayList<String > exitList = new ArrayList<>();
+
+            if (currentMap.roomExists(new Point(player.getLocation().x, player.getLocation().y - 1)))
+                exitList.add("down");
+            if (currentMap.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
+                exitList.add("up");
+            if (currentMap.roomExists(new Point(player.getLocation().x+1, player.getLocation().y)))
+                exitList.add("right");
+            if (currentMap.roomExists(new Point(player.getLocation().x-1, player.getLocation().y)))
+                exitList.add("left");
+
+
+        return exitList;
+    }
+
+
 }
