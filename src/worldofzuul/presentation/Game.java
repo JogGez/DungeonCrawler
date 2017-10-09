@@ -277,17 +277,27 @@ public class Game
                 else System.out.println("Player ran into wall :(");
                 break;
 
-
-
-
         }
 
+        for (Room room : currentMap.getRoomList())
+        {
+            if (player.getLocation().x == room.getLocation().x && player.getLocation().y == room.getLocation().y)
+            {
+                if (room.checkOut() == "Monster")
+                {
 
+                }
+                if (room.checkOut() == "Helper")
+                {
 
+                }
+                if (room.checkOut() == "Chest")
+                {
 
+                }
 
-
-
+            }
+        }
     }
 
     /**
