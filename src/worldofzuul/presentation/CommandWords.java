@@ -1,4 +1,4 @@
-package worldofzuul;
+package worldofzuul.presentation;
 
 import java.util.HashMap;
 

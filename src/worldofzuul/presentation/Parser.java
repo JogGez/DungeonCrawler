@@ -1,5 +1,7 @@
-package worldofzuul;
+package worldofzuul.presentation;
 
+import worldofzuul.presentation.Command;
+import worldofzuul.presentation.CommandWords;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 

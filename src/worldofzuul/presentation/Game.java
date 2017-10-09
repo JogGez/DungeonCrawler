@@ -1,4 +1,11 @@
-package worldofzuul;
+package worldofzuul.presentation;
+
+import worldofzuul.presentation.Parser;
+import worldofzuul.presentation.CommandWord;
+import worldofzuul.presentation.Command;
+import worldofzuul.logic.Player;
+import worldofzuul.logic.Room;
+import worldofzuul.logic.Monster;
 
 
 /**

@@ -3,43 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package worldofzuul;
-
-import java.awt.*;
+package worldofzuul.logic;
 
 /**
- * The type Player.
+ * The type Monster.
  *
- * @author Jonathan
+ * @author Computer
  */
-public class Player {
-    
-    // We aren't making the system print out a line, because later on it would
-    // result in a error. Therefore we are going to create a seperate class under game => play.
-    // this method under game, calls for our parser (which is our primary scanner class) that gets the users next input, and makes it a string that is used for the name. 
+//Monster Class
+public class Monster
+{
     private String name;
     private int health;
-    private int score;
+    private int power;
+    private String description;
     private boolean isDead = false;
-    private Point location;
-
-    public Player(String name)
-    {
-        this.name = name;
-        this.health = 100;
-        this.score = 0;
-        this.isDead = false;
-        this.location = new Point(0,0);
-    }
 
     /**
      * Gets name.
      *
      * @return the name
      */
-    public String getName() 
+    public String getName()
     {
         return name;
+    }
+
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
     /**
@@ -69,47 +66,65 @@ public class Player {
      */
     public int health()
     {
-        int hp = 100;
+        int hp = 150;
         return hp;
     }
 
     /**
-     * Gets score.
+     * Gets power.
      *
-     * @return the score
+     * @return the power
      */
-    public int getScore()
+    public int getPower()
     {
-        return score;
+        return power;
     }
 
     /**
-     * Sets score.
+     * Sets power.
      *
-     * @param score the score
+     * @param power the power
      */
-    public void setScore(int score)
+    public void setPower(int power)
     {
-        this.score = score;
+        this.power = power;
+    }
+
+    /**
+     * Gets description.
+     *
+     * @return the description
+     */
+    public String getDescription()
+    {
+        return description;
+    }
+
+    /**
+     * Sets description.
+     *
+     * @param description the description
+     */
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
     /**
      * Power double.
      *
-     * @param npc the npc
+     * @param pc the pc
      * @return the double
      */
-// Most of the things underneath can be moved into a different class
-    // all the way to return isDead part.
-    // gives the player the power to "attack" monster
-    public double power(Monster npc)
+// Gives the "power" to attack the player class
+        public double power(Player pc)
     {
         // Calculate damage dealt.
         //Should most likly be put under default weapons (Hands/Swords/Mace etc.)
         // Manipulation of the damage
         // Makes the damage be a bit more random
-        double damage = Math.round((Math.random() * 4 + 3));
-        npc.takeDamage(damage);
+        double damage = Math.round((Math.random() * (15 - 5)));
+        pc.takeDamage(damage);
         return damage;
     }
 
@@ -118,8 +133,6 @@ public class Player {
      *
      * @param damage the damage
      */
-// I thought about making it a none void, but the example i saw, did it with void.
-    // Might change.
     public void takeDamage(double damage)
     {
         //Checks damage taken, if 0 or less, return isDead
@@ -145,5 +158,6 @@ public class Player {
     {
         return isDead;
     }
+    
     
 }

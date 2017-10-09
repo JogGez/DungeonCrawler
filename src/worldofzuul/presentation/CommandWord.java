@@ -1,4 +1,4 @@
-package worldofzuul;
+package worldofzuul.presentation;
 
 /**
  * Enum of all the available commands in the game.
