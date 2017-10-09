@@ -5,6 +5,8 @@
  */
 package worldofzuul;
 
+import java.awt.*;
+
 /**
  * The type Player.
  *
@@ -19,6 +21,7 @@ public class Player {
     private int health;
     private int score;
     private boolean isDead = false;
+    private Point location;
 
     public Player(String name)
     {
@@ -26,6 +29,7 @@ public class Player {
         this.health = 100;
         this.score = 0;
         this.isDead = false;
+        this.location = new Point(0,0);
     }
 
     /**

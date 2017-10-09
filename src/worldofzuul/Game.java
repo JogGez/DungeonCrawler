@@ -13,12 +13,9 @@ public class Game
     // Parser for handling the user input
     private Parser parser;
     // Stores what room we are currently in
-    private Room currentRoom;
+    private Map currentMap;
     // We are storing the class player's name for player.
     private Player player;
-    // Stores the monster/monsters we can meet
-    private Monster monster;
-
 
     /**
      * Class constructor.
@@ -28,7 +25,7 @@ public class Game
     public Game()
     {
         // Runs the createRooms() method
-        createRooms();
+        createMap();
         // Initializes the Parser
         parser = new Parser();
     }
@@ -36,42 +33,9 @@ public class Game
     /**
      * Method used to create all the rooms in the game.
      */
-    private void createRooms()
+    private void createMap()
     {
-        // Create 8 instances of the class Room
-        Room outside, chapel, dormitory, lab, bath, library, kitchen, forge, cave;
-      
-        // Initializes the 5 rooms and sets a description for each
-        outside = new Room("outside the cave entrance");
-        cave = new Room("inside the cave");
-        chapel = new Room("in the old chapel");
-        dormitory = new Room("in the old forgotten dormitory");
-        lab = new Room("in the abandoned lab");
-        bath = new Room("in the bathroom");
-        library = new Room("in the dusty library");
-        kitchen = new Room("in the smelly kitchen");
-        forge = new Room("in the cold forge");
-        
-        // Adds 3 exits to the room "outside"
-        outside.setExit("east", chapel);
-        outside.setExit("south", lab);
-        outside.setExit("west", dormitory);
-
-        // Adds 1 exits to the room "theatre"
-        chapel.setExit("west", outside);
-
-        // Adds 1 exits to the room "pub"
-        dormitory.setExit("east", outside);
-
-        // Adds 2 exits to the room "lab"
-        lab.setExit("north", outside);
-        lab.setExit("east", kitchen);
-
-        // Adds 1 exits to the room "office"
-        kitchen.setExit("west", lab);
-
-        // Sets the current room to "outside"
-        currentRoom = outside;
+        currentMap = new Map(3,4);
     }
 
     /**
@@ -82,18 +46,16 @@ public class Game
     {            
         // Call printWelcome() method used to write a welcome message
         printWelcome();
-        // Calls for the monster constructor, and creates the object monster
-        monster = new Monster();
-        // Sets its health to 15
-        monster.setHealth(15);
-        // Calls on the constructor player, and creates the object player
-        player = new Player(parser.playerName());
+
         //Prints out the string  beneath
-        System.out.print("Enter your name here: ");
+        System.out.println("Enter your name here: ");
+        System.out.print("> ");
+        player = new Player(parser.playerName());
+        System.out.println("Well... hello there " + player.getName());
+        
+
         // Gets the name from the parser class, which reads the next input line from the user. Which is going to be the current name for the player.
 
-        // Sets the players health to 100, default
-        player.setHealth(100);
         // Boolean with 
         boolean finished = false;
         // While loop that runs through the entirety of the game. (until the user types "quit")
@@ -131,7 +93,7 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+
     }
 
     /**
@@ -168,13 +130,13 @@ public class Game
         {
                 System.out.println("your current health is " + player.getHealth());
         } 
-        else if (commandWord == CommandWord.ATTACK && !monster.isDead())
-        {
-                System.out.println("You deal " + player.power(monster) + " the monster's health is now " + monster.getHealth());
-                if (monster.isDead()) {
-                System.out.println("You have defeated the monster! God bless you.");
-                }
-        }
+//        else if (commandWord == CommandWord.ATTACK && !monster.isDead())
+//        {
+//                System.out.println("You deal " + player.power(monster) + " the monster's health is now " + monster.getHealth());
+//                if (monster.isDead()) {
+//                System.out.println("You have defeated the monster! God bless you.");
+//                }
+//        }
         // Checks if the command is Quit and sets the boolean to true
         else if (commandWord == CommandWord.QUIT) 
         {
@@ -213,23 +175,10 @@ public class Game
         // Sets the String direction to the location of the room you want to go to (east, west, north, south)
         String direction = command.getSecondWord();
 
-        // Create a placeholder for the room you want to go to
-        Room nextRoom = currentRoom.getExit(direction);
-
-        // Checks if the nextRoom exist
-        if (nextRoom == null) 
-        {
-            System.out.println("There is no door!");
-        }
-        // 
-        else
-        {
-            // Sets the currentRoom to the placeholder and prints out a message
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
 
 
-        }
+
+
 
     }
 
