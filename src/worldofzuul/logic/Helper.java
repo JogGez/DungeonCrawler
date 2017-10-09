@@ -11,7 +11,7 @@ package worldofzuul.logic;
  * @author John
  */
 // Helper class
-public class Helper
+public class Helper extends RoomContent
 {
     private String name;
     private String answer;
@@ -24,6 +24,11 @@ public class Helper
      * @param answer      the answer
      * @param description the description
      */
+    
+    public Helper()
+            {
+                
+            }
     public Helper(String name, String answer, String description)
     {
         this.name = name;

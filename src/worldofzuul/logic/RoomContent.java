@@ -6,11 +6,9 @@
 package worldofzuul.logic;
 
 /**
- * The type Chest.
  *
  * @author Frederik
  */
-public class Chest extends RoomContent
-{
-    
+public class RoomContent
+{     
 }

@@ -11,7 +11,7 @@ package worldofzuul.logic;
  * @author Computer
  */
 //Monster Class
-public class Monster
+public class Monster extends RoomContent
 {
     private String name;
     private int health;
