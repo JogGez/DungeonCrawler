@@ -72,6 +72,27 @@ public class Room
         exits = new HashMap<String, Room>();
     }
     
+    public String checkOut()
+    {
+        
+    
+        for (RoomContent content : content) 
+        
+
+        if (content instanceof Monster)
+        {
+          Monster monster = (Monster)content;
+          monster.getName();
+          String checkOut = monster.getName();
+          return  checkOut;
+        }
+        
+
+            String checkOut = "There is not monster";
+            return checkOut;
+
+    }
+    
 
     
     /**
