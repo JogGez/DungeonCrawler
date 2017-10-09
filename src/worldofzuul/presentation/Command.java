@@ -1,4 +1,4 @@
-package worldofzuul;
+package worldofzuul.presentation;
 
 /**
  * The type Command. Used to hold and evaluate user input

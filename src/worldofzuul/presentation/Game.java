@@ -1,4 +1,11 @@
-package worldofzuul;
+package worldofzuul.presentation;
+
+import worldofzuul.presentation.Parser;
+import worldofzuul.presentation.CommandWord;
+import worldofzuul.presentation.Command;
+import worldofzuul.logic.Player;
+import worldofzuul.logic.Room;
+import worldofzuul.logic.Monster;
 
 
 /**
@@ -92,8 +99,6 @@ public class Game
         System.out.print("Enter your name here: ");
         // Gets the name from the parser class, which reads the next input line from the user. Which is going to be the current name for the player.
 
-        // Sets the players health to 100, default
-        player.setHealth(100);
         // Boolean with 
         boolean finished = false;
         // While loop that runs through the entirety of the game. (until the user types "quit")
