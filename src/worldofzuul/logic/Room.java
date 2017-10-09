@@ -21,7 +21,11 @@ public class Room
 
     private Point location;
     
+    private ArrayList<RoomContent> content = new ArrayList<>();
+    
     private String [] itemsInRoom = new String[2];
+    
+
 
     /**
      * Instantiates a new Room.
@@ -40,13 +44,16 @@ public class Room
                     itemsInRoom[i] = "Empty";
                     break;
                 case  1: System.out.println("There is a monster!");
-                    itemsInRoom[i] = "Monster";
+                    itemsInRoom[i] = "Monster";                                         
+                    content.add(new Monster());
                     break;
                 case 2: System.out.println("There is a chest");
                     itemsInRoom[i] = "Chest";
+                    content.add(new Chest());
                     break;
                 case 3: System.out.println("There is another person in the room");
                     itemsInRoom[i] = "Helper";
+                    content.add(new Helper());
                     break;
             }
         }
@@ -64,7 +71,9 @@ public class Room
         this.description = description;
         exits = new HashMap<String, Room>();
     }
+    
 
+    
     /**
      * Sets exit.
      *
