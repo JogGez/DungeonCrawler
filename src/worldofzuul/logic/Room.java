@@ -19,7 +19,7 @@ public class Room
     // A HashMap list of exits from the room
     private HashMap<String, Room> exits;
 
-    private Point point;
+    private Point location;
     
     private String [] itemsInRoom = new String[2];
 
@@ -29,6 +29,8 @@ public class Room
 // Creates a no-args constructor to genereate a number between 0-3.
     public Room(Point p)
     {
+        location = p;
+
         for (int i = 0; i < 2; i++) //int er counter
         {
             int randomThing1 = (int)(Math.random()*4);
@@ -120,6 +122,11 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+
+    public Point getLocation()
+    {
+        return location;
     }
 }
 

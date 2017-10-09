@@ -23,6 +23,17 @@ public class Player {
     private int health;
     private int score;
     private boolean isDead = false;
+
+    public Point getLocation()
+    {
+        return location;
+    }
+
+    public void setLocation(Point location)
+    {
+        this.location = location;
+    }
+
     private Point location;
 
     public Player(String name)

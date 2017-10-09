@@ -1,11 +1,11 @@
 package worldofzuul.presentation;
 
-import worldofzuul.presentation.Parser;
-import worldofzuul.presentation.CommandWord;
-import worldofzuul.presentation.Command;
+import worldofzuul.logic.Map;
 import worldofzuul.logic.Player;
 import worldofzuul.logic.Room;
-import worldofzuul.logic.Monster;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 
 /**
@@ -132,6 +132,10 @@ public class Game
         {
             goRoom(command);
         }
+        else if (commandWord == CommandWord.SHOW)
+        {
+            show(command);
+        }
         // Shows the players current health
         else if (commandWord == CommandWord.HEALTH)
         {
@@ -150,6 +154,66 @@ public class Game
             wantToQuit = quit(command);
         }
         return wantToQuit;
+    }
+
+    private void show(Command command)
+    {
+        if(!command.hasSecondWord())
+        {
+            System.out.println("Show what?");
+            return;
+        }
+
+        String showWhat = command.getSecondWord();
+
+        switch (showWhat){
+            case "map":
+
+                ArrayList<String> printMe = new ArrayList<>();
+
+                for (int i = 0; i < currentMap.getHeight(); i++)
+                {
+                    String mapString = "";
+                    for (Room room : currentMap.getRoomList())
+                    {
+                        if (room.getLocation().y == i)
+                        {
+                            if (room.getLocation().x == player.getLocation().x && room.getLocation().y == player.getLocation().y)
+                            {
+                                mapString = mapString + " P ";
+                            }
+                            else
+                            {
+                                mapString = mapString + " X ";
+                            }
+
+                        }
+
+                    }
+                    printMe.add(0,mapString);
+                }
+
+
+
+
+
+
+                System.out.println("--------------------------------------------");
+
+                for (String s : printMe)
+                    System.out.println(s);
+
+                System.out.println("--------------------------------------------");
+                break;
+            case "health":
+
+                break;
+
+
+
+
+
+        }
     }
 
     /**
@@ -181,6 +245,46 @@ public class Game
 
         // Sets the String direction to the location of the room you want to go to (east, west, north, south)
         String direction = command.getSecondWord();
+
+        switch (direction){
+            case "up":
+                if (currentMap.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
+                {
+                    player.setLocation(new Point(player.getLocation().x, player.getLocation().y + 1));
+                    System.out.println("Player enter new room :)");
+                }
+                else System.out.println("Player ran into wall :(");
+                break;
+            case "down":
+                if (currentMap.roomExists(new Point(player.getLocation().x, player.getLocation().y - 1)))
+                {
+                    player.setLocation(new Point(player.getLocation().x, player.getLocation().y - 1));
+                    System.out.println("Player enter new room :)");
+                }
+                else System.out.println("Player ran into wall :(");
+                break;
+            case "left":
+                if (currentMap.roomExists(new Point(player.getLocation().x - 1, player.getLocation().y)))
+                {
+                    player.setLocation(new Point(player.getLocation().x - 1, player.getLocation().y));
+                    System.out.println("Player enter new room :)");
+                }
+                else System.out.println("Player ran into wall :(");
+                break;
+            case "right":
+                if (currentMap.roomExists(new Point(player.getLocation().x + 1, player.getLocation().y )))
+                {
+                    player.setLocation(new Point(player.getLocation().x + 1, player.getLocation().y));
+                    System.out.println("Player enter new room :)");
+                }
+                else System.out.println("Player ran into wall :(");
+                break;
+
+
+
+
+        }
+
 
 
 

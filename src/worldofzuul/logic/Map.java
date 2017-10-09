@@ -13,10 +13,24 @@ import java.util.ArrayList;
  */
 public class Map
 {
+    public int getHeight()
+    {
+        return height;
+    }
+
+    public int getWidth()
+    {
+        return width;
+    }
+
+    private int height;
+    private int width;
     private ArrayList<Room> roomList;
 
     public Map(int width, int height)
     {
+        this.width = width;
+        this.height = height;
 
         roomList = new ArrayList<>();
 
@@ -27,6 +41,26 @@ public class Map
                 roomList.add(new Room(new Point(x,y)));
             }
         }
+    }
+
+    public boolean roomExists(Point p)
+    {
+
+        for (Room room : roomList)
+        {
+
+            if (room.getLocation().x == p.x && room.getLocation().y == p.y)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public ArrayList<Room> getRoomList()
+    {
+        return roomList;
     }
     
 }
