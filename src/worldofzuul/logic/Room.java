@@ -17,14 +17,10 @@ public class Room
     // String description of the room
     private String description;
 
-
-
     // A HashMap list of exits from the room
     private boolean hasBeenEntered;
 
     private Point location;
-
-    private HashMap<String, Room> exits;
 
     private ArrayList<RoomContent> content = new ArrayList<>();
     
@@ -78,27 +74,14 @@ public class Room
         }
     }
 
-
-    /**
-     * Instantiates a new Room.
-     *
-     * @param description the description
-     */
-// Constructor method that add a description to the room and instantiates the HashMap for exits
-    public Room(String description) 
-    {
-        this.description = description;
-        exits = new HashMap<String, Room>();
-    }
-    
     public String getContent(int i)
     {
         if (content.get(i) instanceof Monster)
         {
-          Monster monster = (Monster)content.get(i);
-          monster.setName("Monster");
-          String content = monster.getName();
-          return  content;
+          //Monster monster = (Monster)content.get(i);
+
+          //String content = monster.getName();
+          return  "Monster";
         }
         if (content.get(i) instanceof Helper)
         {
@@ -120,67 +103,7 @@ public class Room
             return  content;
         }
     }
-    
 
-    
-    /**
-     * Sets exit.
-     *
-     * @param direction the direction
-     * @param neighbor  the neighbor
-     */
-// Adds a exit to the list
-    public void setExit(String direction, Room neighbor) 
-    {
-        exits.put(direction, neighbor);
-    }
-
-    /**
-     * Gets short description.
-     *
-     * @return the short description
-     */
-// returns the description set for the room
-    public String getShortDescription()
-    {
-        return description;
-    }
-
-    /**
-     * Gets long description.
-     *
-     * @return the long description
-     */
-// returns a longer description of the room
-    public String getLongDescription()
-    {
-        return "You are " + description + ".\n" + getExitString();
-    }
-
-    // return a String with all the exits in the room
-    private String getExitString()
-    {
-        String returnString = "Exits:";
-        Set<String> keys = exits.keySet();
-        for(String exit : keys) 
-        {
-            returnString += " " + exit;
-        }
-        return returnString;
-    }
-
-
-    /**
-     * Gets exit.
-     *
-     * @param direction the direction
-     * @return the exit
-     */
-// return the exit for a given direction
-    public Room getExit(String direction) 
-    {
-        return exits.get(direction);
-    }
 
     public Point getLocation()
     {
