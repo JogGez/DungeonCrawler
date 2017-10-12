@@ -20,15 +20,16 @@ public class Room
 
 
     // A HashMap list of exits from the room
-    private boolean hasBeenEntered;
+    private boolean hasBeenEntered; //Kontrollere om du har været i rummet før, så kan den vise det på mappet. 
 
-    private Point location;
+    private Point location; //point x og y værdi. Point er en klasse i Java. 
 
-    private HashMap<String, Room> exits;
+    private HashMap<String, Room> exits;//Holder styr på hvilke rum der ligger rundt om rummet. 
 
     private ArrayList<RoomContent> content = new ArrayList<>();
     
     private String [] itemsInRoom = new String[2];
+    
 
     public void setHasBeenEntered(boolean hasBeenEntered)
     {
