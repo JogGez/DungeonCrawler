@@ -45,10 +45,8 @@ public class Map
 
     public boolean roomExists(Point p)
     {
-
         for (Room room : roomList)
         {
-
             if (room.getLocation().x == p.x && room.getLocation().y == p.y)
             {
                 return true;
@@ -56,6 +54,30 @@ public class Map
         }
 
         return false;
+    }
+
+    public void setRoomHasBeenEntered(Point p)
+    {
+        for (Room room : roomList)
+        {
+            if (room.getLocation().x == p.x && room.getLocation().y == p.y)
+            {
+                room.setHasBeenEntered(true);
+            }
+        }
+    }
+    public boolean getRoomHasBeenEntered(Point p)
+    {
+        boolean entered = false;
+        for (Room room : roomList)
+        {
+            if (room.getLocation().x == p.x && room.getLocation().y == p.y)
+            {
+                entered = room.getHasBeenEntered();
+                return entered;
+            }
+        }
+        return entered;
     }
 
     public ArrayList<Room> getRoomList()

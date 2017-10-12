@@ -8,25 +8,39 @@ public enum CommandWord
     /**
      * Go command word.
      */
-    GO("go"), /**
-     * Show command word.
+    GO("go"),
+    /**
+     * Talk command word.
      */
-    SHOW("show"), /**
-     * Quit command word.
+    TALK("talk"),
+    /**
+     * Open command word.
      */
-    QUIT("quit"), /**
-     * Help command word.
+    OPEN("open"),
+    /**
+     * Leave command word.
      */
-    HELP("help"), /**
-     * Unknown command word.
-     */
-    UNKNOWN("?"), /**
-     * Health command word.
-     */
-    HEALTH("hp"), /**
+    LEAVE("leave"),
+    /**
      * Attack command word.
      */
-    ATTACK("attack");
+    ATTACK("attack"),
+    /**
+     * Show command word.
+     */
+    SHOW("show"),
+    /**
+     * Quit command word.
+     */
+    QUIT("quit"),
+    /**
+     * Help command word.
+     */
+    HELP("help"),
+    /**
+     * Unknown command word.
+     */
+    UNKNOWN("?");
     
     private String commandString;
     

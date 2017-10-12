@@ -1,6 +1,7 @@
 package worldofzuul.presentation;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * The type Command words.
@@ -9,7 +10,7 @@ import java.util.HashMap;
 public class CommandWords
 {
     // Declaring objects for later instantiation
-    private HashMap<String, CommandWord> validCommands;
+    private LinkedHashMap<String, CommandWord> validCommands;
 
     /**
      * Instantiates a new Command words.
@@ -17,14 +18,16 @@ public class CommandWords
 // Constructor that initiates the valid commands HashMap and fills it with all the commands from the CommandWord enum
     public CommandWords()
     {
-        validCommands = new HashMap<String, CommandWord>();
+        validCommands = new LinkedHashMap<String, CommandWord>();
         // Foreach loop that runs through all the words in CommandWord enum
+
         for(CommandWord command : CommandWord.values()) 
         {
             // Checks if the word is Unknown and if not add the word to the HashMap
             if(command != CommandWord.UNKNOWN) 
             {
                 validCommands.put(command.toString(), command);
+
             }
         }
     }
@@ -67,9 +70,11 @@ public class CommandWords
 // Method that prints all the available commands to the screen
     public void showAll() 
     {
+        int counter = 1;
         for(String command : validCommands.keySet()) 
         {
-            System.out.print(command + "  ");
+            System.out.println(counter + ". " +command + "  ");
+            counter++;
         }
         System.out.println();
     }

@@ -16,46 +16,65 @@ public class Room
     private String name;
     // String description of the room
     private String description;
+
+
+
     // A HashMap list of exits from the room
-    private HashMap<String, Room> exits;
+    private boolean hasBeenEntered;
 
     private Point location;
-    
+
+    private HashMap<String, Room> exits;
+
     private ArrayList<RoomContent> content = new ArrayList<>();
     
     private String [] itemsInRoom = new String[2];
-    
 
+    public void setHasBeenEntered(boolean hasBeenEntered)
+    {
+        this.hasBeenEntered = hasBeenEntered;
+    }
 
+    public boolean getHasBeenEntered()
+    {
+        return hasBeenEntered;
+    }
     /**
      * Instantiates a new Room.
      */
 // Creates a no-args constructor to genereate a number between 0-3.
     public Room(Point p)
     {
-        location = p;
+        this.location = p;
+        this.description = "Just a plain old, boring room ;/";
+        this.hasBeenEntered = false;
 
+        // New and improved random room creator...
         for (int i = 0; i < 2; i++) //int er counter
         {
-            int randomThing1 = (int)(Math.random()*4);
-            switch(randomThing1)
+            int randomThing1 = (int)(Math.random()*100);
+
+            if (randomThing1 < 25)
             {
-                case 0: 
-                    itemsInRoom[i] = "Empty";
-                    break;
-                case  1: System.out.println("There is a monster!");
-                    itemsInRoom[i] = "Monster";                                         
-                    content.add(new Monster());
-                    break;
-                case 2: System.out.println("There is a chest");
-                    itemsInRoom[i] = "Chest";
-                    content.add(new Chest());
-                    break;
-                case 3: System.out.println("There is another person in the room");
-                    itemsInRoom[i] = "Helper";
-                    content.add(new Helper());
-                    break;
+                itemsInRoom[i] = "Empty";
+                content.add(new RoomContent());
             }
+            else if (randomThing1 < 75)
+            {
+                itemsInRoom[i] = "Monster";
+                content.add(new Monster());
+            }
+            else if (randomThing1 < 85)
+            {
+                itemsInRoom[i] = "Chest";
+                content.add(new Chest());
+            }
+            else if (randomThing1 <= 100)
+            {
+                itemsInRoom[i] = "Helper";
+                content.add(new Helper());
+            }
+
         }
     }
 
@@ -72,25 +91,34 @@ public class Room
         exits = new HashMap<String, Room>();
     }
     
-    public String checkOut()
+    public String getContent(int i)
     {
-        
-    
-        for (RoomContent content : content) 
-        
-
-        if (content instanceof Monster)
+        if (content.get(i) instanceof Monster)
         {
-          Monster monster = (Monster)content;
+          Monster monster = (Monster)content.get(i);
           monster.setName("Monster");
-          String checkOut = monster.getName();
-          return  checkOut;
+          String content = monster.getName();
+          return  content;
         }
-        
+        if (content.get(i) instanceof Helper)
+        {
+            Helper helper = (Helper) content.get(i);
+            String content = "Helper";
+            return  content;
+        }
+        if (content.get(i) instanceof Chest)
+        {
+            Chest chest = (Chest)content.get(i);
 
-            String checkOut = "There is not monster";
-            return checkOut;
-
+            String content = "Chest";
+            return  content;
+        }
+        else
+        {
+            RoomContent empty = (RoomContent)content.get(i);
+            String content = "Empty";
+            return  content;
+        }
     }
     
 

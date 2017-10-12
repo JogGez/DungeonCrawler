@@ -85,8 +85,10 @@ public class Parser
      *
      * @return the string
      */
-    public String playerName()    
-    { 
+    public String getUserInput()
+    {
+        System.out.print("> ");
         return reader.nextLine();
     }
+
 }
