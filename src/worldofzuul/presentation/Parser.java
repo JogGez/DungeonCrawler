@@ -1,23 +1,33 @@
-package worldofzuul;
+package worldofzuul.presentation;
 
+import worldofzuul.presentation.Command;
+import worldofzuul.presentation.CommandWords;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-// Class used to handle user input
+/**
+ * Class used to handle user input.
+ */
 public class Parser 
 {
     // Declaring objects for later instantiation
     private CommandWords commands;
     private Scanner reader;
 
-    // Constructor that instantiates the CommandWords object and the Scanner
+    /**
+     * Instantiates a new Parser.
+     */
     public Parser() 
     {
         commands = new CommandWords();
         reader = new Scanner(System.in);
     }
 
-    // Method that gets the input from the keyboard
+    /**
+     * Gets the input from the user.
+     *
+     * @return the command
+     */
     public Command getCommand() 
     {
         // Create 3 Strings to contain the input from the user
@@ -29,7 +39,7 @@ public class Parser
 
         // Sets inputLine String to the value entered on the keyboard
         inputLine = reader.nextLine();
-
+        inputLine = inputLine.toLowerCase();
         // Initialize a new Scanner that reads the String inputLine
         // by doing this we can split the inputLine into seperate words
         Scanner tokenizer = new Scanner(inputLine);
@@ -50,16 +60,35 @@ public class Parser
         return new Command(commands.getCommandWord(word1), word2);
     }
 
-    // Constructor overloading used to pass existing CommandWords object and Scanner
+    /**
+     * Instantiates a new Parser object with parameterized constructor(parameters) .
+     *
+     * @param commands the commands
+     * @param reader   the reader
+     */
     public Parser(CommandWords commands, Scanner reader)
     {
         this.commands = commands;
         this.reader = reader;
     }
 
-    // Method that calls the CommandWords object showAll() method that prints all the available command to the screen 
+    /**
+     * Print all available commands to the console through the CommandWords class.
+     */
     public void showCommands()
     {
         commands.showAll();
     }
+
+    /**
+     * Get the Player name from user input.
+     *
+     * @return the string
+     */
+    public String getUserInput()
+    {
+        System.out.print("> ");
+        return reader.nextLine();
+    }
+
 }

@@ -998,7 +998,7 @@ is divided into following sections:
     </target>
     <target depends="init,-init-macrodef-copylibs,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen" if="do.mkdist" name="-do-jar-copylibs">
         <j2seproject3:copylibs manifest="${tmp.manifest.file}"/>
-        <echo level="info">To run this application from the command line without Ant, try:</echo>
+        <echo level="info">To run this application from the commands line without Ant, try:</echo>
         <property location="${dist.jar}" name="dist.jar.resolved"/>
         <echo level="info">java -jar "${dist.jar.resolved}"</echo>
     </target>
@@ -1010,7 +1010,7 @@ is divided into following sections:
             <path path="${run.classpath}"/>
             <map from="${build.classes.dir.resolved}" to="${dist.jar.resolved}"/>
         </pathconvert>
-        <condition else="" property="jar.usage.message" value="To run this application from the command line without Ant, try:${line.separator}${platform.java} -cp ${run.classpath.with.dist.jar} ${main.class}">
+        <condition else="" property="jar.usage.message" value="To run this application from the commands line without Ant, try:${line.separator}${platform.java} -cp ${run.classpath.with.dist.jar} ${main.class}">
             <isset property="main.class.available"/>
         </condition>
         <condition else="debug" property="jar.usage.level" value="info">

@@ -1,37 +1,61 @@
-package worldofzuul;
+package worldofzuul.presentation;
 
-// Class used to hold the user input
+/**
+ * The type Command. Used to hold and evaluate user input
+ */
 public class Command
 {
     // Declaring objects for later instantiation
     private CommandWord commandWord;
     private String secondWord;
 
-    // Constructor that sets the commandWord and the secondWord
+    /**
+     * Instantiates a new Command.
+     *
+     * @param commandWord the command word
+     * @param secondWord  the second word
+     */
     public Command(CommandWord commandWord, String secondWord)
     {
         this.commandWord = commandWord;
         this.secondWord = secondWord;
     }
 
-    // Getter for commandWord
+    /**
+     * Gets command word.
+     *
+     * @return the command word
+     */
     public CommandWord getCommandWord()
     {
         return commandWord;
     }
-    // Getter for secondWord
+
+    /**
+     * Gets second word.
+     *
+     * @return the second word
+     */
     public String getSecondWord()
     {
         return secondWord;
     }
 
-    // Returns a boolean value whether or not the command is valid
+    /**
+     * Check if command is valid.
+     *
+     * @return the boolean
+     */
     public boolean isUnknown()
     {
         return (commandWord == CommandWord.UNKNOWN);
     }
 
-    // Returns a boolean value whether or not the command contains a second word
+    /**
+     * Check if command has a second word.
+     *
+     * @return the boolean
+     */
     public boolean hasSecondWord()
     {
         return (secondWord != null);
