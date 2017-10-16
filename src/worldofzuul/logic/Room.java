@@ -1,5 +1,7 @@
 package worldofzuul.logic;
 
+import worldofzuul.presentation.Game;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Set;
@@ -16,6 +18,8 @@ public class Room
     private String name;
     // String description of the room
     private String description;
+
+
 
     // A HashMap list of exits from the room
     private boolean hasBeenEntered;
@@ -35,6 +39,7 @@ public class Room
     {
         return hasBeenEntered;
     }
+
     /**
      * Instantiates a new Room.
      */
@@ -66,43 +71,71 @@ public class Room
                 content.add(new Chest());
             }
             else if (randomThing1 <= 100)
-            {
+             {
                 itemsInRoom[i] = "Helper";
                 content.add(new Helper());
             }
 
         }
     }
+//
+//    public String getContent(int i)
+//    {
+//        if (content.get(i) instanceof Monster)
+//        {
+//          //Monster monster = (Monster)content.get(i);
+//
+//          //String content = monster.getName();
+//          return  "Monster";
+//        }
+//        if (content.get(i) instanceof Helper)
+//        {
+//            Helper helper = (Helper) content.get(i);
+//            String content = "Helper";
+//            return  content;
+//        }
+//        if (content.get(i) instanceof Chest)
+//        {
+//            Chest chest = (Chest)content.get(i);
+//
+//            String content = "Chest";
+//            return  content;
+//        }
+//        else
+//        {
+//            RoomContent empty = (RoomContent)content.get(i);
+//            String content = "Empty";
+//            return  content;
+//        }
+//    }
 
-    public String getContent(int i)
+
+    public RoomContent getContent(int i)
     {
         if (content.get(i) instanceof Monster)
         {
-          //Monster monster = (Monster)content.get(i);
 
-          //String content = monster.getName();
-          return  "Monster";
+            Monster monster = (Monster)content.get(i);
+            return  monster;
         }
         if (content.get(i) instanceof Helper)
         {
             Helper helper = (Helper) content.get(i);
-            String content = "Helper";
-            return  content;
+            return  helper;
         }
         if (content.get(i) instanceof Chest)
         {
             Chest chest = (Chest)content.get(i);
-
-            String content = "Chest";
-            return  content;
+            return  chest;
         }
         else
         {
             RoomContent empty = (RoomContent)content.get(i);
-            String content = "Empty";
-            return  content;
+            return  empty;
         }
     }
+
+
 
 
     public Point getLocation()

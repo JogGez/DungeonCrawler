@@ -11,5 +11,7 @@ package worldofzuul.logic;
  */
 public class Battle
 {
+
+
     
 }

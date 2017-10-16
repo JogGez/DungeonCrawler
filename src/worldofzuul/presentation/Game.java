@@ -1,9 +1,8 @@
 package worldofzuul.presentation;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.MatchGenerator;
-import worldofzuul.logic.Map;
-import worldofzuul.logic.Player;
-import worldofzuul.logic.Room;
+import sun.invoke.empty.Empty;
+import worldofzuul.logic.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -343,24 +342,24 @@ public class Game
             {
                 if (player.getLocation().x == room.getLocation().x && player.getLocation().y == room.getLocation().y)
                 {
-                    if (room.getContent(i) == "Monster")
+                    if (room.getContent(i) instanceof Monster)
                     {
                         System.out.println("There is a monster, you can either attack or flee!");
                         randomMonster();
                     }
-                    else if (room.getContent(i) == "Helper")
+                    else if (room.getContent(i) instanceof Helper)
                     {
                         System.out.println("There is a helper, you can either ask question or flee!");
                         randomHelper();
                     }
-                    else if (room.getContent(i) == "Chest")
+                    else if (room.getContent(i) instanceof Chest)
                     {
                         System.out.println("There is a chest, you can either open or flee!");
                         randomChest();
                     }
-                    else if (room.getContent(i) == "Empty")
+                    else if (room.getContent(i) instanceof RoomContent)
                     {
-                        //System.out.println("Empty space :(");
+                        System.out.println("Empty space :(");
                     }
                 }
             }
