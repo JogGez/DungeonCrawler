@@ -1,7 +1,5 @@
 package worldofzuul.presentation;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.MatchGenerator;
-import sun.invoke.empty.Empty;
 import worldofzuul.data.HighScoreHandler;
 import worldofzuul.logic.*;
 
@@ -25,6 +23,8 @@ public class Game
     private Map currentMap;
     // We are storing the class player's name for player.
     private Player player;
+    // Creating a battle class object.
+    private Battle battle;
 
     /**
      * Class constructor.
@@ -189,19 +189,23 @@ public class Game
         {
             show(command);
         }
-//        else if (commandWord == CommandWord.ATTACK)
-//        {
-//                System.out.println("You deal " + player.power(monster) + " the monster's health is now " + monster.getHealth());
-//                if (monster.isDead()) {
-//                System.out.println("You have defeated the monster! God bless you.");
-//                }
-//        }
+        else if (commandWord == CommandWord.ATTACK)
+        {
+            attack(command);
+        }
          //Checks if the command is Quit and sets the boolean to true
         else if (commandWord == CommandWord.QUIT)
         {
             wantToQuit = quit(command);
         }
         return wantToQuit;
+    }
+    private void attack(Command command)
+    {
+        while (!battle.getIsBattleOver())
+        {            
+            
+        }
     }
 
     private void show(Command command)
@@ -396,7 +400,29 @@ public class Game
                     if (room.getContent(i) instanceof Monster)
                     {
                         System.out.println("There is a monster, you can either attack or flee!");
+                        System.out.println("Type attack or flee."); // We need to type more informations!
                         randomMonster();
+                        
+                        boolean acceptedInput = false;
+                        while (!acceptedInput)
+                        {                            
+                            String input = parser.getUserInput();//returns a String
+                                                    
+                            if (input.contains("attack"))   
+                            {
+                                acceptedInput = true;
+                                battle = new Battle(player, room.getContent(i)); // createas a new battle
+
+                            } 
+                            else if (input.contains("flee"))    
+                            {
+                                acceptedInput = true;
+
+                            }
+                            else {System.out.println(" What do you mean?");}
+                        }
+                       
+                        
                     }
                     else if (room.getContent(i) instanceof Helper)
                     {
@@ -468,8 +494,7 @@ public class Game
 
         }
         System.out.println("-----------------------------------------------");
-        Scanner input = new Scanner(System.in);
-        input.nextLine();
+        
     }
 
     public void randomChest()

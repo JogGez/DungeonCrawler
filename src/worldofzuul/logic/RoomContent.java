@@ -11,4 +11,5 @@ package worldofzuul.logic;
  */
 public class RoomContent
 {     
+ 
 }
