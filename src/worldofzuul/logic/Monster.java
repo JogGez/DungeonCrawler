@@ -10,7 +10,7 @@ package worldofzuul.logic;
  *
  * @author Computer
  */
-//Monster Class
+//Monster Class, nedarvning af RoomContent
 public class Monster extends RoomContent
 {
     private String name;

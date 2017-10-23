@@ -5,6 +5,7 @@
  */
 package worldofzuul.logic;
 
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.getopt.GetOpt;
 import worldofzuul.logic.Monster;
 
 import java.awt.*;
@@ -43,6 +44,7 @@ public class Player {
         this.score = 0;
         this.isDead = false;
         this.location = new Point(0,0);
+        
     }
 
     /**
@@ -54,6 +56,7 @@ public class Player {
     {
         return name;
     }
+    
 
     /**
      * Gets health.
