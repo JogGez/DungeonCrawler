@@ -1,182 +1,151 @@
 package worldofzuul.presentation;
 
-public class ANSI
+
+/**
+ * Final class which holds all the ANSI art used in the game.
+ * Made final to prevent extending the class.
+ *
+ * @author JogGez
+ */
+public final class ANSI
 {
-    public static void printTitle()
+    // Private constructor to prevent instantiation.
+    private ANSI()
     {
-        System.out.println(
-                "                                                        \n" +
-                " 8888888b.                                                        \n" +
-                " 888  \"Y88b                                                       \n" +
-                " 888    888                                                       \n" +
-                " 888    888 888  888 88888b.   .d88b.   .d88b.   .d88b.  88888b.  \n" +
-                " 888    888 888  888 888 \"88b d88P\"88b d8P  Y8b d88\"\"88b 888 \"88b \n" +
-                " 888    888 888  888 888  888 888  888 88888888 888  888 888  888 \n" +
-                " 888  .d88P Y88b 888 888  888 Y88b 888 Y8b.     Y88..88P 888  888 \n" +
-                " 8888888P\"   \"Y88888 888  888  \"Y88888  \"Y8888   \"Y88P\"  888  888 \n" +
-                "  .d8888b.                         888    888                     \n" +
-                " d88P  Y88b                   Y8b d88P    888                     \n" +
-                " 888    888                    \"Y88P\"     888                     \n" +
-                " 888        888d888 8888b.  888  888  888 888  .d88b.  888d888    \n" +
-                " 888        888P\"      \"88b 888  888  888 888 d8P  Y8b 888P\"      \n" +
-                " 888    888 888    .d888888 888  888  888 888 88888888 888        \n" +
-                " Y88b  d88P 888    888  888 Y88b 888 d88P 888 Y8b.     888        \n" +
-                "  \"Y8888P\"  888    \"Y888888  \"Y8888888P\"  888  \"Y8888  888        \n" +
-                " \n");
-    }
-    public static void printSkull()
-    {
-        System.out.println(
-                "      .                                                      .\n" +
-                "        .n                   .                 .                  n.\n" +
-                "  .   .dP                  dP                   9b                 9b.    .\n" +
-                " 4    qXb         .       dX                     Xb       .        dXp     t\n" +
-                "dX.    9Xb      .dXb    __                         __    dXb.     dXP     .Xb\n" +
-                "9XXb._       _.dXXXXb dXXXXbo.                 .odXXXXb dXXXXb._       _.dXXP\n" +
-                " 9XXXXXXXXXXXXXXXXXXXVXXXXXXXXOo.           .oOXXXXXXXXVXXXXXXXXXXXXXXXXXXXP\n" +
-                "  `9XXXXXXXXXXXXXXXXXXXXX'~   ~`OOO8b   d8OOO'~   ~`XXXXXXXXXXXXXXXXXXXXXP'\n" +
-                "    `9XXXXXXXXXXXP' `9XX'   DIE    `98v8P'  HUMAN   `XXP' `9XXXXXXXXXXXP'\n" +
-                "        ~~~~~~~       9X.          .db|db.          .XP       ~~~~~~~\n" +
-                "                        )b.  .dbo.dP'`v'`9b.odb.  .dX(\n" +
-                "                      ,dXXXXXXXXXXXb     dXXXXXXXXXXXb.\n" +
-                "                     dXXXXXXXXXXXP'   .   `9XXXXXXXXXXXb\n" +
-                "                    dXXXXXXXXXXXXb   d|b   dXXXXXXXXXXXXb\n" +
-                "                    9XXb'   `XXXXXb.dX|Xb.dXXXXX'   `dXXP\n" +
-                "                     `'      9XXXXXX(   )XXXXXXP      `'\n" +
-                "                              XXXX X.`v'.X XXXX\n" +
-                "                              XP^X'`b   d'`X^XX\n" +
-                "                              X. 9  `   '  P )X\n" +
-                "                              `b  `       '  d'\n" +
-                "                               `             '");
-
-
     }
 
-    public  static void printCyclops()
+    public static String getTitle()
     {
-        System.out.println(
-                "           _......._\n" +
-                "       .-'.'.'.'.'.'.`-.\n" +
-                "     .'.'.'.'.'.'.'.'.'.`.\n" +
-                "    /.'.'               '.\\\n" +
-                "    |.'    _.--...--._     |\n" +
-                "    \\    `._.-.....-._.'   /\n" +
-                "    |     _..- .-. -.._   |\n" +
-                " .-.'    `.   ((@))  .'   '.-.\n" +
-                "( ^ \\      `--.   .-'     / ^ )\n" +
-                " \\  /         .   .       \\  /\n" +
-                " /          .'     '.  .-    \\\n" +
-                "( _.\\    \\ (_`-._.-'_)    /._\\)\n" +
-                " `-' \\   ' .--.          / `-'\n" +
-                "     |  / /|_| `-._.'\\   |\n" +
-                "     |   |       |_| |   /-.._\n" +
-                " _..-\\   `.--.______.'  |\n" +
-                "      \\       .....     |\n" +
-                "       `.  .'      `.  /\n" +
-                "         \\           .'\n" +
-                "          `-..___..-`");
+
+        return  "  8888888b.                                                        \n" +
+                "  888  \"Y88b                                                       \n" +
+                "  888    888                                                       \n" +
+                "  888    888 888  888 88888b.   .d88b.   .d88b.   .d88b.  88888b.  \n" +
+                "  888    888 888  888 888 \"88b d88P\"88b d8P  Y8b d88\"\"88b 888 \"88b \n" +
+                "  888    888 888  888 888  888 888  888 88888888 888  888 888  888 \n" +
+                "  888  .d88P Y88b 888 888  888 Y88b 888 Y8b.     Y88..88P 888  888 \n" +
+                "  8888888P\"   \"Y88888 888  888  \"Y88888  \"Y8888   \"Y88P\"  888  888 \n" +
+                "   .d8888b.                         888    888                     \n" +
+                "  d88P  Y88b                   Y8b d88P    888                     \n" +
+                "  888    888                    \"Y88P\"     888                     \n" +
+                "  888        888d888 8888b.  888  888  888 888  .d88b.  888d888    \n" +
+                "  888        888P\"      \"88b 888  888  888 888 d8P  Y8b 888P\"      \n" +
+                "  888    888 888    .d888888 888  888  888 888 88888888 888        \n" +
+                "  Y88b  d88P 888    888  888 Y88b 888 d88P 888 Y8b.     888        \n" +
+                "   \"Y8888P\"  888    \"Y888888  \"Y8888888P\"  888  \"Y8888  888   \n"  ;
+    }
+    public static String getSkull()
+    {
+        return  "        .                                                      .      \n" +
+                "          .n                   .                 .                  n.\n" +
+                "    .   .dP                  dP                   9b                 9b.    .\n" +
+                "   4    qXb         .       dX                     Xb       .        dXp     t\n" +
+                "  dX.    9Xb      .dXb    __                         __    dXb.     dXP     .Xb\n" +
+                "  9XXb._       _.dXXXXb dXXXXbo.                 .odXXXXb dXXXXb._       _.dXXP\n" +
+                "   9XXXXXXXXXXXXXXXXXXXVXXXXXXXXOo.           .oOXXXXXXXXVXXXXXXXXXXXXXXXXXXXP\n" +
+                "    `9XXXXXXXXXXXXXXXXXXXXX'~   ~`OOO8b   d8OOO'~   ~`XXXXXXXXXXXXXXXXXXXXXP'\n" +
+                "      `9XXXXXXXXXXXP' `9XX'   DIE    `98v8P'  HUMAN   `XXP' `9XXXXXXXXXXXP'\n" +
+                "          ~~~~~~~       9X.          .db|db.          .XP       ~~~~~~~\n" +
+                "                          )b.  .dbo.dP'`v'`9b.odb.  .dX(\n" +
+                "                        ,dXXXXXXXXXXXb     dXXXXXXXXXXXb.\n" +
+                "                       dXXXXXXXXXXXP'   .   `9XXXXXXXXXXXb\n" +
+                "                      dXXXXXXXXXXXXb   d|b   dXXXXXXXXXXXXb\n" +
+                "                      9XXb'   `XXXXXb.dX|Xb.dXXXXX'   `dXXP\n" +
+                "                       `'      9XXXXXX(   )XXXXXXP      `'\n" +
+                "                                XXXX X.`v'.X XXXX\n" +
+                "                                XP^X'`b   d'`X^XX\n" +
+                "                                X. 9  `   '  P )X\n" +
+                "                                `b  `       '  d'\n" +
+                "                                 `             '";
+
+
     }
 
-    public static void printDevil()
+    public  static String getCyclops()
     {
-        System.out.println(
-                "             ,    ,    /\\   /\\\n" +
-                "            /( /\\ )\\  _\\ \\_/ /_\n" +
-                "            |\\_||_/| < \\_   _/ >\n" +
-                "            \\______/  \\|0   0|/\n" +
-                "              _\\/_   _(_  ^  _)_\n" +
-                "             ( () ) /`\\|V\"\"\"V|/`\\\n" +
-                "               {}   \\  \\_____/  /\n" +
-                "               ()   /\\   )=(   /\\\n" +
-                "               {}  /  \\_/\\=/\\_/  \\");
+        return  "             _......._\n" +
+                "         .-'.'.'.'.'.'.`-.\n" +
+                "       .'.'.'.'.'.'.'.'.'.`.\n" +
+                "      /.'.'               '.\\\n" +
+                "      |.'    _.--...--._     |\n" +
+                "      \\    `._.-.....-._.'   /\n" +
+                "      |     _..- .-. -.._   |\n" +
+                "   .-.'    `.   ((@))  .'   '.-.\n" +
+                "  ( ^ \\      `--.   .-'     / ^ )\n" +
+                "   \\  /         .   .       \\  /\n" +
+                "   /          .'     '.  .-    \\\n" +
+                "  ( _.\\    \\ (_`-._.-'_)    /._\\)\n" +
+                "   `-' \\   ' .--.          / `-'\n" +
+                "       |  / /|_| `-._.'\\   |\n" +
+                "       |   |       |_| |   /-.._\n" +
+                "   _..-\\   `.--.______.'  |\n" +
+                "        \\       .....     |\n" +
+                "         `.  .'      `.  /\n" +
+                "           \\           .'\n" +
+                "            `-..___..-`";
     }
 
-    public static void printDragon()
+    public static String getDevil()
     {
-        System.out.println(
-                "                           _,,,.._       ,_\n" +
-                "                        .gMMMMMMMMMp,_    `\\\n" +
-                "                     .dMMP'       ``^YMb..dP\n" +
-                "                    dMMP'\n" +
-                "                    MMM:\n" +
-                "                    YMMb.\n" +
-                "                     YMMMb.\n" +
-                "                      `YMM/|Mb.  ,__\n" +
-                "                   _,,-~`--..-~-'_,/`--,,,____\n" +
-                "               `\\,_,/',_.-~_..-~/' ,/---~~~\"\"\"`\\\n" +
-                "          _,_,,,\\q\\q/'    \\,,-~'_,/`````-,7.\n" +
-                "         `@v@`\\\\,,,,__   \\,,-~~\"__/` \",,/MMMMb.\n" +
-                "          `--''_..-~~\\   \\,-~~\"\"  `\\_,/ `^YMMMMMb..\n" +
-                "           ,|``-~~--./_,,_  _,,-~~'/_      `YMMMMMMMb.\n" +
-                "         ,/  `\\,_,,/`\\    `\\,___,,,/M/'      `YMMMMMMMb\n" +
-                "                     ;  _,,/__...|MMM/         YMMMMMMMb\n" +
-                "                      .' /'      dMMM\\         !MMMMMMMMb\n" +
-                "                   ,-'.-'\"\"~~~--/M|M' \\        !MMMMMMMMM\n" +
-                "                 ,/ .|...._____/MMM\\   b       gMMMMMMMMM\n" +
-                "              ,'/'\\/          dMMP/'   M.     ,MMMMMMMMMP\n" +
-                "             / `\\;/~~~~----...MP'     ,MMb..,dMMMMMMMMM'\n" +
-                "            / ,_  |          _/      dMMMMMMMMMMMMMMMMB\n" +
-                "            \\  |\\,\\,,,,___ _/    _,dMMMMMMMMMMMP\".emmmb,\n" +
-                "             `.\\  gY.     /      7MMMMMMMMMMP\"..emmMMMMM\n" +
-                "                .dMMMb,-..|       `.~~\"\"\"```|dMMMMP'MMP'\n" +
-                "               .MMMMP^\"\"\"/ .7 ,  _  \\,---~\"\"`^YMMP'MM;\n" +
-                "             _dMMMP'   ,' / | |\\ \\\\  }          PM^M^b\n" +
-                "          _,' _,  \\_.._`./  } ; \\ \\``'      __,'_` _  `._\n" +
-                "      ,-~/'./'| 7`,,__,}`   ``   ``        // _/`| 7``-._`}\n" +
-                "     |_,}__{  {,/'   ``                    `\\{_  {,/'   ``\n" +
-                "     ``  ```   ``                            ``   ``");
+        return  "      ,    ,    /\\   /\\\n" +
+                "     /( /\\ )\\  _\\ \\_/ /_\n" +
+                "     |\\_||_/| < \\_   _/ >\n" +
+                "     \\______/  \\|0   0|/\n" +
+                "       _\\/_   _(_  ^  _)_\n" +
+                "      ( () ) /`\\|V\"\"\"V|/`\\\n" +
+                "        {}   \\  \\_____/  /\n" +
+                "        ()   /\\   )=(   /\\\n" +
+                "        {}  /  \\_/\\=/\\_/  \\";
     }
 
-    public static void printFairy()
+
+    public static String getFairy()
     {
-        System.out.println(
-                " __       __          .--.\n" +
-                "(  \"\"--__(  \"\"-_    ,' .-.\\        *\n" +
-                " \"-_ __  \"\"--__ \"-_(  (^_^))      /\n" +
-                "    (  \"\"\"--___\"\"--__\" )-'(      /\n" +
-                "     \"-__      \"\"---/ ,(., )__o-/,  \n" +
-                "         \"\"\"----___(.'.   /--\"--'\n" +
-                "                   (\"-_\"/(    /\n" +
-                "                    \\   \\ \\\n" +
-                "                     `.  \\ |\n" +
-                "                       \\  \\/\n" +
-                "                       ||  \\\n" +
-                "                     ,-'/`. \\\n" +
-                "                     ) /   ) \\\n" +
-                "                     |/    `-.\\\n" +
-                "                              `\\");
+        return  "  __       __          .--.\n" +
+                " (  \"\"--__(  \"\"-_    ,' .-.\\        *\n" +
+                "  \"-_ __  \"\"--__ \"-_(  (^_^))      /\n" +
+                "     (  \"\"\"--___\"\"--__\" )-'(      /\n" +
+                "      \"-__      \"\"---/ ,(., )__o-/,  \n" +
+                "          \"\"\"----___(.'.   /--\"--'\n" +
+                "                    (\"-_\"/(    /\n" +
+                "                     \\   \\ \\\n" +
+                "                      `.  \\ |\n" +
+                "                        \\  \\/\n" +
+                "                        ||  \\\n" +
+                "                      ,-'/`. \\\n" +
+                "                      ) /   ) \\\n" +
+                "                      |/    `-.\\\n" +
+                "                               `\\";
     }
 
-    public static void printUnicorn()
+    public static String getUnicorn()
     {
-        System.out.println(
-                "          . \n" +
-                "         /'\n" +
-                "        //\n" +
-                "    .  //           \n" +
-                "    |\\//7\n" +
-                "   /' \" \\\n" +
-                "  .   . .  \n" +
-                "  | (    \\     '._\n" +
-                "  |  '._  '    '. '\n" +
-                "  /    \\'-'_---. ) )\n" +
-                " .              :.' \n" +
-                " |               \\\n" +
-                " | .    .   .     .\n" +
-                " ' .    |  |      |\n" +
-                "  \\^   /_-':     /\n" +
-                "  / | |    '\\  .'\n" +
-                " / /| |     \\\\  |\n" +
-                " \\ \\( )     // /\n" +
-                "  \\ | |    // /\n" +
-                "   L! !   // / \n" +
-                "    [_]  L[_|");
+        return  "            . \n" +
+                "           /'\n" +
+                "          //\n" +
+                "      .  //           \n" +
+                "      |\\//7\n" +
+                "     /' \" \\\n" +
+                "    .   . .  \n" +
+                "    | (    \\     '._\n" +
+                "    |  '._  '    '. '\n" +
+                "    /    \\'-'_---. ) )\n" +
+                "   .              :.' \n" +
+                "   |               \\\n" +
+                "   | .    .   .     .\n" +
+                "   ' .    |  |      |\n" +
+                "    \\^   /_-':     /\n" +
+                "    / | |    '\\  .'\n" +
+                "   / /| |     \\\\  |\n" +
+                "   \\ \\( )     // /\n" +
+                "    \\ | |    // /\n" +
+                "     L! !   // / \n" +
+                "      [_]  L[_|";
     }
 
-    public static void printMermaid()
+    public static String getMermaid()
     {
-        System.out.println(
-                "                           .-\"\"-.\n" +
+        return  "                           .-\"\"-.\n" +
                 "                          (___/\\ \\\n" +
                 "        ,                 (|^ ^ ) )\n" +
                 "       /(                _)_\\=_/  (\n" +
@@ -184,61 +153,54 @@ public class ANSI
                 "  `\\    _/        _/---._/(_)_  `\\ (\n" +
                 "    '--\\ `-.__..-'    /.    (_), |  )\n" +
                 "        `._        ___\\_____.'_| |__/\n" +
-                "           `~----\"`   `-.........'");
-        System.out.println("");
-        System.out.println("Vampire Bat... ");
+                "           `~----\"`   `-.........'";
+
     }
 
-    public static void printDevil2()
+    public static String getDevil2()
     {
-        System.out.println(
-                "   , ,, ,                              \n" +
-                "   | || |    ,/  _____  \\.             \n" +
-                "   \\_||_/    ||_/     \\_||             \n" +
-                "     ||       \\_| . . |_/              \n" +
-                "     ||         |  L  |                \n" +
-                "    ,||         |`==='|                \n" +
-                "    |>|      ___`>  -<'___             \n" +
-                "    |>|\\    /             \\            \n" +
-                "    \\>| \\  /  ,    .    .  |           \n" +
-                "     ||  \\/  /| .  |  . |  |           \n" +
-                "     ||\\  ` / | ___|___ |  |     (     \n" +
-                "  (( || `--'  | _______ |  |     ))  ( \n" +
-                "(  )\\|| (  )\\ | - --- - | -| (  ( \\  ))\n" +
-                "(\\/  || ))/ ( | -- - -- |  | )) )  \\(( \n" +
-                " ( ()||((( ())|         |  |( (( () )hjm");
-        System.out.println("");
-        System.out.println("Look it's ");
+        return  "    , ,, ,                              \n" +
+                "    | || |    ,/  _____  \\.             \n" +
+                "    \\_||_/    ||_/     \\_||             \n" +
+                "      ||       \\_| . . |_/              \n" +
+                "      ||         |  L  |                \n" +
+                "     ,||         |`==='|                \n" +
+                "     |>|      ___`>  -<'___             \n" +
+                "     |>|\\    /             \\            \n" +
+                "     \\>| \\  /  ,    .    .  |           \n" +
+                "      ||  \\/  /| .  |  . |  |           \n" +
+                "      ||\\  ` / | ___|___ |  |     (     \n" +
+                "   (( || `--'  | _______ |  |     ))  ( \n" +
+                " (  )\\|| (  )\\ | - --- - | -| (  ( \\  ))\n" +
+                " (\\/  || ))/ ( | -- - -- |  | )) )  \\(( \n" +
+                "  ( ()||((( ())|         |  |( (( () )" ;
+
     }
 
-    public static void printGhost()
+    public static String getGhost()
     {
-        System.out.println(
-                "              \n" +
-                "            .--,\n" +
-                "           /  (\n" +
-                "          /    \\\n" +
-                "         /      \\ \n" +
-                "        /  0  0  \\\n" +
-                "((()   |    ()    |   ()))\n" +
-                "\\  ()  (  .____.  )  ()  /\n" +
-                " |` \\_/ \\  `\"\"`  / \\_/ `|\n" +
-                " |       `.'--'.`       |\n" +
-                "  \\        `\"\"`        /\n" +
-                "   \\                  /\n" +
-                "    `.              .'    ,\n" +
-                "     |`             |  _.'|\n" +
-                "     |              `-'  /\n" +
-                "     \\                 .'\n" +
-                "      `.____________.-'");
-        System.out.println("");
-        System.out.println("Da da dada da da ... GhostBusters ...  ");
+        return  "              .--,\n" +
+                "             /  (\n" +
+                "            /    \\\n" +
+                "           /      \\ \n" +
+                "          /  0  0  \\\n" +
+                "  ((()   |    ()    |   ()))\n" +
+                "  \\  ()  (  .____.  )  ()  /\n" +
+                "   |` \\_/ \\  `\"\"`  / \\_/ `|\n" +
+                "   |       `.'--'.`       |\n" +
+                "    \\        `\"\"`        /\n" +
+                "     \\                  /\n" +
+                "      `.              .'    ,\n" +
+                "       |`             |  _.'|\n" +
+                "       |              `-'  /\n" +
+                "       \\                 .'\n" +
+                "        `.____________.-'" ;
+
     }
 
-    public static void printGrim()
+    public static String getGrim()
     {
-        System.out.println(
-                "                   ,____\n" +
+        return  "                   ,____\n" +
                 "                   |---.\\\n" +
                 "           ___     |    `\n" +
                 "          / .-\\  ./=)\n" +
@@ -253,15 +215,13 @@ public class ANSI
                 "        /     |   |\n" +
                 "      .'      |   |\n" +
                 "     /         \\  |\n" +
-                "    (_.-.__.__./  /");
-        System.out.println("");
-        System.out.println("ITS DEATH !!!  ");
+                "    (_.-.__.__./  /" ;
+
     }
 
-    public static void printGryphon()
+    public static String getGryphon()
     {
-        System.out.println(
-                "                           _\n" +
+        return  "                           _\n" +
                 "                          _)\\.-.\n" +
                 "         .-.__,___,_.-=-. )\\`  a`\\_\n" +
                 "     .-.__\\__,__,__.-=-. `/  \\     `\\\n" +
@@ -280,15 +240,13 @@ public class ANSI
                 "     ||    ||    .'_         \\ \\\\\n" +
                 "      \\\\   //   / _ `\\        \\ \\\\__\n" +
                 "       \\'-'/(   _  `\\,;        \\ '--:,\n" +
-                "        `\"`  `\"` `-,,;         `\"`\",,;");
-        System.out.println("");
-        System.out.println("Gryphon... ");
+                "        `\"`  `\"` `-,,;         `\"`\",,;" ;
+
     }
 
-    public static void printSpider()
+    public static String getSpider()
     {
-        System.out.println(
-                "              (\n" +
+        return  "              (\n" +
                 "               )\n" +
                 "              (\n" +
                 "        /\\  .-\"\"\"-.  /\\\n" +
@@ -301,220 +259,198 @@ public class ANSI
                 "      // /.-(() ())-.\\ \\\\\n" +
                 "     (\\ |)   '---'   (| /)\n" +
                 "      ` (|           |) `\n" +
-                "        \\)           (/");
-        System.out.println("");
-        System.out.println("Classic 8-Legs...");
-    }
-
-    public static void printRabbit()
-    {
-        System.out.println(
-                "          ,\n" +
-                "         /|      __\n" +
-                "        / |   ,-~ /\n" +
-                "       Y :|  //  /\n" +
-                "       | jj /( .^\n" +
-                "       >-\"~\"-v\"\n" +
-                "      /       Y\n" +
-                "     jo  o    |\n" +
-                "    ( ~T~     j\n" +
-                "     >._-' _./\n" +
-                "    /   \"~\"  |\n" +
-                "   Y     _,  |\n" +
-                "  /| ;-\"~ _  l\n" +
-                " / l/ ,-\"~    \\\n" +
-                " \\//\\/      .- \\\n" +
-                "  Y        /    Y \n" +
-                "  l       I     !\n" +
-                "  ]\\      _\\    /\"\\\n" +
-                " (\" ~----( ~   Y.  )");
-        System.out.println("");
-        System.out.println("The Killer Rabbit of Caerbannog...");
+                "        \\)           (/" ;
 
     }
 
-    public static void printBat()
+    public static String getRabbit()
     {
-        System.out.println(
-                "               /'.    .'\\\n" +
-                "               \\( \\__/ )/\n" +
-                "         ___   / (.)(.) \\   ___\n" +
-                "    _.-\"`_  `-.|  ____  |.-`  _`\"-._\n" +
-                " .-'.-'//||`'-.\\  V--V  /.-'`||\\\\'-.'-.\n" +
-                "`'-'-.// ||    / .___.  \\    || \\\\.-'-'`\n" +
-                "      `-.||_.._|        |_.._||.-'\n" +
-                "               \\ ((  )) /\n" +
-                "                '.    .'\n" +
-                "                  `\\/`");
-        System.out.println("");
-        System.out.println("Vampire Bat... ");
+        return  "            ,\n" +
+                "           /|      __\n" +
+                "          / |   ,-~ /\n" +
+                "         Y :|  //  /\n" +
+                "         | jj /( .^\n" +
+                "         >-\"~\"-v\"\n" +
+                "        /       Y\n" +
+                "       jo  o    |\n" +
+                "      ( ~T~     j\n" +
+                "       >._-' _./\n" +
+                "      /   \"~\"  |\n" +
+                "     Y     _,  |\n" +
+                "    /| ;-\"~ _  l\n" +
+                "   / l/ ,-\"~    \\\n" +
+                "   \\//\\/      .- \\\n" +
+                "    Y        /    Y \n" +
+                "    l       I     !\n" +
+                "    ]\\      _\\    /\"\\\n" +
+                "   (\" ~----( ~   Y.  )" ;
+
     }
 
-    public static void printShark()
+    public static String getBat()
     {
-        System.out.println(
-                " _________         .    .\n" +
-                "(..       \\_    ,  |\\  /|\n" +
-                " \\       O  \\  /|  \\ \\/ /\n" +
-                "  \\______    \\/ |   \\  / \n" +
-                "     vvvv\\    \\ |   /  |\n" +
-                "     \\^^^^  ==   \\_/   |\n" +
-                "      `\\_   ===    \\.  |\n" +
-                "      / /\\_   \\ /      |\n" +
-                "      |/   \\_  \\|      /\n" +
-                "             \\________/");
-        System.out.println("");
-        System.out.println("Land Shark will tear you flesh, If he can catch you...  ");
+        return  "                /'.    .'\\\n" +
+                "                \\( \\__/ )/\n" +
+                "          ___   / (.)(.) \\   ___\n" +
+                "     _.-\"`_  `-.|  ____  |.-`  _`\"-._\n" +
+                "  .-'.-'//||`'-.\\  V--V  /.-'`||\\\\'-.'-.\n" +
+                " `'-'-.// ||    / .___.  \\    || \\\\.-'-'`\n" +
+                "       `-.||_.._|        |_.._||.-'\n" +
+                "                \\ ((  )) /\n" +
+                "                 '.    .'\n" +
+                "                   `\\/`" ;
+
     }
 
-    public static void printSeaHorse()
+    public static String getShark()
     {
-        System.out.println(
-                "        \\/)/)\n" +
-                "      _'  oo(_.-. \n" +
-                "    /'.     .---'\n" +
-                "  /'-./    (\n" +
-                "  )     ; __\\\n" +
-                "  \\_.'\\ : __|\n" +
-                "       )  _/\n" +
-                "      (  (,.\n" +
-                "       '-.-'");
-        System.out.println("");
-        System.out.println("The nobel Seahorse... A true killing machine... ");
+        return  "   _________         .    .\n" +
+                "  (..       \\_    ,  |\\  /|\n" +
+                "   \\       O  \\  /|  \\ \\/ /\n" +
+                "    \\______    \\/ |   \\  / \n" +
+                "       vvvv\\    \\ |   /  |\n" +
+                "       \\^^^^  ==   \\_/   |\n" +
+                "        `\\_   ===    \\.  |\n" +
+                "        / /\\_   \\ /      |\n" +
+                "        |/   \\_  \\|      /\n" +
+                "               \\________/" ;
+
     }
 
-    public static void printWhale()
+    public static String getSeaHorse()
     {
-        System.out.println(
-                "       .\n" +
-                "      \":\"\n" +
-                "    ___:____     |\"\\/\"|\n" +
-                "  ,'        `.    \\  /\n" +
-                "  |  O        \\___/  |\n" +
-                "~^~^~^~^~^~^~^~^~^~^~^~^~");
-        System.out.println("");
-        System.out.println("Moby DICK ... ");
+        return  "         \\/)/)\n" +
+                "       _'  oo(_.-. \n" +
+                "     /'.     .---'\n" +
+                "   /'-./    (\n" +
+                "   )     ; __\\\n" +
+                "   \\_.'\\ : __|\n" +
+                "        )  _/\n" +
+                "       (  (,.\n" +
+                "        '-.-'" ;
+
     }
 
-    public static void printFrenshMan()
+    public static String getWhale()
     {
-        System.out.println(
-                "                      ____...                                  \n" +
-                "             .-\"--\"\"\"\".__    `.                                \n" +
-                "            |            `    |                                \n" +
-                "  (         `._....------.._.:          \n" +
-                "   )         .()''        ``().                                \n" +
-                "  '          () .=='  `===  `-.         \n" +
-                "   . )       (   <o>  <o>    g)                                \n" +
-                "    )         )     /        J          \n" +
-                "   (          |.   /      . (                                  \n" +
-                "   $$         (.  (_'.   , )|`                                 \n" +
-                "   ||         |\\`-....--'/  ' \\                                \n" +
-                "  /||.         \\\\ | | | /  /   \\.                              \n" +
-                " //||(\\         \\`-===-'  '     \\o.                            \n" +
-                ".//7' |)         `. --   / (     OObaaaad888b.                 \n" +
-                "(<<. / |     .a888b`.__.'d\\     OO888888888888a.               \n" +
-                " \\  Y' |    .8888888aaaa88POOOOOO888888888888888.              \n" +
-                "  \\  \\ |   .888888888888888888888888888888888888b              \n" +
-                "   |   |  .d88888P88888888888888888888888b8888888.             \n" +
-                "   b.--d .d88888P8888888888888888a:f888888|888888b             \n" +
-                "   88888b 888888|8888888888888888888888888\\8888888");
-        System.out.println("");
-        System.out.println("Oh, no ... It's a Frenchman ");
+        return  "        .\n" +
+                "       \":\"\n" +
+                "     ___:____     |\"\\/\"|\n" +
+                "   ,'        `.    \\  /\n" +
+                "   |  O        \\___/  |\n" +
+                " ~^~^~^~^~^~^~^~^~^~^~^~^~" ;
+
     }
 
-    public static void printKnight1()
+    public static String getFrenshMan()
     {
-        System.out.println(
-                "|\\             //\n" +
-                " \\\\           _!_\n" +
-                "  \\\\         /___\\\n" +
-                "   \\\\        [+++]\n" +
-                "    \\\\    _ _\\^^^/_ _\n" +
-                "     \\\\/ (    '-'  ( )\n" +
-                "     /( \\/ | {&}   /\\ \\\n" +
-                "       \\  / \\     / _> )\n" +
-                "        \"`   >:::;-'`\"\"'-.\n" +
-                "            /:::/         \\\n" +
-                "           /  /||   {&}   |\n" +
-                "          (  / (\\         /\n" +
-                "          / /   \\'-.___.-'\n" +
-                "        _/ /     \\ \\\n" +
-                "       /___|    /___|");
-        System.out.println("");
-        System.out.println("Gay knight nr. 1");
+        return  "                         ____...                                  \n" +
+                "                .-\"--\"\"\"\".__    `.                                \n" +
+                "               |            `    |                                \n" +
+                "     (         `._....------.._.:          \n" +
+                "      )         .()''        ``().                                \n" +
+                "     '          () .=='  `===  `-.         \n" +
+                "      . )       (   <o>  <o>    g)                                \n" +
+                "       )         )     /        J          \n" +
+                "      (          |.   /      . (                                  \n" +
+                "      $$         (.  (_'.   , )|`                                 \n" +
+                "      ||         |\\`-....--'/  ' \\                                \n" +
+                "     /||.         \\\\ | | | /  /   \\.                              \n" +
+                "    //||(\\         \\`-===-'  '     \\o.                            \n" +
+                "   .//7' |)         `. --   / (     OObaaaad888b.                 \n" +
+                "   (<<. / |     .a888b`.__.'d\\     OO888888888888a.               \n" +
+                "    \\  Y' |    .8888888aaaa88POOOOOO888888888888888.              \n" +
+                "     \\  \\ |   .888888888888888888888888888888888888b              \n" +
+                "      |   |  .d88888P88888888888888888888888b8888888.             \n" +
+                "      b.--d .d88888P8888888888888888a:f888888|888888b             \n" +
+                "      88888b 888888|8888888888888888888888888\\8888888" ;
+
     }
 
-    public static void printKnight2()
+    public static String getKnight1()
     {
-        System.out.println(
-                "  / \\\n" +
-                "  | |\n" +
-                "  |.|\n" +
-                "  |.|\n" +
-                "  |:|      __\n" +
-                ",_|:|_,   /  )\n" +
-                "  (Oo    / _I_\n" +
-                "   +\\ \\  || __|\n" +
-                "      \\ \\||___|\n" +
-                "        \\ /.:.\\-\\\n" +
-                "         |.:. /-----\\\n" +
-                "         |___|::oOo::|\n" +
-                "         /   |:<_T_>:|\n" +
-                "        |_____\\ ::: /\n" +
-                "         | |  \\ \\:/\n" +
-                "         | |   | |\n" +
-                "         \\ /   | \\___\n" +
-                "         / |   \\_____\\\n" +
-                "         `-'");
-        System.out.println("");
-        System.out.println("Gay knight nr. 2");
+        return  " |\\             //\n" +
+                "  \\\\           _!_\n" +
+                "   \\\\         /___\\\n" +
+                "    \\\\        [+++]\n" +
+                "     \\\\    _ _\\^^^/_ _\n" +
+                "      \\\\/ (    '-'  ( )\n" +
+                "      /( \\/ | {&}   /\\ \\\n" +
+                "        \\  / \\     / _> )\n" +
+                "         \"`   >:::;-'`\"\"'-.\n" +
+                "             /:::/         \\\n" +
+                "            /  /||   {&}   |\n" +
+                "           (  / (\\         /\n" +
+                "           / /   \\'-.___.-'\n" +
+                "         _/ /     \\ \\\n" +
+                "        /___|    /___|" ;
+
     }
 
-    public static void printJesus()
+    public static String getKnight2()
     {
-        System.out.println(
-                " _      xxxx      _\n" +
-                "/_;-.__ / _\\  _.-;_\\\n" +
-                "   `-._`'`_/'`.-'\n" +
-                "       `\\   /`\n" +
-                "        |  /\n" +
-                "       /-.(\n" +
-                "       \\_._\\\n" +
-                "        \\ \\`;\n" +
-                "         > |/\n" +
-                "        / //\n" +
-                "        |//\n" +
-                "        \\(\\");
-        System.out.println("");
-        System.out.println("The one true son of the one true god...");
+        return  "    / \\\n" +
+                "    | |\n" +
+                "    |.|\n" +
+                "    |.|\n" +
+                "    |:|      __\n" +
+                "  ,_|:|_,   /  )\n" +
+                "    (Oo    / _I_\n" +
+                "     +\\ \\  || __|\n" +
+                "        \\ \\||___|\n" +
+                "          \\ /.:.\\-\\\n" +
+                "           |.:. /-----\\\n" +
+                "           |___|::oOo::|\n" +
+                "           /   |:<_T_>:|\n" +
+                "          |_____\\ ::: /\n" +
+                "           | |  \\ \\:/\n" +
+                "           | |   | |\n" +
+                "           \\ /   | \\___\n" +
+                "           / |   \\_____\\\n" +
+                "           `-'" ;
+
     }
 
-    public static void printPope()
+    public static String getJesus()
     {
-        System.out.println(
-                "           /\n" +
-                "      /\\   |\n" +
-                "     /  \\  |/\n" +
-                "    |    | |>\n" +
-                "    \\____/ |\n" +
-                "    ( .. ) |\n" +
-                "    /\\__/\\ |\n" +
-                "   /\\ qp /\\|\n" +
-                "  /  |  |  |\n" +
-                " /|  |db| /\\`\\\n" +
-                " | \\ |  | \\|_|\n" +
-                " \\  \\|qp|  |\n" +
-                "  \\__/  |  |\n" +
-                "  |/||db|  |\n" +
-                "  |  |  |  |");
-        System.out.println("");
-        System.out.println("It's the King Of The Pedophiles...");    }
+        return  "    _      xxxx      _\n" +
+                "   /_;-.__ / _\\  _.-;_\\\n" +
+                "      `-._`'`_/'`.-'\n" +
+                "          `\\   /`\n" +
+                "           |  /\n" +
+                "          /-.(\n" +
+                "          \\_._\\\n" +
+                "           \\ \\`;\n" +
+                "            > |/\n" +
+                "           / //\n" +
+                "           |//\n" +
+                "           \\(\\" ;
 
-    private static void printPreacher()
+    }
+
+    public static String getPope()
     {
-        System.out.println(
-                "         ___\n" +
+        return  "              /\n" +
+                "         /\\   |\n" +
+                "        /  \\  |/\n" +
+                "       |    | |>\n" +
+                "       \\____/ |\n" +
+                "       ( .. ) |\n" +
+                "       /\\__/\\ |\n" +
+                "      /\\ qp /\\|\n" +
+                "     /  |  |  |\n" +
+                "    /|  |db| /\\`\\\n" +
+                "    | \\ |  | \\|_|\n" +
+                "    \\  \\|qp|  |\n" +
+                "     \\__/  |  |\n" +
+                "     |/||db|  |\n" +
+                "     |  |  |  |" ;
+
+    }
+
+    private static String getPreacher()
+    {
+        return  "         ___\n" +
                 "        /___\\\n" +
                 "       |/. .\\|\n" +
                 "       (   > )\n" +
@@ -533,15 +469,13 @@ public class ANSI
                 "       |     |\n" +
                 "       |_____|\n" +
                 "        / | \\\n" +
-                "       (_/ \\_)");
-        System.out.println("");
-        System.out.println("It's the number 1. servant of the King Of The Pedophiles...");
+                "       (_/ \\_)" ;
+
     }
 
-    public static void printGanesha()
+    public static String getGanesha()
     {
-        System.out.println(
-                "             _.!._\n" +
+        return  "             _.!._\n" +
                 "            /O*@*O\\\n" +
                 "           <\\@(_)@/>\n" +
                 "  ,;,   .--;`     `;--.   ,\n" +
@@ -557,13 +491,12 @@ public class ANSI
                 "    \\=/::`##########'\\==/\n" +
                 "     /:::::/()`Y`()\\:::::\\\n" +
                 "     \\::::( () | () )::::/\n" +
-                "      `\"\"\"`-`'-'-'`-'\"\"\"`");
+                "      `\"\"\"`-`'-'-'`-'\"\"\"`" ;
     }
 
-    public static void printBuddha()
+    public static String getBuddha()
     {
-        System.out.println(
-                "                           _\n" +
+        return  "                           _\n" +
                 "                        _ooOoo_\n" +
                 "                       o8888888o\n" +
                 "                       88\" . \"88\n" +
@@ -581,13 +514,12 @@ public class ANSI
                 "          | | :  `- \\`. ;`. _/; .'/ /  .' ; |\n" +
                 "          \\  \\ `-.   \\_\\_`. _.'_/_/  -' _.' /\n" +
                 "===========`-.`___`-.__\\ \\___  /__.-'_.'_.-'================\n" +
-                "                        `=--=-'                    ");
+                "                        `=--=-'                    " ;
     }
 
-    public static void printBabar()
+    public static String getBabar()
     {
-        System.out.println(
-                "           _  .   .   .\n" +
+        return  "           _  .   .   .\n" +
                 "         .' '; '-' '-'|-.\n" +
                 "        (     '------.'  )\n" +
                 "         ;            \\ /\n" +
@@ -604,270 +536,213 @@ public class ANSI
                 "          |     | |   | |\n" +
                 "          |_____|_|___|_|\n" +
                 "          (-------',----'.\n" +
-                "           '-'-----'-----'");
-        System.out.println("");
-        System.out.println("The Elephant King... Worst dictator in modern history");
+                "           '-'-----'-----'" ;
+
     }
 
-    public static void printRobot()
+
+    public static String getHarryPotter()
     {
-        System.out.println(
-                "           ___\n" +
-                "          |_|_|\n" +
-                "          |_|_|              _____\n" +
-                "          |_|_|     ____    |*_*_*|\n" +
-                " _______   _\\__\\___/ __ \\____|_|_   _______\n" +
-                "/ ____  |=|      \\  <_+>  /      |=|  ____ \\\n" +
-                "~|    |\\|=|======\\\\______//======|=|/|    |~\n" +
-                " |_   |    \\      |      |      /    |    |\n" +
-                "  \\==-|     \\     |  2D  |     /     |----|~~/\n" +
-                "  |   |      |    |      |    |      |____/~/\n" +
-                "  |   |       \\____\\____/____/      /    / /\n" +
-                "  |   |         {----------}       /____/ /\n" +
-                "  |___|        /~~~~~~~~~~~~\\     |_/~|_|/\n" +
-                "   \\_/        |/~~~~~||~~~~~\\|     /__|\\\n" +
-                "   | |         |    ||||    |     (/|| \\)\n" +
-                "   | |        /     |  |     \\       \\\\\n" +
-                "   |_|        |     |  |     |\n" +
-                "              |_____|  |_____|\n" +
-                "              (_____)  (_____)\n" +
-                "              |     |  |     |\n" +
-                "              |     |  |     |\n" +
-                "              |/~~~\\|  |/~~~\\|\n" +
-                "              /|___|\\  /|___|\\\n" +
-                "             <_______><_______>");
+        return  "              _            _.,----,\n" +
+                "   __  _.-._ / '-.        -  ,._  \\) \n" +
+                "  |  `-)_   '-.   \\       / < _ )/\" }\n" +
+                "  /__    '-.   \\   '-, ___(c-(6)=(6)\n" +
+                "   , `'.    `._ '.  _,'   >\\    \"  )\n" +
+                "   :;;,,'-._   '---' (  ( \"/`. -='/\n" +
+                "  ;:;;:;;,  '..__    ,`-.`)'- '--'\n" +
+                "  ;';:;;;;;'-._ /'._|   Y/   _/' \\\n" +
+                "        '''\"._ F    |  _/ _.'._   `\\\n" +
+                "               L    \\   \\/     '._  \\\n" +
+                "        .-,-,_ |     `.  `'---,  \\_ _|\n" +
+                "        //    'L    /  \\,   (\"--',=`)7\n" +
+                "       | `._       : _,  \\  /'`-._L,_'-._\n" +
+                "       '--' '-.\\__/ _L   .`'         './/\n" +
+                "                   [ (  /\n" +
+                "                    ) `{\n" +
+                "                    \\__)" ;
+
     }
 
-    public static void printHarryPotter()
+    public static String getPentacle()
     {
-        System.out.println(
-                "            _            _.,----,\n" +
-                " __  _.-._ / '-.        -  ,._  \\) \n" +
-                "|  `-)_   '-.   \\       / < _ )/\" }\n" +
-                "/__    '-.   \\   '-, ___(c-(6)=(6)\n" +
-                " , `'.    `._ '.  _,'   >\\    \"  )\n" +
-                " :;;,,'-._   '---' (  ( \"/`. -='/\n" +
-                ";:;;:;;,  '..__    ,`-.`)'- '--'\n" +
-                ";';:;;;;;'-._ /'._|   Y/   _/' \\\n" +
-                "      '''\"._ F    |  _/ _.'._   `\\\n" +
-                "             L    \\   \\/     '._  \\\n" +
-                "      .-,-,_ |     `.  `'---,  \\_ _|\n" +
-                "      //    'L    /  \\,   (\"--',=`)7\n" +
-                "     | `._       : _,  \\  /'`-._L,_'-._\n" +
-                "     '--' '-.\\__/ _L   .`'         './/\n" +
-                "                 [ (  /\n" +
-                "                  ) `{\n" +
-                "                  \\__)");
-        System.out.println("");
-        System.out.println("Watch out!!! It's a boy on a stick...");
+        return  "                    ooo OOOAOOO ooo\n" +
+                "                oOO       / \\       OOo\n" +
+                "            oOO          /   \\          OOo\n" +
+                "         oOO            /     \\            OOo\n" +
+                "       oOO             /       \\             OOo\n" +
+                "     oOO -_-----------/---------\\-----------_- OOo\n" +
+                "    oOO     -_       /           \\       _-     OOo\n" +
+                "   oOO         -_   /             \\   _-         OOo\n" +
+                "  oOO             -/_             _\\-             OOo\n" +
+                "  oOO             /  -_         _-  \\             OOo\n" +
+                "  oOO            /      -_   _-      \\            OOo\n" +
+                "  oOO           /         _-_         \\           OOo\n" +
+                "  oOO          /       _-     -_       \\          OOo\n" +
+                "   oOO        /     _-           -_     \\        OOo\n" +
+                "    oOO      /   _-                 -_   \\      OOo\n" +
+                "     oOO    / _-                       -_ \\    OOo\n" +
+                "       oOO _-                             -_ OOo\n" +
+                "        oOO                                OOo\n" +
+                "            oOO                         OOo\n" +
+                "               oOO                 OOo\n" +
+                "                    ooo OOO OOO ooo" ;
     }
 
-    public static void printPentacle()
+    public static String getPikachu()
     {
-        System.out.println(
-                "                  ooo OOOAOOO ooo\n" +
-                "              oOO       / \\       OOo\n" +
-                "          oOO          /   \\          OOo\n" +
-                "       oOO            /     \\            OOo\n" +
-                "     oOO             /       \\             OOo\n" +
-                "   oOO -_-----------/---------\\-----------_- OOo\n" +
-                "  oOO     -_       /           \\       _-     OOo\n" +
-                " oOO         -_   /             \\   _-         OOo\n" +
-                "oOO             -/_             _\\-             OOo\n" +
-                "oOO             /  -_         _-  \\             OOo\n" +
-                "oOO            /      -_   _-      \\            OOo\n" +
-                "oOO           /         _-_         \\           OOo\n" +
-                "oOO          /       _-     -_       \\          OOo\n" +
-                " oOO        /     _-           -_     \\        OOo\n" +
-                "  oOO      /   _-                 -_   \\      OOo\n" +
-                "   oOO    / _-                       -_ \\    OOo\n" +
-                "     oOO _-                             -_ OOo\n" +
-                "      oOO                                OOo\n" +
-                "          oOO                         OOo\n" +
-                "             oOO                 OOo\n" +
-                "                  ooo OOO OOO ooo");
+        return  "         ,___          .-;'\n" +
+                "         `\"-.`\\_...._/`.`\n" +
+                "      ,      \\        /\n" +
+                "   .-' ',    / ()   ()\\\n" +
+                "  `'._   \\  /()    .  (|\n" +
+                "      > .' ;,     -'-  /\n" +
+                "     / <   |;,     __.;\n" +
+                "     '-.'-.|  , \\    , \\\n" +
+                "        `>.|;, \\_)    \\_)\n" +
+                "         `-;     ,    /\n" +
+                "            \\    /   <\n" +
+                "             '. <`'-,_)\n" +
+                "              '._)" ;
     }
 
-    public static void printPikachu()
+    public static String getSonic()
     {
-        System.out.println(
-                "       ,___          .-;'\n" +
-                "       `\"-.`\\_...._/`.`\n" +
-                "    ,      \\        /\n" +
-                " .-' ',    / ()   ()\\\n" +
-                "`'._   \\  /()    .  (|\n" +
-                "    > .' ;,     -'-  /\n" +
-                "   / <   |;,     __.;\n" +
-                "   '-.'-.|  , \\    , \\\n" +
-                "      `>.|;, \\_)    \\_)\n" +
-                "       `-;     ,    /\n" +
-                "          \\    /   <\n" +
-                "           '. <`'-,_)\n" +
-                "            '._)");
+        return  "         ___------__\n" +
+                "   |\\__-- /\\       _-\n" +
+                "   |/    __      -\n" +
+                "   //\\  /  \\    /__\n" +
+                "   |  o|  0|__     --_\n" +
+                "   \\\\____-- __ \\   ___-\n" +
+                "   (@@    __/  / /_\n" +
+                "      -_____---   --_\n" +
+                "       //  \\ \\\\   ___-\n" +
+                "     //|\\__/  \\\\  \\\n" +
+                "     \\_-\\_____/  \\-\\\n" +
+                "          // \\\\--\\|\n" +
+                "     ____//  ||_\n" +
+                "    /_____\\ /___\\\n" +
+                "  ______________________" ;
     }
 
-    public static void printSonic()
+    public static String getTeddyBear()
     {
-        System.out.println(
-                "       ___------__\n" +
-                " |\\__-- /\\       _-\n" +
-                " |/    __      -\n" +
-                " //\\  /  \\    /__\n" +
-                " |  o|  0|__     --_\n" +
-                " \\\\____-- __ \\   ___-\n" +
-                " (@@    __/  / /_\n" +
-                "    -_____---   --_\n" +
-                "     //  \\ \\\\   ___-\n" +
-                "   //|\\__/  \\\\  \\\n" +
-                "   \\_-\\_____/  \\-\\\n" +
-                "        // \\\\--\\|\n" +
-                "   ____//  ||_\n" +
-                "  /_____\\ /___\\\n" +
-                "______________________");
+        return  "       ,-._____,-.\n" +
+                "      (_c       c_)\n" +
+                "       /  e-o-e  \\\n" +
+                "      (  (._|_,)  )\n" +
+                "       >._`---'_,<\n" +
+                "     ,'/  `---'  \\`.\n" +
+                "   ,' /           \\ `.\n" +
+                "  (  (             )  )\n" +
+                "   `-'\\           /`-'\n" +
+                "      |`-._____.-'|\n" +
+                "      |     Y     |\n" +
+                "      /     |     \\\n" +
+                "     (      |      )\n" +
+                "      `-----^-----'" ;
     }
 
-    public static void printTeddyBear()
+    public static String getJackInABox()
     {
-        System.out.println(
-                "      ,-._____,-.\n" +
-                "     (_c       c_)\n" +
-                "      /  e-o-e  \\\n" +
-                "     (  (._|_,)  )\n" +
-                "      >._`---'_,<\n" +
-                "    ,'/  `---'  \\`.\n" +
-                "  ,' /           \\ `.\n" +
-                " (  (             )  )\n" +
-                "  `-'\\           /`-'\n" +
-                "     |`-._____.-'|\n" +
-                "     |     Y     |\n" +
-                "     /     |     \\\n" +
-                "    (      |      )\n" +
-                "     `-----^-----'");
+        return  "                _,;;.,_\n" +
+                "       ,-;;,_  ;,',,,'''@\n" +
+                "    ,;;``  `'\\\\|//``-:;,.\n" +
+                "  @`         ;^^^;      `'@\n" +
+                "             :@ @:\n" +
+                "             \\ u /\n" +
+                "    ,=,------)^^^(------,=,\n" +
+                "    '-'-----/=====\\-----'-'\n" +
+                "            \\_____/\n" +
+                "        '`\\ /_____\\\n" +
+                "        `\\ \\\\_____/_\n" +
+                "          \\//_____\\/|\n" +
+                "          |        ||\n" +
+                "          |        |'\n" +
+                "          :________:`" ;
     }
 
-    public static void printJackInABox()
+
+    public static String getSanta()
     {
-        System.out.println(
-                "              _,;;.,_\n" +
-                "     ,-;;,_  ;,',,,'''@\n" +
-                "  ,;;``  `'\\\\|//``-:;,.\n" +
-                "@`         ;^^^;      `'@\n" +
-                "           :@ @:\n" +
-                "           \\ u /\n" +
-                "  ,=,------)^^^(------,=,\n" +
-                "  '-'-----/=====\\-----'-'\n" +
-                "          \\_____/\n" +
-                "      '`\\ /_____\\\n" +
-                "      `\\ \\\\_____/_\n" +
-                "        \\//_____\\/|\n" +
-                "        |        ||\n" +
-                "        |        |'\n" +
-                "        :________:`");
+        return  "        ____\n" +
+                "      {} _  \\\n" +
+                "         |__ \\\n" +
+                "        /_____\\\n" +
+                "        \\o o)\\)_______\n" +
+                "        (<  ) /#######\\\n" +
+                "      __{'~` }#########|\n" +
+                "     /  {   _}_/########|\n" +
+                "    /   {  / _|#/ )####|\n" +
+                "   /   \\_~/ /_ \\  |####|\n" +
+                "   \\______\\/  \\ | |####|\n" +
+                "    \\__________\\|/#####|\n" +
+                "     |__[X]_____/ \\###/ \n" +
+                "     /___________\\\n" +
+                "      |    |/    |\n" +
+                "      |___/ |___/\n" +
+                "     _|   /_|   /\n" +
+                "    (___,_(___,_)" ;
     }
 
-    public static void printNoSmooking()
+    public static String getWitch()
     {
-        System.out.println(
-                "       _..----.._\n" +
-                "    _-'_..----.._'-_\n" +
-                "  .'.  \\       ( `'.'.\n" +
-                " / / `\\ `\\       )  \\ \\\n" +
-                "| |   _`\\ `\\____(    | |\n" +
-                "| |  [__]_\\ `\\__()   | |\n" +
-                "| |        `\\ `\\     | |\n" +
-                " \\ \\         `\\ `\\  / /\n" +
-                "  '.'-._       `\\ `'.'\n" +
-                "    `-._`'----'`_.-'\n" +
-                "        `\"----\"`");
-        System.out.println("");
-        System.out.println("Oh, no look... Its a smokers worst nightmare!!!");
+        return  "       ___                                             \\--/\n" +
+                "     .'   `\"-._                                     /`-'  '-`\\\n" +
+                "    / ,        `'-_.-.                             /          \\\n" +
+                "   / /`'.       ,' _  |                           /.'|/\\  /\\|'.\\\n" +
+                "  `-'    `-.  ,' ,'\\\\/                                  \\/\n" +
+                "            \\, ,'  ee`-.         \n" +
+                "            / ./  ,(_   \\      ,     \n" +
+                "           (_/\\\\\\ \\__|`--'     ||\n" +
+                "           ///\\\\|     \\        ||\n" +
+                "           ////||-./`-.}    .--||       \n" +
+                "              /     `-.__.-`_.-.|           \n" +
+                "              |      '._,-'`|___}    `;\n" +
+                "              /   '.        |/ || ,;'`\n" +
+                "              |     '.__,.-`   || ':,    \n" +
+                "              |       |        || ,;'      \n" +
+                "              /       /     _,.||oOoO.,_\n" +
+                "             |        |     \\-.O,o_O..-/\n" +
+                "            /         /     /          \\   \n" +
+                "           |         /     /            \\  \n" +
+                "           |         |    |      ,       |\n" +
+                "           /         |    \\   ) (     )  /   \n" +
+                "          |           \\   ,'.(:, ),: (_.'.   \n" +
+                "         /            /'.' =\"`\"\"=\"=\"==\"= '.\n" +
+                "        `'\"---'-.__.'\"\"\"`    ` \"\" \"\" `\"\"" ;
     }
 
-    public static void printSanta()
+    public static String getEasterBunny()
     {
-        System.out.println(
-                "       ____\n" +
-                "     {} _  \\\n" +
-                "        |__ \\\n" +
-                "       /_____\\\n" +
-                "       \\o o)\\)_______\n" +
-                "       (<  ) /#######\\\n" +
-                "     __{'~` }#########|\n" +
-                "    /  {   _}_/########|\n" +
-                "   /   {  / _|#/ )####|\n" +
-                "  /   \\_~/ /_ \\  |####|\n" +
-                "  \\______\\/  \\ | |####|\n" +
-                "   \\__________\\|/#####|\n" +
-                "    |__[X]_____/ \\###/ \n" +
-                "    /___________\\\n" +
-                "     |    |/    |\n" +
-                "     |___/ |___/\n" +
-                "    _|   /_|   /\n" +
-                "   (___,_(___,_)");
+        return  "      .-.            .-.\n" +
+                "     /   \\          /   \\\n" +
+                "    |   _ \\        / _   |\n" +
+                "    ;  | \\ \\      / / |  ;\n" +
+                "     \\  \\ \\ \\_.._/ / /  /\n" +
+                "      '. '.;'    ';,' .'\n" +
+                "        './ _    _ \\.'\n" +
+                "        .'  a __ a  '.\n" +
+                "   '--./ _,   \\/   ,_ \\.--'\n" +
+                "  ----|   \\   /\\   /   |----\n" +
+                "   .--'\\   '-'  '-'    /'--.\n" +
+                "       _>.__  -- _.-  `;\n" +
+                "     .' _     __/     _/\n" +
+                "    /    '.,:\".-\\    /:,\n" +
+                "    |      \\.'   `\"\"`'.\\\\\n" +
+                "     '-,.__/  _   .-.  ;|_\n" +
+                "     /` `|| _/ `\\/_  \\_|| `\\\n" +
+                "    |    ||/ \\-./` \\ / ||   |\n" +
+                "     \\   ||__/__|___|__||  /\n" +
+                "      \\_ |_Happy Easter_| /\n" +
+                "     .'  \\ =  _= _ = _= /`\\\n" +
+                "    /     `-;----=--;--'   \\\n" +
+                "    \\    _.-'        '.    /\n" +
+                "     `\"\"`              `\"\"`" ;
     }
 
-    public static void printWitch()
+    public static String getChest()
     {
-        System.out.println(
-                "     ___                                             \\--/\n" +
-                "   .'   `\"-._                                     /`-'  '-`\\\n" +
-                "  / ,        `'-_.-.                             /          \\\n" +
-                " / /`'.       ,' _  |                           /.'|/\\  /\\|'.\\\n" +
-                "`-'    `-.  ,' ,'\\\\/                                  \\/\n" +
-                "          \\, ,'  ee`-.         \n" +
-                "          / ./  ,(_   \\      ,     \n" +
-                "         (_/\\\\\\ \\__|`--'     ||\n" +
-                "         ///\\\\|     \\        ||\n" +
-                "         ////||-./`-.}    .--||       \n" +
-                "            /     `-.__.-`_.-.|           \n" +
-                "            |      '._,-'`|___}    `;\n" +
-                "            /   '.        |/ || ,;'`\n" +
-                "            |     '.__,.-`   || ':,    \n" +
-                "            |       |        || ,;'      \n" +
-                "            /       /     _,.||oOoO.,_\n" +
-                "           |        |     \\-.O,o_O..-/\n" +
-                "          /         /     /          \\   \n" +
-                "         |         /     /            \\  \n" +
-                "         |         |    |      ,       |\n" +
-                "         /         |    \\   ) (     )  /   \n" +
-                "        |           \\   ,'.(:, ),: (_.'.   \n" +
-                "       /            /'.' =\"`\"\"=\"=\"==\"= '.\n" +
-                "      `'\"---'-.__.'\"\"\"`    ` \"\" \"\" `\"\"");
-    }
-
-    public static void printEasterBunny()
-    {
-        System.out.println(
-                "     .-.            .-.\n" +
-                "    /   \\          /   \\\n" +
-                "   |   _ \\        / _   |\n" +
-                "   ;  | \\ \\      / / |  ;\n" +
-                "    \\  \\ \\ \\_.._/ / /  /\n" +
-                "     '. '.;'    ';,' .'\n" +
-                "       './ _    _ \\.'\n" +
-                "       .'  a __ a  '.\n" +
-                "  '--./ _,   \\/   ,_ \\.--'\n" +
-                " ----|   \\   /\\   /   |----\n" +
-                "  .--'\\   '-'  '-'    /'--.\n" +
-                "      _>.__  -- _.-  `;\n" +
-                "    .' _     __/     _/\n" +
-                "   /    '.,:\".-\\    /:,\n" +
-                "   |      \\.'   `\"\"`'.\\\\\n" +
-                "    '-,.__/  _   .-.  ;|_\n" +
-                "    /` `|| _/ `\\/_  \\_|| `\\\n" +
-                "   |    ||/ \\-./` \\ / ||   |\n" +
-                "    \\   ||__/__|___|__||  /\n" +
-                "     \\_ |_Happy Easter_| /\n" +
-                "    .'  \\ =  _= _ = _= /`\\\n" +
-                "   /     `-;----=--;--'   \\\n" +
-                "   \\    _.-'        '.    /\n" +
-                "    `\"\"`              `\"\"`");
-    }
-
-    public static void printChest()
-    {
-        System.out.println(
-                "                            _.--.\n" +
+        return  "                            _.--.\n" +
                 "                        _.-'_:-'||\n" +
                 "                    _.-'_.-::::'||\n" +
                 "               _.-:'_.-::::::'  ||\n" +
@@ -885,14 +760,12 @@ public class ANSI
                 "               ||      || |'|    _.-'_.-'\n" +
                 "               |'-._   || |'|_.-'_.-'\n" +
                 "                '-._'-.|| |' `_.-'\n" +
-                "                    '-.||_/.-'");
+                "                    '-.||_/.-'" ;
     }
 
-    public static void printChest2()
+    public static String getChest2()
     {
-        System.out.println(
-                "\n" +
-                "                    ____...------------...____\n" +
+        return  "                    ____...------------...____\n" +
                 "               _.-\"` /o/__ ____ __ __  __ \\o\\_`\"-._\n" +
                 "             .'     / /                    \\ \\     '.\n" +
                 "             |=====/o/======================\\o\\=====|\n" +
@@ -905,15 +778,14 @@ public class ANSI
                 "              |   | |         \\() ()/        | |   |\n" +
                 "              |===|o|======{'-.) A (.-'}=====|o|===|\n" +
                 "              | __/ \\__     '-.\\uuu/.-'    __/ \\__ |\n" +
-                "              |==== .'.'^'.'.====|\n" +
+                "              |====           .'.'^'.'.          ====|\n" +
                 "              |  _\\o/   __  {.' __  '.} _   _\\o/  _|\n" +
-                "              `\"\"\"\"-\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"-\"\"\"\"`");
+                "              `\"\"\"\"-\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"-\"\"\"\"`" ;
     }
 
-    public static void printChest3()
+    public static String getChest3()
     {
-        System.out.println(
-                "         __________\n" +
+        return  "         __________\n" +
                 "        /\\____;;___\\\n" +
                 "       | /         /\n" +
                 "       `. ())oo() .\n" +
@@ -921,45 +793,42 @@ public class ANSI
                 "       %| |-%-------|\n" +
                 "      % \\ | %  ))   |\n" +
                 "      %  \\|%________|\n" +
-                "       %%%%");
+                "       %%%%" ;
     }
 
-    public static void printHamster()
+    public static String getHamster()
     {
-        System.out.println(
-                "       .     .\n" +
-                "      (>\\---/<)\n" +
-                "      ,'     `.\n" +
-                "     /  q   p  \\\n" +
-                "    (  >(_Y_)<  )\n" +
-                "     >-' `-' `-<-.\n" +
-                "    /  _.== ,=.,- \\\n" +
-                "   /,    )`  '(    )\n" +
-                "  ; `._.'      `--<\n" +
-                " :     \\        |  )\n" +
-                " \\      )       ;_/ \n" +
-                "  `._ _/_  ___.'-\\\\\\\n" +
-                "     `--\\\\\\");
+        return  "        .     .\n" +
+                "       (>\\---/<)\n" +
+                "       ,'     `.\n" +
+                "      /  q   p  \\\n" +
+                "     (  >(_Y_)<  )\n" +
+                "      >-' `-' `-<-.\n" +
+                "     /  _.== ,=.,- \\\n" +
+                "    /,    )`  '(    )\n" +
+                "   ; `._.'      `--<\n" +
+                "  :     \\        |  )\n" +
+                "  \\      )       ;_/ \n" +
+                "   `._ _/_  ___.'-\\\\\\\n" +
+                "      `--\\\\\\" ;
     }
 
-    public static void printSheep()
+    public static String getSheep()
     {
-        System.out.println(
-                "            __  _\n" +
-                "     .-.'  `; `-._  __  _\n" +
-                "    (_,         .-:'  `; `-._\n" +
-                "  ,'o\"(        (_,           )\n" +
-                " (__,-'      ,'o\"(            )>\n" +
-                "    (       (__,-'            )\n" +
-                "     `-'._.--._(             )\n" +
-                "        |||  |||`-'._.--._.-'\n" +
-                "                   |||  |||");
+        return  "             __  _\n" +
+                "      .-.'  `; `-._  __  _\n" +
+                "     (_,         .-:'  `; `-._\n" +
+                "   ,'o\"(        (_,           )\n" +
+                "  (__,-'      ,'o\"(            )>\n" +
+                "     (       (__,-'            )\n" +
+                "      `-'._.--._(             )\n" +
+                "         |||  |||`-'._.--._.-'\n" +
+                "                    |||  |||" ;
     }
 
-    public static void printSword()
+    public static String getSword()
     {
-        System.out.println(
-                "        )         \n" +
+        return  "        )         \n" +
                 "          (            \n" +
                 "        '    }      \n" +
                 "      (    '      \n" +
@@ -988,13 +857,12 @@ public class ANSI
                 "        |-|\n" +
                 "        |-|\n" +
                 "       ,'-'.\n" +
-                "       '---'");
+                "       '---'" ;
     }
 
-    public static void printSword2()
+    public static String getSword2()
     {
-        System.out.println(
-                "      .m.\n" +
+        return  "      .m.\n" +
                 "      (;)\n" +
                 "      (;)\n" +
                 "      (;)\n" +
@@ -1019,13 +887,12 @@ public class ANSI
                 "     ||S||\n" +
                 "     \\\\ //\n" +
                 "      \\V/\n" +
-                "       V");
+                "       V" ;
     }
 
-    public static void printSword3()
+    public static String getSword3()
     {
-        System.out.println(
-                "     .-.\n" +
+        return  "     .-.\n" +
                 "    (0.0)\n" +
                 "  '=.|m|.='\n" +
                 "  .='/@\\`=.\n" +
@@ -1046,39 +913,37 @@ public class ANSI
                 "     |:|\n" +
                 "     |:|\n" +
                 "     \\:/\n" +
-                "      ^");
+                "      ^"  ;
     }
 
-    public static void printMickeyMouse()
+    public static String getMickeyMouse()
     {
-        System.out.println(
-                "            .-\"\"\"-.\n" +
-                "           /       \\\n" +
-                "           \\       /\n" +
-                "    .-\"\"\"-.-`.-.-.<  _\n" +
-                "   /      _,-\\ ()()_/:)\n" +
-                "   \\     / ,  `     `|\n" +
-                "    '-..-| \\-.,___,  /\n" +
-                "          \\ `-.__/  /\n" +
-                "         / `-.__.-\\`\n" +
-                "        / /|    ___\\\n" +
-                "       ( ( |.-\"`   `'\\\n" +
-                "        \\ \\/    {}{}  |\n" +
-                "         \\|           /\n" +
-                "          \\        , /\n" +
-                "          ( __`;-;'__`)\n" +
-                "          `//'`   `||`\n" +
-                "         _//       ||\n" +
-                " .-\"-._,(__)     .(__).-\"\"-.\n" +
-                "/          \\    /           \\\n" +
-                "\\          /    \\           /\n" +
-                " `'-------`      `--------'`");
+        return  "              .-\"\"\"-.\n" +
+                "             /       \\\n" +
+                "             \\       /\n" +
+                "      .-\"\"\"-.-`.-.-.<  _\n" +
+                "     /      _,-\\ ()()_/:)\n" +
+                "     \\     / ,  `     `|\n" +
+                "      '-..-| \\-.,___,  /\n" +
+                "            \\ `-.__/  /\n" +
+                "           / `-.__.-\\`\n" +
+                "          / /|    ___\\\n" +
+                "         ( ( |.-\"`   `'\\\n" +
+                "          \\ \\/    {}{}  |\n" +
+                "           \\|           /\n" +
+                "            \\        , /\n" +
+                "            ( __`;-;'__`)\n" +
+                "            `//'`   `||`\n" +
+                "           _//       ||\n" +
+                "   .-\"-._,(__)     .(__).-\"\"-.\n" +
+                "  /          \\    /           \\\n" +
+                "  \\          /    \\           /\n" +
+                "   `'-------`      `--------'`" ;
     }
 
-    public static void printNakedWoman()
+    public static String getNakedWoman()
     {
-        System.out.println(
-                "                               _.._\n" +
+        return  "                               _.._\n" +
                 "                             .'    '.\n" +
                 "                            (____/`\\ \\\n" +
                 "                           (  |' ' )  )\n" +
@@ -1090,13 +955,12 @@ public class ANSI
                 "_.-`'---...__,'    /-,..___.-'--'_| |_)\n" +
                 "'-'``'-.._       ,'  |   / .........'\n" +
                 "          ``;--\"`;   |   `-`\n" +
-                "             `'..__.'");
+                "             `'..__.'" ;
     }
 
-    public static void printYourMom()
+    public static String getYourMom()
     {
-        System.out.println(
-                "               .-''-''-.\n" +
+        return  "               .-''-''-.\n" +
                 "              /   '-'  .: __\n" +
                 "      .._    /  /|||\\\\  Y`  `\\\n" +
                 "     |:  `-.J  /__ __.., )   |\n" +
@@ -1121,7 +985,7 @@ public class ANSI
                 "         |    |#\\ /        |\n" +
                 "         |     \\#Y         |\n" +
                 "         |       |        /\n" +
-                "    ");
+                "    " ;
     }
 
 

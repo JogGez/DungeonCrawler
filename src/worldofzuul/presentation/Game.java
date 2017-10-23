@@ -2,6 +2,7 @@ package worldofzuul.presentation;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.MatchGenerator;
 import sun.invoke.empty.Empty;
+import worldofzuul.data.HighScoreHandler;
 import worldofzuul.logic.*;
 
 import java.awt.*;
@@ -28,22 +29,21 @@ public class Game
     /**
      * Class constructor.
      *
-     * Used to create the rooms and initialize the Parser.
+     * Used to instantiate the Parser.
      */
     public Game()
     {
-        // Runs the createRooms() method
-        createMap();
-        // Initializes the Parser
+        // Instantiating the Parser
         parser = new Parser();
     }
 
-    /**
-     * Method used to create all the rooms in the game.
-     */
-    private void createMap()
+    public void start()
     {
-        currentMap = new Map(3,4);
+        // Call printWelcome() method used to write a welcome message
+        printWelcome();
+
+        this.menu();
+
     }
 
     /**
@@ -51,21 +51,25 @@ public class Game
      *
      */
     public void play() 
-    {            
-        // Call printWelcome() method used to write a welcome message
-        printWelcome();
+    {
+        // Instantiating currentMap
+        currentMap = new Map(3,4);
 
         //Prints out the string  beneath
         System.out.println("Enter your name here: ");
 
+        // Instantiating player and initiating name
         player = new Player(parser.getUserInput());
+
         System.out.println("Well... hello there " + player.getName());
+        System.out.println("Type '" + CommandWord.HELP + "' if you ever need help.");
         System.out.println("Please enter a command.");
 
+        // sets the current room as entered
         currentMap.setRoomHasBeenEntered(player.getLocation());
-        // Gets the name from the parser class, which reads the next input line from the user. Which is going to be the current name for the player.
 
-        // Boolean with 
+
+        // Boolean witch hold the value for exiting the game.
         boolean finished = false;
         // While loop that runs through the entirety of the game. (until the user types "quit")
         while (! finished)
@@ -81,7 +85,7 @@ public class Game
             // checks if player has 0 health
             else if (player.isDead())
             {
-                // Stops the game if you reach 0 health, and then pritns out the line
+                // Stops the game if you reach 0 health, and then prints out the line
                 finished = player.isDead();
                 System.out.println("You have died :(");
             }
@@ -97,12 +101,59 @@ public class Game
      */
     private void printWelcome()
     {
-        ANSI.printTitle();
+        System.out.println();
+        System.out.println(ANSI.getTitle());
         System.out.println("Welcome to Dungeon Crawler!");
         System.out.println("This is a new, incredibly boring adventure game.");
-        System.out.println("Type '" + CommandWord.HELP + "' if you ever need help.");
         System.out.println();
 
+    }
+
+    private void printHighScore()
+    {
+        HighScoreHandler highScore = new HighScoreHandler("HighScore.txt");
+
+        highScore.readText();
+
+        for (String score : highScore.getHighScoreArray())
+        {
+            System.out.println(score);
+        }
+
+        parser.getUserInput();
+        this.menu();
+    }
+
+    private void menu()
+    {
+        System.out.println("Main Menu");
+        System.out.println("1. Start New Game");
+        System.out.println("2. Load Saved Game");
+        System.out.println("3. Show High Score");
+        System.out.println("4. Settings");
+        System.out.println("5. Exit");
+        switch (parser.getUserInput())
+        {
+            case "1":
+                System.out.println("");
+                play();
+                break;
+            case "2":
+                System.out.println("");
+                break;
+            case "3":
+                System.out.println("");
+                printHighScore();
+                break;
+            case "4":
+                System.out.println("");
+                break;
+            case "5":
+                System.out.println("");
+                System.out.println("Thanks for playing");
+                System.exit(0);
+                break;
+        }
     }
 
     /**
@@ -374,46 +425,46 @@ public class Game
         int random = (int)(Math.random()*40 + 1);
         switch (random)
         {
-            case 1: ANSI.printSpider(); break;
-            case 2: ANSI.printGryphon(); break;
-            case 3: ANSI.printMermaid(); break;
-            case 4: ANSI.printUnicorn(); break;
-            case 5: ANSI.printFairy(); break;
-            case 6: ANSI.printHamster(); break;
-            case 7: ANSI.printCyclops(); break;
-            case 8: ANSI.printSonic(); break;
-            case 9: ANSI.printDevil(); break;
-            case 10: ANSI.printBabar(); break;
-            case 11: ANSI.printBat(); break;
-            case 12: ANSI.printBuddha(); break;
-            case 13: ANSI.printDevil2(); break;
-            case 14: ANSI.printEasterBunny(); break;
-            case 15: ANSI.printFrenshMan(); break;
-            case 16: ANSI.printGanesha(); break;
-            case 17: ANSI.printGhost(); break;
-            case 18: ANSI.printGrim(); break;
-            case 19: ANSI.printHamster(); break;
-            case 20: ANSI.printHarryPotter(); break;
-            case 21: ANSI.printJackInABox(); break;
-            case 22: ANSI.printJesus(); break;
-            case 23: ANSI.printKnight1(); break;
-            case 24: ANSI.printKnight2(); break;
-            case 25: ANSI.printMickeyMouse(); break;
-            case 26: ANSI.printNakedWoman(); break;
-            case 27: ANSI.printNoSmooking(); break;
-            case 28: ANSI.printPope(); break;
-            case 29: ANSI.printPentacle(); break;
-            case 30: ANSI.printPikachu(); break;
-            case 31: ANSI.printRabbit(); break;
-            case 32: ANSI.printRobot(); break;
-            case 33: ANSI.printSanta(); break;
-            case 34: ANSI.printSeaHorse(); break;
-            case 35: ANSI.printShark(); break;
-            case 36: ANSI.printSheep(); break;
-            case 37: ANSI.printTeddyBear(); break;
-            case 38: ANSI.printWhale(); break;
-            case 39: ANSI.printWitch(); break;
-            case 40: ANSI.printYourMom(); break;
+            case 1: System.out.println(ANSI.getSpider()); break;
+            case 2: System.out.println(ANSI.getGryphon()); break;
+            case 3: System.out.println(ANSI.getMermaid()); break;
+            case 4: System.out.println(ANSI.getUnicorn()); break;
+            case 5: System.out.println(ANSI.getFairy()); break;
+            case 6: System.out.println(ANSI.getHamster()); break;
+            case 7: System.out.println(ANSI.getCyclops()); break;
+            case 8: System.out.println(ANSI.getSonic()); break;
+            case 9: System.out.println(ANSI.getDevil()); break;
+            case 10: System.out.println(ANSI.getBabar()); break;
+            case 11: System.out.println(ANSI.getBat()); break;
+            case 12: System.out.println(ANSI.getBuddha()); break;
+            case 13: System.out.println(ANSI.getDevil2()); break;
+            case 14: System.out.println(ANSI.getEasterBunny()); break;
+            case 15: System.out.println(ANSI.getFrenshMan()); break;
+            case 16: System.out.println(ANSI.getGanesha()); break;
+            case 17: System.out.println(ANSI.getGhost()); break;
+            case 18: System.out.println(ANSI.getGrim()); break;
+            case 19: System.out.println(ANSI.getHamster()); break;
+            case 20: System.out.println(ANSI.getHarryPotter()); break;
+            case 21: System.out.println(ANSI.getJackInABox()); break;
+            case 22: System.out.println(ANSI.getJesus()); break;
+            case 23: System.out.println(ANSI.getKnight1()); break;
+            case 24: System.out.println(ANSI.getKnight2()); break;
+            case 25: System.out.println(ANSI.getMickeyMouse()); break;
+            case 26: System.out.println(ANSI.getNakedWoman()); break;
+            case 27: System.out.println(ANSI.getYourMom()); break;
+            case 28: System.out.println(ANSI.getPope()); break;
+            case 29: System.out.println(ANSI.getPentacle()); break;
+            case 30: System.out.println(ANSI.getPikachu()); break;
+            case 31: System.out.println(ANSI.getRabbit()); break;
+            case 32: System.out.println(ANSI.getHamster()); break;
+            case 33: System.out.println(ANSI.getSanta()); break;
+            case 34: System.out.println(ANSI.getSeaHorse()); break;
+            case 35: System.out.println(ANSI.getShark()); break;
+            case 36: System.out.println(ANSI.getSheep()); break;
+            case 37: System.out.println(ANSI.getTeddyBear()); break;
+            case 38: System.out.println(ANSI.getWhale()); break;
+            case 39: System.out.println(ANSI.getWitch()); break;
+            case 40: System.out.println(ANSI.getYourMom()); break;
 
         }
         System.out.println("-----------------------------------------------");
@@ -427,9 +478,9 @@ public class Game
         int random = (int)(Math.random()*3);
         switch (random)
         {
-            case 0: ANSI.printChest(); break;
-            case 1: ANSI.printChest2(); break;
-            case 2: ANSI.printChest3(); break;
+            case 0: System.out.println( ANSI.getChest()); break;
+            case 1: System.out.println( ANSI.getChest2()); break;
+            case 2: System.out.println( ANSI.getChest3()); break;
         }
         System.out.println("-----------------------------------------------");
         Scanner input = new Scanner(System.in);
@@ -442,9 +493,9 @@ public class Game
         int random = (int)(Math.random()*3);
         switch (random)
         {
-            case 0: ANSI.printHamster(); break;
-            case 1: ANSI.printBuddha(); break;
-            case 2: ANSI.printGanesha(); break;
+            case 0: System.out.println(ANSI.getHamster()); break;
+            case 1: System.out.println(ANSI.getBuddha()); break;
+            case 2: System.out.println(ANSI.getGanesha()); break;
         }
         System.out.println("-----------------------------------------------");
         Scanner input = new Scanner(System.in);
