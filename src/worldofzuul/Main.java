@@ -17,6 +17,6 @@ public class Main
         // Create a new instance of the Game class
         Game game = new Game();
         // Call the play method of the game instance
-        game.play();
+        game.start();
     }
 }
