@@ -38,7 +38,7 @@ public class Map
         {
             for (int y = 0; y < height; y++)
             {
-                roomList.add(new Room(new Point(x,y)));
+                roomList.add(new Room(new Point(x,y),2));
             }
         }
     }

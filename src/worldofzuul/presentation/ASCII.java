@@ -2,15 +2,15 @@ package worldofzuul.presentation;
 
 
 /**
- * Final class which holds all the ANSI art used in the game.
+ * Final class which holds all the ASCII art used in the game.
  * Made final to prevent extending the class.
  *
  * @author JogGez
  */
-public final class ANSI
+public final class ASCII
 {
     // Private constructor to prevent instantiation.
-    private ANSI()
+    private ASCII()
     {
     }
 
@@ -986,6 +986,23 @@ public final class ANSI
                 "         |     \\#Y         |\n" +
                 "         |       |        /\n" +
                 "    " ;
+    }
+
+    public static String getPotion()
+    {
+        return  "      _____\n" +
+                "     `.___,'\n" +
+                "      (___)\n" +
+                "      <   >\n" +
+                "       ) (\n" +
+                "      /`-.\\\n" +
+                "     /     \\\n" +
+                "    / _    _\\\n" +
+                "   :,' `-.' `:\n" +
+                "   |         |\n" +
+                "   :         ;\n" +
+                "    \\       /\n" +
+                "     `.___.'    " ;
     }
 
 

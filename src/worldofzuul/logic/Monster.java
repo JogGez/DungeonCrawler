@@ -14,18 +14,27 @@ package worldofzuul.logic;
 public class Monster extends RoomContent
 {
     private String name;
+    private String description;
+    private String ascii;
     private int health;
     private int power;
-    private String description;
-    private boolean isDead = false;
+    private boolean isDead;
+
+    public Monster(String name, String description, String ascii, int health, int power)
+    {
+        this.name = name;
+        this.description = description;
+        this.ascii = ascii;
+        this.health = health;
+        this.power = power;
+        this.isDead = false;
+    }
 
     /**
      * Gets name.
      *
      * @return the name
      */
-    
-    
     public String getName()
     {
         return name;
@@ -61,16 +70,6 @@ public class Monster extends RoomContent
         this.health = health;
     }
 
-    /**
-     * Health int.
-     *
-     * @return the int
-     */
-    public int health()
-    {
-        int hp = 150;
-        return hp;
-    }
 
     /**
      * Gets power.
@@ -111,6 +110,13 @@ public class Monster extends RoomContent
     {
         this.description = description;
     }
+
+
+    public String getAscii()
+    {
+        return this.ascii;
+    }
+
 
     /**
      * Power double.

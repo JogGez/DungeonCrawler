@@ -5,9 +5,6 @@
  */
 package worldofzuul.logic;
 
-import com.sun.org.apache.xalan.internal.xsltc.cmdline.getopt.GetOpt;
-import worldofzuul.logic.Monster;
-
 import java.awt.*;
 
 /**
@@ -23,27 +20,44 @@ public class Player {
     private String name;
     private int health;
     private int score;
+    private Weapon currentWeapon;
+    private Inventory inventory;
     private boolean isDead = false;
+    private Point location;
+    private Point lastLocation;
+
+    public Inventory getInventory()
+    {
+        return inventory;
+    }
 
     public Point getLocation()
     {
         return location;
     }
+    public Point getLastLocation()
+    {
+        return lastLocation;
+    }
 
     public void setLocation(Point location)
     {
+        this.lastLocation = this.location;
         this.location = location;
     }
 
-    private Point location;
+
 
     public Player(String name)
     {
         this.name = name;
-        this.health = 100;
+        this.health = 200;
         this.score = 0;
+        this.currentWeapon = new Weapon("Hands","Puny hands, not good for fighting :(","",1,0 );
         this.isDead = false;
         this.location = new Point(0,0);
+        this.lastLocation = new Point(0,0);
+        this.inventory = new Inventory(3);
         
     }
 
@@ -78,16 +92,6 @@ public class Player {
         this.health = health;
     }
 
-    /**
-     * Health int.
-     *
-     * @return the int
-     */
-    public int health()
-    {
-        int hp = 100;
-        return hp;
-    }
 
     /**
      * Gets score.
@@ -107,6 +111,16 @@ public class Player {
     public void setScore(int score)
     {
         this.score = score;
+    }
+
+    public void setCurrentWeapon(Weapon weapon)
+    {
+        this.currentWeapon = weapon;
+    }
+
+    public Weapon getCurrentWeapon()
+    {
+        return this.currentWeapon;
     }
 
     /**

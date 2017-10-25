@@ -30,9 +30,17 @@ public enum CommandWord
      */
     SHOW("show"),
     /**
+     * Use command word.
+     */
+    USE("use"),
+    /**
      * Quit command word.
      */
     QUIT("quit"),
+    /**
+     * Exit command word.
+     */
+    EXIT("exit"),
     /**
      * Help command word.
      */
