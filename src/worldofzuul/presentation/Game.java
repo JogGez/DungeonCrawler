@@ -62,8 +62,8 @@ public class Game
         player = new Player(parser.getUserInput());
 
         slowPrint("Well... hello there " + player.getName(), 10);
-        slowPrint("I'am Slave and I'll be your guide through this adventure.",10);
-        slowPrint("You know is me by the slow print speed of the characters...",10);
+        slowPrint("I'am Slave and I'll be your guide through this adventure.", 10);
+        slowPrint("You know is me by the slow print speed of the characters...", 10);
 
         slowPrint("Type '" + CommandWord.HELP + "' if you ever need help.", 10);
 
@@ -105,10 +105,10 @@ public class Game
                 finished = processCommand(command);    
             } 
             // checks if player has 0 health
-            else if (player.isDead())
+            else if (player.getHealth() <= 0 )
             {
-                // Stops the game if you reach 0 health, and then prints out the line
-                finished = player.isDead();
+                // Stops the game if you reach 0 health, and then prints out the line 
+                finished = player.getHealth() <= 0;
                 System.out.println("You have died :(");
             }
             
@@ -287,15 +287,15 @@ public class Game
                         {
                             if (room.getLocation().x == player.getLocation().x && room.getLocation().y == player.getLocation().y)
                             {
-                                mapString = mapString + " P ";
+                                mapString = mapString + "  P   ";
                             }
                             else if (room.getHasBeenEntered())
                             {
-                                mapString = mapString + " O ";
+                                mapString = mapString + "  O   ";
                             }
                             else if (!room.getHasBeenEntered())
                             {
-                                mapString = mapString + " X ";
+                                mapString = mapString + "  X   ";
                             }
                         }
 
@@ -317,7 +317,7 @@ public class Game
                     System.out.println(s);
 
                 System.out.println("   \u2570\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u256F");
-                System.out.println("      0  1  2");
+                System.out.println("       0      1      2");
 //                System.out.println("-------------------------------------");
                 break;
             case "exits":
