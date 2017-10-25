@@ -18,7 +18,6 @@ public class Monster extends RoomContent
     private String ascii;
     private int health;
     private int power;
-    private boolean isDead;
 
     public Monster(String name, String description, String ascii, int health, int power)
     {
@@ -27,7 +26,6 @@ public class Monster extends RoomContent
         this.ascii = ascii;
         this.health = health;
         this.power = power;
-        this.isDead = false;
     }
 
     /**
@@ -116,56 +114,4 @@ public class Monster extends RoomContent
     {
         return this.ascii;
     }
-
-
-    /**
-     * Power double.
-     *
-     * @param pc the pc
-     * @return the double
-     */
-// Gives the "power" to attack the player class
-        public double power(Player pc)
-    {
-        // Calculate damage dealt.
-        //Should most likly be put under default weapons (Hands/Swords/Mace etc.)
-        // Manipulation of the damage
-        // Makes the damage be a bit more random
-        double damage = Math.round((Math.random() * (15 - 5)));
-        pc.takeDamage(damage);
-        return damage;
-    }
-
-    /**
-     * Take damage.
-     *
-     * @param damage the damage
-     */
-    public void takeDamage(double damage)
-    {
-        //Checks damage taken, if 0 or less, return isDead
-        if (health - damage <= 0)
-        {
-        health = 0;
-        isDead = true;
-        }
-        else
-        {
-            // Otherwise minus health with damage taken
-            health -= damage;
-        }
-    }
-
-    /**
-     * Is dead boolean.
-     *
-     * @return the boolean
-     */
-// State of death
-    public boolean isDead()
-    {
-        return isDead;
-    }
-    
-    
 }
