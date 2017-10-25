@@ -61,13 +61,35 @@ public class Game
         // Instantiating player and initiating name
         player = new Player(parser.getUserInput());
 
-        System.out.println("Well... hello there " + player.getName());
-        System.out.println("Type '" + CommandWord.HELP + "' if you ever need help.");
-        System.out.println("Please enter a command.");
+        slowPrint("Well... hello there " + player.getName(), 10);
+        slowPrint("I'am Slave and I'll be your guide through this adventure.", 10);
+        slowPrint("You know is me by the slow print speed of the characters...", 10);
+
+        slowPrint("Type '" + CommandWord.HELP + "' if you ever need help.", 10);
+
+        slowPrint("Type \"enter\" to enter the DUNGEON...", 10);
+
+
+        boolean acceptedInput = false;
+        while (!acceptedInput)
+        {
+            String input = parser.getUserInput();//returns a String
+
+            if (input.contains("enter"))
+            {
+                acceptedInput = true;
+            }
+            else
+            {
+                System.out.println("Type \"enter\" to start the game.");
+            }
+        }
+
+
 
         // sets the current room as entered
         currentMap.setRoomHasBeenEntered(player.getLocation());
-
+        checkRoom();
 
         // Boolean witch hold the value for exiting the game.
         boolean finished = false;
@@ -83,10 +105,10 @@ public class Game
                 finished = processCommand(command);    
             } 
             // checks if player has 0 health
-            else if (player.isDead())
+            else if (player.getHealth() <= 0 )
             {
-                // Stops the game if you reach 0 health, and then prints out the line
-                finished = player.isDead();
+                // Stops the game if you reach 0 health, and then prints out the line 
+                finished = player.getHealth() <= 0;
                 System.out.println("You have died :(");
             }
             
@@ -102,7 +124,7 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println(ANSI.getTitle());
+        System.out.println(ASCII.getTitle());
         System.out.println("Welcome to Dungeon Crawler!");
         System.out.println("This is a new, incredibly boring adventure game.");
         System.out.println();
@@ -189,12 +211,16 @@ public class Game
         {
             show(command);
         }
+        else if (commandWord == CommandWord.USE)
+        {
+            use(command);
+        }
         else if (commandWord == CommandWord.ATTACK)
         {
             attack(command);
         }
          //Checks if the command is Quit and sets the boolean to true
-        else if (commandWord == CommandWord.QUIT)
+        else if (commandWord == CommandWord.QUIT || commandWord == CommandWord.EXIT )
         {
             wantToQuit = quit(command);
         }
@@ -208,6 +234,37 @@ public class Game
         }
     }
 
+    private void use(Command command)
+    {
+        if(!command.hasSecondWord())
+        {
+            System.out.println("Use what?");
+            return;
+        }
+
+        switch (command.getSecondWord())
+        {
+            case "slot":
+
+                if (0 <= (Integer.parseInt(command.getThirdWord()) - 1) && (Integer.parseInt(command.getThirdWord()) - 1) <  player.getInventory().getSize())
+                {
+                    for (int i = 0; i < player.getInventory().getSize(); i++)
+                    {
+                        if (i == Integer.parseInt(command.getThirdWord()) - 1)
+                        {
+                            useSlot(i);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    System.out.println("Slot is out of range");
+                }
+                break;
+        }
+    }
+
     private void show(Command command)
     {
         if(!command.hasSecondWord())
@@ -216,12 +273,10 @@ public class Game
             return;
         }
 
-        String showWhat = command.getSecondWord();
-
-        switch (showWhat){
+        switch (command.getSecondWord()){
             case "map":
 
-                ArrayList<String> printMe = new ArrayList<>();
+                ArrayList<String> mapList = new ArrayList<>();
 
                 for (int i = 0; i < currentMap.getHeight(); i++)
                 {
@@ -232,38 +287,38 @@ public class Game
                         {
                             if (room.getLocation().x == player.getLocation().x && room.getLocation().y == player.getLocation().y)
                             {
-                                mapString = mapString + " P ";
+                                mapString = mapString + "  P   ";
                             }
                             else if (room.getHasBeenEntered())
                             {
-                                mapString = mapString + " O ";
+                                mapString = mapString + "  O   ";
                             }
                             else if (!room.getHasBeenEntered())
                             {
-                                mapString = mapString + " X ";
+                                mapString = mapString + "  X   ";
                             }
                         }
 
                     }
                     mapString += " \u2551";
-                    printMe.add(0,mapString);
+                    mapList.add(0,mapString);
                 }
 
 
-                printMe.set(0 , printMe.get(0) + "   X = Unseen Rooms  ");
-                printMe.set(1 , printMe.get(1) + "   O = Seen Rooms ");
-                printMe.set(2 , printMe.get(2) + "   P = Player ");
-                printMe.set(3 , printMe.get(3) + "   G = Guides ");
+                mapList.set(0 , mapList.get(0) + "   X = Unseen Rooms  ");
+                mapList.set(1 , mapList.get(1) + "   O = Seen Rooms ");
+                mapList.set(2 , mapList.get(2) + "   P = Player ");
+                mapList.set(3 , mapList.get(3) + "   G = Guides ");
 
-                System.out.println("-------------------------------------");
+//                System.out.println("-------------------------------------");
                 System.out.println("   \u256D\u2500\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u2500\u256E");
 
-                for (String s : printMe)
+                for (String s : mapList)
                     System.out.println(s);
 
                 System.out.println("   \u2570\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u256F");
-                System.out.println("      0  1  2");
-                System.out.println("-------------------------------------");
+                System.out.println("       0      1      2");
+//                System.out.println("-------------------------------------");
                 break;
             case "exits":
                 int counter = 1;
@@ -280,6 +335,36 @@ public class Game
             case "score":
                 System.out.println("You currently have: " + player.getScore() + " points");
                 break;
+            case "weapon":
+                System.out.println(player.getCurrentWeapon().ascii);
+                System.out.println("Name: " + player.getCurrentWeapon().name);
+                System.out.println("POWER: " + (player.getCurrentWeapon()).getPower());
+                System.out.println("MULTIPLIER: " + (player.getCurrentWeapon()).getMultiplier() + "x");
+                System.out.println(player.getCurrentWeapon().description);
+                break;
+            case "inventory":
+
+                showInventory();
+                break;
+            case "slot":
+
+                if (0 <= (Integer.parseInt(command.getThirdWord()) - 1) && (Integer.parseInt(command.getThirdWord()) - 1) <  player.getInventory().getSize())
+                {
+                    for (int i = 0; i < player.getInventory().getSize(); i++)
+                    {
+                        if (i == Integer.parseInt(command.getThirdWord()) - 1)
+                        {
+                            showSlot(i);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    System.out.println("Slot is out of range");
+                }
+                break;
+
             default:
                 System.out.println("Huh?");
                 break;
@@ -287,6 +372,80 @@ public class Game
         }
     }
 
+    public void showInventory()
+    {
+        String Top = " \u256D";
+        String MTop = " \u2551";
+        String Middle = " \u2551";
+        String MBottom = " \u2551";
+        String Bottom = " \u2570";
+        String Slot = "  ";
+
+        for (int i = 0; i < player.getInventory().getSize(); i++)
+        {
+            Top += "-" + player.getInventory().getItem(i).name.replaceAll(".","-") + "-";
+            MTop +=" " + player.getInventory().getItem(i).name.replaceAll("."," ") + " ";
+            Middle +=" " + player.getInventory().getItem(i).name + " ";
+            MBottom +=" " + player.getInventory().getItem(i).name.replaceAll("."," ") + " ";
+            Bottom += "-" + player.getInventory().getItem(i).name.replaceAll(".","-") + "-";
+            Slot += " " + String.valueOf(i+1) + player.getInventory().getItem(i).name.replaceAll(".", " ") + "";
+        }
+
+
+        System.out.println(Top + "\u256E");
+//        System.out.println(MTop + "\u2551");
+        System.out.println(Middle + "\u2551" + "  To get information on an item type \"show slot 1\",slot 2 ...");
+//        System.out.println(MBottom + "\u2551");
+        System.out.println(Bottom + "\u256F" + "  To use an item type \"use slot 1\",slot 2 ...");
+        System.out.println(Slot);
+    }
+
+    public void showSlot(int index)
+    {
+        Item item = player.getInventory().getItem(index);
+
+        if (item instanceof Weapon)
+        {
+            System.out.println(item.ascii);
+            System.out.println("Name: " + item.name);
+            System.out.println("POWER: " + ((Weapon) item).getPower());
+            System.out.println("MULTIPLIER: " + ((Weapon) item).getMultiplier() + "x");
+            System.out.println(item.description);
+        }
+        else if (item instanceof Potion)
+        {
+            System.out.println(item.ascii);
+            System.out.println("Name: " + item.name);
+            System.out.println("RECOVERY: " + ((Potion) item).getHealthRecovery());
+            System.out.println(item.description);
+        }
+        else
+        {
+            System.out.println("Slot is empty.");
+        }
+
+    }
+
+    public void useSlot(int index)
+    {
+        Item item = player.getInventory().getItem(index);
+
+        if (item instanceof Weapon)
+        {
+            player.setCurrentWeapon((Weapon) item);
+            System.out.println("Your current weapon is now: " + player.getCurrentWeapon().name);
+        }
+        else if (item instanceof Potion)
+        {
+            player.setHealth(player.getHealth() + ((Potion) item).getHealthRecovery());
+            player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+            System.out.println("Yom yom ... Your health is now: " + player.getHealth() + "hp");
+        }
+        else
+        {
+            System.out.println("Slot is empty.");
+        }
+    }
     /**
      * Method that prints a help message to the screen.
      */
@@ -343,42 +502,48 @@ public class Game
                 if (currentMap.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
                 {
                     player.setLocation(new Point(player.getLocation().x, player.getLocation().y + 1));
-                    System.out.println("Player enter new room :)");
+                    System.out.println("You enter new room.");
                     currentMap.setRoomHasBeenEntered(player.getLocation());
                     checkRoom();
 
                 }
-                else System.out.println("Player ran into wall :(");
+                else System.out.println("You ran into wall :(");
                 break;
             case "down":
                 if (currentMap.roomExists(new Point(player.getLocation().x, player.getLocation().y - 1)))
                 {
                     player.setLocation(new Point(player.getLocation().x, player.getLocation().y - 1));
-                    System.out.println("Player enter new room :)");
+                    System.out.println("You enter new room.");
                     currentMap.setRoomHasBeenEntered(player.getLocation());
                     checkRoom();
                 }
-                else System.out.println("Player ran into wall :(");
+                else System.out.println("You ran into wall :(");
                 break;
             case "left":
                 if (currentMap.roomExists(new Point(player.getLocation().x - 1, player.getLocation().y)))
                 {
                     player.setLocation(new Point(player.getLocation().x - 1, player.getLocation().y));
-                    System.out.println("Player enter new room :)");
+                    System.out.println("You enter new room.");
                     currentMap.setRoomHasBeenEntered(player.getLocation());
                     checkRoom();
                 }
-                else System.out.println("Player ran into wall :(");
+                else System.out.println("You ran into wall :(");
                 break;
             case "right":
                 if (currentMap.roomExists(new Point(player.getLocation().x + 1, player.getLocation().y )))
                 {
                     player.setLocation(new Point(player.getLocation().x + 1, player.getLocation().y));
-                    System.out.println("Player enter new room :)");
+                    System.out.println("You enter new room.");
                     currentMap.setRoomHasBeenEntered(player.getLocation());
                     checkRoom();
                 }
-                else System.out.println("Player ran into wall :(");
+                else System.out.println("You ran into wall :(");
+                break;
+            case "back":
+
+                player.setLocation(new Point(player.getLastLocation().x, player.getLastLocation().y));
+                System.out.println("You went back to the previous room.");
+                checkRoom();
                 break;
             default:
                 System.out.println("Go where? No such direction found...");
@@ -399,40 +564,157 @@ public class Game
                 {
                     if (room.getContent(i) instanceof Monster)
                     {
-                        System.out.println("There is a monster, you can either attack or flee!");
-                        System.out.println("Type attack or flee."); // We need to type more informations!
                         randomMonster();
-                        
+                        System.out.println("There is a monster, you can either do battle or flee!");
+                        System.out.println("Your health is currently " + player.getHealth() + "hp");
+                        System.out.println("Monsters health is currently " + ((Monster) room.getContent(i)).getHealth() + "hp");
+                        System.out.println("Type \"battle\" or \"flee\"."); // We need to type more informations!
+
                         boolean acceptedInput = false;
                         while (!acceptedInput)
                         {                            
                             String input = parser.getUserInput();//returns a String
-                                                    
-                            if (input.contains("attack"))   
+
+                            if (input.contains("battle"))
                             {
                                 acceptedInput = true;
-                                battle = new Battle(player, room.getContent(i)); // createas a new battle
+                                battle = new Battle(player, (Monster)room.getContent(i)); // createas a new battle
+
+
+                                while (!battle.getIsBattleOver())
+                                {
+                                    System.out.println("attack & drink potion");
+
+                                    input = parser.getUserInput();
+                                    if (input.contains("attack") || input.contains("a"))
+                                    {
+                                        System.out.println(battle.fight());
+                                    }
+                                    else if (input.contains("drink"))
+                                    {
+                                        if (!player.getInventory().potionArrayList().isEmpty())
+                                        {
+                                            System.out.println("Type number to use.");
+                                            for (int j = 0; j < player.getInventory().potionArrayList().size(); j++)
+                                            {
+                                                System.out.println((j+1) + ". Potion:" + player.getInventory().potionArrayList().get(j).getHealthRecovery());
+                                            }
+
+                                            input = parser.getUserInput();
+                                            int index = Integer.parseInt(input) -1;
+
+                                            player.setHealth(player.getHealth() + player.getInventory().potionArrayList().get(index).getHealthRecovery());
+                                            player.getInventory().removeItem(player.getInventory().getItemIndex(player.getInventory().potionArrayList().get(index)));
+                                            System.out.println("Yom yom ... Your health is now " + player.getHealth() + "hp");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("You have no potions :(");
+                                        }
+
+                                    }
+                                    else {System.out.println("Type \"attack\" or \"drink\"");}
+
+                                }
+                                parser.getUserInput();
 
                             } 
                             else if (input.contains("flee"))    
                             {
                                 acceptedInput = true;
+                                player.setLocation(player.getLastLocation());
+                                return;
 
                             }
-                            else {System.out.println(" What do you mean?");}
+                            else {System.out.println("Type \"battle\" or \"flee\"");}
                         }
                        
                         
                     }
                     else if (room.getContent(i) instanceof Helper)
                     {
-                        System.out.println("There is a helper, you can either ask question or flee!");
                         randomHelper();
+                        System.out.println("There is a helper, you can either \"talk\" , \"flee\" or \"kill\"!");
+                        boolean acceptedInput = false;
+                        while (!acceptedInput)
+                        {
+                            String input = parser.getUserInput();
+                            if(input.equals("talk"))
+                            {
+                                acceptedInput = true;
+                                System.out.println("Hello name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!");
+                            }
+                            else if(input.equals("flee"))
+                            {
+                                acceptedInput = true;
+                                player.setLocation(player.getLastLocation());
+                                return;
+                            }
+                            else if(input.equals("kill"))
+                            {
+                                acceptedInput = true;
+                                //room.removeContent(i);
+                                System.out.println("You killed the helper, oh might swordsman!");
+                            }
+                        }
+
                     }
                     else if (room.getContent(i) instanceof Chest)
                     {
-                        System.out.println("There is a chest, you can either open or flee!");
                         randomChest();
+                        System.out.println("There is a chest, type \"open\" to open!");
+                        boolean acceptedInput = false;
+                        while (!acceptedInput)
+                        {
+                            String input = parser.getUserInput();
+                            if(input.equals("open"))
+                            {
+                                acceptedInput = true;
+                                Item item = ((Chest)room.getContent(i)).getItem();
+
+                                if (item instanceof Weapon)
+                                {
+                                    System.out.println(item.ascii);
+                                    System.out.println("Your found: " + item.name);
+                                    System.out.println("POWER: " + ((Weapon) item).getPower());
+                                    System.out.println("MULTIPLIER: " + ((Weapon) item).getMultiplier() + "x");
+                                    System.out.println(item.description);
+                                }
+                                else if (item instanceof Potion)
+                                {
+                                    System.out.println(item.ascii);
+                                    System.out.println("Your found: " + item.name);
+                                    System.out.println("RECOVERY: " + ((Potion) item).getHealthRecovery());
+                                    System.out.println(item.description);
+                                }
+                                showInventory();
+                                System.out.println("Do you want to insert this into a slot?");
+                                System.out.println("Type slot number or \"drop\" to drop.");
+
+                                input = parser.getUserInput();
+
+                                for (int j = 0; j < player.getInventory().getSize() ; j++)
+                                {
+                                    if(input.equals(String.valueOf(j+1)))
+                                    {
+                                        player.getInventory().addItem(item,j);
+                                        System.out.println("You saved this item in slot: " + (j+1));
+                                    }
+                                }
+                                if (input.equals("drop"))
+                                {
+                                    System.out.println("You dropped the item");
+                                }
+
+                                //room.removeContent(i);
+
+
+                            }
+                            else
+                            {
+                                System.out.println("Hmm... Wrong command");
+                            }
+                        }
                     }
                     else if (room.getContent(i) instanceof RoomContent)
                     {
@@ -444,53 +726,52 @@ public class Game
     }
 
 
-
     public void randomMonster()
     {
         System.out.println("-----------------------------------------------");
         int random = (int)(Math.random()*40 + 1);
         switch (random)
         {
-            case 1: System.out.println(ANSI.getSpider()); break;
-            case 2: System.out.println(ANSI.getGryphon()); break;
-            case 3: System.out.println(ANSI.getMermaid()); break;
-            case 4: System.out.println(ANSI.getUnicorn()); break;
-            case 5: System.out.println(ANSI.getFairy()); break;
-            case 6: System.out.println(ANSI.getHamster()); break;
-            case 7: System.out.println(ANSI.getCyclops()); break;
-            case 8: System.out.println(ANSI.getSonic()); break;
-            case 9: System.out.println(ANSI.getDevil()); break;
-            case 10: System.out.println(ANSI.getBabar()); break;
-            case 11: System.out.println(ANSI.getBat()); break;
-            case 12: System.out.println(ANSI.getBuddha()); break;
-            case 13: System.out.println(ANSI.getDevil2()); break;
-            case 14: System.out.println(ANSI.getEasterBunny()); break;
-            case 15: System.out.println(ANSI.getFrenshMan()); break;
-            case 16: System.out.println(ANSI.getGanesha()); break;
-            case 17: System.out.println(ANSI.getGhost()); break;
-            case 18: System.out.println(ANSI.getGrim()); break;
-            case 19: System.out.println(ANSI.getHamster()); break;
-            case 20: System.out.println(ANSI.getHarryPotter()); break;
-            case 21: System.out.println(ANSI.getJackInABox()); break;
-            case 22: System.out.println(ANSI.getJesus()); break;
-            case 23: System.out.println(ANSI.getKnight1()); break;
-            case 24: System.out.println(ANSI.getKnight2()); break;
-            case 25: System.out.println(ANSI.getMickeyMouse()); break;
-            case 26: System.out.println(ANSI.getNakedWoman()); break;
-            case 27: System.out.println(ANSI.getYourMom()); break;
-            case 28: System.out.println(ANSI.getPope()); break;
-            case 29: System.out.println(ANSI.getPentacle()); break;
-            case 30: System.out.println(ANSI.getPikachu()); break;
-            case 31: System.out.println(ANSI.getRabbit()); break;
-            case 32: System.out.println(ANSI.getHamster()); break;
-            case 33: System.out.println(ANSI.getSanta()); break;
-            case 34: System.out.println(ANSI.getSeaHorse()); break;
-            case 35: System.out.println(ANSI.getShark()); break;
-            case 36: System.out.println(ANSI.getSheep()); break;
-            case 37: System.out.println(ANSI.getTeddyBear()); break;
-            case 38: System.out.println(ANSI.getWhale()); break;
-            case 39: System.out.println(ANSI.getWitch()); break;
-            case 40: System.out.println(ANSI.getYourMom()); break;
+            case 1: System.out.println(ASCII.getSpider()); break;
+            case 2: System.out.println(ASCII.getGryphon()); break;
+            case 3: System.out.println(ASCII.getMermaid()); break;
+            case 4: System.out.println(ASCII.getUnicorn()); break;
+            case 5: System.out.println(ASCII.getFairy()); break;
+            case 6: System.out.println(ASCII.getHamster()); break;
+            case 7: System.out.println(ASCII.getCyclops()); break;
+            case 8: System.out.println(ASCII.getSonic()); break;
+            case 9: System.out.println(ASCII.getDevil()); break;
+            case 10: System.out.println(ASCII.getBabar()); break;
+            case 11: System.out.println(ASCII.getBat()); break;
+            case 12: System.out.println(ASCII.getBuddha()); break;
+            case 13: System.out.println(ASCII.getDevil2()); break;
+            case 14: System.out.println(ASCII.getEasterBunny()); break;
+            case 15: System.out.println(ASCII.getFrenshMan()); break;
+            case 16: System.out.println(ASCII.getGanesha()); break;
+            case 17: System.out.println(ASCII.getGhost()); break;
+            case 18: System.out.println(ASCII.getGrim()); break;
+            case 19: System.out.println(ASCII.getHamster()); break;
+            case 20: System.out.println(ASCII.getHarryPotter()); break;
+            case 21: System.out.println(ASCII.getJackInABox()); break;
+            case 22: System.out.println(ASCII.getJesus()); break;
+            case 23: System.out.println(ASCII.getKnight1()); break;
+            case 24: System.out.println(ASCII.getKnight2()); break;
+            case 25: System.out.println(ASCII.getMickeyMouse()); break;
+            case 26: System.out.println(ASCII.getNakedWoman()); break;
+            case 27: System.out.println(ASCII.getYourMom()); break;
+            case 28: System.out.println(ASCII.getPope()); break;
+            case 29: System.out.println(ASCII.getPentacle()); break;
+            case 30: System.out.println(ASCII.getPikachu()); break;
+            case 31: System.out.println(ASCII.getRabbit()); break;
+            case 32: System.out.println(ASCII.getHamster()); break;
+            case 33: System.out.println(ASCII.getSanta()); break;
+            case 34: System.out.println(ASCII.getSeaHorse()); break;
+            case 35: System.out.println(ASCII.getShark()); break;
+            case 36: System.out.println(ASCII.getSheep()); break;
+            case 37: System.out.println(ASCII.getTeddyBear()); break;
+            case 38: System.out.println(ASCII.getWhale()); break;
+            case 39: System.out.println(ASCII.getWitch()); break;
+            case 40: System.out.println(ASCII.getYourMom()); break;
 
         }
         System.out.println("-----------------------------------------------");
@@ -500,16 +781,13 @@ public class Game
     public void randomChest()
     {
         System.out.println("-----------------------------------------------");
-        int random = (int)(Math.random()*3);
+        int random = (int)(Math.random()*2);
         switch (random)
         {
-            case 0: System.out.println( ANSI.getChest()); break;
-            case 1: System.out.println( ANSI.getChest2()); break;
-            case 2: System.out.println( ANSI.getChest3()); break;
+            case 0: System.out.println( ASCII.getChest()); break;
+            case 1: System.out.println( ASCII.getChest3()); break;
         }
         System.out.println("-----------------------------------------------");
-        Scanner input = new Scanner(System.in);
-        input.nextLine();
     }
 
     public void randomHelper()
@@ -518,13 +796,12 @@ public class Game
         int random = (int)(Math.random()*3);
         switch (random)
         {
-            case 0: System.out.println(ANSI.getHamster()); break;
-            case 1: System.out.println(ANSI.getBuddha()); break;
-            case 2: System.out.println(ANSI.getGanesha()); break;
+            case 0: System.out.println(ASCII.getHamster()); break;
+            case 1: System.out.println(ASCII.getBuddha()); break;
+            case 2: System.out.println(ASCII.getGanesha()); break;
         }
         System.out.println("-----------------------------------------------");
-        Scanner input = new Scanner(System.in);
-        input.nextLine();
+
     }
     /**
      * This is the quit method that return a true or false value.
@@ -581,5 +858,6 @@ public class Game
                 e.printStackTrace();
             }
         }
+        System.out.println();
     }
 }

@@ -6,21 +6,12 @@
 package worldofzuul.logic;
 
 /**
- * The type Chest.
  *
- * @author Frederik
+ * @author Linea Hoffmann
  */
-public class Chest extends RoomContent
+public class Item
 {
-    Item item;
-
-    public Chest()
-    {
-        item = Items.getRandomItem();
-    }
-
-    public Item getItem()
-    {
-        return item;
-    }
+    public String name;
+    public String description;
+    public String ascii;
 }

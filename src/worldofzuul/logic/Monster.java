@@ -14,18 +14,25 @@ package worldofzuul.logic;
 public class Monster extends RoomContent
 {
     private String name;
+    private String description;
+    private String ascii;
     private int health;
     private int power;
-    private String description;
-    private boolean isDead = false;
+
+    public Monster(String name, String description, String ascii, int health, int power)
+    {
+        this.name = name;
+        this.description = description;
+        this.ascii = ascii;
+        this.health = health;
+        this.power = power;
+    }
 
     /**
      * Gets name.
      *
      * @return the name
      */
-    
-    
     public String getName()
     {
         return name;
@@ -61,16 +68,6 @@ public class Monster extends RoomContent
         this.health = health;
     }
 
-    /**
-     * Health int.
-     *
-     * @return the int
-     */
-    public int health()
-    {
-        int hp = 150;
-        return hp;
-    }
 
     /**
      * Gets power.
@@ -112,54 +109,9 @@ public class Monster extends RoomContent
         this.description = description;
     }
 
-    /**
-     * Power double.
-     *
-     * @param pc the pc
-     * @return the double
-     */
-// Gives the "power" to attack the player class
-        public double power(Player pc)
-    {
-        // Calculate damage dealt.
-        //Should most likly be put under default weapons (Hands/Swords/Mace etc.)
-        // Manipulation of the damage
-        // Makes the damage be a bit more random
-        double damage = Math.round((Math.random() * (15 - 5)));
-        pc.takeDamage(damage);
-        return damage;
-    }
 
-    /**
-     * Take damage.
-     *
-     * @param damage the damage
-     */
-    public void takeDamage(double damage)
+    public String getAscii()
     {
-        //Checks damage taken, if 0 or less, return isDead
-        if (health - damage <= 0)
-        {
-        health = 0;
-        isDead = true;
-        }
-        else
-        {
-            // Otherwise minus health with damage taken
-            health -= damage;
-        }
+        return this.ascii;
     }
-
-    /**
-     * Is dead boolean.
-     *
-     * @return the boolean
-     */
-// State of death
-    public boolean isDead()
-    {
-        return isDead;
-    }
-    
-    
 }

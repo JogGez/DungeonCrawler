@@ -14,21 +14,18 @@ import java.util.Iterator;
 // Class that hold the information about a room
 public class Room 
 {
-    //Room name
+    // Room name.
     private String name;
-    // String description of the room
+    // Description of the room.
     private String description;
-
-
-
-    // A HashMap list of exits from the room
+    // Has room been entered.
     private boolean hasBeenEntered;
-
+    // The location of the room.
     private Point location;
-
+    // How many thing are in the room
+    private int numberOfContent;
+    // List of all the content in the room
     private ArrayList<RoomContent> content = new ArrayList<>();
-    
-    private String [] itemsInRoom = new String[2];
 
     public void setHasBeenEntered(boolean hasBeenEntered)
     {
@@ -44,95 +41,67 @@ public class Room
      * Instantiates a new Room.
      */
 // Creates a no-args constructor to genereate a number between 0-3.
-    public Room(Point p)
+    public Room(Point p, int numberOfContent)
     {
         this.location = p;
+        this.name = "Dungeon Room";
         this.description = "Just a plain old, boring room ;/";
         this.hasBeenEntered = false;
+        this.numberOfContent = numberOfContent;
 
-        // New and improved random room creator...
-        for (int i = 0; i < 2; i++) //int er counter
+       // TODO something weird is happening here ... Hmm ... Gets to many similar things
+        for (int i = 0; i < this.numberOfContent; i++) //int er counter
         {
-            int randomThing1 = (int)(Math.random()*100);
+            int randomNumber = (int)(Math.random()*100);
 
-            if (randomThing1 < 25)
+            if (randomNumber < 20)
             {
-                itemsInRoom[i] = "Empty";
                 content.add(new RoomContent());
             }
-            else if (randomThing1 < 75)
+            else if (randomNumber < 50)
             {
-                itemsInRoom[i] = "Monster";
-                content.add(new Monster());
+                content.add(Monsters.getRandomMonster());
             }
-            else if (randomThing1 < 85)
+            else if (randomNumber < 85)
             {
-                itemsInRoom[i] = "Chest";
                 content.add(new Chest());
             }
-            else if (randomThing1 <= 100)
-             {
-                itemsInRoom[i] = "Helper";
+            else if (randomNumber <= 100)
+            {
                 content.add(new Helper());
             }
-
         }
     }
-//
-//    public String getContent(int i)
-//    {
-//        if (content.get(i) instanceof Monster)
-//        {
-//          //Monster monster = (Monster)content.get(i);
-//
-//          //String content = monster.getName();
-//          return  "Monster";
-//        }
-//        if (content.get(i) instanceof Helper)
-//        {
-//            Helper helper = (Helper) content.get(i);
-//            String content = "Helper";
-//            return  content;
-//        }
-//        if (content.get(i) instanceof Chest)
-//        {
-//            Chest chest = (Chest)content.get(i);
-//
-//            String content = "Chest";
-//            return  content;
-//        }
-//        else
-//        {
-//            RoomContent empty = (RoomContent)content.get(i);
-//            String content = "Empty";
-//            return  content;
-//        }
-//    }
 
-
-    public RoomContent getContent(int i)
+    public RoomContent getContent(int index)
     {
-        if (content.get(i) instanceof Monster)
+        if (content.get(index) instanceof Monster)
         {
-
-            Monster monster = (Monster)content.get(i);
+            Monster monster = (Monster)content.get(index);
             return  monster;
         }
-        if (content.get(i) instanceof Helper)
+        if (content.get(index) instanceof Helper)
         {
-            Helper helper = (Helper) content.get(i);
+            Helper helper = (Helper)content.get(index);
             return  helper;
         }
-        if (content.get(i) instanceof Chest)
+        if (content.get(index) instanceof Chest)
         {
-            Chest chest = (Chest)content.get(i);
+            Chest chest = (Chest)content.get(index);
             return  chest;
         }
         else
         {
-            RoomContent empty = (RoomContent)content.get(i);
+            RoomContent empty = (RoomContent)content.get(index);
             return  empty;
         }
+    }
+
+// TODO fix this method
+    public void removeContent(int index)
+    {
+        content.add(index,new RoomContent());
+//        content.remove(index);
     }
 
 

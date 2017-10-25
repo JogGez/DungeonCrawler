@@ -34,6 +34,7 @@ public class Parser
         String inputLine;
         String word1 = null;
         String word2 = null;
+        String word3 = null;
 
         System.out.print("> ");
 
@@ -53,11 +54,17 @@ public class Parser
             {
                 // Sets word2 to the second word in inputLine
                 word2 = tokenizer.next();
+
+                if(tokenizer.hasNext())
+                {
+                    // Sets word2 to the second word in inputLine
+                    word3 = tokenizer.next();
+                }
             }
         }
 
         // return the input as a Command object
-        return new Command(commands.getCommandWord(word1), word2);
+        return new Command(commands.getCommandWord(word1), word2, word3);
     }
 
     /**

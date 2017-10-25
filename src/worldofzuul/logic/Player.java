@@ -5,51 +5,89 @@
  */
 package worldofzuul.logic;
 
-import com.sun.org.apache.xalan.internal.xsltc.cmdline.getopt.GetOpt;
-import worldofzuul.logic.Monster;
-
 import java.awt.*;
 
 /**
- * The type Player.
+ * The Player class
  *
  * @author Jonathan
  */
 public class Player {
-    
-    // We aren't making the system print out a line, because later on it would
-    // result in a error. Therefore we are going to create a seperate class under game => play.
-    // this method under game, calls for our parser (which is our primary scanner class) that gets the users next input, and makes it a string that is used for the name. 
+  
+    /**
+    We aren't making the system print out a line, because later on it would
+    result in a error. Therefore we are going to create a seperate class under game => play.
+    this method under game, calls for our parser (which is our primary scanner class) that gets the users next input, and makes it a string that is used for the name.
+    */
     private String name;
     private int health;
     private int score;
-    private boolean isDead = false;
+    private Weapon currentWeapon;
+    private Inventory inventory;
+    private Point location;
+    private Point lastLocation;
 
+    /**
+     * To use inventory
+     * Method
+     * @return inventory
+     */
+    public Inventory getInventory()
+    {
+        return inventory;
+    }
+    
+    /**
+     * To use players current location
+     * Method
+     * @return the current location
+     */
     public Point getLocation()
     {
         return location;
     }
-
+    /**
+     * To use players last location, further use for a back command
+     * Method
+     * @return the last location
+     */
+    public Point getLastLocation()
+    {
+        return lastLocation;
+    }
+    
+    /**
+     * Setter for location
+     * Method
+     * @param location 
+     */
     public void setLocation(Point location)
     {
+        this.lastLocation = this.location;
         this.location = location;
     }
 
-    private Point location;
 
+    /**
+     * Constructor for player
+     * 
+     * @param name 
+     */
     public Player(String name)
     {
         this.name = name;
-        this.health = 100;
+        this.health = 200;
         this.score = 0;
-        this.isDead = false;
+        this.currentWeapon = new Weapon("Hands","Puny hands, not good for fighting :(","",1,0 );
         this.location = new Point(0,0);
+        this.lastLocation = new Point(0,0);
+        this.inventory = new Inventory(3);
         
     }
 
     /**
      * Gets name.
-     *
+     * Method
      * @return the name
      */
     public String getName() 
@@ -60,7 +98,7 @@ public class Player {
 
     /**
      * Gets health.
-     *
+     * Method
      * @return the health
      */
     public int getHealth()
@@ -70,7 +108,7 @@ public class Player {
 
     /**
      * Sets health.
-     *
+     * Method
      * @param health the health
      */
     public void setHealth(int health)
@@ -78,16 +116,6 @@ public class Player {
         this.health = health;
     }
 
-    /**
-     * Health int.
-     *
-     * @return the int
-     */
-    public int health()
-    {
-        int hp = 100;
-        return hp;
-    }
 
     /**
      * Gets score.
@@ -101,7 +129,7 @@ public class Player {
 
     /**
      * Sets score.
-     *
+     * Method
      * @param score the score
      */
     public void setScore(int score)
@@ -110,56 +138,22 @@ public class Player {
     }
 
     /**
-     * Power double.
-     *
-     * @param npc the npc
-     * @return the double
+     * Sets current weapon
+     * Method
+     * @param weapon 
      */
-// Most of the things underneath can be moved into a different class
-    // all the way to return isDead part.
-    // gives the player the power to "attack" monster
-    public double power(Monster npc)
+    public void setCurrentWeapon(Weapon weapon)
     {
-        // Calculate damage dealt.
-        //Should most likly be put under default weapons (Hands/Swords/Mace etc.)
-        // Manipulation of the damage
-        // Makes the damage be a bit more random
-        double damage = Math.round((Math.random() * 4 + 3));
-        npc.takeDamage(damage);
-        return damage;
-    }
-
-    /**
-     * Take damage.
-     *
-     * @param damage the damage
-     */
-// I thought about making it a none void, but the example i saw, did it with void.
-    // Might change.
-    public void takeDamage(double damage)
-    {
-        //Checks damage taken, if 0 or less, return isDead
-        if (health - damage <= 0)
-        {
-        health = 0;
-        isDead = true;
-        }
-        else
-        {
-            // Otherwise minus health with damage taken
-            health -= damage;
-        }
-    }
-
-    /**
-     * Is dead boolean.
-     *
-     * @return the boolean
-     */
-// State of death
-    public boolean isDead()
-    {
-        return isDead;
+        this.currentWeapon = weapon;
     }
     
+    /**
+     * Gets current weapon
+     * Method
+     * @return the current weapon
+     */
+    public Weapon getCurrentWeapon()
+    {
+        return this.currentWeapon;
+    }
 }

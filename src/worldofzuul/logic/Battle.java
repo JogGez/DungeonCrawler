@@ -6,27 +6,55 @@ package worldofzuul.logic;
  */
 public class Battle
 {
-    Player player;
-    RoomContent monster;//laves om senere
-    boolean isBattleOver;
+    // Declare datafields, with no value, with private access modifieres
+    // Reference datatypes of the objects. 
+    private Player player;
+    private Monster monster;
+    private boolean isBattleOver; // Allocates memory storage, primitive datatype
     
-    public Battle(Player player, RoomContent monster)
+    //Constructor: set values for player, and mosnter, and isBattleOver.
+    public Battle(Player player, Monster monster)
     {
+        // Initializing (gives value to) private fields (contrsuctor parameter) 
         this.player = player;
         this.monster = monster;
         this.isBattleOver = false; 
         
     }
-
+    
+    // Getter method for isBattleOver
     public boolean getIsBattleOver()
     {
         return isBattleOver;
     }
     
-    public void fight()
+    //Method fight, returns a String
+    public String fight()
     {
+        // (int) in pararentens because it would only be Math.random = 0, which is = 0. 
+        int playerHit = (int)(Math.random()*20+10); // caster because Math. is always a double. 
+        int monsterHit = (int)(Math.random()*20+10);
+
+        //Computes the player and monster get.health ( how much the player/monster has, after the Hit)
+        // set.Health calls from Player and Monster class
+        monster.setHealth(monster.getHealth() - playerHit);
+        player.setHealth(player.getHealth() - monsterHit);
         
-        
+        //If, else if that use the get.Health, from the calculation above
+        // 
+        if (player.getHealth() <= 0)
+        {
+            isBattleOver = true;// sets the value + (While loop in game, that would continue forever, if not set.)
+            return "You have died...";
+        }
+        else if (monster.getHealth() <= 0)
+        {
+            isBattleOver = true;
+            return "You beat the Monster ... MIGHT WARRIOR :D ...";
+        }
+
+        return "Monster lost " + playerHit + "hp and currently has " + monster.getHealth() + "hp left \n" +
+                "You lost " + monsterHit + "hp and currently have " + player.getHealth() + "hp left \n";
     }
     
  
