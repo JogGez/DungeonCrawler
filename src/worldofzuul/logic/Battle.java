@@ -6,34 +6,45 @@ package worldofzuul.logic;
  */
 public class Battle
 {
-    Player player;
-    Monster monster;
-    boolean isBattleOver;
+    // Declare datafields, with no value, with private access modifieres
+    // Reference datatypes of the objects. 
+    private Player player;
+    private Monster monster;
+    private boolean isBattleOver; // Allocates memory storage, primitive datatype
     
+    //Constructor: set values for player, and mosnter, and isBattleOver.
     public Battle(Player player, Monster monster)
     {
+        // Initializing (gives value to) private fields (contrsuctor parameter) 
         this.player = player;
         this.monster = monster;
         this.isBattleOver = false; 
         
     }
-
+    
+    // Getter method for isBattleOver
     public boolean getIsBattleOver()
     {
         return isBattleOver;
     }
     
+    //Method fight, returns a String
     public String fight()
     {
-        int playerHit = (int)(Math.random()*20+10);
+        // (int) in pararentens because it would only be Math.random = 0, which is = 0. 
+        int playerHit = (int)(Math.random()*20+10); // caster because Math. is always a double. 
         int monsterHit = (int)(Math.random()*20+10);
 
+        //Computes the player and monster get.health ( how much the player/monster has, after the Hit)
+        // set.Health calls from Player and Monster class
         monster.setHealth(monster.getHealth() - playerHit);
         player.setHealth(player.getHealth() - monsterHit);
-
+        
+        //If, else if that use the get.Health, from the calculation above
+        // 
         if (player.getHealth() <= 0)
         {
-            isBattleOver = true;
+            isBattleOver = true;// sets the value + (While loop in game, that would continue forever, if not set.)
             return "You have died...";
         }
         else if (monster.getHealth() <= 0)
