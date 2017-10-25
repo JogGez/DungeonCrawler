@@ -10,21 +10,26 @@ package worldofzuul.logic;
  *
  * @author Computer
  */
-//Monster Class, nedarvning af RoomContent
+//Monster Class, inherites from RoomContent
 public class Monster extends RoomContent
 {
+    //Declaring datafields with private access modifiers
     private String name;
     private String description;
     private String ascii;
-    private int health;
-    private int power;
-    private boolean isDead;
 
+    private int health; //Allocates memory storage, primitive datatype
+    private int power; //Allocates memory storage, primitive datatype
+    private boolean isDead; //Allocates memory storage, primitive datatype
+
+
+    //Constructor
+    //Creates constructor parameters: Name of monster, monster description, sets health of monster, monster's power
     public Monster(String name, String description, String ascii, int health, int power)
     {
+        //Initializing private fields with constructor parameters (intializing => gives value to field)
         this.name = name;
         this.description = description;
-        this.ascii = ascii;
         this.health = health;
         this.power = power;
         this.isDead = false;
