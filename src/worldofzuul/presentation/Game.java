@@ -24,6 +24,7 @@ public class Game
     // We are storing the class player's name for player.
     private Player player;
     // Creating a battle class object.
+    private Monster monster;
     private Battle battle;
 
     /**
@@ -411,7 +412,12 @@ public class Game
                             if (input.contains("attack"))   
                             {
                                 acceptedInput = true;
-                                battle = new Battle(player, room.getContent(i)); // createas a new battle
+                                monster = (Monster)room.getContent(i);
+                                battle = new Battle(player, monster); // createas a new battle
+                                 while (!player.isDead() || !monster.isDead())
+                                 {
+                                     
+                                 }
 
                             } 
                             else if (input.contains("flee"))    
