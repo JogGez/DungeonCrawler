@@ -12,11 +12,9 @@ public final class Monsters
 
     private Monsters()
     {
-
-
     }
 
-// TODO get new monster instead of reference to a monster
+
     public static Monster getRandomMonster()
     {
         int i = (int)(Math.random()*monsters.length);

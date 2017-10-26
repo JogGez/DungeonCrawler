@@ -10,5 +10,7 @@ nbdist/
 .nb-gradle/
 
 # End of https://www.gitignore.io/api/netbeans
+### Intellij ###
 .idea/
 DungeonCrawler.iml
+out/
