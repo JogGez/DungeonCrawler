@@ -117,7 +117,7 @@ public class Monster extends RoomContent
         return this.ascii;
     }
 
-
+// hej joakim
     /**
      * Power double.
      *
