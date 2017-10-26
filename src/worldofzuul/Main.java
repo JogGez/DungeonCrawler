@@ -19,5 +19,6 @@ public class Main
         Game game = new Game();
         // Call the play method of the game instance
         game.start();
+
     }
 }

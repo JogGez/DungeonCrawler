@@ -10,29 +10,22 @@ package worldofzuul.logic;
  *
  * @author Computer
  */
-//Monster Class, inherites from RoomContent
+//Monster Class, nedarvning af RoomContent
 public class Monster extends RoomContent
 {
-    //Declaring datafields with private access modifiers
     private String name;
     private String description;
     private String ascii;
+    private int health;
+    private int power;
 
-    private int health; //Allocates memory storage, primitive datatype
-    private int power; //Allocates memory storage, primitive datatype
-    private boolean isDead; //Allocates memory storage, primitive datatype
-
-
-    //Constructor
-    //Creates constructor parameters: Name of monster, monster description, sets health of monster, monster's power
     public Monster(String name, String description, String ascii, int health, int power)
     {
-        //Initializing private fields with constructor parameters (intializing => gives value to field)
         this.name = name;
         this.description = description;
+        this.ascii = ascii;
         this.health = health;
         this.power = power;
-        this.isDead = false;
     }
 
     /**
@@ -121,56 +114,4 @@ public class Monster extends RoomContent
     {
         return this.ascii;
     }
-
-
-    /**
-     * Power double.
-     *
-     * @param pc the pc
-     * @return the double
-     */
-// Gives the "power" to attack the player class
-        public double power(Player pc)
-    {
-        // Calculate damage dealt.
-        //Should most likly be put under default weapons (Hands/Swords/Mace etc.)
-        // Manipulation of the damage
-        // Makes the damage be a bit more random
-        double damage = Math.round((Math.random() * (15 - 5)));
-        pc.takeDamage(damage);
-        return damage;
-    }
-
-    /**
-     * Take damage.
-     *
-     * @param damage the damage
-     */
-    public void takeDamage(double damage)
-    {
-        //Checks damage taken, if 0 or less, return isDead
-        if (health - damage <= 0)
-        {
-        health = 0;
-        isDead = true;
-        }
-        else
-        {
-            // Otherwise minus health with damage taken
-            health -= damage;
-        }
-    }
-
-    /**
-     * Is dead boolean.
-     *
-     * @return the boolean
-     */
-// State of death
-    public boolean isDead()
-    {
-        return isDead;
-    }
-    
-    
 }

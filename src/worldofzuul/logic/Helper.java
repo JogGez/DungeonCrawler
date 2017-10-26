@@ -8,7 +8,7 @@ package worldofzuul.logic;
 /**
  * The type Helper.
  *
- * @author John
+ * @author Jonathan
  */
 // Helper class
 public class Helper extends RoomContent
