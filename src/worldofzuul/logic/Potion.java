@@ -27,7 +27,7 @@ public class Potion extends Item
     }
 
     /**
-     * 
+     * Getter method for HealthRecovery
      * @return int
      */
     public int getHealthRecovery()
