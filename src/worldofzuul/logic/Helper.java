@@ -17,18 +17,13 @@ public class Helper extends RoomContent
     private String answer;
     private String description;
 
-    /**
-     * Instantiates a new Helper.
-     *
-     * @param name        the name
-     * @param answer      the answer
-     * @param description the description
-     */
-    
-    public Helper()
-            {
-                
-            }
+  /**
+   * 
+   * @param name
+   * @param answer
+   * @param description 
+   */
+
     public Helper(String name, String answer, String description)
     {
         this.name = name;
