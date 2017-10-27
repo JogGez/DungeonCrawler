@@ -5,8 +5,6 @@
  */
 package worldofzuul.logic;
 
-import java.awt.*;
-
 /**
  * The type Helper.
  *
@@ -18,23 +16,24 @@ public class Helper extends RoomContent
     private String name;
     private String answer;
     private String description;
-    private Point location;
 
     /**
      * Instantiates a new Helper.
+     *
+     * @param name        the name
+     * @param answer      the answer
+     * @param description the description
      */
-
+    
     public Helper()
-    {
-
-    }
-
-    public Helper(String name, String answer, String description, int x, int y)
+            {
+                
+            }
+    public Helper(String name, String answer, String description)
     {
         this.name = name;
         this.answer = answer;
         this.description = description;
-        this.location = new Point(x, y);
     }
 
     /**
@@ -64,17 +63,4 @@ public class Helper extends RoomContent
         return description;
     }
 
-
-    public Point getLocation()
-    {
-        return location;
-    }
-
-    public void walkRandom()
-    {
-        if(true)
-        {
-
-        }
-    }
 }
