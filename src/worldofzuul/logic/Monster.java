@@ -112,7 +112,10 @@ public class Monster extends RoomContent
         this.description = description;
     }
 
-
+    /**
+     * Getter method for Ascii
+     * @return String
+     */
     public String getAscii()
     {
         return this.ascii;
