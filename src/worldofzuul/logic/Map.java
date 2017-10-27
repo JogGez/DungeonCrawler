@@ -11,7 +11,9 @@ public class Map
     // Data fields
     private int height;   
     private int width;
-    private ArrayList<Room> roomList; //Declare the ArrayList, Roomlist(name), containing Room(Object).  
+    private ArrayList<Room> roomList; //Declare the ArrayList, Roomlist(name), containing Room(Object).
+    private ArrayList<Helper> helperList;
+    private int helperNumbers;
     
     /**
      * Getter method for Height
@@ -40,14 +42,20 @@ public class Map
      * @param height 
      * 
      */
-    public Map(int width, int height)
+    public Map(int width, int height, int helperNumber)
     {
         // Initializing (gives value to) private fields (contrsuctor parameter)
         this.width = width;
         this.height = height;
+        this.helperNumbers = helperNumber;
         
          //Instantiate a ArrayList, allocates the ArrayList.
-        roomList = new ArrayList<>(); 
+        roomList = new ArrayList<>();
+
+        for (int x = 0; x < helperNumber; x++)
+        {
+            helperList.add(new Helper());
+        }
 
         //Creates the coordinate system of the rooms. 
         for (int x = 0; x < width; x++) // Runs through the width.
@@ -122,5 +130,7 @@ public class Map
     {
         return roomList;
     }
+
+
     
 }

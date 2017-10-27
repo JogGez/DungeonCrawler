@@ -50,10 +50,10 @@ public class Game
      * Method that starts the game and runs till the end of the game.
      *
      */
-    public void play() 
+    public void play()
     {
         // Instantiating currentMap
-        currentMap = new Map(3,4);
+        currentMap = new Map(3,4, 0);
 
         //Prints out the string  beneath
         System.out.println("Enter your name here: ");
@@ -100,10 +100,10 @@ public class Game
             Command command = parser.getCommand();
             // Set the finished boolean to true or false, depending on the command
             // Checks if commandWord quit
-            if (processCommand(command)) 
+            if (processCommand(command))
             {
-                finished = processCommand(command);    
-            } 
+                finished = processCommand(command);
+            }
             // checks if player has 0 health
             else if (player.getHealth() <= 0 )
             {
@@ -111,8 +111,8 @@ public class Game
                 finished = player.getHealth() <= 0;
                 System.out.println("You have died :(");
             }
-            
-           
+
+
         }
         // Writes the last output before closing the application, also says goodbye to the username
         System.out.println("Thank you for playing " + player.getName() + ". Good bye!");
@@ -183,7 +183,7 @@ public class Game
      *
      * @param command command to process.
      */
-    private boolean processCommand(Command command) 
+    private boolean processCommand(Command command)
     {
         boolean wantToQuit = false;
 
@@ -191,19 +191,19 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         // Checks if the commandWord is unknown
-        if(commandWord == CommandWord.UNKNOWN) 
+        if(commandWord == CommandWord.UNKNOWN)
         {
             System.out.println("I don't know what you mean...");
             return false;
         }
 
         // Checks if the command is Help and runs the printHelp() method
-        if (commandWord == CommandWord.HELP) 
+        if (commandWord == CommandWord.HELP)
         {
             printHelp();
         }
         // Checks if the command is Go and runs the goRoom() method
-        else if (commandWord == CommandWord.GO) 
+        else if (commandWord == CommandWord.GO)
         {
             goRoom(command);
         }
@@ -229,8 +229,8 @@ public class Game
     private void attack(Command command)
     {
         while (!battle.getIsBattleOver())
-        {            
-            
+        {
+
         }
     }
 
@@ -449,7 +449,7 @@ public class Game
     /**
      * Method that prints a help message to the screen.
      */
-    private void printHelp() 
+    private void printHelp()
     {
         System.out.println("Welcome to the Help menu system...");
         System.out.println("Choose one of the following options.");
@@ -485,10 +485,10 @@ public class Game
      *
      * @param command go command.
      */
-    private void goRoom(Command command) 
+    private void goRoom(Command command)
     {
         // Checkes if the command has a second word and if not prints a message to the screen
-        if(!command.hasSecondWord()) 
+        if(!command.hasSecondWord())
         {
             System.out.println("Go where?");
             return;
@@ -554,6 +554,10 @@ public class Game
 
     }
 
+    /**
+     * method for checkRoom to check whats in the room, and what to do with it
+     *
+     */
     public void checkRoom()
     {
         for (int i = 0; i < 2; i++)
@@ -572,7 +576,7 @@ public class Game
 
                         boolean acceptedInput = false;
                         while (!acceptedInput)
-                        {                            
+                        {
                             String input = parser.getUserInput();//returns a String
 
                             if (input.contains("battle"))
@@ -618,8 +622,8 @@ public class Game
                                 }
                                 parser.getUserInput();
 
-                            } 
-                            else if (input.contains("flee"))    
+                            }
+                            else if (input.contains("flee"))
                             {
                                 acceptedInput = true;
                                 player.setLocation(player.getLastLocation());
@@ -628,8 +632,8 @@ public class Game
                             }
                             else {System.out.println("Type \"battle\" or \"flee\"");}
                         }
-                       
-                        
+
+
                     }
                     else if (room.getContent(i) instanceof Helper)
                     {
@@ -775,7 +779,7 @@ public class Game
 
         }
         System.out.println("-----------------------------------------------");
-        
+
     }
 
     public void randomChest()
@@ -844,6 +848,11 @@ public class Game
         return exitList;
     }
 
+    /**
+     *
+     * @param message
+     * @param millisPerChar
+     */
     public void slowPrint(String message, long millisPerChar)
     {
         for (int i = 0; i < message.length(); i++)
