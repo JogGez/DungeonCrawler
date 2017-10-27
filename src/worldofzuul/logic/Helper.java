@@ -17,6 +17,10 @@ public class Helper extends RoomContent
     private String answer;
     private String description;
 
+    public Helper ()
+    {
+        
+    }
   /**
    * 
    * @param name
