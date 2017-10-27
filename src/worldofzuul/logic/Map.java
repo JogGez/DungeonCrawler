@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 /**
  * The Map class.
+ * @author 
  */
 public class Map
 {
