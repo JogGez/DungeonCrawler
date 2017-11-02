@@ -37,4 +37,5 @@ public enum MonstersEnum
 //        int r = random.nextInt(values().length);
         return new Monster(values()[r].name,values()[r].description,values()[r].ascii,values()[r].health,values()[r].power) ;
     }
+    // hejsa :>
 }

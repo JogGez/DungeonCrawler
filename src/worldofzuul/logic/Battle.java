@@ -11,6 +11,7 @@ public class Battle
     private Player player;
     private Monster monster;
     private boolean isBattleOver; // Allocates memory storage, primitive datatype
+
     
     //Constructor: set values for player, and mosnter, and isBattleOver.
     public Battle(Player player, Monster monster)
@@ -19,7 +20,8 @@ public class Battle
         this.player = player;
         this.monster = monster;
         this.isBattleOver = false; 
-        
+
+
     }
     
     // Getter method for isBattleOver
@@ -31,9 +33,10 @@ public class Battle
     //Method fight, returns a String
     public String fight()
     {
-        // (int) in pararentens because it would only be Math.random = 0, which is = 0. 
-        int playerHit = (int)(Math.random()*20+10); // caster because Math. is always a double. 
-        int monsterHit = (int)(Math.random()*20+10);
+        // (int) in pararentens because it would only be Math.random = 0, which is = 0.
+        // We are getting the players current weapons power to add to our calculation, same with the monster.
+        int playerHit = player.getCurrentWeapon().getPower() + ((int)(Math.random()*20+10)); // caster because Math. is always a double.
+        int monsterHit = monster.getPower() + ((int)(Math.random()*10+5));
 
         //Computes the player and monster get.health ( how much the player/monster has, after the Hit)
         // set.Health calls from Player and Monster class

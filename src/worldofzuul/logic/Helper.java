@@ -20,10 +20,8 @@ public class Helper extends RoomContent
     /**
      * Instantiates a new Helper.
      *
-     * @param name        the name
-     * @param answer      the answer
-     * @param description the description
-     */
+     *
+    */
     
     public Helper()
             {
