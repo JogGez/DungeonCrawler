@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package worldofzuul.logic;
 
 /**
@@ -10,7 +5,7 @@ package worldofzuul.logic;
  *
  * @author Computer
  */
-//Monster Class, nedarvning af RoomContent
+//Monster Class, inherit from RoomContent because ??? 
 public class Monster extends RoomContent
 {
     private String name;
@@ -19,6 +14,14 @@ public class Monster extends RoomContent
     private int health;
     private int power;
 
+    /**
+     * 
+     * @param name
+     * @param description
+     * @param ascii
+     * @param health
+     * @param power 
+     */
     public Monster(String name, String description, String ascii, int health, int power)
     {
         this.name = name;
@@ -29,7 +32,7 @@ public class Monster extends RoomContent
     }
 
     /**
-     * Gets name.
+     * Gets the name.
      *
      * @return the name
      */
@@ -109,7 +112,10 @@ public class Monster extends RoomContent
         this.description = description;
     }
 
-
+    /**
+     * Getter method for Ascii
+     * @return String
+     */
     public String getAscii()
     {
         return this.ascii;
