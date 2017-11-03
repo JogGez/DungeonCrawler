@@ -19,7 +19,7 @@ public class Battle
         // Initializing (gives value to) private fields (contrsuctor parameter) 
         this.player = player;
         this.monster = monster;
-        this.isBattleOver = false; 
+        this.isBattleOver = false;
 
 
     }
@@ -29,7 +29,8 @@ public class Battle
     {
         return isBattleOver;
     }
-    
+
+    //TODO Kig på metoden. ifh til retunering af String.
     //Method fight, returns a String
     public String fight()
     {

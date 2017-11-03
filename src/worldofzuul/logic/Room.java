@@ -22,15 +22,24 @@ public class Room
     private boolean hasBeenEntered;
     // The location of the room.
     private Point location;
+
+    public int getNumberOfContent()
+    {
+        return numberOfContent;
+    }
+
     // How many things are in the room
     private int numberOfContent;
     // List of all the content in the room
     private ArrayList<RoomContent> content = new ArrayList<>();
+
+
     // Setter of HasBeenEntered
     public void setHasBeenEntered(boolean hasBeenEntered)
     {
         this.hasBeenEntered = hasBeenEntered;
     }
+
     // Getter of HasBeenEntered
     public boolean getHasBeenEntered()
     {

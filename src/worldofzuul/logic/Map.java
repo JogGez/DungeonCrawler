@@ -15,6 +15,7 @@ public class Map
     private ArrayList<Room> roomList; //Declare the ArrayList, Roomlist(name), containing Room(Object).
     private ArrayList<Helper> helperList;
     private int helperNumbers;
+    private int numberOfContent;
     
     /**
      * Getter method for Height
@@ -36,19 +37,25 @@ public class Map
     {
         return width;
     }
-    
+
+    public int getNumberOfContent()
+    {
+        return numberOfContent;
+    }
+
     /**
      * Contructor Map
      * @param width
      * @param height 
      * 
      */
-    public Map(int width, int height, int helperNumber)
+    public Map(int width, int height, int helperNumber, int numberOfContent)
     {
         // Initializing (gives value to) private fields (contrsuctor parameter)
         this.width = width;
         this.height = height;
         this.helperNumbers = helperNumber;
+        this.numberOfContent = numberOfContent;
         
          //Instantiate a ArrayList, allocates the ArrayList.
         roomList = new ArrayList<>();
@@ -64,9 +71,10 @@ public class Map
         {
             for (int y = 0; y < height; y++)// runs through the height.
             {
-                roomList.add(new Room(new Point(x,y),2));//Point class in Java. 
+                roomList.add(new Room(new Point(x,y), numberOfContent));//Point class in Java.
             }
         }
+
     }
 
     /**
@@ -92,13 +100,14 @@ public class Map
 
     /**
      * Setter method for Room Has Been Entered
-     * @param p 
+     * Controls the Arraylist roomlist, that was created from the Map.
+     * @param playerLocation
      */
-    public void setRoomHasBeenEntered(Point p)
+    public void setRoomHasBeenEntered(Point playerLocation)
     {
         for (Room room : roomList)
         {
-            if (room.getLocation().x == p.x && room.getLocation().y == p.y)
+            if (room.getLocation().x == playerLocation.x && room.getLocation().y == playerLocation.y)
             {
                 room.setHasBeenEntered(true);
             }

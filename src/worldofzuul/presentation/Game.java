@@ -53,7 +53,7 @@ public class Game
         printToConsole.print(textForPrintToConsole.getWelcomeText());
 
         // Call menu
-        this.menu();
+        menu();
     }
 
     /**
@@ -62,7 +62,7 @@ public class Game
     public void play() 
     {
         // Instantiating currentMap
-        currentMap = new Map(3,4,2 );
+        currentMap = new Map(3,4,2 ,2);
 
         //Prints "Enter your name here: "
         printToConsole.print(textForPrintToConsole.getEnterPlayerName());
@@ -90,7 +90,10 @@ public class Game
         }
 
         // sets the current room as entered
+        // Compare the players coordinates with the currentMap room coordinates.
+        // There is a for-each loop in setRoomHasBeenEntered, that goes through the coordinates.
         currentMap.setRoomHasBeenEntered(player.getLocation());
+
         checkRoom();
 
         // Boolean witch hold the value for exiting the game.
@@ -583,15 +586,18 @@ public class Game
 
     public void checkRoom()
     {
-        for (int i = 0; i < 2; i++)
+
+        for (int i = 0; i < currentMap.getNumberOfContent(); i++)
         {
             for (Room room : currentMap.getRoomList())
             {
                 if (player.getLocation().x == room.getLocation().x && player.getLocation().y == room.getLocation().y)
                 {
-                    if (room.getContent(i) instanceof Monster)
+                    if (room.getContent(i) instanceof Monster)//Controls if its a monster.
                     {
-                        randomMonster();
+                        //TODO remove and insert enum
+                        randomMonster(); // Prints a random picture of a monster.
+
                         //Prints "There is a monster, you can either do battle or flee!"
                         printToConsole.print(textForPrintToConsole.getThereIsAMonster());
 
@@ -604,6 +610,8 @@ public class Game
                         //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
                         printToConsole.print(textForPrintToConsole.getBattleOrFlee());
 
+
+                        // TODO Eventuelt få delt det ud i metoder.
                         boolean acceptedInput = false;
                         while (!acceptedInput)
                         {                            
@@ -613,10 +621,10 @@ public class Game
                             {
                                 acceptedInput = true;
                                 battle = new Battle(player, (Monster)room.getContent(i)); // creates a new battle
-
+// ***********************************************************************************************************************//
                                 while (!battle.getIsBattleOver())
                                 {
-                                    //Prints "attack & drink potion"
+                                    //Prints "attack or drink potion"
                                     printToConsole.print(textForPrintToConsole.getAttackOrDrinkPotion());
 
                                     input = parser.getUserInput();
