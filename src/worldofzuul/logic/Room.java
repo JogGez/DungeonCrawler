@@ -116,7 +116,7 @@ public class Room
     public void removeContent(int index)
     {
         content.add(index,new RoomContent());
-//        content.remove(index);
+
     }
 
 

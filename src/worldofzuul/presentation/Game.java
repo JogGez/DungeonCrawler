@@ -78,7 +78,7 @@ public class Game
         {
             String input = parser.getUserInput();//returns a String
 
-            if (input.contains("enter"))
+            if (input.toLowerCase().contains("enter"))
             {
                 acceptedInput = true;
             }
@@ -462,7 +462,7 @@ public class Game
         printToConsole.print(textForPrintToConsole.getHelpMenu());
         String input = parser.getUserInput();
 
-        if (input.contains("1"))
+        if (parser.getUserInput().contains("1"))
         {
             //Prints "Your command words are:"
             printToConsole.print(textForPrintToConsole.getHelpCommandWords());
@@ -470,12 +470,12 @@ public class Game
             // prints all the available commands to screen
             parser.showCommands();
         }
-        else if (input.contains("2"))
+        else if (parser.getUserInput().contains("2"))
         {
             //Prints "The goals of the game is to defeat the devil"
             printToConsole.print(textForPrintToConsole.getHelpGoals());
      }
-        else if (input.contains("3"))
+        else if (parser.getUserInput().contains("3"))
         {
             //Prints "No tips or tricks available :( "
             printToConsole.print(textForPrintToConsole.getNoTipsAvaiable());
@@ -609,7 +609,7 @@ public class Game
                         {                            
                             String input = parser.getUserInput();//returns a String
 
-                            if (input.contains("battle"))
+                            if (input.toLowerCase().contains("battle"))
                             {
                                 acceptedInput = true;
                                 battle = new Battle(player, (Monster)room.getContent(i)); // creates a new battle
@@ -620,12 +620,12 @@ public class Game
                                     printToConsole.print(textForPrintToConsole.getAttackOrDrinkPotion());
 
                                     input = parser.getUserInput();
-                                    if (input.contains("attack") || input.contains("a"))
+                                    if (input.toLowerCase().contains("attack") || input.toLowerCase().contains("a"))
                                     {
                                         //Prints status of battle
                                         printToConsole.print(textForPrintToConsole.getBattle(battle));
                                     }
-                                    else if (input.contains("drink"))
+                                    else if (input.toLowerCase().contains("drink"))
                                     {
                                         if (!player.getInventory().potionArrayList().isEmpty())
                                         {
@@ -660,9 +660,9 @@ public class Game
                                         printToConsole.print(textForPrintToConsole.getAttackOrDrinkPotion());
                                     }
                                 }
-                                parser.getUserInput();
+                                room.removeContent(i);
                             }
-                            else if (input.contains("flee"))    
+                            else if (input.toLowerCase().contains("flee"))    
                             {
                                 acceptedInput = true;
                                 player.setLocation(player.getLastLocation());
@@ -703,6 +703,7 @@ public class Game
                                 //Prints "You killed the helper, oh might swordsman!"
                                 printToConsole.print(textForPrintToConsole.getKilledHelper());
                             }
+                            room.removeContent(i);
                         }
                     }
                     else if (room.getContent(i) instanceof Chest)
@@ -762,6 +763,7 @@ public class Game
                                 //Prints "Hmm... Wrong command"
                                 printToConsole.print(textForPrintToConsole.getHmmWrongCommand());
                             }
+                            room.removeContent(i);
                         }
                     }
                     else if (room.getContent(i) instanceof RoomContent)

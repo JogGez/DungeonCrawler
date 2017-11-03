@@ -52,6 +52,7 @@ public class Map
         
          //Instantiate a ArrayList, allocates the ArrayList.
         roomList = new ArrayList<>();
+        helperList = new ArrayList<>();
 
         for (int x = 0; x < helperNumber; x++)
         {
