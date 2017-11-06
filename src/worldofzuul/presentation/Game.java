@@ -51,7 +51,6 @@ public class Game
         //Prints welcome logo and welcome text
         printToConsole.print(textForPrintToConsole.getAsciiTitle());
         printToConsole.print(textForPrintToConsole.getWelcomeText());
-
         // Call menu
         menu();
     }
@@ -78,7 +77,7 @@ public class Game
         {
             String input = parser.getUserInput();//returns a String
 
-            if (input.toLowerCase().contains("enter"))
+            if (input.equals("enter")||input.equals("e"))
             {
                 acceptedInput = true;
             }
@@ -509,7 +508,7 @@ public class Game
         String direction = command.getSecondWord();
 
         switch (direction){
-            case "up":
+            case ("up"):
                 if (currentMap.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
                 {
                     player.setLocation(new Point(player.getLocation().x, player.getLocation().y + 1));
@@ -615,7 +614,7 @@ public class Game
                         {                            
                             String input = parser.getUserInput();//returns a String
 
-                            if (input.toLowerCase().contains("battle"))
+                            if (input.equals("battle")||input.equals("b"))
                             {
                                 acceptedInput = true;
                                 battle = new Battle(player, (Monster)room.getContent(i)); // creates a new battle
@@ -690,7 +689,7 @@ public class Game
                         while (!acceptedInput)
                         {
                             String input = parser.getUserInput();
-                            if(input.equals("talk"))
+                            if(input.equals("talk")||input.equals("t"))
                             {
                                 acceptedInput = true;
                                 //Prints "Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!"
@@ -722,7 +721,7 @@ public class Game
                         {
                             // TODO There has to be another option besides open -> "Skip"
                             String input = parser.getUserInput();
-                            if(input.equals("open"))
+                            if(input.equals("open")|| input.equals("o"))
                             {
                                 acceptedInput = true;
                                 Item item = ((Chest)room.getContent(i)).getItem();
@@ -755,7 +754,7 @@ public class Game
                                         printToConsole.print(textForPrintToConsole.getYouSavedItemInThisSlot(j));
                                     }
                                 }
-                                if (input.equals("drop"))
+                                if (input.equals("drop")||input.equals("d"))
                                 {
                                     //Prints "You dropped the item"
                                     printToConsole.print(textForPrintToConsole.getYouDroppedTheItem());

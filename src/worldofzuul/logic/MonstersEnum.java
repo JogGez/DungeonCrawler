@@ -33,9 +33,6 @@ public enum MonstersEnum
 
     public static Monster getRandomMonster() {
         int r = new Random().nextInt(values().length);
-//        Random random = new Random();
-//        int r = random.nextInt(values().length);
         return new Monster(values()[r].name,values()[r].description,values()[r].ascii,values()[r].health,values()[r].power) ;
     }
-    // hejsa :>
 }

@@ -34,11 +34,11 @@ public final class Items
 
         if (randomItem < 60)
         {
-            return weapons[(int)(Math.random()*weapons.length)];
+            return WeaponEnum.getRandomWeapon();
         }
         else
         {
-            return potions[(int)(Math.random()*potions.length)];
+            return PotionEnum.getRandomPotion();
         }
 
     }

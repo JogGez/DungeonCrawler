@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * The Map class.
  * @author 
  */
-public class Map
+public class Map implements RoomConstants
 {
     // Data fields
     private int height;   
@@ -60,7 +60,6 @@ public class Map
          //Instantiate a ArrayList, allocates the ArrayList.
         roomList = new ArrayList<>();
         helperList = new ArrayList<>();
-
         for (int x = 0; x < helperNumber; x++)
         {
             helperList.add(new Helper());
@@ -71,7 +70,8 @@ public class Map
         {
             for (int y = 0; y < height; y++)// runs through the height.
             {
-                roomList.add(new Room(new Point(x,y), numberOfContent));//Point class in Java.
+                int randomNameNumber = (int)(Math.random()*3);
+                roomList.add(new Room(new Point(x,y), numberOfContent, RoomConstants.ROOM_NAME[(randomNameNumber)]));//Point class in Java.
             }
         }
 

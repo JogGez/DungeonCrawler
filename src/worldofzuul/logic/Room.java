@@ -1,18 +1,13 @@
 package worldofzuul.logic;
 
-import worldofzuul.presentation.Game;
-
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * The type Room.
  */
 // Class that hold the information about a room
-public class Room 
+public class Room
 {
     // Room name.
     private String name;
@@ -46,18 +41,23 @@ public class Room
         return hasBeenEntered;
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
     /**
      * Instantiates a new Room.
      */
     //Constructor
     //Parameters: point (coordinate) and numberOfContent.
     //Sets: location, name, description, hasBeenEntered, numberOfContent.
-    public Room(Point p, int numberOfContent)
+    public Room(Point p, int numberOfContent, String name)
     {
         // TODO RoomEnum with name and description.
         this.location = p;
-        this.name = "Dungeon Room";
-        this.description = "Just a plain old, boring room ;/";
+        this.name = name;
+        this.description = description;
         this.hasBeenEntered = false;
         this.numberOfContent = numberOfContent;
 
@@ -75,17 +75,17 @@ public class Room
                 content.add(new RoomContent());
             }
             // If the number generated is 20-49 a monster is added in the roomslot.
-            else if (randomNumber < 100)
+            else if (randomNumber < 5)
             {
-                content.add(Monsters.getRandomMonster());
+                content.add(MonstersEnumTest.getRandomMonster());
             }
             // If the number generated is 50-84 a chest is added in the roomslot.
-            else if (randomNumber < 85)
+            else if (randomNumber < 100)
             {
                 content.add(new Chest());
             }
             // If the number generated is 85-100 a helper is added in the roomslot.
-            else if (randomNumber <= 100)
+            else if (randomNumber <= 5)
             {
                 content.add(new Helper());
             }

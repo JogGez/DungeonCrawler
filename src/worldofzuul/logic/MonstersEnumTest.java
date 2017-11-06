@@ -25,7 +25,6 @@ public enum MonstersEnumTest
 
     public static Monster getRandomMonster()
     {
-//        Random random = new Random();
         return values()[new Random().nextInt(values().length)].monster;
     }
 }
