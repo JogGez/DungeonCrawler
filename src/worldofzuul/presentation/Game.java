@@ -595,8 +595,6 @@ public class Game
                 {
                     if (room.getContent(i) instanceof Monster)//Controls if its a monster.
                     {
-                        //TODO remove and insert enum
-                        randomMonster(); // Prints a random picture of a monster.
 
                         //Prints "There is a monster, you can either do battle or flee!"
                         printToConsole.print(textForPrintToConsole.getThereIsAMonster());
@@ -686,7 +684,6 @@ public class Game
                     }
                     else if (room.getContent(i) instanceof Helper)
                     {
-                        randomHelper();
                         //Prints "There is a helper, you can either \"talk\" , \"flee\" or \"kill\"!"
                         printToConsole.print(textForPrintToConsole.getThereIsAHelper());
                         boolean acceptedInput = false;
@@ -716,7 +713,6 @@ public class Game
                     }
                     else if (room.getContent(i) instanceof Chest)
                     {
-                        randomChest();
 
                         //Prints "There is a chest, type \"open\" to open!"
                         printToConsole.print(textForPrintToConsole.getThereIsAChest());
@@ -770,6 +766,7 @@ public class Game
                                 //Prints "Hmm... Wrong command"
                                 printToConsole.print(textForPrintToConsole.getHmmWrongCommand());
                             }
+                            // TODO Put it a more safe place, so when we choose to "Skip" it doesn't remove the chest.
                             room.removeContent(i);
                         }
                     }
@@ -784,84 +781,6 @@ public class Game
     }
 
 
-    public void randomMonster()
-    {
-        System.out.println("-----------------------------------------------");
-        int random = (int)(Math.random()*40 + 1);
-        switch (random)
-        {
-            case 1: System.out.println(ASCII.getSpider()); break;
-            case 2: System.out.println(ASCII.getGryphon()); break;
-            case 3: System.out.println(ASCII.getMermaid()); break;
-            case 4: System.out.println(ASCII.getUnicorn()); break;
-            case 5: System.out.println(ASCII.getFairy()); break;
-            case 6: System.out.println(ASCII.getHamster()); break;
-            case 7: System.out.println(ASCII.getCyclops()); break;
-            case 8: System.out.println(ASCII.getSonic()); break;
-            case 9: System.out.println(ASCII.getDevil()); break;
-            case 10: System.out.println(ASCII.getBabar()); break;
-            case 11: System.out.println(ASCII.getBat()); break;
-            case 12: System.out.println(ASCII.getBuddha()); break;
-            case 13: System.out.println(ASCII.getDevil2()); break;
-            case 14: System.out.println(ASCII.getEasterBunny()); break;
-            case 15: System.out.println(ASCII.getFrenshMan()); break;
-            case 16: System.out.println(ASCII.getGanesha()); break;
-            case 17: System.out.println(ASCII.getGhost()); break;
-            case 18: System.out.println(ASCII.getGrim()); break;
-            case 19: System.out.println(ASCII.getHamster()); break;
-            case 20: System.out.println(ASCII.getHarryPotter()); break;
-            case 21: System.out.println(ASCII.getJackInABox()); break;
-            case 22: System.out.println(ASCII.getJesus()); break;
-            case 23: System.out.println(ASCII.getKnight1()); break;
-            case 24: System.out.println(ASCII.getKnight2()); break;
-            case 25: System.out.println(ASCII.getMickeyMouse()); break;
-            case 26: System.out.println(ASCII.getNakedWoman()); break;
-            case 27: System.out.println(ASCII.getYourMom()); break;
-            case 28: System.out.println(ASCII.getPope()); break;
-            case 29: System.out.println(ASCII.getPentacle()); break;
-            case 30: System.out.println(ASCII.getPikachu()); break;
-            case 31: System.out.println(ASCII.getRabbit()); break;
-            case 32: System.out.println(ASCII.getHamster()); break;
-            case 33: System.out.println(ASCII.getSanta()); break;
-            case 34: System.out.println(ASCII.getSeaHorse()); break;
-            case 35: System.out.println(ASCII.getShark()); break;
-            case 36: System.out.println(ASCII.getSheep()); break;
-            case 37: System.out.println(ASCII.getTeddyBear()); break;
-            case 38: System.out.println(ASCII.getWhale()); break;
-            case 39: System.out.println(ASCII.getWitch()); break;
-            case 40: System.out.println(ASCII.getYourMom()); break;
-
-        }
-        System.out.println("-----------------------------------------------");
-        
-    }
-
-    public void randomChest()
-    {
-        System.out.println("-----------------------------------------------");
-        int random = (int)(Math.random()*2);
-        switch (random)
-        {
-            case 0: System.out.println( ASCII.getChest()); break;
-            case 1: System.out.println( ASCII.getChest3()); break;
-        }
-        System.out.println("-----------------------------------------------");
-    }
-
-    // TODO Remove this, and make helper to a "guide" to an Enum.
-    public void randomHelper()
-    {
-        System.out.println("-----------------------------------------------");
-        int random = (int)(Math.random()*3);
-        switch (random)
-        {
-            case 0: System.out.println(ASCII.getHamster()); break;
-            case 1: System.out.println(ASCII.getBuddha()); break;
-            case 2: System.out.println(ASCII.getGanesha()); break;
-        }
-        System.out.println("-----------------------------------------------");
-
-    }
     /**
      * This is the quit method that return a true or false value.
      * This will return a boolean value of true if there is no other words then quit.
@@ -869,12 +788,14 @@ public class Game
      * @param command quit command.
      * @return boolean
      */
+
     private boolean quit(Command command) 
     {
         // Checks if command says more that "quit", and cancels the request if so
         if(command.hasSecondWord()) 
         {
-            System.out.println("Quit what?");
+            //Prints "Quit what?"
+            printToConsole.print(textForPrintToConsole.getQuitWhat());
             return false;
         }
         else 
@@ -898,20 +819,20 @@ public class Game
         return exitList;
     }
 
-    public void slowPrint(String message, long millisPerChar)
-    {
-        for (int i = 0; i < message.length(); i++)
-        {
-            System.out.print(message.charAt(i));
-
-            try
-            {
-                Thread.sleep(millisPerChar);
-            } catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
-        }
-        System.out.println();
-    }
+//    public void slowPrint(String message, long millisPerChar)
+//    {
+//        for (int i = 0; i < message.length(); i++)
+//        {
+//            System.out.print(message.charAt(i));
+//
+//            try
+//            {
+//                Thread.sleep(millisPerChar);
+//            } catch (InterruptedException e)
+//            {
+//                e.printStackTrace();
+//            }
+//        }
+//        System.out.println();
+//    }
 }

@@ -79,17 +79,17 @@ public class Map
 
     /**
      * Method that tells if the room exists. 
-     * @param p
+     * @param exitPoint
      * @return boolean
      */
-    public boolean roomExists(Point p)
+    public boolean roomExists(Point exitPoint)
     {
         //For each loop. 
         //Which type, name, and list it runs through
         for (Room room : roomList)
         {
             //Runs through all the rooms, and tells if it have a x, y- value.  
-            if (room.getLocation().x == p.x && room.getLocation().y == p.y)
+            if (room.getLocation().x == exitPoint.x && room.getLocation().y == exitPoint.y)
             {
                 return true;
             }

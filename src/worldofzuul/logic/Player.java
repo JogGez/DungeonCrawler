@@ -76,7 +76,7 @@ public class Player {
     public Player(String name)
     {
         this.name = name;
-        this.health = 200;
+        this.health = 2000;
         this.score = 0;
         this.currentWeapon = new Weapon("Hands","Puny hands, not good for fighting :(","",1,0 );
         this.location = new Point(0,0);

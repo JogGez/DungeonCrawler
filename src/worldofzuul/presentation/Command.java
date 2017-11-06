@@ -6,6 +6,7 @@ package worldofzuul.presentation;
 public class Command
 {
     // Declaring objects for later instantiation
+    // TODO Strings to CommandWord, and add it to the Enum.
     private CommandWord commandWord;
     private String secondWord;
     private String thirdWord;
@@ -16,6 +17,7 @@ public class Command
      * @param commandWord the command word
      * @param secondWord  the second word
      */
+    // TODO make the strings into CommandWord.
     public Command(CommandWord commandWord, String secondWord, String thirdWord)
     {
         this.commandWord = commandWord;

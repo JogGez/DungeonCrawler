@@ -54,6 +54,7 @@ public class Room
     //Sets: location, name, description, hasBeenEntered, numberOfContent.
     public Room(Point p, int numberOfContent)
     {
+        // TODO RoomEnum with name and description.
         this.location = p;
         this.name = "Dungeon Room";
         this.description = "Just a plain old, boring room ;/";
@@ -74,7 +75,7 @@ public class Room
                 content.add(new RoomContent());
             }
             // If the number generated is 20-49 a monster is added in the roomslot.
-            else if (randomNumber < 50)
+            else if (randomNumber < 100)
             {
                 content.add(Monsters.getRandomMonster());
             }
