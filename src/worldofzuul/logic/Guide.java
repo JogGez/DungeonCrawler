@@ -6,28 +6,28 @@
 package worldofzuul.logic;
 
 /**
- * The type Helper.
+ * The type Guide.
  *
  * @author Jonathan
  */
-// Helper class
-public class Helper extends RoomContent
+// Guide class
+public class Guide extends RoomContent
 {
     private String name;
     private String answer;
     private String description;
 
     /**
-     * Instantiates a new Helper.
+     * Instantiates a new Guide.
      *
      *
     */
     
-    public Helper()
+    public Guide()
             {
                 
             }
-    public Helper(String name, String answer, String description)
+    public Guide(String name, String answer, String description)
     {
         this.name = name;
         this.answer = answer;

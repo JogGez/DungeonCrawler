@@ -3,7 +3,7 @@ package worldofzuul.logic;
 
 public interface RoomConstants
 {
-    String[] ROOM_NAME =
+    String[] ROOM_NAME_DESCRIPTION =
             {
                     "Cellar"+"\nFilled with old dusty skeletons",
                     "Butchery"+"\nBloody gory scenery",

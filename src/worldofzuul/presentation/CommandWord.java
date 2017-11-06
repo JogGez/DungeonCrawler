@@ -46,6 +46,10 @@ public enum CommandWord
      */
     HELP("help"),
     /**
+     * Battle command word.
+     */
+    BATTLE("battle"),
+    /**
      * Unknown command word.
      */
     UNKNOWN("?");

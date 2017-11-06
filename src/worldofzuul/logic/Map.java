@@ -13,7 +13,7 @@ public class Map implements RoomConstants
     private int height;   
     private int width;
     private ArrayList<Room> roomList; //Declare the ArrayList, Roomlist(name), containing Room(Object).
-    private ArrayList<Helper> helperList;
+    private ArrayList<Guide> guideList;
     private int helperNumbers;
     private int numberOfContent;
     
@@ -59,10 +59,10 @@ public class Map implements RoomConstants
         
          //Instantiate a ArrayList, allocates the ArrayList.
         roomList = new ArrayList<>();
-        helperList = new ArrayList<>();
+        guideList = new ArrayList<>();
         for (int x = 0; x < helperNumber; x++)
         {
-            helperList.add(new Helper());
+            guideList.add(new Guide());
         }
 
         //Creates the coordinate system of the rooms. 
@@ -71,7 +71,7 @@ public class Map implements RoomConstants
             for (int y = 0; y < height; y++)// runs through the height.
             {
                 int randomNameNumber = (int)(Math.random()*3);
-                roomList.add(new Room(new Point(x,y), numberOfContent, RoomConstants.ROOM_NAME[(randomNameNumber)]));//Point class in Java.
+                roomList.add(new Room(new Point(x,y), numberOfContent, RoomConstants.ROOM_NAME_DESCRIPTION[(randomNameNumber)]));//Point class in Java.
             }
         }
 

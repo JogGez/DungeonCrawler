@@ -7,6 +7,14 @@ import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+// Test to XML file
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
+import org.xml.sax.*;
+import org.w3c.dom.*;
+import java.util.ArrayList;
 
 /**
  * The type High score handler.
@@ -15,6 +23,7 @@ public class HighScoreHandler
 {
     private String filename;
     private TreeMap<Integer, String> highScore;
+    private ArrayList<String> rolev;
 
     private int maxNumberOfScores;
 
@@ -149,6 +158,8 @@ public class HighScoreHandler
      */
     private boolean createFile(String filename)
     {
+        rolev = new ArrayList<String>();
+        Document dom;
         try
         {
             File file = new File(filename);

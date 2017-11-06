@@ -45,11 +45,13 @@ public class TextForPrintToConsole
         String enterName = "Enter your name here: ";
         return enterName;
     }
+
     public String getEnterToStartGame()
     {
         String enterNAmeToStartGame= "Type \"enter\" to start the game.";
         return enterNAmeToStartGame;
     }
+
     public String getMessageHello(Player player)
     {
 
@@ -78,6 +80,7 @@ public class TextForPrintToConsole
         String what= "I don't know what you mean...";
         return what;
     }
+
     public String getUseWhat()
     {
         String what="Use what?";
@@ -89,6 +92,7 @@ public class TextForPrintToConsole
         String outOfRange="Slot is out of range";
         return outOfRange;
     }
+
     public String getShowWhat()
     {
         String what="Show what?";
@@ -105,6 +109,7 @@ public class TextForPrintToConsole
                 "\n3. Game Tips & Tricks";
         return helpMenu;
     }
+
     public String getHelpCommandWords()
     {
         String helpCommandWords="Your command words are:";
@@ -116,11 +121,13 @@ public class TextForPrintToConsole
         String goals = "The goals of the game is to defeat the devil";
         return goals;
     }
+
     public String getNoTipsAvaiable()
     {
         String noTips="No tips or tricks available :( ";
         return noTips;
     }
+
     public String getInvalidChoice()
     {
         String choice="Invalid menu choice";
@@ -133,12 +140,14 @@ public class TextForPrintToConsole
                 "\u252C\u2500\u2500\u2500\u2500\u256E";
         return layout1;
     }
+
     public String getMapLayoutPart2()
     {
         String layout2="   \u2570\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500" +
                 "\u2534\u2500\u2500\u2500\u2500\u256F";
         return layout2;
     }
+
     public String getMapLayoutPart3()
     {
         String layout3="       0      1      2";
@@ -183,11 +192,13 @@ public class TextForPrintToConsole
         String goWhere = "Go where?";
         return goWhere;
     }
+
     public String getYouEnteredANewRoom()
     {
         String enteredNewRoom ="You entered new room.";
         return enteredNewRoom;
     }
+
     public String getYouRanIntoAWall()
     {
         String intoWall = "You ran into wall :(";
@@ -198,6 +209,7 @@ public class TextForPrintToConsole
         String wentBack="You went back to the previous room.";
         return wentBack;
     }
+
     public String getNoSuchDirection()
     {
         String noSuchDirection="Go where? No such direction found...";
@@ -257,6 +269,7 @@ public class TextForPrintToConsole
                 "\n"+item.description;
         return weapon;
     }
+
     public String getPotion(Item item)
     {
         String potion = item.ascii+
@@ -271,6 +284,7 @@ public class TextForPrintToConsole
         String emptySlot="Slot is empty.";
         return emptySlot;
     }
+
     public String getSetCurrentWeapon(Player player)
     {
         String setCurrentWeapon="Your current weapon is now: " + player.getCurrentWeapon().name;
@@ -282,11 +296,13 @@ public class TextForPrintToConsole
         String yomYom="Yom yom ... Your health is now: " + player.getHealth() + "hp";
         return yomYom;
     }
+
     public String getTypeSlotNumberToUse()
     {
         String useSlot="Type number to use.";
         return useSlot;
     }
+
     public String getPotionRecovery(int i, Player player)
     {
         String recovery=(i+1) +
@@ -306,60 +322,73 @@ public class TextForPrintToConsole
         String thereIsaHelper="There is a helper, you can either \"talk\" , \"flee\" or \"kill\"!";
         return thereIsaHelper;
     }
+
     public String getHelperTalk()
     {
         String talk="Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!";
         return talk;
     }
+
     public String getKilledGuide()
     {
         String killedGuide="You killed the guide, oh mighty swordsman!";
         return killedGuide;
     }
+
     public String getThereIsAChest()
     {
-        String thereIsAChest="There is a chest, type \"open\" to open!";
+        String thereIsAChest = "There is a chest, type \"open\" to open!";
         return thereIsAChest;
     }
+
     String getWhatSlot()
     {
-        String slot="Do you want to insert this into a slot?"+
+        String slot = "Do you want to insert this into a slot?"+
                 "\nType slot number or \"drop\" to drop.";
         return slot;
     }
 
     String getYouSavedItemInThisSlot(int j)
     {
-        String savedInSlotNumber="You saved this item in slot: " + (j+1);
+        String savedInSlotNumber = "You saved this item in slot: " + (j+1);
         return savedInSlotNumber;
     }
+
     String getYouDroppedTheItem()
     {
-        String droppedItem="You dropped the item";
+        String droppedItem = "You dropped the item";
         return droppedItem;
     }
+
     String getHmmWrongCommand()
     {
-        String wrongCommand ="Hmm... Wrong command";
+        String wrongCommand = "Hmm... Wrong command";
         return wrongCommand;
     }
 
     String getItsAEmptySpace()
     {
-        String spaceIsEmpty="Empty space :(";
+        String spaceIsEmpty = "Empty space :(";
         return spaceIsEmpty;
     }
+
     String getManyHyphens()
     {
-        String manyHyphens="-----------------------------------------------";
+        String manyHyphens = "-----------------------------------------------";
         return manyHyphens;
     }
+
     String getQuitWhat()
     {
-        String quitWhat="Quit what?";
+        String quitWhat = "Quit what?";
         return quitWhat;
     }
 
+    String getBattleWhat()
+    {
+        String battleWhat = "Battle what?";
+        return battleWhat;
+    }
 
 
 }

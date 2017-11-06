@@ -213,6 +213,10 @@ public class Game
         {
             attack(command);
         }
+        else if (commandWord == CommandWord.BATTLE)
+        {
+            battle(command);
+        }
          //Checks if the command is Quit and sets the boolean to true
         else if (commandWord == CommandWord.QUIT || commandWord == CommandWord.EXIT )
         {
@@ -220,6 +224,19 @@ public class Game
         }
         return wantToQuit;
     }
+
+    private void battle(Command command)
+    {
+        if(!command.hasSecondWord())
+        {
+            //Prints "Battle what?"
+            printToConsole.print(textForPrintToConsole.getBattleWhat());
+            return;
+        }
+
+    }
+
+
     private void attack(Command command)
     {
         while (!battle.getIsBattleOver())
@@ -681,7 +698,7 @@ public class Game
                         }
 
                     }
-                    else if (room.getContent(i) instanceof Helper)
+                    else if (room.getContent(i) instanceof Guide)
                     {
                         //Prints "There is a helper, you can either \"talk\" , \"flee\" or \"kill\"!"
                         printToConsole.print(textForPrintToConsole.getThereIsAHelper());

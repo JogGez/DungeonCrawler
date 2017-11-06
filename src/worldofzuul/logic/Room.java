@@ -11,8 +11,6 @@ public class Room
 {
     // Room name.
     private String name;
-    // Description of the room.
-    private String description;
     // Has room been entered.
     private boolean hasBeenEntered;
     // The location of the room.
@@ -51,13 +49,11 @@ public class Room
      */
     //Constructor
     //Parameters: point (coordinate) and numberOfContent.
-    //Sets: location, name, description, hasBeenEntered, numberOfContent.
+    //Sets: location, name & description, hasBeenEntered, numberOfContent.
     public Room(Point p, int numberOfContent, String name)
     {
-        // TODO RoomEnum with name and description.
         this.location = p;
         this.name = name;
-        this.description = description;
         this.hasBeenEntered = false;
         this.numberOfContent = numberOfContent;
 
@@ -74,20 +70,20 @@ public class Room
             {
                 content.add(new RoomContent());
             }
-            // If the number generated is 20-49 a monster is added in the roomslot.
-            else if (randomNumber < 5)
+            // MONSTER: If the number generated is 20-49 a monster is added in the roomslot.
+            else if (randomNumber < 10)
             {
                 content.add(MonstersEnumTest.getRandomMonster());
             }
-            // If the number generated is 50-84 a chest is added in the roomslot.
+            // CHEST: If the number generated is 50-84 a chest is added in the roomslot.
             else if (randomNumber < 100)
             {
                 content.add(new Chest());
             }
-            // If the number generated is 85-100 a helper is added in the roomslot.
+            // GUIDE: If the number generated is 85-100 a helper is added in the roomslot.
             else if (randomNumber <= 5)
             {
-                content.add(new Helper());
+                content.add(new Guide());
             }
         }
     }
@@ -102,10 +98,10 @@ public class Room
             return  monster;
         }
         // If room has a helper, returns helper
-        if (content.get(index) instanceof Helper)
+        if (content.get(index) instanceof Guide)
         {
-            Helper helper = (Helper)content.get(index);
-            return  helper;
+            Guide guide = (Guide)content.get(index);
+            return guide;
         }
         // If room has a chest, returns chest
         if (content.get(index) instanceof Chest)
@@ -121,12 +117,10 @@ public class Room
         }
     }
 
-// TODO fix this method
-    // Method for removing content?
+    // Method for removing content
     public void removeContent(int index)
     {
         content.add(index,new RoomContent());
-
     }
 
 
