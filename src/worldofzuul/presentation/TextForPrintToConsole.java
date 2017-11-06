@@ -311,10 +311,10 @@ public class TextForPrintToConsole
         String talk="Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!";
         return talk;
     }
-    public String getKilledHelper()
+    public String getKilledGuide()
     {
-        String killedHelper="You killed the helper, oh might swordsman!";
-        return killedHelper;
+        String killedGuide="You killed the guide, oh mighty swordsman!";
+        return killedGuide;
     }
     public String getThereIsAChest()
     {

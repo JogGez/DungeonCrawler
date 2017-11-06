@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class Inventory
 {
     Item[] items;
-/**
+ /**
  * 
  * @param size 
  */

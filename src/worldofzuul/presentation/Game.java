@@ -621,7 +621,7 @@ public class Game
                             {
                                 acceptedInput = true;
                                 battle = new Battle(player, (Monster)room.getContent(i)); // creates a new battle
-// ***********************************************************************************************************************//
+
                                 while (!battle.getIsBattleOver())
                                 {
                                     //Prints "attack or drink potion"
@@ -637,7 +637,7 @@ public class Game
                                     {
                                         if (!player.getInventory().potionArrayList().isEmpty())
                                         {
-
+                                            //TODO Change to method
                                             //Prints "Type number to use."
                                             printToConsole.print(textForPrintToConsole.getTypeSlotNumberToUse());
 
@@ -649,9 +649,9 @@ public class Game
                                             input = parser.getUserInput();
                                             int index = Integer.parseInt(input) -1;
                                             player.setHealth(player.getHealth() +
-                                            player.getInventory().potionArrayList().get(index).getHealthRecovery());
+                                                                     player.getInventory().potionArrayList().get(index).getHealthRecovery());
                                             player.getInventory().removeItem(player.getInventory()
-                                            .getItemIndex(player.getInventory().potionArrayList().get(index)));
+                                                                                     .getItemIndex(player.getInventory().potionArrayList().get(index)));
 
                                             //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
                                             printToConsole.print(textForPrintToConsole.getYomYom(player));
@@ -708,8 +708,8 @@ public class Game
                             else if(input.equals("kill"))
                             {
                                 acceptedInput = true;
-                                //Prints "You killed the helper, oh might swordsman!"
-                                printToConsole.print(textForPrintToConsole.getKilledHelper());
+                                //Prints "You killed the helper, oh mighty swordsman!"
+                                printToConsole.print(textForPrintToConsole.getKilledGuide());
                             }
                             room.removeContent(i);
                         }
@@ -724,6 +724,7 @@ public class Game
                         boolean acceptedInput = false;
                         while (!acceptedInput)
                         {
+                            // TODO There has to be another option besides open -> "Skip"
                             String input = parser.getUserInput();
                             if(input.equals("open"))
                             {
@@ -741,8 +742,6 @@ public class Game
                                     printToConsole.print(textForPrintToConsole.getPotion(item));
                                 }
                                 showInventory();
-//                                System.out.println("Do you want to insert this into a slot?");
-//                                System.out.println("Type slot number or \"drop\" to drop.");
 
                                 //Prints "Do you want to insert this into a slot?"
                                 //"Type slot number or \"drop\" to drop."
@@ -849,6 +848,7 @@ public class Game
         System.out.println("-----------------------------------------------");
     }
 
+    // TODO Remove this, and make helper to a "guide" to an Enum.
     public void randomHelper()
     {
         System.out.println("-----------------------------------------------");
