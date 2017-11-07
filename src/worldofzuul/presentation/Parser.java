@@ -43,6 +43,7 @@ public class Parser
         inputLine = reader.nextLine().toLowerCase();
         // Initialize a new Scanner that reads the String inputLine
         // by doing this we can split the inputLine into seperate words
+        // tokenizer is the name of the scanner
         Scanner tokenizer = new Scanner(inputLine);
         // Checks if inputLine has a word in it
         if(tokenizer.hasNext()) 
@@ -55,6 +56,7 @@ public class Parser
                 // Sets word2 to the second word in inputLine
                 word2 = tokenizer.next();
 
+                // checks if there is a 3. word in the line. 
                 if(tokenizer.hasNext())
                 {
                     // Sets word2 to the second word in inputLine
@@ -67,17 +69,6 @@ public class Parser
         return new Command(commands.getCommandWord(word1), word2, word3);
     }
 
-    /**
-     * Instantiates a new Parser object with parameterized constructor(parameters) .
-     *
-     * @param commands the commands
-     * @param reader   the reader
-     */
-    public Parser(CommandWords commands, Scanner reader)
-    {
-        this.commands = commands;
-        this.reader = reader;
-    }
 
     /**
      * Print all available commands to the console through the CommandWords class.
