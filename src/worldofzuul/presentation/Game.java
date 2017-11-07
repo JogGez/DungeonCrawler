@@ -51,6 +51,7 @@ public class Game
         //Prints welcome logo and welcome text
         printToConsole.print(textForPrintToConsole.getAsciiTitle());
         printToConsole.print(textForPrintToConsole.getWelcomeText());
+        
         // Call menu
         menu();
     }
@@ -741,7 +742,8 @@ public class Game
 
                         //Prints "There is a chest, type \"open\" to open!"
                         printToConsole.print(textForPrintToConsole.getThereIsAChest());
-
+                        
+                        
                         boolean acceptedInput = false;
                         while (!acceptedInput)
                         {
@@ -769,6 +771,32 @@ public class Game
                                 printToConsole.print(textForPrintToConsole.getWhatSlot());
 
                                 input = parser.getUserInput();
+                                boolean chestInput = false;5
+                                while(!chestInput || !input.equals("drop") || !input.equals("d"))
+                                {
+                                    input = parser.getUserInput();
+                                    System.out.println("while");
+                                    for (int j = 0; j < player.getInventory().getSize(); j++)
+                                    {
+                                        System.out.println("for");
+                                        if (Integer.toString(j).equals(input)) 
+                                        {
+                                            System.out.println("If");
+                                           chestInput = true;  
+                                        }
+                                        
+                                    }
+                                    
+   
+                                }
+                                
+                                //while(!input.equals("1")||!input.equals("2")||!input.equals("3")||input.equals("drop")||input.equals("d".toLowerCase()))
+                                {
+                                    
+                                    
+                                    
+                                }
+                                
 
                                 for (int j = 0; j < player.getInventory().getSize() ; j++)
                                 {
@@ -785,14 +813,16 @@ public class Game
                                     //Prints "You dropped the inventoriesItem"
                                     printToConsole.print(textForPrintToConsole.getYouDroppedTheItem());
                                 }
+                               
+                                // TODO Put it a more safe place, so when we choose to "Skip" it doesn't remove the chest.
+                            room.removeContent(i);
                             }
                             else
                             {
                                 //Prints "Hmm... Wrong command"
-                                printToConsole.print(textForPrintToConsole.getHmmWrongCommand());
+                                printToConsole.print(textForPrintToConsole.getWhatDoYouMean());
                             }
-                            // TODO Put it a more safe place, so when we choose to "Skip" it doesn't remove the chest.
-                            room.removeContent(i);
+                            
                         }
                     }
                     else if (room.getContent(i) instanceof RoomContent)

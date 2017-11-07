@@ -1,5 +1,6 @@
 package worldofzuul.presentation;
 
+import java.util.Random;
 import worldofzuul.logic.*;
 
 public class TextForPrintToConsole
@@ -65,7 +66,7 @@ public class TextForPrintToConsole
 
     public String getThanksForPLaying(Player player)
     {
-        String gameFinsished="Thanks for playing "+player.getName()+". Good bye!";
+        String gameFinsished = "Thanks for playing "+player.getName()+". Good bye!";
         return gameFinsished;
     }
 
@@ -77,13 +78,17 @@ public class TextForPrintToConsole
 
     public String getWhatDoYouMean()
     {
-        String what= "I don't know what you mean...";
-        return what;
+        String[] wrongUserInput = new String[]
+        {"I don't know what you mean...", "What?", "Invalid Command", "Look at your keyboard when you type, you moron...",
+            "Sorry, come again", "Huh?"        
+        };
+        
+        return wrongUserInput[new Random().nextInt(wrongUserInput.length)];
     }
 
     public String getUseWhat()
     {
-        String what="Use what?";
+        String what = "Use what?";
         return what;
     }
 

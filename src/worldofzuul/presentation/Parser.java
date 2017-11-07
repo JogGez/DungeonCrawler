@@ -88,6 +88,24 @@ public class Parser
         System.out.print("> ");
         return reader.nextLine().toLowerCase();
     }
-
+    
+    /**
+     * Method 
+     */
+    public void userPressEnter()
+    {
+        boolean acceptedInput = false;
+        while(!acceptedInput)
+        {
+            System.out.print("Press Enter to continue...");
+            
+            if (reader.nextLine().equals(""))
+            {
+                acceptedInput = true;
+                                
+            }
+            
+        }
+    }
 
 }
