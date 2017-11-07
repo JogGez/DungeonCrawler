@@ -51,7 +51,7 @@ public class Map implements RoomConstants
      */
     public Map(int width, int height, int helperNumber, int numberOfContent)
     {
-        // Initializing (gives value to) private fields (contrsuctor parameter)
+        // Initializing (gives value to) private fields (constructor parameter)
         this.width = width;
         this.height = height;
         this.helperNumbers = helperNumber;

@@ -46,6 +46,10 @@ public enum CommandWord
      */
     HELP("help"),
     /**
+     *
+     */
+    FLEE ("flee"),
+    /**
      * Battle command word.
      */
     BATTLE("battle"),
