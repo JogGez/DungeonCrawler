@@ -120,7 +120,7 @@ public class Room
     // Method for removing content
     public void removeContent(int index)
     {
-        content.add(index,new RoomContent());
+        content.set(index, new RoomContent());
     }
 
 

@@ -14,6 +14,7 @@ public class Parser
     private CommandWords commands;
     private Scanner reader;
 
+
     /**
      * Instantiates a new Parser.
      */
