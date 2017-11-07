@@ -35,7 +35,7 @@ public enum WeaponEnum
      */
     public Weapon getWeapon()
     {
-        return weapon;
+        return new Weapon(weapon.getName(),weapon.getDescription(),weapon.getAscii(),weapon.getPower(),weapon.getMultiplier());
     }
     
     /**
@@ -44,8 +44,9 @@ public enum WeaponEnum
      */
     public static Weapon getRandomWeapon()
     {
-        
-        return values()[new Random().nextInt(values().length)].weapon;
+        //Create a
+        Weapon w = values()[new Random().nextInt(values().length)].weapon;
+        return new Weapon(w.name, w.description, w.ascii,w.getPower(),w.getMultiplier());
     }
 }
 
