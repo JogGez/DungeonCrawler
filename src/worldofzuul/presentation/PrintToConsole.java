@@ -19,6 +19,7 @@ public class PrintToConsole
         System.out.println(print);
     }
 
+   //Under construction ? 
     public void printHightScore()
     {
         HighScoreHandler highScore = new HighScoreHandler("HighScore.txt");
