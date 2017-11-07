@@ -175,10 +175,10 @@ public class TextForPrintToConsole
     public String getCurrentWeapon(Player player)
     {
         String currentWeapon = "Name: "+
-                player.getCurrentWeapon().name+ "\nPOWER: "+
+                player.getCurrentWeapon().getName()+ "\nPOWER: "+
                 player.getCurrentWeapon().getPower()+"\nMULTIPLIER: "+
                 player.getCurrentWeapon().getMultiplier()+" x"+"\n"+
-                player.getCurrentWeapon().description;
+                player.getCurrentWeapon().getDescription();
         return currentWeapon;
     }
 
@@ -262,20 +262,20 @@ public class TextForPrintToConsole
 
     public String getWeapon(Item item)
     {
-        String weapon = item.ascii+
-                "\nName: " + item.name+
+        String weapon = item.getAscii()+
+                "\nName: " + item.getName()+
                 "\nPOWER: " + ((Weapon) item).getPower()+
                 "\nMULTIPLIER: " + ((Weapon) item).getMultiplier() + "x"+
-                "\n"+item.description;
+                "\n"+item.getDescription();
         return weapon;
     }
 
     public String getPotion(Item item)
     {
-        String potion = item.ascii+
-                "\nName: " + item.name+
+        String potion = item.getAscii()+
+                "\nName: " + item.getName()+
                 "\nRECOVERY: " + ((Potion) item).getHealthRecovery()+
-                "\n"+item.description;
+                "\n"+item.getDescription();
         return potion;
     }
 
@@ -287,7 +287,7 @@ public class TextForPrintToConsole
 
     public String getSetCurrentWeapon(Player player)
     {
-        String setCurrentWeapon="Your current weapon is now: " + player.getCurrentWeapon().name;
+        String setCurrentWeapon="Your current weapon is now: " + player.getCurrentWeapon().getName();
         return setCurrentWeapon;
     }
 

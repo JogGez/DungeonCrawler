@@ -1,36 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package worldofzuul.logic;
+
+import worldofzuul.presentation.ASCII;
 
 /**
  * The type Guide.
  *
- * @author Jonathan
+ * @author Jonathan & Linea
  */
-// Guide class
+
+// Guide class, the old helper that doesn't move
 public class Guide extends RoomContent
 {
     private String name;
-    private String answer;
     private String description;
+    
+    
+    private String ascii;
 
     /**
      * Instantiates a new Guide.
-     *
-     *
     */
     
     public Guide()
             {
                 
             }
-    public Guide(String name, String answer, String description)
+    public Guide(String name, String description, String ascii)
     {
         this.name = name;
-        this.answer = answer;
+        this.ascii = ascii;
         this.description = description;
     }
 
@@ -43,14 +41,6 @@ public class Guide extends RoomContent
         return name;
     }
 
-    /**
-     * Gets answer.
-     *
-     * @return the answer
-     */
-    public String getAnswer() {
-        return answer;
-    }
 
     /**
      * Gets description.
@@ -59,6 +49,15 @@ public class Guide extends RoomContent
      */
     public String getDescription() {
         return description;
+    }
+    
+    /**
+     * gets ASCII
+     * @return String
+     */
+    public String getAscii()
+    {
+        return ascii;
     }
 
 }

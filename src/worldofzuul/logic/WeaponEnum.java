@@ -44,9 +44,13 @@ public enum WeaponEnum
      */
     public static Weapon getRandomWeapon()
     {
-        //Create a
+        //Creates a reference to weapon w. 
+        // Contains a random guide from the enum.
         Weapon w = values()[new Random().nextInt(values().length)].weapon;
-        return new Weapon(w.name, w.description, w.ascii,w.getPower(),w.getMultiplier());
+        
+        // Returns a new instances of weapon, where it uses the reference from weaponEnum (w from above)
+        // inheriet from Item. 
+        return new Weapon(w.getName(), w.getDescription(), w.getAscii(),w.getPower(),w.getMultiplier());
     }
 }
 

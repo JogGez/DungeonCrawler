@@ -4,12 +4,28 @@ package worldofzuul.logic;
  *
  * @author Linea Hoffmann
  */
-public class Item
+public abstract class Item
 {
-    public String name;
-    public String description;
-    public String ascii;
+    private String name;
+    private String description;
+    private String ascii;
 
+    
+    public static Item getRandomItem()
+    {
+        int randomItem = (int)(Math.random()*100);
+
+        if (randomItem < 60)
+        {
+            return WeaponEnum.getRandomWeapon();
+        }
+        else
+        {
+            return PotionEnum.getRandomPotion();
+        }
+
+    }
+    
     public String getName()
     {
         return name;
@@ -17,6 +33,7 @@ public class Item
 
     public void setName(String name)
     {
+        
         this.name = name;
     }
 

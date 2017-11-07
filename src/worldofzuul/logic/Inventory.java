@@ -17,11 +17,9 @@ public class Inventory
     public Inventory(int size)
     {
         this.items = new Item[size];
-        for (int i = 0; i < items.length; i++)
-        {
-            items[i] = new Item();
-            items[i].name = "empty";
-        }
+        
+        
+        
     }
 /**
  * 
@@ -56,8 +54,8 @@ public class Inventory
  */
     public void removeItem(int index)
     {
-        items[index] = new Item();
-        items[index].name = "empty";
+        items[index] = null;
+        
     }
 /**
  * Method that creats a empty array, and adds our potions. 

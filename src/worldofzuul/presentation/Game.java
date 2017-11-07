@@ -407,14 +407,23 @@ public class Game
         String  slot = "  ";
         for (int i = 0; i < player.getInventory().getSize(); i++)
         {
-            top += "-" + player.getInventory().getItem(i).name.replaceAll(".","-") + "-";
-
-            mTop +=" " + player.getInventory().getItem(i).name.replaceAll("."," ") + " ";
-            middle +=" " + player.getInventory().getItem(i).name + " ";
-            mBottom +=" " + player.getInventory().getItem(i).name.replaceAll("."," ") + " ";
-            bottom += "-" + player.getInventory().getItem(i).name.replaceAll(".","-") + "-";
-            slot += " " + String.valueOf(i+1) +
-                    player.getInventory().getItem(i).name.replaceAll(".", " ") + "";
+            String inventoriesItem = "";
+            if (player.getInventory().getItem(i)== null)
+            {
+                inventoriesItem = "empty";
+            }
+            else
+            {
+                inventoriesItem = player.getInventory().getItem(i).getName();
+            }
+            
+            
+            top += "-" + inventoriesItem.replaceAll(".","-") + "-";
+            mTop +=" " + inventoriesItem.replaceAll("."," ") + " ";
+            middle +=" " + inventoriesItem + " ";
+            mBottom +=" " + inventoriesItem.replaceAll("."," ") + " ";
+            bottom += "-" + inventoriesItem.replaceAll(".","-") + "-";
+            slot += " " + String.valueOf(i+1) + inventoriesItem.replaceAll(".", " ") + "";
         }
         top = top+ "\u256E";
         mTop = mTop + "\u2551";
@@ -767,13 +776,13 @@ public class Game
                                     {
                                         player.getInventory().addItem(item,j);
 
-                                        //Prints "You saved this item in slot: " + (j+1)
+                                        //Prints "You saved this inventoriesItem in slot: " + (j+1)
                                         printToConsole.print(textForPrintToConsole.getYouSavedItemInThisSlot(j));
                                     }
                                 }
                                 if (input.equals("drop")||input.equals("d"))
                                 {
-                                    //Prints "You dropped the item"
+                                    //Prints "You dropped the inventoriesItem"
                                     printToConsole.print(textForPrintToConsole.getYouDroppedTheItem());
                                 }
                             }

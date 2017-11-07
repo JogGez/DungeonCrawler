@@ -1,6 +1,9 @@
 package worldofzuul.logic;
 
-
+/**
+ *
+ * @author 
+ */
 public interface RoomConstants
 {
     String[] ROOM_NAME_DESCRIPTION =

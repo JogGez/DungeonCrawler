@@ -8,9 +8,12 @@ public class Weapon extends Item
 
     public Weapon(String name, String description, String ascii, int power, int multiplier)
     {
-        this.name = name;
-        this.description = description;
-        this.ascii = ascii;
+       
+        //Weapon inheriet from Item. 
+        //(this.name = name; (we dont do this)because our properties inheriet from Item, that's why we don't need to allocate them. 
+        this.setName(name);
+        this.setDescription(description);
+        this.setAscii(ascii);
         this.power = power;
         this.multiplier = multiplier;
     }

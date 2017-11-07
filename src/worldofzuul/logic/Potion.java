@@ -20,9 +20,9 @@ public class Potion extends Item
     public Potion(String name, String description, String ascii, int healthRecovery)
     {
 
-        this.name = name;
-        this.description = description;
-        this.ascii = ascii;
+        this.setName(name);
+        this.setDescription(description);
+        this.setAscii(ascii);
         this.healthRecovery = healthRecovery;
     }
 
