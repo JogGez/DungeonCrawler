@@ -88,36 +88,22 @@ public class Room
         }
     }
 
-    // Method for checking content of a room
+    
+    /**
+     * Method for finding a value in roomContent array, and returning the value. 
+     * @param index
+     * @return 
+     */
     public RoomContent getContent(int index)
     {
-        // If room has a monster, returns monster
-        if (content.get(index) instanceof Monster)
-        {
-            Monster monster = (Monster)content.get(index);
-            return  monster;
-        }
-        // If room has a helper, returns helper
-        if (content.get(index) instanceof Guide)
-        {
-            Guide guide = (Guide)content.get(index);
-            return guide;
-        }
-        // If room has a chest, returns chest
-        if (content.get(index) instanceof Chest)
-        {
-            Chest chest = (Chest)content.get(index);
-            return  chest;
-        }
-        else
-        {
-            // If none of the above is present, returns empty.
-            RoomContent empty = (RoomContent)content.get(index);
-            return  empty;
-        }
+        return content.get(index);
     }
 
-    // Method for removing content
+    
+    /**
+     * // Method for removing content
+     * @param index 
+     */
     public void removeContent(int index)
     {
         content.set(index, new RoomContent());
@@ -125,7 +111,11 @@ public class Room
 
 
 
-    // Getter of location.
+    
+   /**
+    * // Getter of location.
+    * @return Point
+    */
     public Point getLocation()
     {
         return location;
