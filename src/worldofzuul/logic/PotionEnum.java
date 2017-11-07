@@ -22,12 +22,13 @@ public enum PotionEnum
 
     public Potion getPotion()
     {
-        return potion;
+        return new Potion(potion.getName(),potion.getDescription(),potion.getAscii(),potion.getHealthRecovery());
     }
 
     public static Potion getRandomPotion()
     {
-        return values()[new Random().nextInt(values().length)].potion;
+        Potion potionValues = values()[new Random().nextInt(values().length)].potion;
+        return new Potion(potionValues.getName(),potionValues.getDescription(),potionValues.getAscii(),potionValues.getHealthRecovery());
     }
 
 

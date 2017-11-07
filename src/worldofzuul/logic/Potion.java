@@ -8,6 +8,9 @@ public class Potion extends Item
 {
     //Int variable healthRecovery 
     private int healthRecovery;
+    private String name;
+    private String description;
+    private String ascii;
 
     
     /**
@@ -33,5 +36,20 @@ public class Potion extends Item
     public int getHealthRecovery()
     {
         return healthRecovery;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public String getAscii()
+    {
+        return ascii;
     }
 }

@@ -14,13 +14,13 @@ public class Command
     /**
      * Instantiates a new Command.
      *
-     * @param commandWord the command word
+     * @param firstWord the command word
      * @param secondWord  the second word
      */
     // TODO make the strings into CommandWord.
-    public Command(CommandWord commandWord, String secondWord, String thirdWord)
+    public Command(CommandWord firstWord, String secondWord, String thirdWord)
     {
-        this.commandWord = commandWord;
+        this.commandWord = firstWord;
         this.secondWord = secondWord;
         this.thirdWord = thirdWord;
     }
