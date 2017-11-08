@@ -746,7 +746,6 @@ public class Game
                         boolean acceptedInput = false;
                         while (!acceptedInput)
                         {
-                            // TODO There has to be another option besides open -> "Skip"
                             String input = parser.getUserInput();
                             if(input.equals("open")|| input.equals("o"))
                             {
@@ -808,10 +807,13 @@ public class Game
                                     //Prints "You dropped the inventoriesItem"
                                     printToConsole.print(textForPrintToConsole.getYouDroppedTheItem());
                                 }
-                               
-                                // TODO Put it a more safe place, so when we choose to "Skip" it doesn't remove the chest.
+
                                 //This removes the chest
                                 room.removeContent(i);
+                            }
+                            else if (input.equals("skip"))
+                            {
+                                acceptedInput = true;
                             }
                             else
                             {
