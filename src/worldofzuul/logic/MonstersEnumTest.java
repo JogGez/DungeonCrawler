@@ -23,14 +23,12 @@ public enum MonstersEnumTest
         return new Monster(monster.getName(),monster.getDescription(),monster.getAscii(),monster.getHealth(),monster.getPower());
     }
 
-    public Monster getRandomMonster()
+    public static Monster getRandomMonster()
     {
         // Picks a random monster from our Enum.
         Monster monsterValues = values()[new Random().nextInt(values().length)].monster;
-        // And here we return a new instance of our guide from our Enumlist. Where it uses the reference Monster monsterValues
+
+        // And here we return a new instance of our guide from our Enumlist. Where it uses the reference MonsterEnum monsterValues
         return new Monster(monsterValues.getName(),monsterValues.getDescription(),monsterValues.getAscii(),monsterValues.getHealth(),monsterValues.getPower());
-//        int randomMonster = new Random().nextInt();
-//        return values()[(new Monster(randomMonster)].getMonster(randomMonster);
-//        //return values()[new Random().nextInt(values().length)].monster;
     }
 }

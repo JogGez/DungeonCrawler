@@ -742,8 +742,7 @@ public class Game
 
                         //Prints "There is a chest, type \"open\" to open!"
                         printToConsole.print(textForPrintToConsole.getThereIsAChest());
-                        
-                        
+
                         boolean acceptedInput = false;
                         while (!acceptedInput)
                         {
@@ -751,6 +750,7 @@ public class Game
                             String input = parser.getUserInput();
                             if(input.equals("open")|| input.equals("o"))
                             {
+                                boolean chestInput = false;
                                 acceptedInput = true;
                                 Item item = ((Chest)room.getContent(i)).getItem();
 
@@ -771,35 +771,30 @@ public class Game
                                 printToConsole.print(textForPrintToConsole.getWhatSlot());
 
                                 input = parser.getUserInput();
-                                boolean chestInput = false;5
-                                while(!chestInput || !input.equals("drop") || !input.equals("d"))
-                                {
-                                    input = parser.getUserInput();
-                                    System.out.println("while");
-                                    for (int j = 0; j < player.getInventory().getSize(); j++)
-                                    {
-                                        System.out.println("for");
-                                        if (Integer.toString(j).equals(input)) 
-                                        {
-                                            System.out.println("If");
-                                           chestInput = true;  
-                                        }
-                                        
-                                    }
-                                    
-   
-                                }
-                                
-                                //while(!input.equals("1")||!input.equals("2")||!input.equals("3")||input.equals("drop")||input.equals("d".toLowerCase()))
-                                {
-                                    
-                                    
-                                    
-                                }
-                                
 
+                                //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
+                                while(!chestInput)
+                                {
+                                    {
+
+                                        //Checks amount of inventory slots.
+                                        for (int j = 0; j < player.getInventory().getSize(); j++)
+                                        {
+
+                                            //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
+                                            if (Integer.toString(j + 1).equals(input) || input.equals("d") || input.equals("drop"))
+                                            {
+                                                    chestInput = true;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                //Checks through the players inventory
                                 for (int j = 0; j < player.getInventory().getSize() ; j++)
                                 {
+
+                                    // If the players input is equal to j(+1 because array starts at 0), it will add the item to our designated slot.
                                     if(input.equals(String.valueOf(j+1)))
                                     {
                                         player.getInventory().addItem(item,j);
@@ -815,7 +810,8 @@ public class Game
                                 }
                                
                                 // TODO Put it a more safe place, so when we choose to "Skip" it doesn't remove the chest.
-                            room.removeContent(i);
+                                //This removes the chest
+                                room.removeContent(i);
                             }
                             else
                             {
