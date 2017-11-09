@@ -769,12 +769,13 @@ public class Game
                                 //"Type slot number or \"drop\" to drop."
                                 printToConsole.print(textForPrintToConsole.getWhatSlot());
 
-                                input = parser.getUserInput();
+                                
 
                                 //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
                                 while(!chestInput)
                                 {
-                                    {
+                                    input = parser.getUserInput();
+                                   
 
                                         //Checks amount of inventory slots.
                                         for (int j = 0; j < player.getInventory().getSize(); j++)
@@ -786,7 +787,7 @@ public class Game
                                                     chestInput = true;
                                             }
                                         }
-                                    }
+                                    
                                 }
 
                                 //Checks through the players inventory
