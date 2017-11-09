@@ -66,22 +66,22 @@ public class Room
             //Generating number 0-100.
             int randomNumber = (int)(Math.random()*100);
             // If the number generated is 0-19 nothing here is added in the roomslot.
-            if (randomNumber < 20)
+            if (randomNumber < 0)
             {
-                content.add(new RoomContent());
+                content.add(null);
             }
             // MONSTER: If the number generated is 20-49 a monster is added in the roomslot.
-            else if (randomNumber < 10)
+            else if (randomNumber < 100)
             {
-                content.add(MonstersEnumTest.getRandomMonster());
+                content.add(MonsterEnum.getRandomMonster());
             }
             // CHEST: If the number generated is 50-84 a chest is added in the roomslot.
-            else if (randomNumber < 100)
+            else if (randomNumber < 75)
             {
                 content.add(new Chest());
             }
             // GUIDE: If the number generated is 85-100 a helper is added in the roomslot.
-            else if (randomNumber <= 5)
+            else if (randomNumber <= 100)
             {
                 content.add(new Guide());
             }
@@ -106,7 +106,7 @@ public class Room
      */
     public void removeContent(int index)
     {
-        content.set(index, new RoomContent());
+        content.set(index, null);
     }
 
 

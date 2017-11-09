@@ -10,7 +10,7 @@ package worldofzuul.logic;
  *
  * @author Frederik
  */
-public class Chest extends RoomContent
+public class Chest implements RoomContent
 {
     Item item;
 

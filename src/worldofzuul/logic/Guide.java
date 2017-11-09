@@ -9,7 +9,7 @@ import worldofzuul.presentation.ASCII;
  */
 
 // Guide class, the old helper that doesn't move
-public class Guide extends RoomContent
+public class Guide implements RoomContent
 {
     private String name;
     private String description;

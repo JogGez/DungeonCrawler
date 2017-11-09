@@ -4,7 +4,7 @@ import worldofzuul.presentation.ASCII;
 
 import java.util.Random;
 
-public enum MonstersEnumTest
+public enum MonsterEnum
 {
     SPIDER  (new Monster("Spider","Web crawler that will suck your body dry", ASCII.getSpider(),100,5)),
     BAT (new Monster("Bat","Flying rat", ASCII.getBat(),100,5)),  //calls constructor with value 2
@@ -13,7 +13,7 @@ public enum MonstersEnumTest
 
     private final Monster monster;
 
-    MonstersEnumTest(Monster monster)
+    MonsterEnum(Monster monster)
     {
         this.monster = monster;
     }

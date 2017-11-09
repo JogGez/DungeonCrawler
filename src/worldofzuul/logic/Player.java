@@ -27,6 +27,24 @@ public class Player {
     private Point location;
     private Point lastLocation;
 
+    
+     /**
+     * Constructor for player
+     * 
+     * @param name 
+     */
+    public Player(String name)
+    {
+        this.name = name;
+        this.health = GameConstants.getPlayerHealth();
+        this.score = 0;
+        this.currentWeapon = new Weapon("Hands","Puny hands, not good for fighting :(","",GameConstants.getPlayerPower(),0 );
+        this.location = new Point(0,0);
+        this.lastLocation = new Point(0,0);
+        this.inventory = new Inventory(GameConstants.getInventorySize());
+        
+    }
+    
     /**
      * To use inventory
      * Method
@@ -68,22 +86,7 @@ public class Player {
     }
 
 
-    /**
-     * Constructor for player
-     * 
-     * @param name 
-     */
-    public Player(String name)
-    {
-        this.name = name;
-        this.health = 2000;
-        this.score = 0;
-        this.currentWeapon = new Weapon("Hands","Puny hands, not good for fighting :(","",1,0 );
-        this.location = new Point(0,0);
-        this.lastLocation = new Point(0,0);
-        this.inventory = new Inventory(3);
-        
-    }
+   
 
     /**
      * Gets name.

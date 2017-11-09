@@ -6,7 +6,7 @@ package worldofzuul.logic;
  * @author Computer
  */
 //Monster Class, inherit from RoomContent because ??? 
-public class Monster extends RoomContent
+public class Monster implements RoomContent
 {
     private String name;
     private String description;

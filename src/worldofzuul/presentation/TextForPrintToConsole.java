@@ -234,10 +234,23 @@ public class TextForPrintToConsole
         return inventory;
     }
 
-    public String getThereIsAMonster()
+    public String getMonsterInfo(Room room, int i)
     {
-        String thereIsAMonster = "There is a monster, you can either do battle or flee!";
-        return thereIsAMonster;
+        String monsterInfo = ((Monster)room.getContent(i)).getAscii() +
+                "\n" + "Name: " + ((Monster)room.getContent(i)).getName() +
+                "\n" + "Description: " + ((Monster)room.getContent(i)).getDescription() +
+                "\n" + "Health: " + ((Monster)room.getContent(i)).getHealth() +
+                "\n" + "Power: " + ((Monster)room.getContent(i)).getPower() +
+                "\n";
+        return monsterInfo;
+    }
+    
+    public String getPlayerInfo(Player player)
+    {
+        String playerInfo =  
+                "Your health: " + player.getHealth() +
+                "\n" + "Your power: " + player.getCurrentWeapon().getPower();
+        return playerInfo;
     }
 
     public String getMonstersHealth(Room room, int i)

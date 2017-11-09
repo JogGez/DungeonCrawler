@@ -62,7 +62,12 @@ public class Game
     public void play() 
     {
         // Instantiating currentMap
-        currentMap = new Map(3,4,2 ,2);
+        currentMap = new Map(
+                GameConstants.getMapSize().x,
+                GameConstants.getMapSize().y,
+                GameConstants.getMovingGuides(),
+                GameConstants.getRoomContents());
+        
 
         //Prints "Enter your name here: "
         printToConsole.print(textForPrintToConsole.getEnterPlayerName());
@@ -622,14 +627,16 @@ public class Game
                     if (room.getContent(i) instanceof Monster)//Controls if its a monster.
                     {
 
-                        //Prints "There is a monster, you can either do battle or flee!"
-                        printToConsole.print(textForPrintToConsole.getThereIsAMonster());
+                        //Prints info about monster.
+                        printToConsole.print(textForPrintToConsole.getMonsterInfo(room,i));
 
+//                        //Prints "Monsters health is currently " +((Monster) room.getContent(i)).getHealth() + "hp"
+//                        printToConsole.print(textForPrintToConsole.getMonstersHealth(room,i));
+                       
                         //Prints "Your health is currently " + player.getHealth() + "hp"
-                        printToConsole.print(textForPrintToConsole.getYouCurrentlyHaveHp(player));
+                        printToConsole.print(textForPrintToConsole.getPlayerInfo(player));
 
-                        //Prints "Monsters health is currently " +((Monster) room.getContent(i)).getHealth() + "hp"
-                        printToConsole.print(textForPrintToConsole.getMonstersHealth(room,i));
+                        
 
                         //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
                         printToConsole.print(textForPrintToConsole.getBattleOrFlee());

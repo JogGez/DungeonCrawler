@@ -9,7 +9,7 @@ package worldofzuul.logic;
  *
  * @author Frederik
  */
-public class RoomContent
+public interface RoomContent
 {     
  
 }
