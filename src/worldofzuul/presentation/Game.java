@@ -775,7 +775,6 @@ public class Game
                                 while(!chestInput)
                                 {
                                     {
-
                                         //Checks amount of inventory slots.
                                         for (int j = 0; j < player.getInventory().getSize(); j++)
                                         {
