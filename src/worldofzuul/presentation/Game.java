@@ -3,6 +3,7 @@ import worldofzuul.logic.*;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Class used to get the game running.
@@ -25,6 +26,8 @@ public class Game
     private PrintToConsole printToConsole;
     //Creating print to console object
     private TextForPrintToConsole textForPrintToConsole;
+    //Create timetracker.
+    private TimeTracker timeTracker;
 
     /**
      * Class constructor.
@@ -40,6 +43,7 @@ public class Game
 
         //Instantiating PrintToConsole
         printToConsole = new PrintToConsole();
+        
     }
 
     /**
@@ -92,7 +96,10 @@ public class Game
                 //Prints "Type \"enter\" to start the game."
                 printToConsole.print(textForPrintToConsole.getEnterToStartGame());
             }
+            
         }
+        //Starting timetracker.
+        timeTracker = new TimeTracker(new Date());
 
         // sets the current room as entered
         // Compare the players coordinates with the currentMap room coordinates.
@@ -396,6 +403,11 @@ public class Game
                     printToConsole.print(textForPrintToConsole.getSlotIsOutOfRange());
                 }
                 break;
+            case "time":
+                printToConsole.print("Time left: " + timeTracker.calculateRemainingTime() + " seconds");
+                
+                break;
+                
             default:
                 //Prints "Huh?"
                 printToConsole.print(textForPrintToConsole.getHuh());
