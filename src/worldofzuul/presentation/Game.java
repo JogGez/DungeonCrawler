@@ -859,7 +859,11 @@ public class Game
                         printToConsole.print(textForPrintToConsole.getItsAEmptySpace());
                     }
                 }
-            }
+            }  
+        }
+        if (currentMap.numberOfEnteredRooms() == currentMap.getRoomList().size())
+        {
+            System.out.println("we are done");
         }
     }
 
