@@ -8,6 +8,7 @@ public class Potion extends Item
 {
     //Int variable healthRecovery 
     private int healthRecovery;
+    private int timeRecovery;
 
     
     /**
@@ -17,14 +18,16 @@ public class Potion extends Item
      * @param ascii
      * @param healthRecovery 
      */
-    public Potion(String name, String description, String ascii, int healthRecovery)
+    public Potion(String name, String description, String ascii, int healthRecovery, int timeRecovery)
     {
 
         this.setName(name);
         this.setDescription(description);
         this.setAscii(ascii);
         this.healthRecovery = healthRecovery;
+        this.timeRecovery = timeRecovery;
     }
+    
 
     /**
      * Getter method for HealthRecovery
@@ -34,4 +37,10 @@ public class Potion extends Item
     {
         return healthRecovery;
     }
+    
+    public int getTimeRecovery()
+    {
+        return timeRecovery;
+    }
+    
 }

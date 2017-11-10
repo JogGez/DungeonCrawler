@@ -15,13 +15,15 @@ public class TimeTracker
 {
 
 
-    private int maxTime;
+
     private Date startTime;
+    //Reference to the player in game, "the old maxtime value"
+    private Player player;
     
     
-    public TimeTracker(Date startTime)
+    public TimeTracker(Date startTime, Player player)
     {
-        this.maxTime = GameConstants.getTimeAmount();
+        this.player = player;        
         this.startTime = startTime;
         
     }
@@ -30,8 +32,9 @@ public class TimeTracker
     {
         Date currentTime = new Date();
         long elapsedTime = (((currentTime.getTime() - startTime.getTime()) / 1000));
-        int timeLeft = maxTime - (int) elapsedTime;
+        int timeLeft = player.getTime() - (int) elapsedTime;
         
         return timeLeft;
     }
+    
 }

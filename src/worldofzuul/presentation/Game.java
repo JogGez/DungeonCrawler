@@ -99,7 +99,7 @@ public class Game
             
         }
         //Starting timetracker.
-        timeTracker = new TimeTracker(new Date());
+        timeTracker = new TimeTracker(new Date(), player);
 
         // sets the current room as entered
         // Compare the players coordinates with the currentMap room coordinates.
@@ -497,8 +497,11 @@ public class Game
         {
             player.setHealth(player.getHealth() + ((Potion) item).getHealthRecovery());
             player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+            player.setTime(player.getTime()+ ((Potion) item).getTimeRecovery());
             //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
-            printToConsole.print(textForPrintToConsole.getYomYom(player));
+            printToConsole.print(textForPrintToConsole.getPlayerHealth(player));
+            // Prints "Your time is now: " + player.getTime() + "sec"
+            printToConsole.print(textForPrintToConsole.getPlayerTime(timeTracker));
         }
         else
         {
@@ -704,7 +707,7 @@ public class Game
                                                                                      .getItemIndex(player.getInventory().potionArrayList().get(index)));
 
                                             //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
-                                            printToConsole.print(textForPrintToConsole.getYomYom(player));
+                                            printToConsole.print(textForPrintToConsole.getPlayerHealth(player));
                                         }
                                         else
                                         {

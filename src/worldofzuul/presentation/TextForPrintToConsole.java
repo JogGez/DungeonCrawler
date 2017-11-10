@@ -292,7 +292,8 @@ public class TextForPrintToConsole
     {
         String potion = item.getAscii()+
                 "\nName: " + item.getName()+
-                "\nRECOVERY: " + ((Potion) item).getHealthRecovery()+
+                "\nHEALTH RECOVERY: " + ((Potion) item).getHealthRecovery()+
+                "\nTIME RECOVERY: " + ((Potion) item).getTimeRecovery()+
                 "\n"+item.getDescription();
         return potion;
     }
@@ -309,10 +310,16 @@ public class TextForPrintToConsole
         return setCurrentWeapon;
     }
 
-    public String getYomYom(Player player)
+    public String getPlayerHealth(Player player)
     {
-        String yomYom = "Yom yom ... Your health is now: " + player.getHealth() + "hp";
-        return yomYom;
+        String health = "Your health is now: " + player.getHealth() + "hp";
+        return health;
+    }
+    
+    public String getPlayerTime(TimeTracker timeTracker)
+    {
+        String time = "Your time is now: " + timeTracker.calculateRemainingTime()+ "sec";
+        return time;
     }
 
     public String getTypeSlotNumberToUse()

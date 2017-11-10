@@ -142,6 +142,19 @@ public class Map implements RoomConstants
         return roomList;
     }
 
-
+    public int numberOfEnteredRooms()
+    {
+        int numberOfRoomsEntered = 0;
+        for (Room room: roomList)
+        {
+            if (room.getHasBeenEntered() == true)
+            {
+                numberOfRoomsEntered ++; 
+            }
+        }
+        return numberOfRoomsEntered;
+    }
+    
     
 }
+

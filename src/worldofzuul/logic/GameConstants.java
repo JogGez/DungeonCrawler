@@ -19,7 +19,7 @@ public class GameConstants
     private static int roomContents = 2;
     private static int playerHealth = 3000;
     private static int inventorySize = 3;
-    private static int timeAmount = 10;
+    private static int playerTime = 500;
     private static int playerPower = 50;
     private static int movingGuides = 2;
 
@@ -31,7 +31,7 @@ public class GameConstants
        roomContents = 2;
        playerHealth = 6000;
        inventorySize = 3;
-       timeAmount = 200;
+       playerTime = 200;
        playerPower = 100;
        movingGuides = 2;
     }
@@ -76,14 +76,14 @@ public class GameConstants
         GameConstants.inventorySize = inventorySize;
     }
 
-    public static int getTimeAmount()
+    public static int getPlayerTime()
     {
-        return timeAmount;
+        return playerTime;
     }
 
-    public static void setTimeAmount(int timeAmount)
+    public static void setPlayerTime(int timeAmount)
     {
-        GameConstants.timeAmount = timeAmount;
+        GameConstants.playerTime = timeAmount;
     }
 
     public static int getPlayerPower()

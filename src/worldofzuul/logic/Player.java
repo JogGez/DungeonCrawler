@@ -26,6 +26,7 @@ public class Player {
     private Inventory inventory;
     private Point location;
     private Point lastLocation;
+    private int time;
 
     
      /**
@@ -42,7 +43,7 @@ public class Player {
         this.location = new Point(0,0);
         this.lastLocation = new Point(0,0);
         this.inventory = new Inventory(GameConstants.getInventorySize());
-        
+        this.time = GameConstants.getPlayerTime();
     }
     
     /**
@@ -158,5 +159,15 @@ public class Player {
     public Weapon getCurrentWeapon()
     {
         return this.currentWeapon;
+    }
+    
+    public int getTime()
+    {
+        return time;
+    }
+
+    public void setTime(int time)
+    {
+        this.time = time;
     }
 }
