@@ -14,7 +14,7 @@ import java.awt.Point;
 public class GameConstants
 {
     //Static because we will never change those values.
-    private static Point mapSize = new Point (3,4);
+    private static Point mapSize = new Point (3,1);
      //number of contents in a room.
     private static int roomContents = 2;
     private static int playerHealth = 3000;

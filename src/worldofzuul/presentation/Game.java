@@ -126,8 +126,7 @@ public class Game
             {
                 // Stops the game if you reach 0 health, and then prints out the line 
                 finished = player.getHealth() <= 0;
-                //Prints "You have died"
-                printToConsole.print(textForPrintToConsole.getYouHaveDied());
+                
 
             }
             else if (timeTracker.calculateRemainingTime() <= 0)
@@ -135,6 +134,12 @@ public class Game
                 finished = true;
                 //Prints "Your time ran out, and you are now dead"
                 printToConsole.print(textForPrintToConsole.getTimeRanOut());
+            }
+            
+            else if (weWon == true)
+            {
+                finished = true;
+                printToConsole.print(textForPrintToConsole.getIsLuciferDead());
             }
                 
         }
@@ -650,21 +655,14 @@ public class Game
                     {
 
                         //Prints info about monster.
-                        printToConsole.print(textForPrintToConsole.getMonsterInfo(room,i));
-
-//                        //Prints "Monsters health is currently " +((Monster) room.getContent(i)).getHealth() + "hp"
-//                        printToConsole.print(textForPrintToConsole.getMonstersHealth(room,i));
+                        printToConsole.print(textForPrintToConsole.getMonsterInfo((Monster)(room.getContent(i))));
                        
                         //Prints "Your health is currently " + player.getHealth() + "hp"
                         printToConsole.print(textForPrintToConsole.getPlayerInfo(player));
 
-                        
-
                         //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
                         printToConsole.print(textForPrintToConsole.getBattleOrFlee());
 
-
-                        // TODO Eventuelt få delt det ud i metoder.
                         boolean acceptedInput = false;
                         while (!acceptedInput)
                         {                            
@@ -674,53 +672,10 @@ public class Game
                             {
                                 acceptedInput = true;
                                 battle = new Battle(player, (Monster)room.getContent(i)); // creates a new battle
+                                
+                                // calls the battle sequence method. 
+                                battleSequence();
 
-                                while (!battle.getIsBattleOver())
-                                {
-                                    //Prints "attack or drink potion"
-                                    printToConsole.print(textForPrintToConsole.getAttackOrDrinkPotion());
-
-                                    input = parser.getUserInput();
-                                    if (input.toLowerCase().contains("attack") || input.toLowerCase().contains("a"))
-                                    {
-                                        //Prints status of battle
-                                        printToConsole.print(textForPrintToConsole.getBattle(battle));
-                                    }
-                                    else if (input.toLowerCase().contains("drink"))
-                                    {
-                                        if (!player.getInventory().potionArrayList().isEmpty())
-                                        {
-                                            //TODO Change to method
-                                            //Prints "Type number to use."
-                                            printToConsole.print(textForPrintToConsole.getTypeSlotNumberToUse());
-
-                                            for (int j = 0; j < player.getInventory().potionArrayList().size(); j++)
-                                            {
-                                                //Prints
-                                                printToConsole.print(textForPrintToConsole.getPotionRecovery(j,player));
-                                            }
-                                            input = parser.getUserInput();
-                                            int index = Integer.parseInt(input) -1;
-                                            player.setHealth(player.getHealth() +
-                                                                     player.getInventory().potionArrayList().get(index).getHealthRecovery());
-                                            player.getInventory().removeItem(player.getInventory()
-                                                                                     .getItemIndex(player.getInventory().potionArrayList().get(index)));
-
-                                            //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
-                                            printToConsole.print(textForPrintToConsole.getPlayerHealth(player));
-                                        }
-                                        else
-                                        {
-                                            //Prints "You have no potions :("
-                                            printToConsole.print(textForPrintToConsole.getYouHaveNoPotions());
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //Prints "Type \"attack\" or \"drink\""
-                                        printToConsole.print(textForPrintToConsole.getAttackOrDrinkPotion());
-                                    }
-                                }
                                 room.removeContent(i);
                             }
                             else if (input.toLowerCase().contains("flee"))    
@@ -735,6 +690,7 @@ public class Game
                                     printToConsole.print(textForPrintToConsole.getBattleOrFlee());
                                 }
                         }
+                        room.removeContent(i);
 
                     }
                     else if (room.getContent(i) instanceof Guide)
@@ -841,7 +797,7 @@ public class Game
                                 //This removes the chest
                                 room.removeContent(i);
                             }
-                            else if (input.equals("skip"))
+                            else if (input.equals("skip")||input.equals("s"))
                             {
                                 acceptedInput = true;
                             }
@@ -863,7 +819,123 @@ public class Game
         }
         if (currentMap.numberOfEnteredRooms() == currentMap.getRoomList().size())
         {
-            System.out.println("we are done");
+           lastBossBattle();
+           
+           
+        }
+    }
+    
+    public void battleSequence ()
+    {
+        
+         while (!battle.getIsBattleOver())
+        {
+            //Prints "attack or drink potion"
+            printToConsole.print(textForPrintToConsole.getAttackOrDrinkPotion());
+
+            String input = parser.getUserInput();
+            if (input.toLowerCase().contains("attack") || input.toLowerCase().contains("a"))
+            {
+                //Prints status of battle
+                printToConsole.print(textForPrintToConsole.getBattle(battle));
+            }
+            else if (input.toLowerCase().contains("drink"))
+            {
+                if (!player.getInventory().potionArrayList().isEmpty())
+                {
+                    
+                    //Prints "Type number to use."
+                    printToConsole.print(textForPrintToConsole.getTypeSlotNumberToUse());
+
+                    for (int j = 0; j < player.getInventory().potionArrayList().size(); j++)
+                    {
+                        //Prints
+                        printToConsole.print(textForPrintToConsole.getPotionRecovery(j,player));
+                    }
+                    input = parser.getUserInput();
+                    int index = Integer.parseInt(input) -1;
+                    player.setHealth(player.getHealth() +
+                                             player.getInventory().potionArrayList().get(index).getHealthRecovery());
+                    player.getInventory().removeItem(player.getInventory()
+                                                             .getItemIndex(player.getInventory().potionArrayList().get(index)));
+
+                    //Prints "Your health is now: " + player.getHealth() + "hp"
+                    printToConsole.print(textForPrintToConsole.getPlayerHealth(player));
+                }
+                else
+                {
+                    //Prints "You have no potions :("
+                    printToConsole.print(textForPrintToConsole.getYouHaveNoPotions());
+                }
+            }
+            
+        }
+    }
+    
+    boolean weWon = false; 
+    public void lastBossBattle ()
+    {
+         // "The eye of Sauron teleports you to the lair of the demon realm"
+            printToConsole.print(textForPrintToConsole.getAllRoomsEntered());
+            
+            
+            Monster lucifer = new Monster("Lucifer", "The lord of hell",ASCII.getDevil(),1000, 50);
+            printToConsole.print(textForPrintToConsole.getMonsterInfo(lucifer));
+            printToConsole.print(textForPrintToConsole.getPlayerInfo(player));
+            printToConsole.print(textForPrintToConsole.getAttackOrDrinkPotion());
+            Battle battle = new Battle(player, lucifer);
+            
+            while (!battle.getIsBattleOver())
+            {
+                
+                //Prints "attack or drink potion"
+                //printToConsole.print(textForPrintToConsole.getAttackOrDrinkPotion());
+
+                String input = parser.getUserInput();
+                if (input.toLowerCase().contains("attack") || input.toLowerCase().contains("a"))
+                {
+                    //Prints status of battle
+                    printToConsole.print(textForPrintToConsole.getBattle(battle));
+                }
+                else if (input.toLowerCase().contains("drink"))
+                {
+                    if (!player.getInventory().potionArrayList().isEmpty())
+                    {
+                        //TODO Change to method
+                        //Prints "Type number to use."
+                        printToConsole.print(textForPrintToConsole.getTypeSlotNumberToUse());
+
+                        for (int j = 0; j < player.getInventory().potionArrayList().size(); j++)
+                        {
+                            //Prints
+                            printToConsole.print(textForPrintToConsole.getPotionRecovery(j,player));
+                        }
+                        input = parser.getUserInput();
+                        int index = Integer.parseInt(input) -1;
+                        player.setHealth(player.getHealth() +
+                                                 player.getInventory().potionArrayList().get(index).getHealthRecovery());
+                        player.getInventory().removeItem(player.getInventory()
+                                                                 .getItemIndex(player.getInventory().potionArrayList().get(index)));
+
+                        //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
+                        printToConsole.print(textForPrintToConsole.getPlayerHealth(player));
+                    }
+                    else
+                    {
+                        //Prints "You have no potions :("
+                        printToConsole.print(textForPrintToConsole.getYouHaveNoPotions());
+                    }
+                }
+                else
+                {
+                    //Prints "Type \"attack\" or \"drink\""
+                    printToConsole.print(textForPrintToConsole.getAttackOrDrinkPotion());
+                }
+
+            }
+            if (lucifer.getHealth() <= 0)
+        {
+            weWon = true;
         }
     }
 

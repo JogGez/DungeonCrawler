@@ -234,13 +234,13 @@ public class TextForPrintToConsole
         return inventory;
     }
 
-    public String getMonsterInfo(Room room, int i)
+    public String getMonsterInfo(Monster monster)
     {
-        String monsterInfo = ((Monster)room.getContent(i)).getAscii() +
-                "\n" + "Name: " + ((Monster)room.getContent(i)).getName() +
-                "\n" + "Description: " + ((Monster)room.getContent(i)).getDescription() +
-                "\n" + "Health: " + ((Monster)room.getContent(i)).getHealth() +
-                "\n" + "Power: " + ((Monster)room.getContent(i)).getPower() +
+        String monsterInfo = monster.getAscii() +
+                "\n" + "Name: " + monster.getName() +
+                "\n" + "Description: " + monster.getDescription() +
+                "\n" + "Health: " + monster.getHealth() +
+                "\n" + "Power: " + monster.getPower() +
                 "\n";
         return monsterInfo;
     }
@@ -253,10 +253,10 @@ public class TextForPrintToConsole
         return playerInfo;
     }
 
-    public String getMonstersHealth(Room room, int i)
+    public String getMonstersHealth(Monster monster)
     {
         String healthMonster = "Monsters health is currently " +
-                ((Monster) room.getContent(i)).getHealth() + "hp";
+                monster.getHealth() + "hp";
         return healthMonster;
     }
 
@@ -274,8 +274,8 @@ public class TextForPrintToConsole
 
     public String getBattle(Battle battle)
     {
-        String fightBattle = battle.fight();
-        return fightBattle;
+        String startBattle = battle.start();
+        return startBattle;
     }
 
     public String getWeapon(Item item)
@@ -422,5 +422,19 @@ public class TextForPrintToConsole
         return timeRanOut;
     }
 
+    String getAllRoomsEntered () 
+    {
+        String allRoomsEntered = "The eye of Sauron teleports you to the lair of the demon realm";
+        return allRoomsEntered;
+    }
+    
+    String getIsLuciferDead ()
+    {
+        String isLuciferDed = "You defeated the devil!" +
+        "\nBut the princess is in another castle... and the game is over.";
+                return isLuciferDed;
+    }
+    
+    
 
 }

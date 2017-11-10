@@ -71,12 +71,12 @@ public class Room
                 content.add(null);
             }
             // MONSTER: If the number generated is 20-49 a monster is added in the roomslot.
-            else if (randomNumber < 5)
+            else if (randomNumber < 25)
             {
                 content.add(MonsterEnum.getRandomMonster());
             }
             // CHEST: If the number generated is 50-84 a chest is added in the roomslot.
-            else if (randomNumber < 100)
+            else if (randomNumber < 75)
             {
                 content.add(new Chest());
             }

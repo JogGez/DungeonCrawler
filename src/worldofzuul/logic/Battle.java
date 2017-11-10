@@ -31,8 +31,8 @@ public class Battle
     }
 
     //TODO Kig på metoden. ifh til retunering af String.
-    //Method fight, returns a String
-    public String fight()
+    //Method start, returns a String
+    public String start()
     {
         // (int) in pararentens because it would only be Math.random = 0, which is = 0.
         // We are getting the players current weapons power to add to our calculation, same with the monster.
