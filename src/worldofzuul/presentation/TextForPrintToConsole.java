@@ -408,6 +408,12 @@ public class TextForPrintToConsole
         String battleWhat = "Battle what?";
         return battleWhat;
     }
+    
+    String getTimeRanOut ()
+    {
+        String timeRanOut = "Your time ran out, and you are now dead";
+        return timeRanOut;
+    }
 
 
 }

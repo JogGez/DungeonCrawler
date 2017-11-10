@@ -19,7 +19,7 @@ public class GameConstants
     private static int roomContents = 2;
     private static int playerHealth = 3000;
     private static int inventorySize = 3;
-    private static int timeAmount = 180;
+    private static int timeAmount = 10;
     private static int playerPower = 50;
     private static int movingGuides = 2;
 

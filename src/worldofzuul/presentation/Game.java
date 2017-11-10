@@ -130,6 +130,13 @@ public class Game
                 printToConsole.print(textForPrintToConsole.getYouHaveDied());
 
             }
+            else if (timeTracker.calculateRemainingTime() <= 0)
+            {
+                finished = true;
+                //Prints "Your time ran out, and you are now dead"
+                printToConsole.print(textForPrintToConsole.getTimeRanOut());
+            }
+                
         }
         // Writes the last output before closing the application, also says goodbye to the username
         printToConsole.print(textForPrintToConsole.getThanksForPLaying(player));
