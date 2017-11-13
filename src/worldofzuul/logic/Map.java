@@ -71,7 +71,10 @@ public class Map implements RoomConstants
             for (int y = 0; y < height; y++)// runs through the height.
             {
                 int randomNameNumber = (int)(Math.random()*3);
-                roomList.add(new Room(new Point(x,y), numberOfContent, RoomConstants.ROOM_NAME_DESCRIPTION[(randomNameNumber)]));//Point class in Java.
+                
+                //RoomStrings, is a String array, that collects the name and description from the RoomEnum. 
+                String[] roomStrings = RoomEnum.getRandomString();
+                roomList.add(new Room(new Point(x,y), numberOfContent, roomStrings[0],roomStrings[1]));//Point class in Java.
             }
         }
 

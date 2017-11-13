@@ -198,9 +198,11 @@ public class TextForPrintToConsole
         return goWhere;
     }
 
-    public String getYouEnteredANewRoom()
+    public String getYouEnteredANewRoom(Room room)
     {
-        String enteredNewRoom = "You entered new room.";
+        String enteredNewRoom = "You entered " + room.getName() 
+                + "\nYou see " + room.getDescription() 
+                + "\n";
         return enteredNewRoom;
     }
 

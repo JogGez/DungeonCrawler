@@ -572,8 +572,8 @@ public class Game
                 {
                     player.setLocation(new Point(player.getLocation().x, player.getLocation().y + 1));
 
-                    //Prints "You entered new room."
-                    printToConsole.print(textForPrintToConsole.getYouEnteredANewRoom());
+                    
+
 
                     currentMap.setRoomHasBeenEntered(player.getLocation());
                     checkRoom();
@@ -588,9 +588,7 @@ public class Game
                 {
                     player.setLocation(new Point(player.getLocation().x, player.getLocation().y - 1));
 
-                    //Prints "You entered new room."
-                    printToConsole.print(textForPrintToConsole.getYouEnteredANewRoom());
-
+                    
                     currentMap.setRoomHasBeenEntered(player.getLocation());
                     checkRoom();
                 }
@@ -603,9 +601,7 @@ public class Game
                 {
                     player.setLocation(new Point(player.getLocation().x - 1, player.getLocation().y));
 
-                    //Prints "You entered new room."
-                    printToConsole.print(textForPrintToConsole.getYouEnteredANewRoom());
-
+                   
                     currentMap.setRoomHasBeenEntered(player.getLocation());
                     checkRoom();
                 }
@@ -618,9 +614,7 @@ public class Game
                 {
                     player.setLocation(new Point(player.getLocation().x + 1, player.getLocation().y));
 
-                    //Prints "You entered new room."
-                    printToConsole.print(textForPrintToConsole.getYouEnteredANewRoom());
-
+                    
                     currentMap.setRoomHasBeenEntered(player.getLocation());
                     checkRoom();
                 }
@@ -651,6 +645,8 @@ public class Game
             {
                 if (player.getLocation().x == room.getLocation().x && player.getLocation().y == room.getLocation().y)
                 {
+                    //Prints "You entered new room."
+                     printToConsole.print(textForPrintToConsole.getYouEnteredANewRoom(room));
                     if (room.getContent(i) instanceof Monster)//Controls if its a monster.
                     {
 

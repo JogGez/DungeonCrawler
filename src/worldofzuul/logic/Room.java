@@ -15,6 +15,8 @@ public class Room
     private boolean hasBeenEntered;
     // The location of the room.
     private Point location;
+    // 
+    private String description;
 
     public int getNumberOfContent()
     {
@@ -50,12 +52,13 @@ public class Room
     //Constructor
     //Parameters: point (coordinate) and numberOfContent.
     //Sets: location, name & description, hasBeenEntered, numberOfContent.
-    public Room(Point p, int numberOfContent, String name)
+    public Room(Point p, int numberOfContent, String name, String description)
     {
         this.location = p;
         this.name = name;
         this.hasBeenEntered = false;
         this.numberOfContent = numberOfContent;
+        this.description = description;
 
        // TODO
         // Loop that generates a random number (0-100) and adds a (nothing here//monster//chest//helper) according to the number generated.
@@ -87,6 +90,12 @@ public class Room
             }
         }
     }
+    
+    public String getDescription()
+    {
+        return description;
+    }
+    
 
     
     /**
