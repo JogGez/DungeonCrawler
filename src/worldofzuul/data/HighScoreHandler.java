@@ -19,8 +19,27 @@ import java.util.*;
  */
 public class HighScoreHandler
 {
+    private class ScoreItem implements Comparable<ScoreItem>
+    {
+        String name;
+        int score;
+
+
+        public ScoreItem(String name, int score)
+        {
+            this.name = name;
+            this.score = score;
+        }
+
+        @Override
+        public int compareTo(ScoreItem o)
+        {
+            int compare = o.score;
+            return this.score-compare;
+        }
+    }
     private String filename;
-    private String[]highScore;
+    private ArrayList<ScoreItem>highScore;
 
     private int maxNumberOfScores;
 
@@ -32,9 +51,9 @@ public class HighScoreHandler
     public HighScoreHandler(String filename)
     {
         this.filename = filename;
-        this.highScore = new String[10];
+//        this.highScore = new String[10];
         this.maxNumberOfScores = 10;
-        readText();
+        this.highScore = new ArrayList<>();
     }
 
     /**
@@ -49,9 +68,9 @@ public class HighScoreHandler
             {
                 PrintWriter output = new PrintWriter(filename);
 
-                for (String score : highScore)
+                for (ScoreItem score : highScore)
                 {
-                    output.println(score);
+                    output.println(score.score + " " + score.name);
                 }
 
                 output.flush();
@@ -78,7 +97,7 @@ public class HighScoreHandler
      *
      * @return the tree map
      */
-    public String[] readText()
+    public ArrayList<ScoreItem> readText()
     {
         try
         {
@@ -86,28 +105,10 @@ public class HighScoreHandler
 
             while( input.hasNextLine() )
             {
-                //splitting every line
-                //splitting regular expression
-//                String[] split = input.nextLine().split("\\s+");
-                //putting the string into the highscore
-                  for (int i =0; i <highScore.length; i++) {
-                      highScore[i] = input.nextLine();
-                  }
-//                Collections.sort(highScore, new Comparator<String>()
-//                {
-//                   public int compare(String o1, String o2)
-//                   {
-//                       return extractInt(o1) - extractInt(o2);
-//                   }
-//                   int extractInt(String s)
-//                   {
-//                       String num = s.replaceAll("\\D", "");
-//                       return num.isEmpty() ? 0 : Integer.parseInt(num);
-//                   }
-//                });
+                String[] split = input.nextLine().split("\\s");
+                highScore.add(new ScoreItem(split[1],Integer.parseInt(split[0])));
+
             }
-
-
 
             //remember to close input for garbage collection
             input.close();
@@ -117,43 +118,24 @@ public class HighScoreHandler
             e.printStackTrace();
         }
         // returns the highscore
+        Collections.sort(highScore);
         return highScore;
     }
 
-//    public String[] getHighScoreArray()
-//    {
-//        String[] highScoreArray = new String[maxNumberOfScores];
-//
-//        int index = maxNumberOfScores;
-//        for (Map.Entry entry : highScore.entrySet())
-//        {
-//            highScoreArray[index-1] = index + ".\t\t" + entry.getValue() + "\t\t" + entry.getKey();
-//            index--;
-//        }
-//
-//        return highScoreArray;
-//
-//    }
+    public String[] getHighScoreArray()
+    {
+        String[] highScoreArray = new String[maxNumberOfScores];
 
-//    /**
-//     * Add score to TreeMap.
-//     *
-//     * @param score the score
-//     * @param name  the name
-//     */
-//    public void addScore(int score, String name)
-//    {
-//        if (highScore.size() >= maxNumberOfScores)
-//        {
-//            highScore.put(score, name);
-//
-//            highScore.pollFirstEntry();
-//        }
-//        else
-//        {
-//            highScore.put(score, name);
-//        }
-//    }
+        int index = highScore.size();
+        for (ScoreItem score : highScore)
+        {
+            highScoreArray[index-1] = index + ".\t\t" + score.name + "\t\t" + score.score;
+            index--;
+        }
+
+        return highScoreArray;
+
+    }
 
 
     /**

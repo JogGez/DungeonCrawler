@@ -30,8 +30,8 @@ public class PrintToConsole
 //    }
     public void printHightScore(HighScoreHandler highScoreHandler)
     {
-//        highScore.readText();
-        for (String score : highScoreHandler.readText())
+        highScoreHandler.readText();
+        for (String score : highScoreHandler.getHighScoreArray())
         {
             System.out.println(score);
         }
