@@ -1,12 +1,13 @@
 package worldofzuul.data;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
+import java.util.Comparator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 //// Test to XML file
 //import javax.xml.parsers.*;
 //import javax.xml.transform.*;
@@ -19,7 +20,7 @@ import java.util.TreeMap;
 public class HighScoreHandler
 {
     private String filename;
-    private TreeMap<Integer, String> highScore;
+    private String[]highScore;
 
     private int maxNumberOfScores;
 
@@ -31,7 +32,7 @@ public class HighScoreHandler
     public HighScoreHandler(String filename)
     {
         this.filename = filename;
-        this.highScore = new TreeMap<>();
+        this.highScore = new String[10];
         this.maxNumberOfScores = 10;
         readText();
     }
@@ -48,9 +49,9 @@ public class HighScoreHandler
             {
                 PrintWriter output = new PrintWriter(filename);
 
-                for (Map.Entry score : highScore.entrySet())
+                for (String score : highScore)
                 {
-                    output.println(score.getKey() + " " + score.getValue());
+                    output.println(score);
                 }
 
                 output.flush();
@@ -77,7 +78,7 @@ public class HighScoreHandler
      *
      * @return the tree map
      */
-    public TreeMap<Integer, String> readText()
+    public String[] readText()
     {
         try
         {
@@ -87,10 +88,27 @@ public class HighScoreHandler
             {
                 //splitting every line
                 //splitting regular expression
-                String[] split = input.nextLine().split("\\s+");
+//                String[] split = input.nextLine().split("\\s+");
                 //putting the string into the highscore
-                highScore.put( Integer.parseInt(split[0]) ,split[1]);
+                  for (int i =0; i <highScore.length; i++) {
+                      highScore[i] = input.nextLine();
+                  }
+//                Collections.sort(highScore, new Comparator<String>()
+//                {
+//                   public int compare(String o1, String o2)
+//                   {
+//                       return extractInt(o1) - extractInt(o2);
+//                   }
+//                   int extractInt(String s)
+//                   {
+//                       String num = s.replaceAll("\\D", "");
+//                       return num.isEmpty() ? 0 : Integer.parseInt(num);
+//                   }
+//                });
             }
+
+
+
             //remember to close input for garbage collection
             input.close();
 
@@ -102,40 +120,40 @@ public class HighScoreHandler
         return highScore;
     }
 
-    public String[] getHighScoreArray()
-    {
-        String[] highScoreArray = new String[maxNumberOfScores];
+//    public String[] getHighScoreArray()
+//    {
+//        String[] highScoreArray = new String[maxNumberOfScores];
+//
+//        int index = maxNumberOfScores;
+//        for (Map.Entry entry : highScore.entrySet())
+//        {
+//            highScoreArray[index-1] = index + ".\t\t" + entry.getValue() + "\t\t" + entry.getKey();
+//            index--;
+//        }
+//
+//        return highScoreArray;
+//
+//    }
 
-        int index = maxNumberOfScores;
-        for (Map.Entry entry : highScore.entrySet())
-        {
-            highScoreArray[index-1] = index + ".\t\t" + entry.getValue() + "\t\t" + entry.getKey();
-            index--;
-        }
-
-        return highScoreArray;
-
-    }
-
-    /**
-     * Add score to TreeMap.
-     *
-     * @param score the score
-     * @param name  the name
-     */
-    public void addScore(int score, String name)
-    {
-        if (highScore.size() >= maxNumberOfScores)
-        {
-            highScore.put(score, name);
-
-            highScore.pollFirstEntry();
-        }
-        else
-        {
-            highScore.put(score, name);
-        }
-    }
+//    /**
+//     * Add score to TreeMap.
+//     *
+//     * @param score the score
+//     * @param name  the name
+//     */
+//    public void addScore(int score, String name)
+//    {
+//        if (highScore.size() >= maxNumberOfScores)
+//        {
+//            highScore.put(score, name);
+//
+//            highScore.pollFirstEntry();
+//        }
+//        else
+//        {
+//            highScore.put(score, name);
+//        }
+//    }
 
 
     /**

@@ -19,11 +19,19 @@ public class PrintToConsole
         System.out.println(print);
     }
 
-   //Under construction ? 
+//   //Under construction ?
+//    public void printHightScore(HighScoreHandler highScoreHandler)
+//    {
+////        highScore.readText();
+//        for (String score : highScoreHandler.getHighScoreArray())
+//        {
+//            System.out.println(score);
+//        }
+//    }
     public void printHightScore(HighScoreHandler highScoreHandler)
     {
 //        highScore.readText();
-        for (String score : highScoreHandler.getHighScoreArray())
+        for (String score : highScoreHandler.readText())
         {
             System.out.println(score);
         }
