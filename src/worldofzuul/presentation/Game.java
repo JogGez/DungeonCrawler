@@ -1,4 +1,5 @@
 package worldofzuul.presentation;
+import worldofzuul.data.HighScoreHandler;
 import worldofzuul.logic.*;
 
 import java.awt.*;
@@ -28,6 +29,8 @@ public class Game
     private TextForPrintToConsole textForPrintToConsole;
     //Create timetracker.
     private TimeTracker timeTracker;
+    private HighScoreHandler highScoreHandler;
+
 
     /**
      * Class constructor.
@@ -43,6 +46,9 @@ public class Game
 
         //Instantiating PrintToConsole
         printToConsole = new PrintToConsole();
+
+        //Instantiating Highscorehandler
+        highScoreHandler = new HighScoreHandler("HighScore.txt");
         
     }
 
@@ -78,7 +84,9 @@ public class Game
 
         // Instantiating player and initiating name
         player = new Player(parser.getUserInput());
-
+//        player.setScore(500);
+//        highScoreHandler.addScore(player.getScore(), player.getName());
+//        highScoreHandler.writeText();
         //Prints Start info (passing object player to be able to print name)
         printToConsole.print(textForPrintToConsole.getMessageHello(player));
 
@@ -155,7 +163,7 @@ public class Game
     private void printHighScore()
     {
         //Prints high score
-        printToConsole.printHightScore();
+        printToConsole.printHightScore(highScoreHandler);
         parser.getUserInput();
         this.menu();
     }

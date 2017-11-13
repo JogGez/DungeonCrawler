@@ -20,11 +20,10 @@ public class PrintToConsole
     }
 
    //Under construction ? 
-    public void printHightScore()
+    public void printHightScore(HighScoreHandler highScoreHandler)
     {
-        HighScoreHandler highScore = new HighScoreHandler("HighScore.txt");
-        highScore.readText();
-        for (String score : highScore.getHighScoreArray())
+//        highScore.readText();
+        for (String score : highScoreHandler.getHighScoreArray())
         {
             System.out.println(score);
         }

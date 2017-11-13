@@ -7,14 +7,11 @@ import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
-// Test to XML file
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
-import org.xml.sax.*;
-import org.w3c.dom.*;
-import java.util.ArrayList;
+//// Test to XML file
+//import javax.xml.parsers.*;
+//import javax.xml.transform.*;
+//import javax.xml.transform.dom.*;
+//import javax.xml.transform.stream.*;
 
 /**
  * The type High score handler.
@@ -23,7 +20,6 @@ public class HighScoreHandler
 {
     private String filename;
     private TreeMap<Integer, String> highScore;
-    private ArrayList<String> rolev;
 
     private int maxNumberOfScores;
 
@@ -37,7 +33,7 @@ public class HighScoreHandler
         this.filename = filename;
         this.highScore = new TreeMap<>();
         this.maxNumberOfScores = 10;
-        //readText();
+        readText();
     }
 
     /**
@@ -45,6 +41,7 @@ public class HighScoreHandler
      */
     public void writeText()
     {
+        //checks if file exists, if file doesn't exist it creates the file in our else statement.
         if (fileExists(filename))
         {
             try
@@ -88,18 +85,20 @@ public class HighScoreHandler
 
             while( input.hasNextLine() )
             {
-                String[] split = input.nextLine().split("\\s");
-
-                highScore.put( Integer.parseInt(split[0]) ,split[1] );
+                //splitting every line
+                //splitting regular expression
+                String[] split = input.nextLine().split("\\s+");
+                //putting the string into the highscore
+                highScore.put( Integer.parseInt(split[0]) ,split[1]);
             }
-
+            //remember to close input for garbage collection
             input.close();
 
         } catch (FileNotFoundException e)
         {
             e.printStackTrace();
         }
-
+        // returns the highscore
         return highScore;
     }
 
@@ -158,8 +157,6 @@ public class HighScoreHandler
      */
     private boolean createFile(String filename)
     {
-        rolev = new ArrayList<String>();
-        Document dom;
         try
         {
             File file = new File(filename);
