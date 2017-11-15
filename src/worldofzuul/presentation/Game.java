@@ -153,7 +153,7 @@ public class Game
         }
         // Writes the last output before closing the application, also says goodbye to the username
         printToConsole.print(textForPrintToConsole.getThanksForPLaying(player));
-
+        menu();
 
     }
 
