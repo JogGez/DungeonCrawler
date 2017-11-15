@@ -73,10 +73,10 @@ public class Game
     {
         // Instantiating currentMap
         currentMap = new Map(
-                GameConstants.getMapSize().x,
-                GameConstants.getMapSize().y,
-                GameConstants.getMovingGuides(),
-                GameConstants.getRoomContents());
+                GameSettings.getMapSize().x,
+                GameSettings.getMapSize().y,
+                GameSettings.getMovingGuides(),
+                GameSettings.getRoomContents());
         
 
         //Prints "Enter your name here: "

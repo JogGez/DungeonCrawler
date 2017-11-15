@@ -11,7 +11,7 @@ import java.awt.Point;
  *
  * @author Computer
  */
-public class GameConstants
+public class GameSettings
 {
     //Static because we will never change those values.
     private static Point mapSize = new Point (3,1);
@@ -43,7 +43,7 @@ public class GameConstants
 
     public static void setMapSize(Point mapSize)
     {
-        GameConstants.mapSize = mapSize;
+        GameSettings.mapSize = mapSize;
     }
 
     public static int getRoomContents()
@@ -53,7 +53,7 @@ public class GameConstants
 
     public static void setRoomContents(int roomContents)
     {
-        GameConstants.roomContents = roomContents;
+        GameSettings.roomContents = roomContents;
     }
 
     public static int getPlayerHealth()
@@ -63,7 +63,7 @@ public class GameConstants
 
     public static void setPlayerHealth(int playerHealth)
     {
-        GameConstants.playerHealth = playerHealth;
+        GameSettings.playerHealth = playerHealth;
     }
 
     public static int getInventorySize()
@@ -73,7 +73,7 @@ public class GameConstants
 
     public static void setInventorySize(int inventorySize)
     {
-        GameConstants.inventorySize = inventorySize;
+        GameSettings.inventorySize = inventorySize;
     }
 
     public static int getPlayerTime()
@@ -83,7 +83,7 @@ public class GameConstants
 
     public static void setPlayerTime(int timeAmount)
     {
-        GameConstants.playerTime = timeAmount;
+        GameSettings.playerTime = timeAmount;
     }
 
     public static int getPlayerPower()
@@ -93,7 +93,7 @@ public class GameConstants
 
     public static void setPlayerPower(int playerPower)
     {
-        GameConstants.playerPower = playerPower;
+        GameSettings.playerPower = playerPower;
     }
      
    public static int getMovingGuides()
@@ -103,7 +103,7 @@ public class GameConstants
 
     public static void setMovingGuides(int movingGuides)
     {
-        GameConstants.movingGuides = movingGuides;
+        GameSettings.movingGuides = movingGuides;
     }
             
 }

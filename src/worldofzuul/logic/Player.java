@@ -37,13 +37,13 @@ public class Player {
     public Player(String name)
     {
         this.name = name;
-        this.health = GameConstants.getPlayerHealth();
+        this.health = GameSettings.getPlayerHealth();
         this.score = 0;
-        this.currentWeapon = new Weapon("Hands","Puny hands, not good for fighting :(","",GameConstants.getPlayerPower(),0 );
+        this.currentWeapon = new Weapon("Hands","Puny hands, not good for fighting :(","",GameSettings.getPlayerPower(),0 );
         this.location = new Point(0,0);
         this.lastLocation = new Point(0,0);
-        this.inventory = new Inventory(GameConstants.getInventorySize());
-        this.time = GameConstants.getPlayerTime();
+        this.inventory = new Inventory(GameSettings.getInventorySize());
+        this.time = GameSettings.getPlayerTime();
     }
     
     /**
