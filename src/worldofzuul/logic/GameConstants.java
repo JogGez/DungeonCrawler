@@ -17,7 +17,7 @@ public class GameConstants
     private static Point mapSize = new Point (3,1);
      //number of contents in a room.
     private static int roomContents = 2;
-    private static int playerHealth = 3000;
+    private static int playerHealth = 100;
     private static int inventorySize = 3;
     private static int playerTime = 500;
     private static int playerPower = 50;

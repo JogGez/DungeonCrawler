@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * The Map class.
  * @author 
  */
-public class Map implements RoomConstants
+public class Map 
 {
     // Data fields
     private int height;   
