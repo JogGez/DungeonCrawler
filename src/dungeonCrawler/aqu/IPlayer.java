@@ -4,7 +4,7 @@ import java.awt.*;
 
 public interface IPlayer
 {
-    dungeonCrawler.aqu.Inventory getInventory();
+    IInventory getInventory();
 
     Point getLocation();
 

@@ -5,6 +5,7 @@
  */
 package dungeonCrawler.logic;
 
+import dungeonCrawler.aqu.IInventory;
 import dungeonCrawler.aqu.IWeapon;
 
 import java.awt.*;
@@ -26,7 +27,7 @@ class Player implements dungeonCrawler.aqu.IPlayer
     private int health;
     private int score;
     private IWeapon weapon;
-    private dungeonCrawler.aqu.Inventory inventory;
+    private IInventory inventory;
     private Point location;
     private Point lastLocation;
     private int time;
@@ -45,7 +46,7 @@ class Player implements dungeonCrawler.aqu.IPlayer
         this.weapon = new Weapon("Hands", "Puny hands, not good for fighting :(", "", GameConstants.getPlayerPower(), 0 );
         this.location = new Point(0,0);
         this.lastLocation = new Point(0,0);
-        this.inventory = new Inventory(GameConstants.getInventorySize());
+        this.inventory = new dungeonCrawler.logic.IInventory(GameConstants.getInventorySize());
         this.time = GameConstants.getPlayerTime();
     }
     
@@ -55,7 +56,7 @@ class Player implements dungeonCrawler.aqu.IPlayer
      * @return inventory
      */
     @Override
-    public dungeonCrawler.aqu.Inventory getInventory()
+    public IInventory getInventory()
     {
         return inventory;
     }
