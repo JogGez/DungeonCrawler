@@ -688,6 +688,10 @@ public class Game implements IGame
                                 battleSequence();
 
                                 room.removeContent(i);
+                                
+                                if (i < map.getNumberOfContent()-1) {parser.userPressEnter();}
+
+                                
                             }
                             else if (input.toLowerCase().contains("flee"))    
                             {
@@ -722,7 +726,7 @@ public class Game implements IGame
                             else if(input.equals("skip"))
                             {
                                 acceptedInput = true;
-                                return;
+                                
                             }
                             else if(input.equals("kill"))
                             {
@@ -733,6 +737,9 @@ public class Game implements IGame
                             }
                             
                         }
+                        
+                        if (i < map.getNumberOfContent()-1) parser.userPressEnter();
+                         
                     }
                     else if (room.getContent(i) instanceof IChest)
                     {
@@ -817,23 +824,25 @@ public class Game implements IGame
                             {
                                 //Prints "Hmm... Wrong command"
                                 printToConsole.print(textForPrintToConsole.getWhatDoYouMean());
-                            }
-                            
+                            }  
                         }
+                        if (i < map.getNumberOfContent()-1) parser.userPressEnter();
                     }
-                    else if (room.getContent(i) instanceof IRoomContent)
+                    else if (room.getContent(i) == null)
                     {
                         //Prints "Empty space :("
                         printToConsole.print(textForPrintToConsole.getItsAEmptySpace());
                     }
                 }
             }  
+            
         }
+        
         if (map.numberOfEnteredRooms() == map.getRoomList().size())
         {
+           parser.userPressEnter();
            lastBossBattle();
-           
-           
+              
         }
     }
     
