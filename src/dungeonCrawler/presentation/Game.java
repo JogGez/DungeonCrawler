@@ -706,22 +706,22 @@ public class Game implements IGame
                     }
                     else if (room.getContent(i) instanceof IGuide)
                     {
-                        //Prints "There is a helper, you can either \"talk\" , \"flee\" or \"kill\"!"
-                        printToConsole.print(textForPrintToConsole.getThereIsAHelper());
+                       
                         boolean acceptedInput = false;
                         while (!acceptedInput)
                         {
+                            //Prints "There is a helper, you can either \"talk\" , \"flee\" or \"kill\"!"
+                            printToConsole.print(textForPrintToConsole.getThereIsAGuide());
+                            
                             String input = parser.getUserInput();
                             if(input.equals("talk")||input.equals("t"))
                             {
-                                acceptedInput = true;
                                 //Prints "Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!"
                                 printToConsole.print(textForPrintToConsole.getHelperTalk());
                             }
-                            else if(input.equals("flee"))
+                            else if(input.equals("skip"))
                             {
                                 acceptedInput = true;
-                                player.setLocation(player.getLastLocation());
                                 return;
                             }
                             else if(input.equals("kill"))
@@ -729,8 +729,9 @@ public class Game implements IGame
                                 acceptedInput = true;
                                 //Prints "You killed the helper, oh mighty swordsman!"
                                 printToConsole.print(textForPrintToConsole.getKilledGuide());
+                                room.removeContent(i);
                             }
-                            room.removeContent(i);
+                            
                         }
                     }
                     else if (room.getContent(i) instanceof IChest)

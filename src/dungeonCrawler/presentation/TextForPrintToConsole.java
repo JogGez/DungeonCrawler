@@ -59,7 +59,6 @@ public class TextForPrintToConsole
 
         String hello = "Well... hello there "+player.getName()+
                 "\nI'am Slave and I'll be your guide through this adventure."+
-                "\nYou know is me by the slow print speed of the characters..."+
                 "\nType '"+CommandWord.HELP + "' if you ever need help."+
                 "\nType \"enter\" to enter the DUNGEON...";
         return hello;
@@ -178,6 +177,7 @@ public class TextForPrintToConsole
         return name;
     }
 
+    // TODO Får ikke navn og multiplier i spillet. 
     public String getCurrentWeapon(IPlayer player)
     {
         String currentWeapon = "Name: "+
@@ -346,10 +346,10 @@ public class TextForPrintToConsole
         return noPotions;
     }
 
-    public String getThereIsAHelper()
+    public String getThereIsAGuide()
     {
-        String thereIsaHelper = "There is a helper, you can either \"talk\" , \"flee\" or \"kill\"!";
-        return thereIsaHelper;
+        String thereIsAGuide = "There is a guide, you can either \"talk\" , \"skip\" or \"kill\"!";
+        return thereIsAGuide;
     }
 
     public String getHelperTalk()
