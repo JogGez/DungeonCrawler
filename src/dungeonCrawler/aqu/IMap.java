@@ -20,4 +20,6 @@ public interface IMap
     ArrayList<IRoom> getRoomList();
 
     int numberOfEnteredRooms();
+
+    boolean isRoomLocked(Point checkPoint);
 }

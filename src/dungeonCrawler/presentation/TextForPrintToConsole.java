@@ -438,7 +438,13 @@ public class TextForPrintToConsole
         "\nBut the princess is in another castle... and the game is over.";
                 return isLuciferDed;
     }
-    
+
+    String getRoomIsLocked()
+    {
+        String roomIsLocked= "Room is locked";
+        return roomIsLocked;
+
+    }
     
 
 }

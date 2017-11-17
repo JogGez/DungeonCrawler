@@ -21,4 +21,5 @@ public interface IRoom
     void removeContent(int index);
 
     Point getLocation();
+    boolean isLocked();
 }

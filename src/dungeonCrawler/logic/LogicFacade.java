@@ -2,6 +2,7 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
@@ -66,6 +67,13 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     {
         highScore = data.getHighScore();
         return highScore;
+    }
+
+    @Override
+    public ArrayList<IGuide> guideList()
+    {
+        ArrayList<? extends IGuide> guides = map.getGuideList();
+        return (ArrayList<IGuide>) guides;
     }
 
 

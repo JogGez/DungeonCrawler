@@ -1,5 +1,6 @@
 package dungeonCrawler.aqu;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public interface ILogicFacade
@@ -19,6 +20,8 @@ public interface ILogicFacade
     IMonster getLucifer();
 
     IHighScore getHighScore();
+
+    ArrayList<IGuide> guideList();
 
 
 }

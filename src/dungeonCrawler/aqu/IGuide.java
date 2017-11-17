@@ -1,5 +1,8 @@
 package dungeonCrawler.aqu;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 public interface IGuide
 {
     String getName();
@@ -7,4 +10,6 @@ public interface IGuide
     String getDescription();
 
     String getAscii();
+    Point getLocation();
+    void move(ArrayList<String>exitList);
 }

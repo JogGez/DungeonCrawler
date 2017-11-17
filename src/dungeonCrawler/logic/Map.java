@@ -5,25 +5,31 @@ import dungeonCrawler.aqu.IRoom;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
  * The Map class.
- * @author 
+ *
+ * @author
  */
 class Map implements dungeonCrawler.aqu.IMap
 {
     // Data fields
-    private int height;   
+    private int height;
     private int width;
     private ArrayList<IRoom> roomList; //Declare the ArrayList, Roomlist(name), containing Room(Object).
-    private ArrayList<IGuide> guideList;
+
+    private ArrayList<Guide> guideList;
     private int numberOfGuides;
     private int numberOfContent;
-    
+
+
     /**
      * Getter method for Height
      * Used in the array (coordinates)
-     * Used to print the 3 lines in the map. 
+     * Used to print the 3 lines in the map.
+     *
      * @return int
      */
     @Override
@@ -31,10 +37,11 @@ class Map implements dungeonCrawler.aqu.IMap
     {
         return height;
     }
-    
+
     /**
      * Getter method for Width
      * Used to generate the Array
+     *
      * @return int
      */
     @Override
@@ -51,7 +58,6 @@ class Map implements dungeonCrawler.aqu.IMap
 
     /**
      * Contructor Map
-     * 
      */
     public Map()
     {
@@ -60,30 +66,47 @@ class Map implements dungeonCrawler.aqu.IMap
         this.height = GameConstants.getMapSize().y;
         this.numberOfGuides = GameConstants.getMovingGuides();
         this.numberOfContent = GameConstants.getRoomContents();
-        
-         //Instantiate a ArrayList, allocates the ArrayList.
+
+        //Instantiate a ArrayList, allocates the ArrayList.
         roomList = new ArrayList<>();
         guideList = new ArrayList<>();
         for (int x = 0; x < numberOfGuides; x++)
         {
-            guideList.add(new Guide());
+            Guide guide = GuideEnum.getRandomGuide();
+            guide.setRandomLocation(new Point(width, height));
+
+            guideList.add(guide);
         }
+
+        int[] lockedRooms = new Random().ints(1, width * height).distinct().limit(GameConstants.getLockedRooms()).toArray();
+        int roomNumber = 0;
+
 
         //Creates the coordinate system of the rooms. 
         for (int x = 0; x < width; x++) // Runs through the width.
         {
             for (int y = 0; y < height; y++)// runs through the height.
             {
-                //RoomStrings, is a String array, that collects the name and description from the RoomEnum. 
+                boolean locked = false;
+                int finalRoomNumber = roomNumber;
+                if (IntStream.of(lockedRooms).anyMatch(z -> z == finalRoomNumber))
+                {
+                    locked = true;
+                }
+                //RoomStrings, is a String array, that collects the name and description from the RoomEnum.
                 String[] roomStrings = RoomEnum.getRandomString();
-                roomList.add(new Room(new Point(x, y), numberOfContent, roomStrings[0], roomStrings[1]));//Point class in Java.
+
+
+                roomList.add(new Room(new Point(x, y), numberOfContent, roomStrings[0], roomStrings[1], locked));//Point class in Java.
+                roomNumber++;
             }
         }
 
     }
 
     /**
-     * Method that tells if the room exists. 
+     * Method that tells if the room exists.
+     *
      * @param exitPoint
      * @return boolean
      */
@@ -107,6 +130,7 @@ class Map implements dungeonCrawler.aqu.IMap
     /**
      * Setter method for Room Has Been Entered
      * Controls the Arraylist roomlist, that was created from the Map.
+     *
      * @param playerLocation
      */
     @Override
@@ -120,10 +144,11 @@ class Map implements dungeonCrawler.aqu.IMap
             }
         }
     }
-    
+
     /**
-     * Getter Method 
-     * Returens the setter methods value. 
+     * Getter Method
+     * Returens the setter methods value.
+     *
      * @param p
      * @return boolean
      */
@@ -141,10 +166,12 @@ class Map implements dungeonCrawler.aqu.IMap
         }
         return false;
     }
+
     /**
-    * Getter Method for Roomlist
-    * @return ArrayList
-    */
+     * Getter Method for Roomlist
+     *
+     * @return ArrayList
+     */
     @Override
     public ArrayList<IRoom> getRoomList()
     {
@@ -155,16 +182,36 @@ class Map implements dungeonCrawler.aqu.IMap
     public int numberOfEnteredRooms()
     {
         int numberOfRoomsEntered = 0;
-        for (IRoom room: roomList)
+        for (IRoom room : roomList)
         {
             if (room.getHasBeenEntered() == true)
             {
-                numberOfRoomsEntered ++; 
+                numberOfRoomsEntered++;
             }
         }
         return numberOfRoomsEntered;
     }
-    
-    
+
+    public ArrayList<Guide> getGuideList()
+    {
+        return guideList;
+    }
+
+
+    @Override
+    public boolean isRoomLocked(Point checkPoint)
+    {
+        for (IRoom iRoom : roomList)
+        {
+            if (iRoom.getLocation().x == checkPoint.x && iRoom.getLocation().y == checkPoint.y)
+            {
+                return iRoom.isLocked();
+            }
+        }
+        return false;
+
+    }
+
+
 }
 

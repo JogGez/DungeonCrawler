@@ -2,6 +2,10 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IRoomContent;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * The type Guide.
  *
@@ -13,23 +17,26 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide
 {
     private String name;
     private String description;
-    
-    
+    private Point location;
+
+
     private String ascii;
 
     /**
      * Instantiates a new Guide.
-    */
-    
+     */
+
     public Guide()
-            {
-                
-            }
+    {
+
+    }
+
     public Guide(String name, String description, String ascii)
     {
         this.name = name;
         this.ascii = ascii;
         this.description = description;
+        this.location = new Point(0, 0);
     }
 
     /**
@@ -38,8 +45,55 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide
      * @return the name
      */
     @Override
-    public String getName() {
+    public String getName()
+    {
         return name;
+    }
+
+    /**
+     * To use guides current location
+     * Method
+     *
+     * @return the current location
+     */
+    @Override
+    public Point getLocation()
+    {
+        return location;
+    }
+
+    @Override
+    public void move(ArrayList<String> exitList)
+    {
+        int random = (int)(Math.random()*(exitList.size()+1));
+        if (random == exitList.size())
+        {
+        }
+        else if (exitList.get(random).equals("left"))
+        {
+            location = (new Point(getLocation().x-1,getLocation().y));
+        }
+        else if (exitList.get(random).equals("right"))
+        {
+            location = (new Point(getLocation().x+1,getLocation().y));
+        }
+        else if (exitList.get(random).equals("up"))
+        {
+            location = (new Point(getLocation().x,getLocation().y+1));
+        }
+        else if (exitList.get(random).equals("down"))
+        {
+            location = (new Point(getLocation().x,getLocation().y-1));
+        }
+    }
+
+
+    public void setRandomLocation(Point mapSize)
+    {
+        int randomX = (int)(Math.random()*mapSize.x);
+        int randomY = (int)(Math.random()*mapSize.y);
+        location = new Point(randomX, randomY);
+
     }
 
 
@@ -49,12 +103,14 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide
      * @return the description
      */
     @Override
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
-    
+
     /**
      * gets ASCII
+     *
      * @return String
      */
     @Override

@@ -11,14 +11,14 @@ import dungeonCrawler.presentation.Game;
 /**
  * The type Main.
  */
-public class Main 
+public class Main
 {
     /**
      * The entry point of application.
      *
      * @param args the input arguments
      */
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
 
         ILogicFacade logic = new LogicFacade();
