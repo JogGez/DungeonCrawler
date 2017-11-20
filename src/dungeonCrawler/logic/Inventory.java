@@ -2,6 +2,7 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IItem;
 import dungeonCrawler.aqu.IPotion;
+import dungeonCrawler.aqu.IKey;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,19 +72,19 @@ class Inventory implements dungeonCrawler.aqu.IInventory
     @Override
     public ArrayList<IPotion> potionArrayList()
     {
-        ArrayList<IPotion> avaliblePotions = new ArrayList<>();
+        ArrayList<IPotion> availablePotions = new ArrayList<>();
 
         for (int i = 0; i < items.length; i++)
         {
             // Controls if its a weapon or potions in our Items
             if (items[i] instanceof Potion)
             {
-                avaliblePotions.add((IPotion)items[i]);
+                availablePotions.add((IPotion)items[i]);
 
             }
         }
 
-        return avaliblePotions;
+        return availablePotions;
     }
 /**
  * Tells how big the ArrayList is.
@@ -94,5 +95,21 @@ class Inventory implements dungeonCrawler.aqu.IInventory
     public int getSize()
     {
         return items.length;
+    }
+    
+     public ArrayList<IKey> KeyArrayList()
+    {
+        ArrayList<IKey> availableKeys = new ArrayList<>();
+
+        for (int i = 0; i < items.length; i++)
+        {
+            // Controls if its a weapon or potions in our Items
+            if (items[i] instanceof Key)
+            {
+                availableKeys.add((IKey)items[i]);
+            }
+        }
+
+        return availableKeys;
     }
 }

@@ -5,13 +5,16 @@
  */
 package dungeonCrawler.logic;
 
+import dungeonCrawler.aqu.IKey;
+import java.util.ArrayList;
+
 
 
 /**
  *
  * @author Linea Hoffmann
  */
-public class Key extends Item implements dungeonCrawler.aqu.IKey
+class Key extends Item implements dungeonCrawler.aqu.IKey
 {
            
     public Key (String name, String description, String ascii)
@@ -22,5 +25,8 @@ public class Key extends Item implements dungeonCrawler.aqu.IKey
         this.setAscii(ascii);
         
     }   
+    
+    
+   
     
 }

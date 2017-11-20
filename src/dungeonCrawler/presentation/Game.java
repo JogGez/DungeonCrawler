@@ -2,6 +2,7 @@ package dungeonCrawler.presentation;
 
 import dungeonCrawler.aqu.*;
 import dungeonCrawler.logic.LogicFacade;
+import dungeonCrawler.logic.RoomContent;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -605,11 +606,23 @@ public class Game implements IGame
             case ("up"):
                 if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
                 {
+                    for (int i = 0; i < player.getInventory().getSize(); i++)
+                    {
+                        if (!player.getInventory().KeyArrayList().isEmpty())
+                        {
+                            
+                            //map.isRoomLocked(new Point(player.getLocation().x, player.getLocation().y + 1));
+                        }
+                                
+                    }
+                    
                     if (!map.isRoomLocked(new Point(player.getLocation().x, player.getLocation().y + 1)))
                     {
                         player.setLocation(new Point(player.getLocation().x, player.getLocation().y + 1));
                         map.setRoomHasBeenEntered(player.getLocation());
-                        logic.
+                        
+//TODO Figure out how to get the method. guideAndPlayerInSameRoom implementet. 
+                        
                         checkRoom();
                     }
                     else

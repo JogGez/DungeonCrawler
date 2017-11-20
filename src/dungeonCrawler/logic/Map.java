@@ -267,9 +267,6 @@ class Map implements dungeonCrawler.aqu.IMap
         }
         return false;
     }
-       
-
-
 
 }
 

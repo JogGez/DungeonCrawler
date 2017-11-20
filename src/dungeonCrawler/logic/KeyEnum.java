@@ -6,6 +6,7 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.presentation.ASCII;
+import dungeonCrawler.aqu.IKey;
 import java.util.Random;
 
 /**
@@ -26,12 +27,12 @@ public enum KeyEnum
         this.key = key;
     }
 
-    public Key getKey()
+    public IKey getKey()
     {
         return new Key(key.getName(), key.getDescription(), key.getAscii());
     }
 
-    public static Key getRandomKey()
+    public static IKey getRandomKey()
     {
         Key keyValues = values()[new Random().nextInt(values().length)].key;
         return new Key(keyValues.getName(), keyValues.getDescription(), keyValues.getAscii());

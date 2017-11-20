@@ -76,10 +76,13 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
         return (ArrayList<IGuide>) guides;
     }
 
+    //TODO 
     boolean guideAndPlayerSameRoom()
     {
         return guideAndPlayerSameRoom();
         
     }
+    
+    
 
 }
