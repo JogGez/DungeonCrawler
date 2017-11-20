@@ -2,7 +2,6 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IGuide;
 import dungeonCrawler.aqu.IPlayer;
-import dungeonCrawler.aqu.IRoom;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,8 +18,7 @@ class Map implements dungeonCrawler.aqu.IMap
     // Data fields
     private int height;
     private int width;
-    private ArrayList<IRoom> roomList; //Declare the ArrayList, Roomlist(name), containing Room(Object).
-
+    private ArrayList<Room> roomList; //Declare the ArrayList, Roomlist(name), containing IRoom(Object).
     private ArrayList<Guide> guideList;
     private int numberOfGuides;
     private int numberOfContent;
@@ -78,7 +76,7 @@ class Map implements dungeonCrawler.aqu.IMap
 
             guideList.add(guide);
         }
-
+        // Controls how many locked we are gonna have. (2 rooms are locked, cannot be the same) 
         int[] lockedRooms = new Random().ints(1, width * height).distinct().limit(GameConstants.getLockedRooms()).toArray();
         int roomNumber = 0;
 
@@ -97,7 +95,7 @@ class Map implements dungeonCrawler.aqu.IMap
                 //RoomStrings, is a String array, that collects the name and description from the RoomEnum.
                 String[] roomStrings = RoomEnum.getRandomString();
 
-
+                // Constructoren if the room should be locked or not, the last param (locked)
                 roomList.add(new Room(new Point(x, y), numberOfContent, roomStrings[0], roomStrings[1], locked));//Point class in Java.
                 roomNumber++;
             }
@@ -116,7 +114,7 @@ class Map implements dungeonCrawler.aqu.IMap
     {
         //For each loop. 
         //Which type, name, and list it runs through
-        for (IRoom room : roomList)
+        for (Room room : roomList)
         {
             //Runs through all the rooms, and tells if it have a x, y- value.  
             if (room.getLocation().x == exitPoint.x && room.getLocation().y == exitPoint.y)
@@ -130,14 +128,14 @@ class Map implements dungeonCrawler.aqu.IMap
 
     /**
      * Setter method for Room Has Been Entered
-     * Controls the Arraylist roomlist, that was created from the Map.
+ Controls the Arraylist roomlist, that was created from the Map.
      *
      * @param playerLocation
      */
     @Override
     public void setRoomHasBeenEntered(Point playerLocation)
     {
-        for (IRoom room : roomList)
+        for (Room room : roomList)
         {
             if (room.getLocation().x == playerLocation.x && room.getLocation().y == playerLocation.y)
             {
@@ -157,7 +155,7 @@ class Map implements dungeonCrawler.aqu.IMap
     public boolean getRoomHasBeenEntered(Point p)
     {
         //For each loop: Which type, name, and list it runs through
-        for (IRoom room : roomList)
+        for (Room room : roomList)
         {
             // if x == x and y==y, for point p, reurns entered. 
             if (room.getLocation().x == p.x && room.getLocation().y == p.y)
@@ -174,7 +172,7 @@ class Map implements dungeonCrawler.aqu.IMap
      * @return ArrayList
      */
     @Override
-    public ArrayList<IRoom> getRoomList()
+    public ArrayList<Room> getRoomList()
     {
         return roomList;
     }
@@ -183,7 +181,7 @@ class Map implements dungeonCrawler.aqu.IMap
     public int numberOfEnteredRooms()
     {
         int numberOfRoomsEntered = 0;
-        for (IRoom room : roomList)
+        for (Room room : roomList)
         {
             if (room.getHasBeenEntered() == true)
             {
@@ -202,11 +200,11 @@ class Map implements dungeonCrawler.aqu.IMap
     @Override
     public boolean isRoomLocked(Point checkPoint)
     {
-        for (IRoom iRoom : roomList)
+        for (Room room : roomList)
         {
-            if (iRoom.getLocation().x == checkPoint.x && iRoom.getLocation().y == checkPoint.y)
+            if (room.getLocation().x == checkPoint.x && room.getLocation().y == checkPoint.y)
             {
-                return iRoom.isLocked();
+                return room.isLocked();
             }
         }
         return false;
@@ -248,7 +246,7 @@ class Map implements dungeonCrawler.aqu.IMap
         }
     }
     
-    @Override
+    
     public boolean guideAndPlayerSameRoom(Guide guide, Player player)
     {
         if (guide.getLocation().equals(player.getLocation()))
@@ -259,13 +257,24 @@ class Map implements dungeonCrawler.aqu.IMap
     }
     
     
-        public boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player)
+    public boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player)
     {
         if (guide.getLocation().equals(player.getLocation()))
         {
             return true;
         }
         return false;
+    }
+        
+    public void unlockRoom(Point playerLocation)
+    {
+        for (Room room : roomList)
+        {
+            if (room.getLocation().x == playerLocation.x && room.getLocation().y == playerLocation.y)
+            {
+                room.setIsLocked(false);
+            }
+        }
     }
 
 }
