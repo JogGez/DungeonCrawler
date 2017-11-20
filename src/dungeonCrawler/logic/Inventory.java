@@ -10,14 +10,14 @@ import java.util.Arrays;
  * 
  * @author 
  */
-class IInventory implements dungeonCrawler.aqu.IInventory
+class Inventory implements dungeonCrawler.aqu.IInventory
 {
     IItem[] items;
  /**
  * 
  * @param size 
  */
-    public IInventory(int size)
+    public Inventory(int size)
     {
         this.items = new IItem[size];
         

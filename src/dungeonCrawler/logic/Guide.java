@@ -1,5 +1,6 @@
 package dungeonCrawler.logic;
 
+import dungeonCrawler.aqu.IGuide;
 import dungeonCrawler.aqu.IRoomContent;
 
 import java.awt.*;

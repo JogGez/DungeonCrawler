@@ -46,7 +46,7 @@ class Player implements dungeonCrawler.aqu.IPlayer
         this.weapon = new Weapon("Hands", "Puny hands, not good for fighting :(", "", GameConstants.getPlayerPower(), 0 );
         this.location = new Point(0,0);
         this.lastLocation = new Point(0,0);
-        this.inventory = new dungeonCrawler.logic.IInventory(GameConstants.getInventorySize());
+        this.inventory = new dungeonCrawler.logic.Inventory(GameConstants.getInventorySize());
         this.time = GameConstants.getPlayerTime();
     }
     
@@ -185,7 +185,7 @@ class Player implements dungeonCrawler.aqu.IPlayer
     }
 
     @Override
-    public void setTime(int time)
+    public void setTime(int time) 
     {
         this.time = time;
     }

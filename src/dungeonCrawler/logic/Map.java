@@ -1,6 +1,7 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IGuide;
+import dungeonCrawler.aqu.IPlayer;
 import dungeonCrawler.aqu.IRoom;
 
 import java.awt.*;
@@ -211,6 +212,63 @@ class Map implements dungeonCrawler.aqu.IMap
         return false;
 
     }
+    
+    @Override
+    public void guideMove()
+    {
+        for (Guide guide : guideList)
+        {
+            ArrayList<String> exitList = new ArrayList<>();
+
+            if (roomExists(new Point(guide.getLocation().x - 1, guide.getLocation().y)))
+            {
+                exitList.add("left");
+            }
+
+            if (roomExists(new Point(guide.getLocation().x + 1, guide.getLocation().y)))
+            {
+                exitList.add("right");
+            }
+
+            if (roomExists(new Point(guide.getLocation().x, guide.getLocation().y + 1)))
+            {
+                exitList.add("up");
+            }
+
+            if (roomExists(new Point(guide.getLocation().x, guide.getLocation().y - 1)))
+            {
+                exitList.add("down");
+            }
+
+            //TODO Guide skal interagere med os - giv os et eller andet.
+
+            //Checks if player and guide is in the same room
+            guide.move(exitList);
+            
+        }
+    }
+    
+    @Override
+    public boolean guideAndPlayerSameRoom(Guide guide, Player player)
+    {
+        if (guide.getLocation().equals(player.getLocation()))
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    
+        public boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player)
+    {
+        if (guide.getLocation().equals(player.getLocation()))
+        {
+            return true;
+        }
+        return false;
+    }
+       
+
 
 
 }
