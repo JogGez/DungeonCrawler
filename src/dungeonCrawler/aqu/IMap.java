@@ -22,4 +22,7 @@ public interface IMap
     int numberOfEnteredRooms();
 
     boolean isRoomLocked(Point checkPoint);
+    
+    void guideMove();
+    
 }

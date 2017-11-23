@@ -1,6 +1,8 @@
 package dungeonCrawler.presentation;
 
 import dungeonCrawler.aqu.*;
+import dungeonCrawler.logic.LogicFacade;
+import dungeonCrawler.logic.RoomContent;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -604,11 +606,23 @@ public class Game implements IGame
             case ("up"):
                 if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
                 {
+                    for (int i = 0; i < player.getInventory().getSize(); i++)
+                    {
+                        if (!player.getInventory().KeyArrayList().isEmpty())
+                        {
+                            
+                            //map.isRoomLocked(new Point(player.getLocation().x, player.getLocation().y + 1));
+                        }
+                                
+                    }
+                    
                     if (!map.isRoomLocked(new Point(player.getLocation().x, player.getLocation().y + 1)))
                     {
                         player.setLocation(new Point(player.getLocation().x, player.getLocation().y + 1));
                         map.setRoomHasBeenEntered(player.getLocation());
-                        guideMove();
+                        
+//TODO Figure out how to get the method. guideAndPlayerInSameRoom implementet. 
+                        
                         checkRoom();
                     }
                     else
@@ -1074,45 +1088,6 @@ public class Game implements IGame
     public void injectLogic(ILogicFacade logicLayer)
     {
         logic = logicLayer;
-    }
-
-    public void guideMove()
-    {
-        for (IGuide guide : logic.guideList())
-        {
-            ArrayList<String> exitList = new ArrayList<>();
-
-            if (map.roomExists(new Point(guide.getLocation().x - 1, guide.getLocation().y)))
-            {
-                exitList.add("left");
-            }
-
-            if (map.roomExists(new Point(guide.getLocation().x + 1, guide.getLocation().y)))
-            {
-                exitList.add("right");
-            }
-
-            if (map.roomExists(new Point(guide.getLocation().x, guide.getLocation().y + 1)))
-            {
-                exitList.add("up");
-            }
-
-            if (map.roomExists(new Point(guide.getLocation().x, guide.getLocation().y - 1)))
-            {
-                exitList.add("down");
-            }
-
-            //TODO Guide skal interagere med os - giv os et eller andet.
-
-            //Checks if player and guide is in the same room
-            guide.move(exitList);
-            if (guide.getLocation().x == player.getLocation().x && guide.getLocation().y == player.getLocation().y)
-            {
-
-
-            }
-
-        }
     }
 
 }

@@ -1,5 +1,7 @@
 package dungeonCrawler.aqu;
 
+import dungeonCrawler.logic.Guide;
+import dungeonCrawler.logic.Player;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,6 +24,10 @@ public interface ILogicFacade
     IHighScore getHighScore();
 
     ArrayList<IGuide> guideList();
+    
+    boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player);
+    
+    
 
 
 }

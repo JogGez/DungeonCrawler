@@ -13,6 +13,8 @@ public interface IInventory
     void removeItem(int index);
 
     ArrayList<IPotion> potionArrayList();
+    
+    ArrayList<IKey> KeyArrayList();
 
     int getSize();
 }
