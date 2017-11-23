@@ -16,25 +16,26 @@ class Room implements dungeonCrawler.aqu.IRoom
 
     // Has room been entered.
     private boolean hasBeenEntered;
+    //Is room locked.
+    private boolean isLocked;
+
+    public void setLocked(boolean locked)
+    {
+        isLocked = locked;
+    }
+    // The location of the room.
+    private Point location;
+    //
+    private String description;
+    // How many things are in the room
+    private int numberOfContent;
 
     public boolean isLocked()
     {
         return isLocked;
     }
-
-    //Is room locked.
-    private boolean isLocked;
-
-    // The location of the room.
-    private Point location;
-    // 
-    private String description;
-    // How many things are in the room
-    private int numberOfContent;
-
-    // List of all the content in the room
-    private ArrayList<IRoomContent> content = new ArrayList<>();
-
+    // List of all the roomContent in the room
+    private ArrayList<RoomContent> roomContent = new ArrayList<>();
     /**
      * Instantiates a new Room.
      */
@@ -61,22 +62,22 @@ class Room implements dungeonCrawler.aqu.IRoom
             // If the number generated is 0-19 nothing here is added in the roomslot.
             if (randomNumber < 0)
             {
-                content.add(null);
+                roomContent.add(null);
             }
             // MONSTER: If the number generated is 20-49 a monster is added in the roomslot.
             else if (randomNumber < 25)
             {
-                content.add((IRoomContent) MonsterEnum.getRandomMonster());
+                roomContent.add((RoomContent) MonsterEnum.getRandomMonster());
             }
             // CHEST: If the number generated is 50-84 a chest is added in the roomslot.
             else if (randomNumber <= 100)
             {
-                content.add(new Chest());
+                roomContent.add((RoomContent)new Chest());
             }
             // GUIDE: If the number generated is 85-100 a helper is added in the roomslot.
 //            else if (randomNumber <= 100)
 //            {
-//                content.add(new Guide());
+//                roomContent.add(new Guide());
 //            }
         }
     }
@@ -119,21 +120,41 @@ class Room implements dungeonCrawler.aqu.IRoom
      * @param index
      * @return
      */
-    @Override
-    public IRoomContent getContent(int index)
+
+    public RoomContent getContent(int index)
     {
-        return content.get(index);
+        return roomContent.get(index);
     }
 
     /**
-     * // Method for removing content
+     * // Method for removing roomContent
      *
      * @param index
      */
     @Override
     public void removeContent(int index)
     {
-        content.set(index, null);
+        roomContent.set(index, null);
+    }
+
+    public String checkRoomContent(int index)
+    {
+        if (getContent(index) instanceof Monster)
+        {
+            return "Monster";
+        }
+        else if (getContent(index) instanceof Chest)
+        {
+            return "Chest";
+        }
+        else if (getContent(index) instanceof Guide)
+        {
+            return "Guide";
+        }
+        else
+        {
+            return "";
+        }
     }
 
     /**

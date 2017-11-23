@@ -1,4 +1,4 @@
-package dungeonCrawler.presentation;
+package dungeonCrawler.presentationConsole;
 
 /**
  * Enum of all the available commands in the game.

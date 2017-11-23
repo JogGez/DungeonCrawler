@@ -4,7 +4,7 @@ import java.awt.*;
 
 public interface IPlayer
 {
-    IInventory getInventory();
+//    IInventory getInventory();
 
     Point getLocation();
 
@@ -22,11 +22,13 @@ public interface IPlayer
 
     void setScore(int score);
 
-    IWeapon getWeapon();
+//    IWeapon getWeapon();
 
-    void setCurrentWeapon(IWeapon weapon);
+//    void setCurrentWeapon(IWeapon weapon);
 
     int getTime();
 
     void setTime(int time);
+
+    int getInventorySize();
 }

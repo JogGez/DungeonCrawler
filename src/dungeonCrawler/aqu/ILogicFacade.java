@@ -1,7 +1,7 @@
 package dungeonCrawler.aqu;
 
-import dungeonCrawler.logic.Guide;
-import dungeonCrawler.logic.Player;
+import dungeonCrawler.logic.GameText;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,12 +10,12 @@ public interface ILogicFacade
     void injectData(IDataFacade dataLayer);
 
     void createPlayerInstance(String name);
-    IPlayer getPlayerDTO();
+    IPlayer getPlayer();
 
     void createMapInstance();
-    IMap getMapDTO();
+    IMap getMap();
 
-    IBattle doBattle(IMonster monster);
+    void doBattle(int index);
 
     ITimeTracker getTimeTracker(Date date);
 
@@ -26,8 +26,22 @@ public interface ILogicFacade
     ArrayList<IGuide> guideList();
     
     boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player);
-    
-    
 
+    GameText getGameText();
 
+    void injectGameText();
+
+    IRoom getCurrentRoom();
+
+    void saveItemToInventory(int inventoryIndex, int contensIndex);
+
+    int getNumberOfAvailablePotions();
+
+    void usePotion(int index);
+
+    int getNumberOfAvailableKeys();
+
+    void useKey(int index);
+
+    void useItem(int index);
 }

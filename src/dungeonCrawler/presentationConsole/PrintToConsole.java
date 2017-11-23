@@ -1,4 +1,4 @@
-package dungeonCrawler.presentation;
+package dungeonCrawler.presentationConsole;
 
 import dungeonCrawler.aqu.IHighScore;
 

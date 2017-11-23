@@ -1,4 +1,4 @@
-package dungeonCrawler.presentation;
+package dungeonCrawler.presentationConsole;
 
 /**
  * The type Command. Used to hold and evaluate user input

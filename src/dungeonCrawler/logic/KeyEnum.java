@@ -5,7 +5,6 @@
  */
 package dungeonCrawler.logic;
 
-import dungeonCrawler.presentation.ASCII;
 import dungeonCrawler.aqu.IKey;
 import java.util.Random;
 
@@ -15,9 +14,9 @@ import java.util.Random;
  */
 public enum KeyEnum
 {
-    KEY1 (new Key ("The Unicorn Key", "The key to unlock the all locked rooms", ASCII.getUnicorn())),
-    KEY2 (new Key("The Teddybear Key", "The key to unlock all your childhood memories", ASCII.getTeddyBear())),
-    KEY3 (new Key ("The Santa Key", "The key to unlock all the rooms, and whishes", ASCII.getSanta()))
+    KEY1 (new Key ("The Normal Key", "The key to unlock the all locked rooms", GameTextASCII.getKey())),
+    KEY2 (new Key("The Sweet Key", "The key to unlock all your childhood memories", GameTextASCII.getKey2())),
+    KEY3 (new Key ("The Awsome Key", "The key to unlock all the rooms, and whishes", GameTextASCII.getKey3()))
     ;
     
     private final Key key;
@@ -27,12 +26,12 @@ public enum KeyEnum
         this.key = key;
     }
 
-    public IKey getKey()
+    public Key getKey()
     {
         return new Key(key.getName(), key.getDescription(), key.getAscii());
     }
 
-    public static IKey getRandomKey()
+    public static Key getRandomKey()
     {
         Key keyValues = values()[new Random().nextInt(values().length)].key;
         return new Key(keyValues.getName(), keyValues.getDescription(), keyValues.getAscii());

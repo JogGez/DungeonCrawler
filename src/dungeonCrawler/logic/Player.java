@@ -26,8 +26,8 @@ class Player implements dungeonCrawler.aqu.IPlayer
     private String name;
     private int health;
     private int score;
-    private IWeapon weapon;
-    private IInventory inventory;
+    private Weapon weapon;
+    private Inventory inventory;
     private Point location;
     private Point lastLocation;
     private int time;
@@ -55,8 +55,8 @@ class Player implements dungeonCrawler.aqu.IPlayer
      * Method
      * @return inventory
      */
-    @Override
-    public IInventory getInventory()
+
+    public Inventory getInventory()
     {
         return inventory;
     }
@@ -143,8 +143,8 @@ class Player implements dungeonCrawler.aqu.IPlayer
         return score;
     }
 
-    @Override
-    public IWeapon getWeapon()
+
+    public Weapon getWeapon()
     {
         return this.weapon;
     }
@@ -165,8 +165,8 @@ class Player implements dungeonCrawler.aqu.IPlayer
      * Method
      * @param weapon 
      */
-    @Override
-    public void setCurrentWeapon(IWeapon weapon)
+
+    public void setWeapon(Weapon weapon)
     {
         this.weapon = weapon;
     }
@@ -188,5 +188,11 @@ class Player implements dungeonCrawler.aqu.IPlayer
     public void setTime(int time) 
     {
         this.time = time;
+    }
+
+    @Override
+    public int getInventorySize()
+    {
+        return inventory.getSize();
     }
 }

@@ -1,16 +1,16 @@
-package dungeonCrawler.presentation;
+package dungeonCrawler.logic;
 
 
 /**
- * Final class which holds all the ASCII art used in the game.
+ * Final class which holds all the GameTextASCII art used in the game.
  * Made final to prevent extending the class.
  *
  * @author JogGez
  */
-public final class ASCII
+final class GameTextASCII
 {
     // Private constructor to prevent instantiation.
-    private ASCII()
+    private GameTextASCII()
     {
     }
 
@@ -1005,5 +1005,47 @@ public final class ASCII
                 "     `.___.'    " ;
     }
 
+    public static String getKey()
+    {
+        return  "     .--.\n" +
+                "    /.-. '----------.\n" +
+                "    \\'-' .--\"--\"\"-\"-'\n" +
+                "     '--'";
+    }
 
+    public static String getKey2()
+    {
+        return  "     8 8 8 8                     ,ooo.\n" +
+                "     8a8 8a8                    oP   ?b\n" +
+                "    d888a888zzzzzzzzzzzzzzzzzzzz8     8b\n" +
+                "     `\"\"^\"\"'                    ?o___oP'";
+
+    }
+
+
+    public static String getKey3()
+    {
+        return  "\n" +
+                "            xxxxxxx                 mmmmmmmmmmmm               \n" +
+                "           xxx   xxx               mmm        mmm              \n" +
+                "      xxxxxxx     xxxxxxx         mm            mm             \n" +
+                "      xx   xxx   xxx   xx         mm            mm             \n" +
+                "     xx     xxxxxxx     xx       mm              mm            \n" +
+                "      xx   xxxxxxxxx   xx        mm              mm            \n" +
+                "       xxxxx xxxxx xxxxx         mm              mm            \n" +
+                "             xxxxx               mm              mm            \n" +
+                "             xxxxx              UUUUUUUUUUUUUUUUUUUU           \n" +
+                "             xxxxx              UUUUUUUUUUUUUUUUUUUU           \n" +
+                "             xxxxx              UUUUUUUUU   UUUUUUUU           \n" +
+                "             xxxxx              UUUUUUUU     UUUUUUU           \n" +
+                "             xxxxx              UUUUUUUUU   UUUUUUUU           \n" +
+                "             xxxxx               UUUUUUUI   IUUUUUU            \n" +
+                "             xxxxx               UUUUUUUI   IUUUUUU            \n" +
+                "          xxxxxxxx                UUUUUUUuuuUUUUUU             \n" +
+                "          xxxxxxxx                 UUUUUUUUUUUUUU              \n" +
+                "             xxxxx                                             \n" +
+                "          xxxxxxxx                                             \n" +
+                "          xxxxxxxx                                             \n" +
+                "             xxxxx  ";
+    }
 }

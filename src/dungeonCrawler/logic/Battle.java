@@ -11,20 +11,18 @@ class Battle implements dungeonCrawler.aqu.IBattle
 {
     // Declare datafields, with no value, with private access modifieres
     // Reference datatypes of the objects. 
-    private IPlayer player;
-    private IMonster monster;
+    private Player player;
+    private Monster monster;
     private boolean isBattleOver; // Allocates memory storage, primitive datatype
 
     
-    //Constructor: set values for player, and mosnter, and isBattleOver.
-    public Battle(IPlayer player, IMonster monster)
+    //Constructor: set values for player, and monster, and isBattleOver.
+    public Battle(Player player, Monster monster)
     {
-        // Initializing (gives value to) private fields (contrsuctor parameter) 
+        // Initializing (gives value to) private fields (constructor parameter)
         this.player = player;
         this.monster = monster;
         this.isBattleOver = false;
-
-
     }
     
     // Getter method for isBattleOver
@@ -65,6 +63,4 @@ class Battle implements dungeonCrawler.aqu.IBattle
         return "Monster lost " + playerHit + "hp and currently has " + monster.getHealth() + "hp left \n" +
                 "You lost " + monsterHit + "hp and currently have " + player.getHealth() + "hp left \n";
     }
-    
- 
 }

@@ -16,17 +16,10 @@ import java.util.ArrayList;
  */
 class Key extends Item implements dungeonCrawler.aqu.IKey
 {
-           
     public Key (String name, String description, String ascii)
     {
-
         this.setName(name);
         this.setDescription(description);
         this.setAscii(ascii);
-        
-    }   
-    
-    
-   
-    
+    }
 }

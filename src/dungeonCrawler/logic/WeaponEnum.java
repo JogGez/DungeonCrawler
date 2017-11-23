@@ -1,7 +1,6 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IWeapon;
-import dungeonCrawler.presentation.ASCII;
 
 import java.util.Random;
 
@@ -11,13 +10,13 @@ import java.util.Random;
  */
 public enum WeaponEnum
 {
-    EXCALIBUR (new Weapon("Excalibur", "The Sword of King Arthur", ASCII.getSword(), 1000, 1000)),
-    DURANDAL ( new Weapon("Durandal", "Sword of Roland, legendary paladin of Charlemagne", ASCII.getSword(), 100, 15 )),
-    LEGBITER ( new Weapon("Legbiter", "The Sword of Viking King Magnus III", ASCII.getSword(), 150, 5)),
-    THE_HOLY_LANCE (new Weapon("The Holy Lance", "Also known as the Spear of Destiny and the Lance of Longinus, was the spear that allegedly pierced the side of Jesus during the crucifixion. ", ASCII.getSword(), 500, 1500)),
-    GOUJIAN(new Weapon("Goujian", "Emperor Goujian, King of Yue States Sword", ASCII.getSword(), 75, 15)),
-    MJÖLNIR (new Weapon("Mjölnir", "The Mighty Hammer of Thor", ASCII.getSword(), 250, 100)),
-    FLOPPY_FISH (new Weapon("Floppy Fish", "Floppy Fish from the sea :(", ASCII.getSword(), 1, 0))
+    EXCALIBUR (new Weapon("Excalibur", "The Sword of King Arthur", GameTextASCII.getSword(), 1000, 1000)),
+    DURANDAL ( new Weapon("Durandal", "Sword of Roland, legendary paladin of Charlemagne", GameTextASCII.getSword(), 100, 15 )),
+    LEGBITER ( new Weapon("Legbiter", "The Sword of Viking King Magnus III", GameTextASCII.getSword(), 150, 5)),
+    THE_HOLY_LANCE (new Weapon("The Holy Lance", "Also known as the Spear of Destiny and the Lance of Longinus, was the spear that allegedly pierced the side of Jesus during the crucifixion. ", GameTextASCII.getSword(), 500, 1500)),
+    GOUJIAN(new Weapon("Goujian", "Emperor Goujian, King of Yue States Sword", GameTextASCII.getSword(), 75, 15)),
+    MJÖLNIR (new Weapon("Mjölnir", "The Mighty Hammer of Thor", GameTextASCII.getSword(), 250, 100)),
+    FLOPPY_FISH (new Weapon("Floppy Fish", "Floppy Fish from the sea :(", GameTextASCII.getSword(), 1, 0))
     ;
     
     private final Weapon weapon;
@@ -35,7 +34,7 @@ public enum WeaponEnum
      * 
      * @return object
      */
-    public IWeapon getWeapon()
+    public Weapon getWeapon()
     {
         return new Weapon(weapon.getName(), weapon.getDescription(), weapon.getAscii(), weapon.getPower(), weapon.getMultiplier());
     }
@@ -44,7 +43,7 @@ public enum WeaponEnum
      * 
      * @return random weapon
      */
-    public static IWeapon getRandomWeapon()
+    public static Weapon getRandomWeapon()
     {
         //Creates a reference to weapon w. 
         // Contains a random guide from the enum.
