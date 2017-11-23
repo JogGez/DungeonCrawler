@@ -3,7 +3,9 @@ package dungeonCrawler.logic;
 import dungeonCrawler.aqu.IGuide;
 import dungeonCrawler.aqu.IPlayer;
 
+import javax.print.attribute.standard.PrinterURI;
 import java.awt.*;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -22,7 +24,58 @@ class Map implements dungeonCrawler.aqu.IMap
     private ArrayList<Guide> guideList;
     private int numberOfGuides;
     private int numberOfContent;
+    private Player player;
 
+
+    /**
+     * Contructor Map
+     */
+    public Map(Player player)
+    {
+        // Initializing (gives value to) private fields (constructor parameter)
+        this.width = GameConstants.getMapSize().x;
+        this.height = GameConstants.getMapSize().y;
+        this.numberOfGuides = GameConstants.getMovingGuides();
+        this.numberOfContent = GameConstants.getRoomContents();
+        this.player = player;
+
+        //Instantiate a ArrayList, allocates the ArrayList.
+        roomList = new ArrayList<>();
+        guideList = new ArrayList<>();
+        for (int x = 0; x < numberOfGuides; x++)
+        {
+            Guide guide = GuideEnum.getRandomGuide();
+            guide.setRandomLocation(new Point(width, height));
+
+            guideList.add(guide);
+        }
+        // Controls how many locked we are gonna have. (2 rooms are locked, cannot be the same)
+        int[] lockedRooms = new Random().ints(1, width * height).distinct().limit(GameConstants.getLockedRooms()).toArray();
+        int roomNumber = 0;
+
+
+        //Creates the coordinate system of the rooms.
+        for (int x = 0; x < width; x++) // Runs through the width.
+        {
+            for (int y = 0; y < height; y++)// runs through the height.
+            {
+                boolean locked = false;
+                int finalRoomNumber = roomNumber;
+                if (IntStream.of(lockedRooms).anyMatch(z -> z == finalRoomNumber))
+                {
+                    locked = true;
+                }
+                //RoomStrings, is a String array, that collects the name and description from the RoomEnum.
+                String[] roomStrings = RoomEnum.getRandomString();
+
+                //
+                // Constructoren if the room should be locked or not, the last param (locked)
+                roomList.add(new Room(new Point(x, y), numberOfContent, roomStrings[0], roomStrings[1], locked));//Point class in Java.
+                roomNumber++;
+            }
+        }
+
+    }
 
     /**
      * Getter method for Height
@@ -53,54 +106,6 @@ class Map implements dungeonCrawler.aqu.IMap
     public int getNumberOfContent()
     {
         return numberOfContent;
-    }
-
-    /**
-     * Contructor Map
-     */
-    public Map()
-    {
-        // Initializing (gives value to) private fields (constructor parameter)
-        this.width = GameConstants.getMapSize().x;
-        this.height = GameConstants.getMapSize().y;
-        this.numberOfGuides = GameConstants.getMovingGuides();
-        this.numberOfContent = GameConstants.getRoomContents();
-
-        //Instantiate a ArrayList, allocates the ArrayList.
-        roomList = new ArrayList<>();
-        guideList = new ArrayList<>();
-        for (int x = 0; x < numberOfGuides; x++)
-        {
-            Guide guide = GuideEnum.getRandomGuide();
-            guide.setRandomLocation(new Point(width, height));
-
-            guideList.add(guide);
-        }
-        // Controls how many locked we are gonna have. (2 rooms are locked, cannot be the same) 
-        int[] lockedRooms = new Random().ints(1, width * height).distinct().limit(GameConstants.getLockedRooms()).toArray();
-        int roomNumber = 0;
-
-
-        //Creates the coordinate system of the rooms. 
-        for (int x = 0; x < width; x++) // Runs through the width.
-        {
-            for (int y = 0; y < height; y++)// runs through the height.
-            {
-                boolean locked = false;
-                int finalRoomNumber = roomNumber;
-                if (IntStream.of(lockedRooms).anyMatch(z -> z == finalRoomNumber))
-                {
-                    locked = true;
-                }
-                //RoomStrings, is a String array, that collects the name and description from the RoomEnum.
-                String[] roomStrings = RoomEnum.getRandomString();
-
-                // Constructoren if the room should be locked or not, the last param (locked)
-                roomList.add(new Room(new Point(x, y), numberOfContent, roomStrings[0], roomStrings[1], locked));//Point class in Java.
-                roomNumber++;
-            }
-        }
-
     }
 
     /**
@@ -171,7 +176,7 @@ class Map implements dungeonCrawler.aqu.IMap
      *
      * @return ArrayList
      */
-    @Override
+//    @Override
     public ArrayList<Room> getRoomList()
     {
         return roomList;
@@ -191,12 +196,6 @@ class Map implements dungeonCrawler.aqu.IMap
         return numberOfRoomsEntered;
     }
 
-    public ArrayList<Guide> getGuideList()
-    {
-        return guideList;
-    }
-
-
     @Override
     public boolean isRoomLocked(Point checkPoint)
     {
@@ -210,7 +209,7 @@ class Map implements dungeonCrawler.aqu.IMap
         return false;
 
     }
-    
+
     @Override
     public void guideMove()
     {
@@ -242,11 +241,49 @@ class Map implements dungeonCrawler.aqu.IMap
 
             //Checks if player and guide is in the same room
             guide.move(exitList);
-            
+
         }
     }
     
-    
+    @Override
+    public boolean hasAllRoomBeenEntered()
+    {
+        return numberOfEnteredRooms() == roomList.size();
+    }
+
+    @Override
+    public String checkRoomContent(int index)
+    {
+        for (Room room : roomList)
+        {
+            if (player.getLocation().equals(room.getLocation()))
+            {
+                if (room.getContent(index) instanceof Monster)
+                {
+                    return "Monster";
+                }
+                else if (room.getContent(index) instanceof Chest)
+                {
+                    return "Chest";
+                }
+                else if (room.getContent(index) instanceof Guide)
+                {
+                    return "Guide";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+        return "";
+    }
+
+    public ArrayList<Guide> getGuideList()
+    {
+        return guideList;
+    }
+
     public boolean guideAndPlayerSameRoom(Guide guide, Player player)
     {
         if (guide.getLocation().equals(player.getLocation()))
@@ -257,25 +294,37 @@ class Map implements dungeonCrawler.aqu.IMap
     }
     
     
-    public boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player)
+    public boolean guideAndPlayerSameRoom()
     {
-        if (guide.getLocation().equals(player.getLocation()))
+        for (Guide guide : guideList)
         {
-            return true;
+            if (guide.getLocation().equals(player.getLocation()))
+            {
+                return true;
+            }
         }
+
         return false;
     }
         
     public void unlockRoom(Point playerLocation)
     {
+        getCurrentRoom().setLocked(false);
+    }
+
+    public Room getCurrentRoom()
+    {
         for (Room room : roomList)
         {
-            if (room.getLocation().x == playerLocation.x && room.getLocation().y == playerLocation.y)
+            if (room.getLocation().equals(player.getLocation()))
             {
-                room.setIsLocked(false);
+                return room;
             }
         }
+        return new Room(new Point(0, 0), 0, "Empty", "none", false);
+
     }
+
 
 }
 

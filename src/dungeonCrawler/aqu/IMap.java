@@ -17,12 +17,15 @@ public interface IMap
 
     boolean getRoomHasBeenEntered(Point p);
 
-    ArrayList<IRoom> getRoomList();
+//    ArrayList<IRoom> getRoomList();
 
     int numberOfEnteredRooms();
 
     boolean isRoomLocked(Point checkPoint);
     
     void guideMove();
-    
+
+    boolean hasAllRoomBeenEntered();
+
+    String checkRoomContent(int index);
 }

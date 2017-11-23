@@ -13,25 +13,22 @@ import java.util.Arrays;
  */
 class Inventory implements dungeonCrawler.aqu.IInventory
 {
-    IItem[] items;
+    Item[] items;
  /**
  * 
  * @param size 
  */
     public Inventory(int size)
     {
-        this.items = new IItem[size];
-        
-        
-        
+        this.items = new Item[size];
     }
 /**
  * 
  * @param item
  * @param index 
  */
-    @Override
-    public void addItem(IItem item, int index)
+
+    public void addItem(Item item, int index)
     {
         items[index] = item;
     }
@@ -40,8 +37,8 @@ class Inventory implements dungeonCrawler.aqu.IInventory
  * @param index
  * @return 
  */
-    @Override
-    public IItem getItem(int index)
+
+    public Item getItem(int index)
     {
         return items[index];
     }
@@ -50,8 +47,8 @@ class Inventory implements dungeonCrawler.aqu.IInventory
  * @param item
  * @return 
  */
-    @Override
-    public int getItemIndex(IItem item)
+
+    public int getItemIndex(Item item)
     {
         return Arrays.asList(items).indexOf(item);
     }
@@ -69,18 +66,16 @@ class Inventory implements dungeonCrawler.aqu.IInventory
  * Method that creats a empty array, and adds our potions. 
  * @return ArrayList with potions
  */
-    @Override
-    public ArrayList<IPotion> potionArrayList()
+    public ArrayList<Potion> potionArrayList()
     {
-        ArrayList<IPotion> availablePotions = new ArrayList<>();
+        ArrayList<Potion> availablePotions = new ArrayList<>();
 
         for (int i = 0; i < items.length; i++)
         {
             // Controls if its a weapon or potions in our Items
             if (items[i] instanceof Potion)
             {
-                availablePotions.add((IPotion)items[i]);
-
+                availablePotions.add((Potion)items[i]);
             }
         }
 
@@ -97,16 +92,16 @@ class Inventory implements dungeonCrawler.aqu.IInventory
         return items.length;
     }
     
-     public ArrayList<IKey> KeyArrayList()
+     public ArrayList<Key> keyArrayList()
     {
-        ArrayList<IKey> availableKeys = new ArrayList<>();
+        ArrayList<Key> availableKeys = new ArrayList<>();
 
         for (int i = 0; i < items.length; i++)
         {
             // Controls if its a weapon or potions in our Items
             if (items[i] instanceof Key)
             {
-                availableKeys.add((IKey)items[i]);
+                availableKeys.add((Key)items[i]);
             }
         }
 

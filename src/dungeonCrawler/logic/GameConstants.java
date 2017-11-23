@@ -22,17 +22,14 @@ class GameConstants
     private static int playerTime = 500;
     private static int playerPower = 50;
     private static int movingGuides = 2;
+    private static int lockedRooms = 2;
 
     public static int getLockedRooms()
     {
         return lockedRooms;
     }
 
-    private static int lockedRooms = 2;
-
-    
-    
-     public static void setEasyLevel()
+    public static void setEasyLevel()
     {
        mapSize = new Point (3,4);
        roomContents = 2;
@@ -41,6 +38,7 @@ class GameConstants
        playerTime = 200;
        playerPower = 100;
        movingGuides = 2;
+       lockedRooms = 2;
     }
 
     public static Point getMapSize()
@@ -48,19 +46,9 @@ class GameConstants
         return mapSize;
     }
 
-    public static void setMapSize(Point mapSize)
-    {
-        GameConstants.mapSize = mapSize;
-    }
-
     public static int getRoomContents()
     {
         return roomContents;
-    }
-
-    public static void setRoomContents(int roomContents)
-    {
-        GameConstants.roomContents = roomContents;
     }
 
     public static int getPlayerHealth()
@@ -68,19 +56,9 @@ class GameConstants
         return playerHealth;
     }
 
-    public static void setPlayerHealth(int playerHealth)
-    {
-        GameConstants.playerHealth = playerHealth;
-    }
-
     public static int getInventorySize()
     {
         return inventorySize;
-    }
-
-    public static void setInventorySize(int inventorySize)
-    {
-        GameConstants.inventorySize = inventorySize;
     }
 
     public static int getPlayerTime()
@@ -88,29 +66,14 @@ class GameConstants
         return playerTime;
     }
 
-    public static void setPlayerTime(int timeAmount)
-    {
-        GameConstants.playerTime = timeAmount;
-    }
-
     public static int getPlayerPower()
     {
         return playerPower;
     }
 
-    public static void setPlayerPower(int playerPower)
-    {
-        GameConstants.playerPower = playerPower;
-    }
-     
-   public static int getMovingGuides()
+    public static int getMovingGuides()
     {
         return movingGuides;
     }
 
-    public static void setMovingGuides(int movingGuides)
-    {
-        GameConstants.movingGuides = movingGuides;
-    }
-            
 }

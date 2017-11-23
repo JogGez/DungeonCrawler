@@ -4,17 +4,15 @@ import java.util.ArrayList;
 
 public interface IInventory
 {
-    void addItem(IItem item, int index);
+//    void addItem(IItem item, int index);
 
-    IItem getItem(int index);
-
-    int getItemIndex(IItem item);
+//    int getItemIndex(IItem item);
 
     void removeItem(int index);
 
-    ArrayList<IPotion> potionArrayList();
-    
-    ArrayList<IKey> KeyArrayList();
+//    ArrayList<IPotion> potionArrayList();
+//
+//    ArrayList<IKey> keyArrayList();
 
     int getSize();
 }

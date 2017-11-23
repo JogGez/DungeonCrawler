@@ -1,4 +1,4 @@
-package dungeonCrawler.presentation;
+package dungeonCrawler.presentationConsole;
 
 import java.util.Scanner;
 

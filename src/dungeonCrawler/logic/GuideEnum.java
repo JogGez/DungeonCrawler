@@ -1,9 +1,5 @@
 package dungeonCrawler.logic;
 
-import dungeonCrawler.aqu.IGuide;
-import dungeonCrawler.presentation.ASCII;
-
-import java.awt.*;
 import java.util.Random;
 
 /**
@@ -13,9 +9,9 @@ import java.util.Random;
 enum GuideEnum
 {
     // TODO tiløje flere guides. 
-    BUDDHA ( new Guide("Buddha", "The chubby and kind spiritual guide", ASCII.getBuddha())),
-    JESUS (new Guide("Jesus", "The mighty son of God", ASCII.getJesus()) ),
-    BABAR (new Guide("Babar", "The real jungle king", ASCII.getBabar()))
+    BUDDHA ( new Guide("Buddha", "The chubby and kind spiritual guide", GameTextASCII.getBuddha())),
+    JESUS (new Guide("Jesus", "The mighty son of God", GameTextASCII.getJesus()) ),
+    BABAR (new Guide("Babar", "The real jungle king", GameTextASCII.getBabar()))
     ;
    
     private final Guide guide;

@@ -110,7 +110,7 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide
     }
 
     /**
-     * gets ASCII
+     * gets GameTextASCII
      *
      * @return String
      */

@@ -6,7 +6,7 @@ import dungeonCrawler.aqu.IGame;
 import dungeonCrawler.aqu.ILogicFacade;
 import dungeonCrawler.data.DataFacade;
 import dungeonCrawler.logic.LogicFacade;
-import dungeonCrawler.presentation.Game;
+import dungeonCrawler.presentationConsole.Game;
 
 /**
  * The type Main.
@@ -20,7 +20,6 @@ public class Main
      */
     public static void main(String[] args)
     {
-
         ILogicFacade logic = new LogicFacade();
         IDataFacade data = new DataFacade();
         logic.injectData(data);

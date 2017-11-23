@@ -5,17 +5,14 @@
  */
 package dungeonCrawler.logic;
 
-import dungeonCrawler.aqu.IItem;
-import dungeonCrawler.aqu.IRoomContent;
-
 /**
  * The type Chest.
  *
  * @author Frederik
  */
-class Chest implements IRoomContent, dungeonCrawler.aqu.IChest
+class Chest implements RoomContent, dungeonCrawler.aqu.IChest
 {
-    IItem item;
+    Item item;
 
     public Chest()
     {
@@ -23,7 +20,7 @@ class Chest implements IRoomContent, dungeonCrawler.aqu.IChest
     }
 
     @Override
-    public IItem getItem()
+    public Item getItem()
     {
         return item;
     }
