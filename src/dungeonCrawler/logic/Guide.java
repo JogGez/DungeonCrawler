@@ -1,5 +1,6 @@
 package dungeonCrawler.logic;
 
+import dungeonCrawler.aqu.IGuide;
 import dungeonCrawler.aqu.IRoomContent;
 
 import java.awt.*;
@@ -119,4 +120,31 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide
         return ascii;
     }
 
-}
+    public void guideMove()
+    {
+        for (IGuide guide : logic.guideList())
+        {
+            ArrayList<String> exitList = new ArrayList<>();
+
+            if (map.roomExists(new Point(guide.getLocation().x - 1, guide.getLocation().y)))
+            {
+                exitList.add("left");
+            }
+
+            if (map.roomExists(new Point(guide.getLocation().x + 1, guide.getLocation().y)))
+            {
+                exitList.add("right");
+            }
+
+            if (map.roomExists(new Point(guide.getLocation().x, guide.getLocation().y + 1)))
+            {
+                exitList.add("up");
+            }
+
+            if (map.roomExists(new Point(guide.getLocation().x, guide.getLocation().y - 1)))
+            {
+                exitList.add("down");
+            }
+
+
+        }
