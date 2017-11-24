@@ -23,6 +23,8 @@ public class ControllerStartScreen
     private Button btnHighscore;
     @FXML
     private Button btnExit;
+    @FXML
+    private Button btnLoad;
 
     @FXML
     public void handlePlay(ActionEvent actionEvent)
@@ -52,5 +54,24 @@ public class ControllerStartScreen
     private void handleExit(ActionEvent event) 
     {
         Platform.exit();
+    }
+
+    @FXML
+    private void handleLoadGame(ActionEvent event) throws IOException 
+    {
+              FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("LoadGameScreen.fxml"));
+
+
+        AnchorPane anchorPane = loader.load();
+
+        ControllerLoadGameScreen controllerLoadGameScreen = loader.getController();
+        Scene scene2 = new Scene(anchorPane);
+        //Get Stage information
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
+
     }
 }
