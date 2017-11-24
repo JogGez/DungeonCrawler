@@ -10,14 +10,26 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 public class ControllerStartScreen
 {
 
+    @FXML
+    private Button btnPlay;
+    @FXML
+    private Button btnHighscore;
+    @FXML
+    private Button btnExit;
+
+    @FXML
     public void handlePlay(ActionEvent actionEvent)
     {
     }
 
+    @FXML
     public void handleHighscore(ActionEvent actionEvent) throws IOException
     {
         FXMLLoader loader = new FXMLLoader();
@@ -34,5 +46,11 @@ public class ControllerStartScreen
         window.setScene(scene2);
         window.show();
 
+    }
+
+    @FXML
+    private void handleExit(ActionEvent event) 
+    {
+        Platform.exit();
     }
 }
