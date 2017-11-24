@@ -27,8 +27,22 @@ public class ControllerStartScreen
     private Button btnLoad;
 
     @FXML
-    public void handlePlay(ActionEvent actionEvent)
+    public void handlePlay(ActionEvent actionEvent) throws IOException
     {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("DifficultyScreen.fxml"));
+
+
+        AnchorPane anchorPane = loader.load();
+
+        ControllerDifficultyScreen controllerDifficultyScreen = loader.getController();
+        Scene scene2 = new Scene(anchorPane);
+        //Get Stage information
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
+
     }
 
     @FXML

@@ -13,7 +13,7 @@ public class Game extends Application
     public void start(Stage primaryStage) throws Exception
     {
         Parent root = FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Dungeon Crawler beta v. 1.0");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
