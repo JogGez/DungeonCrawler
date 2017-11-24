@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * Class used to get the game running.
- *
+ *HEJ
  * @author JogGez
  * @version 1.0
  * @since 2017-09-22
