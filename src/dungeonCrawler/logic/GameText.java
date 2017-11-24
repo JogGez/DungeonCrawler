@@ -343,7 +343,7 @@ public class GameText
         return "attack or drink potion";
     }
 
-    public String getBattle(Battle battle)
+    public String getBattle(IBattle battle)
     {
         return battle.start();
     }

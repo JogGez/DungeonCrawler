@@ -17,6 +17,8 @@ public interface ILogicFacade
 
     void doBattle(int index);
 
+    void doBattle(IMonster monster);
+
     ITimeTracker getTimeTracker(Date date);
 
     IMonster getLucifer();

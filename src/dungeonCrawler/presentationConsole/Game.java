@@ -387,29 +387,30 @@ public class Game implements IGame
 
     public void useSlot(int index)
     {
-        IItem item = player.getInventory().getItem(index);
-
-        if (item instanceof IWeapon)
-        {
-            player.setCurrentWeapon((IWeapon) item);
-            //Prints "Your current weapon is now: " + player.getCurrentWeapon().name
-            printToConsole.print(gameText.getSetCurrentWeapon());
-        }
-        else if (item instanceof IPotion)
-        {
-            player.setHealth(player.getHealth() + ((IPotion) item).getHealthRecovery());
-            player.getInventory().removeItem(player.getInventory().getItemIndex(item));
-            player.setTime(player.getTime() + ((IPotion) item).getTimeRecovery());
-            //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
-            printToConsole.print(gameText.getPlayerHealth(player));
-            // Prints "Your time is now: " + player.getTime() + "sec"
-            printToConsole.print(gameText.getPlayerTime(timeTracker));
-        }
-        else
-        {
-            //Prints "Slot is empty."
-            printToConsole.print(gameText.getSlotIsEmpty());
-        }
+//        IItem item = player.getInventory().getItem(index);
+//
+//        if (item instanceof IWeapon)
+//        {
+//            player.setCurrentWeapon((IWeapon) item);
+//            //Prints "Your current weapon is now: " + player.getCurrentWeapon().name
+//            printToConsole.print(gameText.getSetCurrentWeapon());
+//        }
+//        else if (item instanceof IPotion)
+//        {
+//            player.setHealth(player.getHealth() + ((IPotion) item).getHealthRecovery());
+//            logic
+//            player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+//            player.setTime(player.getTime() + ((IPotion) item).getTimeRecovery());
+//            //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
+//            printToConsole.print(gameText.getPlayerHealth(player));
+//            // Prints "Your time is now: " + player.getTime() + "sec"
+//            printToConsole.print(gameText.getPlayerTime(timeTracker));
+//        }
+//        else
+//        {
+//            //Prints "Slot is empty."
+//            printToConsole.print(gameText.getSlotIsEmpty());
+//        }
     }
 
     /**
@@ -980,7 +981,7 @@ public class Game implements IGame
 //        printToConsole.print(gameText.getContentInfo(lucifer));
         printToConsole.print(gameText.getPlayerInfo());
         printToConsole.print(gameText.getAttackOrDrinkPotion());
-        IBattle battle = logic.doBattle(lucifer);
+        logic.doBattle(lucifer);
         //IBattle battle = new Battle(player, lucifer);
 
         while (!battle.getIsBattleOver())
@@ -993,7 +994,7 @@ public class Game implements IGame
             if (input.toLowerCase().contains("attack") || input.toLowerCase().contains("a"))
             {
                 //Prints status of battle
-                printToConsole.print(gameText.getBattle(battle));
+                printToConsole.print(gameText.getBattle( battle));
             }
             else if (input.toLowerCase().contains("drink"))
             {
