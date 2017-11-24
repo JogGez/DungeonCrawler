@@ -10,10 +10,16 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
 {
     IDataFacade data;
     Player player;
+    IInventory inventory;
     Map map;
     GameText gameText;
-    Battle battle;
+    IBattle battle;
     IHighScore highScore;
+
+    public LogicFacade()
+    {
+
+    }
 
     @Override
     public void injectData(IDataFacade dataLayer)
@@ -38,7 +44,7 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     {
         if (player != null)
         {
-            this.map = new Map(player);
+            this.map = new Map((Player)player);
         }
         else
         {
@@ -56,6 +62,12 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     public void doBattle(int index)
     {
         battle = new Battle(player, (Monster) map.getCurrentRoom().getContent(index));
+    }
+
+    @Override
+    public void doBattle(IMonster monster)
+    {
+        battle = new Battle((Player) player, (Monster)monster);
     }
 
     @Override

@@ -312,6 +312,7 @@ class Map implements dungeonCrawler.aqu.IMap
         getCurrentRoom().setLocked(false);
     }
 
+    @Override
     public Room getCurrentRoom()
     {
         for (Room room : roomList)

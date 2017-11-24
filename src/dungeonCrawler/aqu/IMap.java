@@ -1,5 +1,7 @@
 package dungeonCrawler.aqu;
 
+
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -28,4 +30,6 @@ public interface IMap
     boolean hasAllRoomBeenEntered();
 
     String checkRoomContent(int index);
+
+    IRoom getCurrentRoom();
 }
