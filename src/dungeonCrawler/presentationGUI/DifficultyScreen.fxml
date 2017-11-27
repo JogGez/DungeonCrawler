@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="dungeonCrawler.presentationGUI.ControllerDifficultyScreen">
+   <children>
+      <Button fx:id="btnEasy" layoutX="274.0" layoutY="139.0" mnemonicParsing="false" text="Easy" />
+      <Button fx:id="btnNormal" layoutX="274.0" layoutY="188.0" mnemonicParsing="false" text="Normal" />
+      <Button fx:id="btnHard" layoutX="274.0" layoutY="244.0" mnemonicParsing="false" text="Hard" />
+      <Button fx:id="btnBack" layoutX="38.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
+   </children>
+</AnchorPane>
