@@ -50,9 +50,9 @@ public class Game implements IGame
 
     /**
      * Start menu
-     * Used to call method to start game + Show start logo + Print welcome menu
+ Used to call method to begin game + Show begin logo + Print welcome menu
      */
-    public void start()
+    public void begin()
     {
         gameText = logic.getGameText();
         //Prints welcome logo and welcome text
@@ -72,9 +72,25 @@ public class Game implements IGame
         printToConsole.print(gameText.getEnterPlayerName());
 
         // Instantiating player and initiating name
-
+        
+        // Checks if the player name is longer than 10 characters. 
+        String playerName = "";
+        while(true)
+        {
+            playerName = parser.getUserInput();
+            if (playerName.length()<=10)
+            {
+                break;
+            }
+            else
+            {
+                printToConsole.print(gameText.getWrongPlayerNameLength());
+            }   
+        }
         //player = new Player(parser.getUserInput());
-        player = logic.createPlayerInstance(parser.getUserInput());
+        player = logic.createPlayerInstance(playerName);
+        
+        // Creats the map instance in logic.facade, and sends the reference back to here. 
         map = logic.createMapInstance();
 
         logic.injectGameText();
@@ -93,7 +109,7 @@ public class Game implements IGame
             }
             else
             {
-                //Prints "Type \"enter\" to start the game."
+                //Prints "Type \"enter\" to begin the game."
                 printToConsole.print(gameText.getEnterToStartGame());
             }
 

@@ -18,7 +18,9 @@ public class Game extends Application
         primaryStage.show();
     }
 
-    public void play()
+    // Skal ændres, skal laves om til det samme som vores start i consoleGame. 
+    //Må ikke være begin eller start. 
+    public void begin()
     {
         launch();
     }

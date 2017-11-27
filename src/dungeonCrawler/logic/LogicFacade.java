@@ -90,20 +90,13 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
         return highScore;
     }
 
-//    @Override
-//    public ArrayList<IGuide> guideList()
-//    {
-//        ArrayList<? extends IGuide> guides = map.getGuideList();
-//        return (ArrayList<IGuide>) guides;
-//    }
-
     @Override
     public boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player)
     {
         return false;
     }
 
-    //TODO 
+    //TODO Skal ikke være her
     boolean guideAndPlayerSameRoom()
     {
         return guideAndPlayerSameRoom();
@@ -121,23 +114,28 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
         gameText.injectVariables(player,map);
     }
 
+    // TODO Skal heller ikke være her
     public IRoom getCurrentRoom()
     {
         return map.getCurrentRoom();
     }
 
+    // Skal heller ikke være her. Kun dem du sender, modtager og instantiere referencer i Facaden. 
     public void saveItemToInventory(int inventoryIndex, int contensIndex)
     {
         Chest chest = (Chest)(map.getCurrentRoom().getContent(contensIndex));
         player.getInventory().addItem(chest.getItem(),inventoryIndex);
     }
 
+    //TODO Skal ikke være her
+    // Kun fåes igennem vores inevntory, igen grund til metoder i facade klassen. 
     @Override
     public int getNumberOfAvailablePotions()
     {
         return player.getInventory().potionArrayList().size();
     }
 
+    // Bliver ikke brugt ?? 
     @Override
     public void usePotion(int index)
     {
@@ -146,6 +144,7 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
         player.getInventory().removeItem(player.getInventory().getItemIndex((IItem) player.getInventory().potionArrayList().get(index)));
     }
 
+    //Flyttet ud til de klasser der har betydning. (i inventory klassen)
     @Override
     public int getNumberOfAvailableKeys()
     {

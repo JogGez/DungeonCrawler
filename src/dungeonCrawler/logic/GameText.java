@@ -635,4 +635,9 @@ public class GameText
     {
         return "You found a thief and for his crime you set him free...";
     }
+    
+    public String getWrongPlayerNameLength()
+    {
+        return  "Name is too long, must be under 10 characters...";
+    }
 }
