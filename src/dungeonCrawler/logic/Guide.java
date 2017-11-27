@@ -34,7 +34,7 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide {
         this.ascii = ascii;
         this.description = description;
         this.location = new Point(0, 0);
-        this.item = Item.getRandomItem();
+        this.item = Item.getKey();
     }
 
     /**

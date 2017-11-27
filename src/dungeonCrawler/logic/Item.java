@@ -46,8 +46,7 @@ abstract class Item implements dungeonCrawler.aqu.IItem
     {
         this.ascii = ascii;
     }
-
-
+    
     static Item getRandomItem()
     {
         int randomItem = (int)(Math.random()*100);
@@ -69,5 +68,11 @@ abstract class Item implements dungeonCrawler.aqu.IItem
             return KeyEnum.getRandomKey();
         }
 
+    }
+    
+    // Method, because future more items, future-proof. 
+    static Item getKey()
+    {
+        return KeyEnum.getRandomKey();
     }
 }

@@ -664,7 +664,7 @@ public class Game implements IGame
                     String input = parser.getUserInput();
                     if (input.equals("open") || input.equals("o"))
                     {
-
+                        // TODO SKAL LAVES RIMLIG GODT OM
                         printToConsole.print(gameText.getItemInfo("chest",i));
 
                         printToConsole.print(gameText.getShowInventory());
@@ -697,13 +697,13 @@ public class Game implements IGame
                         for (int j = 0; j < player.getInventorySize(); j++)
                         {
 
-                            // If the players input is equal to j(+1 because array starts at 0), it will add the item to our designated slot.
+                            // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
                             if (input.equals(String.valueOf(j + 1)))
                             {
                                 logic.saveItemToInventory(j,i);
-//                                player.getInventory().addItem(item, j);
+//                                player.getInventory().addItem(item, i);
 
-                                //Prints "You saved this inventoriesItem in slot: " + (j+1)
+                                //Prints "You saved this inventoriesItem in slot: " + (i+1)
                                 printToConsole.print(gameText.getYouSavedItemInThisSlot(j));
                             }
                         }
@@ -902,11 +902,11 @@ public class Game implements IGame
 //
 //
 //                                    //Checks amount of inventory slots.
-//                                    for (int j = 0; j < player.getInventory().getSize(); j++)
+//                                    for (int i = 0; i < player.getInventory().getSize(); i++)
 //                                    {
 //
 //                                        //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
-//                                        if (Integer.toString(j + 1).equals(input) || input.equals("d") || input.equals("drop"))
+//                                        if (Integer.toString(i + 1).equals(input) || input.equals("d") || input.equals("drop"))
 //                                        {
 //                                            chestInput = true;
 //                                        }
@@ -915,16 +915,16 @@ public class Game implements IGame
 //                                }
 //
 //                                //Checks through the players inventory
-//                                for (int j = 0; j < player.getInventory().getSize(); j++)
+//                                for (int i = 0; i < player.getInventory().getSize(); i++)
 //                                {
 //
-//                                    // If the players input is equal to j(+1 because array starts at 0), it will add the item to our designated slot.
-//                                    if (input.equals(String.valueOf(j + 1)))
+//                                    // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
+//                                    if (input.equals(String.valueOf(i + 1)))
 //                                    {
-//                                        player.getInventory().addItem(item, j);
+//                                        player.getInventory().addItem(item, i);
 //
-//                                        //Prints "You saved this inventoriesItem in slot: " + (j+1)
-//                                        printToConsole.print(gameText.getYouSavedItemInThisSlot(j));
+//                                        //Prints "You saved this inventoriesItem in slot: " + (i+1)
+//                                        printToConsole.print(gameText.getYouSavedItemInThisSlot(i));
 //                                    }
 //                                }
 //                                if (input.equals("drop") || input.equals("d"))
@@ -1064,5 +1064,54 @@ public class Game implements IGame
     {
         logic = logicLayer;
     }
+    
+    public void changeInventory (IItem item)
+    {
+       
+        while (true)
+        {
+            //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
+            outerloop:
+            while (true)
+            {
+                String input = parser.getUserInput();
 
+                //Checks amount of inventory slots.
+                for (int j = 0; j < player.getInventorySize(); j++)
+                {
+                    
+                    //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
+                    if (Integer.toString(j + 1).equals(input) || input.equals("d") || input.equals("drop"))
+                    {
+                        for (int i = 0; i < player.getInventorySize(); i++)
+                        {
+                            // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
+                            if (input.equals(String.valueOf(i + 1)))
+                            {
+                                player.getInventory().addItem(item, i);
+
+                                //Prints "You saved this inventoriesItem in slot: " + (i+1)
+                                printToConsole.print(gameText.getYouSavedItemInThisSlot(i));
+                            }
+                        }
+                        // Drops the item
+                        if (input.equals("drop") || input.equals("d"))
+                        {
+                            //Prints "You dropped the inventoriesItem"
+                            printToConsole.print(gameText.getYouDroppedTheItem());
+                        }
+
+                        //Jumps alle the way out of the while-loop, because of the outerloop. 
+                        break outerloop;
+                    }
+                }
+                //Prints "Hmm... Wrong command"
+                printToConsole.print(gameText.getWhatDoYouMean());  
+            }
+            
+        }
+    }
+        
 }
+
+
