@@ -588,7 +588,7 @@ public class Game implements IGame
         if (map.roomContainsGuide())
         {
             printToConsole.print(gameText.getGuide());
-            map.getItemFromGuide();
+            //map.getItemFromGuide();
         }
 
         if (map.roomContainsThief())
