@@ -643,54 +643,56 @@ public class Game implements IGame
                     String input = parser.getUserInput();
                     if (input.equals("open") || input.equals("o"))
                     {
+
+                        changeInventory(((IChest)map.getCurrentRoom().getContent(i)).getItem());
                         // TODO SKAL LAVES RIMLIG GODT OM
-                        printToConsole.print(gameText.getItemInfo(((IChest)map.getCurrentRoom().getContent(i)).getItem()));
-
-                        printToConsole.print(gameText.getShowInventory());
-
-                        //Prints "Do you want to insert this into a slot?"
-                        //"Type slot number or \"drop\" to drop."
-                        printToConsole.print(gameText.getWhatSlot());
-
-
-                        boolean chestInput = false;
-                        //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
-                        while (!chestInput)
-                        {
-                            input = parser.getUserInput();
-
-
-                            //Checks amount of inventory slots.
-                            for (int j = 0; j < player.getInventorySize(); j++)
-                            {
-
-                                //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
-                                if (Integer.toString(j + 1).equals(input) || input.equals("d") || input.equals("drop"))
-                                {
-                                    chestInput = true;
-                                }
-                            }
-                        }
-
-                        //Checks through the players inventory
-                        for (int j = 0; j < player.getInventorySize(); j++)
-                        {
-
-                            // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
-                            if (input.equals(String.valueOf(j + 1)))
-                            {
-                                logic.saveItemToInventory(j,i);
-//                                player.getInventory().addItem(item, i);
-
-                                //Prints "You saved this inventoriesItem in slot: " + (i+1)
-                                printToConsole.print(gameText.getYouSavedItemInThisSlot(j));
-                            }
-                        }
-                        if (input.equals("drop") || input.equals("d"))
-                        {
-                            //Prints "You dropped the inventoriesItem"
-                            printToConsole.print(gameText.getYouDroppedTheItem());
-                        }
+//                        printToConsole.print(gameText.getItemInfo(((IChest)map.getCurrentRoom().getContent(i)).getItem()));
+//
+//                        printToConsole.print(gameText.getShowInventory());
+//
+//                        //Prints "Do you want to insert this into a slot?"
+//                        //"Type slot number or \"drop\" to drop."
+//                        printToConsole.print(gameText.getWhatSlot());
+//
+//
+//                        boolean chestInput = false;
+//                        //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
+//                        while (!chestInput)
+//                        {
+//                            input = parser.getUserInput();
+//
+//
+//                            //Checks amount of inventory slots.
+//                            for (int j = 0; j < player.getInventorySize(); j++)
+//                            {
+//
+//                                //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
+//                                if (Integer.toString(j + 1).equals(input) || input.equals("d") || input.equals("drop"))
+//                                {
+//                                    chestInput = true;
+//                                }
+//                            }
+//                        }
+//
+//                        //Checks through the players inventory
+//                        for (int j = 0; j < player.getInventorySize(); j++)
+//                        {
+//
+//                            // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
+//                            if (input.equals(String.valueOf(j + 1)))
+//                            {
+//                                logic.saveItemToInventory(j,i);
+////                                player.getInventory().addItem(item, i);
+//
+//                                //Prints "You saved this inventoriesItem in slot: " + (i+1)
+//                                printToConsole.print(gameText.getYouSavedItemInThisSlot(j));
+//                            }
+//                        }
+//                        if (input.equals("drop") || input.equals("d"))
+//                        {
+//                            //Prints "You dropped the inventoriesItem"
+//                            printToConsole.print(gameText.getYouDroppedTheItem());
+//                        }
 
                         //This removes the chest
                         logic.getCurrentRoom().removeContent(i);
@@ -1046,6 +1048,9 @@ public class Game implements IGame
     
     public void changeInventory (IItem item)
     {
+        printToConsole.print(gameText.getItemInfo(item));
+        printToConsole.print(gameText.getShowInventory());
+        printToConsole.print(gameText.getWhatSlot());
        
         while (true)
         {
