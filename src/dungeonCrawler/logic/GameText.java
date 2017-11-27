@@ -166,17 +166,6 @@ public class GameText
         return "Name: ";
     }
 
-    //TODO Får ikke navn og multiplier i spillet.
-    public String getCurrentWeapon()
-    {
-        //
-        return  player.getWeapon().getASCII() +
-                "Name: "+ player.getWeapon().getName()+ "\n" +
-                "Description: " + player.getWeapon().getDescription()+ "\n" +
-                "POWER: "+ player.getWeapon().getPower()+"\n" +
-                "MULTIPLIER: "+ player.getWeapon().getMultiplier()+" x"+"\n";
-    }
-
     public String getHuh()
     {
         return "Huh?";

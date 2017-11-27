@@ -385,7 +385,7 @@ public class Game implements IGame
             case "weapon":
 
                 //Prints players current weapon
-                printToConsole.print(gameText.getCurrentWeapon());
+                printToConsole.print(gameText.getItemInfo((IItem)player.getWeapon()));
                 break;
 
             case "inventory":
@@ -432,7 +432,6 @@ public class Game implements IGame
         if (item instanceof IWeapon)
         {
             player.setWeapon((IWeapon) item);
-            //Prints "Your current weapon is now: " + player.getCurrentWeapon().name
             printToConsole.print(gameText.getSetCurrentWeapon());
         }
         else if (item instanceof IPotion)
@@ -645,54 +644,6 @@ public class Game implements IGame
                     {
 
                         changeInventory(((IChest)map.getCurrentRoom().getContent(i)).getItem());
-                        // TODO SKAL LAVES RIMLIG GODT OM
-//                        printToConsole.print(gameText.getItemInfo(((IChest)map.getCurrentRoom().getContent(i)).getItem()));
-//
-//                        printToConsole.print(gameText.getShowInventory());
-//
-//                        //Prints "Do you want to insert this into a slot?"
-//                        //"Type slot number or \"drop\" to drop."
-//                        printToConsole.print(gameText.getWhatSlot());
-//
-//
-//                        boolean chestInput = false;
-//                        //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
-//                        while (!chestInput)
-//                        {
-//                            input = parser.getUserInput();
-//
-//
-//                            //Checks amount of inventory slots.
-//                            for (int j = 0; j < player.getInventorySize(); j++)
-//                            {
-//
-//                                //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
-//                                if (Integer.toString(j + 1).equals(input) || input.equals("d") || input.equals("drop"))
-//                                {
-//                                    chestInput = true;
-//                                }
-//                            }
-//                        }
-//
-//                        //Checks through the players inventory
-//                        for (int j = 0; j < player.getInventorySize(); j++)
-//                        {
-//
-//                            // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
-//                            if (input.equals(String.valueOf(j + 1)))
-//                            {
-//                                logic.saveItemToInventory(j,i);
-////                                player.getInventory().addItem(item, i);
-//
-//                                //Prints "You saved this inventoriesItem in slot: " + (i+1)
-//                                printToConsole.print(gameText.getYouSavedItemInThisSlot(j));
-//                            }
-//                        }
-//                        if (input.equals("drop") || input.equals("d"))
-//                        {
-//                            //Prints "You dropped the inventoriesItem"
-//                            printToConsole.print(gameText.getYouDroppedTheItem());
-//                        }
 
                         //This removes the chest
                         logic.getCurrentRoom().removeContent(i);
@@ -749,196 +700,6 @@ public class Game implements IGame
                 break;
             case "":
             }
-
-
-//            for (IRoom room : map.getRoomList())
-//            {
-//                if (player.getLocation().equals(room.getLocation()))
-//                {
-//                    //Prints "You entered new room."
-//                    printToConsole.print(gameText.getYouEnteredANewRoom(room));
-//                    if (room.getContent(i) instanceof IMonster)//Controls if its a monster.
-//                    {
-//
-//                        //Prints info about monster.
-//                        printToConsole.print(gameText.getContentInfo((IMonster) (room.getContent(i))));
-//
-//                        //Prints "Your health is currently " + player.getHealth() + "hp"
-//                        printToConsole.print(gameText.getPlayerInfo(player));
-//
-//                        //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
-//                        printToConsole.print(gameText.getBattleOrFlee());
-//
-//                        boolean acceptedInput = false;
-//                        while (!acceptedInput)
-//                        {
-//                            String input = parser.getUserInput();//returns a String
-//
-//                            if (input.equals("battle") || input.equals("b"))
-//                            {
-//                                acceptedInput = true;
-//                                battle = logic.doBattle((IMonster) room.getContent(i));
-//                                // creates a new battle
-//
-//                                // calls the battle sequence method.
-//                                battleSequence();
-//
-//                                room.removeContent(i);
-//
-//                                if (i < map.getNumberOfContent() - 1)
-//                                {
-//                                    parser.userPressEnter();
-//                                }
-//
-//
-//                            }
-//                            else if (input.toLowerCase().contains("flee"))
-//                            {
-//                                acceptedInput = true;
-//                                player.setLocation(player.getLastLocation());
-//                                return;
-//                            }
-//                            else
-//                            {
-//                                //Prints "Type \"battle\" or \"flee\""
-//                                printToConsole.print(gameText.getBattleOrFlee());
-//                            }
-//                        }
-//                        room.removeContent(i);
-//
-//                    }
-//                    else if (room.getContent(i) instanceof IGuide)
-//                    {
-//
-//                        boolean acceptedInput = false;
-//                        while (!acceptedInput)
-//                        {
-//                            //Prints "There is a helper, you can either \"talk\" , \"flee\" or \"kill\"!"
-//                            printToConsole.print(gameText.getThereIsAGuide());
-//
-//                            String input = parser.getUserInput();
-//                            if (input.equals("talk") || input.equals("t"))
-//                            {
-//                                //Prints "Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!"
-//                                printToConsole.print(gameText.getHelperTalk());
-//                            }
-//                            else if (input.equals("skip"))
-//                            {
-//                                acceptedInput = true;
-//
-//                            }
-//                            else if (input.equals("kill"))
-//                            {
-//                                acceptedInput = true;
-//                                //Prints "You killed the helper, oh mighty swordsman!"
-//                                printToConsole.print(gameText.getKilledGuide());
-//                                room.removeContent(i);
-//                            }
-//
-//                        }
-//
-//                        if (i < map.getNumberOfContent() - 1)
-//                        {
-//                            parser.userPressEnter();
-//                        }
-//
-//                    }
-//                    else if (room.getContent(i) instanceof IChest)
-//                    {
-//
-//                        //Prints "There is a chest, type \"open\" to open!"
-//                        printToConsole.print(gameText.getThereIsAChest());
-//
-//                        boolean acceptedInput = false;
-//                        while (!acceptedInput)
-//                        {
-//                            String input = parser.getUserInput();
-//                            if (input.equals("open") || input.equals("o"))
-//                            {
-//                                boolean chestInput = false;
-//                                acceptedInput = true;
-//                                IItem item = ((IChest) room.getContent(i)).getItem();
-//
-//                                if (item instanceof IWeapon)
-//                                {
-//                                    //Prints content of chest if it's a weapon
-//                                    printToConsole.print(gameText.getWeapon(item));
-//                                }
-//                                else if (item instanceof IPotion)
-//                                {
-//                                    //Prints content of chest if it's a potion
-//                                    printToConsole.print(gameText.getPotion(item));
-//                                }
-//                                showInventory();
-//
-//                                //Prints "Do you want to insert this into a slot?"
-//                                //"Type slot number or \"drop\" to drop."
-//                                printToConsole.print(gameText.getWhatSlot());
-//
-//
-//                                //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
-//                                while (!chestInput)
-//                                {
-//                                    input = parser.getUserInput();
-//
-//
-//                                    //Checks amount of inventory slots.
-//                                    for (int i = 0; i < player.getInventory().getSize(); i++)
-//                                    {
-//
-//                                        //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
-//                                        if (Integer.toString(i + 1).equals(input) || input.equals("d") || input.equals("drop"))
-//                                        {
-//                                            chestInput = true;
-//                                        }
-//                                    }
-//
-//                                }
-//
-//                                //Checks through the players inventory
-//                                for (int i = 0; i < player.getInventory().getSize(); i++)
-//                                {
-//
-//                                    // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
-//                                    if (input.equals(String.valueOf(i + 1)))
-//                                    {
-//                                        player.getInventory().addItem(item, i);
-//
-//                                        //Prints "You saved this inventoriesItem in slot: " + (i+1)
-//                                        printToConsole.print(gameText.getYouSavedItemInThisSlot(i));
-//                                    }
-//                                }
-//                                if (input.equals("drop") || input.equals("d"))
-//                                {
-//                                    //Prints "You dropped the inventoriesItem"
-//                                    printToConsole.print(gameText.getYouDroppedTheItem());
-//                                }
-//
-//                                //This removes the chest
-//                                room.removeContent(i);
-//                            }
-//                            else if (input.equals("skip") || input.equals("s"))
-//                            {
-//                                acceptedInput = true;
-//                            }
-//                            else
-//                            {
-//                                //Prints "Hmm... Wrong command"
-//                                printToConsole.print(gameText.getWhatDoYouMean());
-//                            }
-//                        }
-//                        if (i < map.getNumberOfContent() - 1)
-//                        {
-//                            parser.userPressEnter();
-//                        }
-//                    }
-//                    else if (room.getContent(i) == null)
-//                    {
-//                        //Prints "Empty space :("
-//                        printToConsole.print(gameText.getItsAEmptySpace());
-//                    }
-//                }
-//            }
 
         }
 
@@ -1052,8 +813,7 @@ public class Game implements IGame
         printToConsole.print(gameText.getShowInventory());
         printToConsole.print(gameText.getWhatSlot());
        
-        while (true)
-        {
+       
             //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
             outerloop:
             while (true)
@@ -1093,7 +853,8 @@ public class Game implements IGame
                 printToConsole.print(gameText.getWhatDoYouMean());  
             }
             
-        }
+            
+        
     }
         
 }
