@@ -2,7 +2,6 @@
 package dungeonCrawler;
 
 import dungeonCrawler.aqu.IDataFacade;
-import dungeonCrawler.aqu.IGame;
 import dungeonCrawler.aqu.ILogicFacade;
 import dungeonCrawler.data.DataFacade;
 import dungeonCrawler.logic.LogicFacade;
@@ -27,7 +26,7 @@ public class Main
         // Create a new instance of the Game class
         Game game = new Game();
 
-       game.injectLogic(logic);
+        game.injectLogic(logic);
         // Call the begin method of the game instance
         game.begin();
     }

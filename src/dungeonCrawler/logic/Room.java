@@ -128,9 +128,10 @@ class Room implements dungeonCrawler.aqu.IRoom
      * @return
      */
 
-    public RoomContent getContent(int index)
+    @Override
+    public IRoomContent getContent(int index)
     {
-        return roomContent.get(index);
+        return (IRoomContent) roomContent.get(index);
     }
 
     public ArrayList<RoomContent> getContentArray()

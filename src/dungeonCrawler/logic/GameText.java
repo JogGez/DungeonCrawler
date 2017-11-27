@@ -306,21 +306,21 @@ public class GameText
         return contentInfo;
     }
 
-    public String getItemInfo(String location, int index)
+    public String getItemInfo(IItem item)
     {
-        Item item;
-        switch (location)
-        {
-        case "chest":
-            Chest chest = (Chest) (map.getCurrentRoom().getContent(index));
-            item = chest.getItem();
-            break;
-        case "inventory":
-            item = (Item) player.getInventory().getItem(index);
-            break;
-        default:
-            return "Get info from where?";
-        }
+//        Item item;
+//        switch (location)
+//        {
+//        case "chest":
+//            Chest chest = (Chest) (map.getCurrentRoom().getContent(index));
+//            item = chest.getItem();
+//            break;
+//        case "inventory":
+//            item = (Item) player.getInventory().getItem(index);
+//            break;
+//        default:
+//            return "Get info from where?";
+//        }
 
 
         String contentInfo;

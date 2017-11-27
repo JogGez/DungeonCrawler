@@ -401,7 +401,7 @@ public class Game implements IGame
                     {
                         if (i == Integer.parseInt(command.getThirdWord()) - 1)
                         {
-                            showSlot(i);
+                            printToConsole.print(gameText.getItemInfo(player.getInventory().getItem(i)));
                             break;
                         }
                     }
@@ -424,27 +424,6 @@ public class Game implements IGame
         }
     }
 
-    public void showSlot(int index)
-    {
-        printToConsole.print(gameText.getItemInfo("inventory",index));
-//        IItem item = player.getInventory().getItem(index);
-//
-//        if (item instanceof IWeapon)
-//        {
-//            //Prints players slot if it's a weapon
-//            printToConsole.print(gameText.getWeapon(item));
-//        }
-//        else if (item instanceof IPotion)
-//        {
-//            //Prints players slot if it's a potion
-//            printToConsole.print(gameText.getPotion(item));
-//        }
-//        else
-//        {
-//            //Prints "Slot is empty."
-//            printToConsole.print(gameText.getSlotIsEmpty());
-//        }
-    }
 
     public void useSlot(int index)
     {
@@ -665,7 +644,7 @@ public class Game implements IGame
                     if (input.equals("open") || input.equals("o"))
                     {
                         // TODO SKAL LAVES RIMLIG GODT OM
-                        printToConsole.print(gameText.getItemInfo("chest",i));
+                        printToConsole.print(gameText.getItemInfo(((IChest)map.getCurrentRoom().getContent(i)).getItem()));
 
                         printToConsole.print(gameText.getShowInventory());
 

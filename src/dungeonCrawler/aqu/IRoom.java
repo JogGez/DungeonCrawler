@@ -16,6 +16,8 @@ public interface IRoom
 
     String getDescription();
 
+    IRoomContent getContent(int index);
+
     void removeContent(int index);
 
     Point getLocation();

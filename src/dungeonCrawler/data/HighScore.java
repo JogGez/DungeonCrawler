@@ -138,8 +138,6 @@ public class HighScore implements IHighScore
     }
 
 
-
-
     /**
      * Check if file exists and is a file and not a folder.
      *

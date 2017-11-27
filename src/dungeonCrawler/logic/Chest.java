@@ -5,12 +5,14 @@
  */
 package dungeonCrawler.logic;
 
+import dungeonCrawler.aqu.IRoomContent;
+
 /**
  * The type Chest.
  *
  * @author Frederik
  */
-class Chest implements RoomContent, dungeonCrawler.aqu.IChest
+class Chest implements RoomContent, IRoomContent, dungeonCrawler.aqu.IChest
 {
     Item item;
 
