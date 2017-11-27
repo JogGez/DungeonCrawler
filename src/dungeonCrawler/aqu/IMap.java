@@ -1,7 +1,6 @@
 package dungeonCrawler.aqu;
 
 
-
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -27,9 +26,19 @@ public interface IMap
     
     void guideMove();
 
+    void thiefMove();
+
     boolean hasAllRoomBeenEntered();
 
     String checkRoomContent(int index);
 
     IRoom getCurrentRoom();
+
+    boolean roomContainsThief();
+
+    boolean roomContainsGuide();
+
+    void removeThief();
+
+    void getItemFromGuide(int InventoryIndex);
 }

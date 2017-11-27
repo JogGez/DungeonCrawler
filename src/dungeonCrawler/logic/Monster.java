@@ -9,7 +9,7 @@ import dungeonCrawler.aqu.IRoomContent;
  * @author Computer
  */
 //Monster Class, inherit from IRoomContent because ???
-class Monster implements IRoomContent, IMonster
+class Monster implements RoomContent, IRoomContent, IMonster
 {
     private String name;
     private String description;

@@ -36,6 +36,4 @@ public enum PotionEnum
         Potion potionValues = values()[new Random().nextInt(values().length)].potion;
         return new Potion(potionValues.getName(), potionValues.getDescription(), potionValues.getAscii(), potionValues.getHealthRecovery(), potionValues.getTimeRecovery());
     }
-
-
 }

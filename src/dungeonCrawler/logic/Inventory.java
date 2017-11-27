@@ -22,23 +22,16 @@ class Inventory implements dungeonCrawler.aqu.IInventory
     {
         this.items = new Item[size];
     }
-/**
- * 
- * @param item
- * @param index 
- */
 
-    public void addItem(Item item, int index)
-    {
-        items[index] = item;
-    }
+
 /**
  * 
  * @param index
  * @return 
  */
 
-    public Item getItem(int index)
+    @Override
+    public IItem getItem(int index)
     {
         return items[index];
     }
@@ -48,7 +41,8 @@ class Inventory implements dungeonCrawler.aqu.IInventory
  * @return 
  */
 
-    public int getItemIndex(Item item)
+    @Override
+    public int getItemIndex(IItem item)
     {
         return Arrays.asList(items).indexOf(item);
     }
@@ -66,9 +60,10 @@ class Inventory implements dungeonCrawler.aqu.IInventory
  * Method that creats a empty array, and adds our potions. 
  * @return ArrayList with potions
  */
-    public ArrayList<Potion> potionArrayList()
+    @Override
+    public ArrayList<IPotion> potionArrayList()
     {
-        ArrayList<Potion> availablePotions = new ArrayList<>();
+        ArrayList<IPotion> availablePotions = new ArrayList<>();
 
         for (int i = 0; i < items.length; i++)
         {
@@ -91,10 +86,11 @@ class Inventory implements dungeonCrawler.aqu.IInventory
     {
         return items.length;
     }
-    
-     public ArrayList<Key> keyArrayList()
+
+    @Override
+    public ArrayList<IKey> keyArrayList()
     {
-        ArrayList<Key> availableKeys = new ArrayList<>();
+        ArrayList<IKey> availableKeys = new ArrayList<>();
 
         for (int i = 0; i < items.length; i++)
         {
@@ -106,5 +102,11 @@ class Inventory implements dungeonCrawler.aqu.IInventory
         }
 
         return availableKeys;
+    }
+
+    @Override
+    public void addItem(IItem item, int inventoryIndex)
+    {
+        items[inventoryIndex] = (Item) item;
     }
 }

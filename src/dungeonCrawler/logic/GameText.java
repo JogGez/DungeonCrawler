@@ -1,8 +1,10 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.*;
+import dungeonCrawler.data.HighScore;
 import dungeonCrawler.presentationConsole.CommandWord;
 
+import java.awt.*;
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Random;
@@ -53,6 +55,16 @@ public class GameText
                 "\n4. Settings"+
                 "\n5. Exit";
     }
+
+    public String getSetDifficultyLevel()
+    {
+        return "Select Difficulty Level"+
+                "\n1. Easy"+
+                "\n2. Normal"+
+                "\n3. Hard";
+    }
+
+
 
     public String getEnterPlayerName()
     {
@@ -157,17 +169,19 @@ public class GameText
     //TODO Får ikke navn og multiplier i spillet.
     public String getCurrentWeapon()
     {
-        //                player.getWeapon().getDescription();
-        return "Name: "+
-//                player.getWeapon().getName()+ "\nPOWER: "+
-                player.getWeapon().getPower()+"\nMULTIPLIER: "+
-                player.getWeapon().getMultiplier()+" x"+"\n";
+        //
+        return  player.getWeapon().getASCII() +
+                "Name: "+ player.getWeapon().getName()+ "\n" +
+                "Description: " + player.getWeapon().getDescription()+ "\n" +
+                "POWER: "+ player.getWeapon().getPower()+"\n" +
+                "MULTIPLIER: "+ player.getWeapon().getMultiplier()+" x"+"\n";
     }
 
     public String getHuh()
     {
         return "Huh?";
     }
+
     public String getGoWhere()
     {
         return "Go where?";
@@ -184,6 +198,7 @@ public class GameText
     {
         return "You ran into wall :(";
     }
+
     public String getYouWentBackToPreviousRoom()
     {
         return "You went back to the previous room.";
@@ -194,9 +209,36 @@ public class GameText
         return "Go where? No such direction found...";
     }
 
-    public String getExits( int counter, String s)
+    public String getExits()
     {
-        return ""+counter+""+s;
+        ArrayList<String> exitList = new ArrayList<>();
+
+        if (map.roomExists(new Point(player.getLocation().x - 1, player.getLocation().y)))
+        {
+            exitList.add("Left");
+        }
+        if (map.roomExists(new Point(player.getLocation().x + 1, player.getLocation().y)))
+        {
+            exitList.add("Right");
+        }
+        if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
+        {
+            exitList.add("Up");
+        }
+        if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y - 1)))
+        {
+            exitList.add("Down");
+        }
+
+        int counter = 1;
+        String output = "";
+        for (String exit : exitList)
+        {
+            output += counter + ". " + exit + "\n";
+            counter++;
+        }
+
+        return output;
     }
 
     public String getShowInventory()
@@ -229,7 +271,7 @@ public class GameText
         }
         top = top + "\u256E";
         mTop = mTop + "\u2551";
-        middle = middle + "\u2551" + "  To ge   t information on an item type \"show slot 1\",slot 2 ...";
+        middle = middle + "\u2551" + "  To get information on an item type \"show slot 1\",slot 2 ...";
         mBottom = mBottom + "\u2551";
         bottom = bottom + "\u256F" + "  To use an item type \"use slot 1\",slot 2 ...";
 
@@ -244,19 +286,13 @@ public class GameText
         {
             Monster monster = (Monster)map.getCurrentRoom().getContent(index);
 
-            contentInfo = monster.getAscii() +
-                    "\n" + "Name: " + monster.getName() +
-                    "\n" + "Description: " + monster.getDescription() +
-                    "\n" + "Health: " + monster.getHealth() +
-                    "\n" + "Power: " + monster.getPower() +
-                    "\n";
+            contentInfo = getMonstersInfo(monster);
         }
         else if (map.getCurrentRoom().getContent(index) instanceof Chest)
         {
             Chest chest = (Chest)map.getCurrentRoom().getContent(index);
 
-            contentInfo = "There is a chest, type \"open\" to open!" +
-                    "\n Or you can type \"skip\" to skip it!";
+            contentInfo = getChestInfo(chest);
         }
         else if (map.getCurrentRoom().getContent(index) instanceof Guide)
         {
@@ -280,7 +316,7 @@ public class GameText
             item = chest.getItem();
             break;
         case "inventory":
-            item = player.getInventory().getItem(index);
+            item = (Item) player.getInventory().getItem(index);
             break;
         default:
             return "Get info from where?";
@@ -327,10 +363,24 @@ public class GameText
         "Your Multiplier: " + player.getWeapon().getMultiplier();
     }
 
-    public String getMonstersHealth(Monster monster)
+    public String getMonstersInfo(IMonster monster)
     {
-        return "Monsters health is currently " +
-                monster.getHealth() + "hp";
+        return  monster.getAscii() +
+                "\n" + "Name: " + monster.getName() +
+                "\n" + "Description: " + monster.getDescription() +
+                "\n" + "Health: " + monster.getHealth() +
+                "\n" + "Power: " + monster.getPower() +
+                "\n";
+    }
+
+    public String getChestInfo(IChest chest)
+    {
+        return  chest.getAscii() +
+                "\n" + "Name: " + chest.getName() +
+                "\n" + "Description: " + chest.getDescription() +
+                "\n" +
+                "\n" + "There is a chest, type \"open\" to open!" +
+                "\n Or you can type \"skip\" to skip it!";
     }
 
     public String getBattleOrFlee()
@@ -373,6 +423,7 @@ public class GameText
 
     public String getSetCurrentWeapon()
     {
+
         return "Your current weapon is now: " + player.getWeapon().getName();
     }
 
@@ -381,7 +432,7 @@ public class GameText
         return "Your health is now: " + player.getHealth() + "hp";
     }
     
-    public String getPlayerTime(TimeTracker timeTracker)
+    public String getPlayerTime(ITimeTracker timeTracker)
     {
         return "Your time is now: " + timeTracker.calculateRemainingTime()+ "sec";
     }
@@ -516,13 +567,19 @@ public class GameText
                     {
                         insert = "  X   ";
                     }
-                    for (Guide guide : map.getGuideList())
+                    for (IGuide guide : map.guideArrayList())
                     {
                         if (room.getLocation().x == guide.getLocation().x && room.getLocation().y == guide.getLocation().y)
                         {
                             insert = "  G   ";
                         }
-
+                    }
+                    for (IThief thief : map.thiefArrayList())
+                    {
+                        if (room.getLocation().x == thief.getLocation().x && room.getLocation().y == thief.getLocation().y)
+                        {
+                            insert = "  T   ";
+                        }
                     }
 
                     mapString += insert;
@@ -555,4 +612,27 @@ public class GameText
                 player.getInventory().keyArrayList().get(i);
     }
 
+    public String getHighScore()
+    {
+        IHighScore highScore = new HighScore("HighScore.txt");
+        highScore.readText();
+
+        String output = "";
+        for (String score : highScore.getHighScoreArray())
+        {
+            output += score + "\n";
+        }
+
+        return output;
+    }
+
+    public String getGuide()
+    {
+        return "You found a guide and he offers you a gift";
+    }
+
+    public String getThief()
+    {
+        return "You found a thief and for his crime you set him free...";
+    }
 }

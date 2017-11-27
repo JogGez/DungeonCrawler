@@ -1,12 +1,11 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IGuide;
-import dungeonCrawler.aqu.IPlayer;
+import dungeonCrawler.aqu.IThief;
 
-import javax.print.attribute.standard.PrinterURI;
 import java.awt.*;
-import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -20,9 +19,12 @@ class Map implements dungeonCrawler.aqu.IMap
     // Data fields
     private int height;
     private int width;
+    private Point mapSize;
     private ArrayList<Room> roomList; //Declare the ArrayList, Roomlist(name), containing IRoom(Object).
     private ArrayList<Guide> guideList;
+    private ArrayList<Thief> thiefList;
     private int numberOfGuides;
+    private int numberOfThiefs;
     private int numberOfContent;
     private Player player;
 
@@ -35,13 +37,17 @@ class Map implements dungeonCrawler.aqu.IMap
         // Initializing (gives value to) private fields (constructor parameter)
         this.width = GameConstants.getMapSize().x;
         this.height = GameConstants.getMapSize().y;
-        this.numberOfGuides = GameConstants.getMovingGuides();
+        this.mapSize = GameConstants.getMapSize();
+        this.numberOfGuides = GameConstants.getNumberOfGuides();
+        this.numberOfThiefs = GameConstants.getNumberOfThieves();
         this.numberOfContent = GameConstants.getRoomContents();
         this.player = player;
 
         //Instantiate a ArrayList, allocates the ArrayList.
         roomList = new ArrayList<>();
         guideList = new ArrayList<>();
+        thiefList = new ArrayList<>();
+
         for (int x = 0; x < numberOfGuides; x++)
         {
             Guide guide = GuideEnum.getRandomGuide();
@@ -49,10 +55,16 @@ class Map implements dungeonCrawler.aqu.IMap
 
             guideList.add(guide);
         }
+
+        for (int x = 0; x < numberOfThiefs; x++)
+        {
+            Thief thief = new Thief(this);
+            thiefList.add(thief);
+        }
+
         // Controls how many locked we are gonna have. (2 rooms are locked, cannot be the same)
         int[] lockedRooms = new Random().ints(1, width * height).distinct().limit(GameConstants.getLockedRooms()).toArray();
         int roomNumber = 0;
-
 
         //Creates the coordinate system of the rooms.
         for (int x = 0; x < width; x++) // Runs through the width.
@@ -210,6 +222,7 @@ class Map implements dungeonCrawler.aqu.IMap
 
     }
 
+    // TODO Move method and send map & roomList with it
     @Override
     public void guideMove()
     {
@@ -241,7 +254,40 @@ class Map implements dungeonCrawler.aqu.IMap
 
             //Checks if player and guide is in the same room
             guide.move(exitList);
+        }
+    }
 
+    @Override
+    public void thiefMove()
+    {
+        for (Thief thief : thiefList)
+        {
+            ArrayList<String> exitList = new ArrayList<>();
+
+            if (roomExists(new Point(thief.getLocation().x - 1, thief.getLocation().y)))
+            {
+                exitList.add("left");
+            }
+
+            if (roomExists(new Point(thief.getLocation().x + 1, thief.getLocation().y)))
+            {
+                exitList.add("right");
+            }
+
+            if (roomExists(new Point(thief.getLocation().x, thief.getLocation().y + 1)))
+            {
+                exitList.add("up");
+            }
+
+            if (roomExists(new Point(thief.getLocation().x, thief.getLocation().y - 1)))
+            {
+                exitList.add("down");
+            }
+
+            //TODO Thief skal interagere med os - giv os et eller andet.
+
+            //Checks if player and thief is in the same room
+            thief.move(exitList, this);
         }
     }
     
@@ -279,9 +325,16 @@ class Map implements dungeonCrawler.aqu.IMap
         return "";
     }
 
-    public ArrayList<Guide> getGuideList()
+    public ArrayList<IGuide> guideArrayList()
     {
-        return guideList;
+        ArrayList<? extends IGuide> guides = guideList;
+        return (ArrayList<IGuide>) guides;
+    }
+
+    public ArrayList<IThief> thiefArrayList()
+    {
+        ArrayList<? extends IThief> thieves = thiefList;
+        return (ArrayList<IThief>) thieves;
     }
 
     public boolean guideAndPlayerSameRoom(Guide guide, Player player)
@@ -323,9 +376,81 @@ class Map implements dungeonCrawler.aqu.IMap
             }
         }
         return new Room(new Point(0, 0), 0, "Empty", "none", false);
+    }
+
+    @Override
+    public boolean roomContainsThief()
+    {
+        for (Thief thief : thiefList)
+        {
+            if (getCurrentRoom().getLocation().equals(thief.getLocation()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean roomContainsGuide()
+    {
+        for (Guide guide : guideList)
+        {
+            if (getCurrentRoom().getLocation().equals(guide.getLocation()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public void removeThief()
+    {
+        for(Iterator<Thief> i = thiefList.iterator(); i.hasNext();)
+        {
+            Thief thief = i.next();
+            //Do Something
+            if (getCurrentRoom().getLocation().equals(thief.getLocation()))
+            {
+                i.remove();
+            }
+
+        }
+    }
+
+    @Override
+    public void getItemFromGuide(int inventoryIndex)
+    {
+        for (Guide guide : guideList)
+        {
+            if (getCurrentRoom().getLocation().equals(guide.getLocation()))
+            {
+                player.getInventory().addItem(guide.getItem(),inventoryIndex);
+            }
+        }
 
     }
 
 
+    public Room getRoom(Point point)
+    {
+        for (Room room : roomList)
+        {
+            if (room.getLocation().equals(point))
+            {
+                return room;
+            }
+        }
+        return new Room(new Point(0, 0), 0, "Empty", "none", false);
+    }
+
+
+    Point getMapSize()
+    {
+        return mapSize;
+    }
 }
 

@@ -52,17 +52,21 @@ abstract class Item implements dungeonCrawler.aqu.IItem
     {
         int randomItem = (int)(Math.random()*100);
 
-        if (randomItem < 35)
+        if (randomItem < GameConstants.getChanceOfWeapon())
         {
-            return (Item)WeaponEnum.getRandomWeapon();
+            return WeaponEnum.getRandomWeapon();
         }
-        if (randomItem < 70)
+        else if (randomItem < GameConstants.getChanceOfWeapon() + GameConstants.getChanceOfHealthPotion())
         {
-            return (Item)WeaponEnum.getRandomWeapon();
+            return PotionEnum.getRandomPotion();
+        }
+        else if (randomItem < GameConstants.getChanceOfWeapon() + GameConstants.getChanceOfHealthPotion() + GameConstants.getChanceOfTimePotion())
+        {
+            return PotionEnum.getRandomPotion();
         }
         else
         {
-            return (Item)KeyEnum.getRandomKey();
+            return KeyEnum.getRandomKey();
         }
 
     }

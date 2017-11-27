@@ -2,6 +2,8 @@ package dungeonCrawler.data;
 
 //import com.sun.xml.internal.fastinfoset.util.StringArray;
 
+import dungeonCrawler.aqu.IHighScore;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,7 +18,7 @@ import java.util.*;
 /**
  * The type High score handler.
  */
-public class HighScore
+public class HighScore implements IHighScore
 {
     private class ScoreItem implements Comparable<ScoreItem>
     {
@@ -96,7 +98,7 @@ public class HighScore
      *
      * @return the tree map
      */
-    public ArrayList<ScoreItem> readText()
+    public void readText()
     {
         try
         {
@@ -118,7 +120,6 @@ public class HighScore
         }
         // returns the highscore
         Collections.sort(highScore);
-        return highScore;
     }
 
     public String[] getHighScoreArray()
@@ -135,6 +136,8 @@ public class HighScore
         return highScoreArray;
 
     }
+
+
 
 
     /**

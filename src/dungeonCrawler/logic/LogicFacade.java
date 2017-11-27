@@ -10,10 +10,8 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
 {
     IDataFacade data;
     Player player;
-    IInventory inventory;
     Map map;
     GameText gameText;
-    IBattle battle;
     IHighScore highScore;
 
     public LogicFacade()
@@ -28,9 +26,10 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     }
 
     @Override
-    public void createPlayerInstance(String name)
+    public IPlayer createPlayerInstance(String name)
     {
         this.player = new Player(name);
+        return player;
     }
 
     @Override
@@ -40,15 +39,16 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     }
 
     @Override
-    public void createMapInstance()
+    public IMap createMapInstance()
     {
         if (player != null)
         {
-            this.map = new Map((Player)player);
+            this.map = new Map(player);
+            return map;
         }
         else
         {
-
+            return null;
         }
     }
 
@@ -59,15 +59,15 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     }
 
     @Override
-    public void doBattle(int index)
+    public IBattle doBattle(int index)
     {
-        battle = new Battle(player, (Monster) map.getCurrentRoom().getContent(index));
+        return new Battle(player, (Monster)map.getCurrentRoom().getContent(index));
     }
 
     @Override
-    public void doBattle(IMonster monster)
+    public IBattle doBattle(IMonster monster)
     {
-        battle = new Battle((Player) player, (Monster)monster);
+        return new Battle(player, (Monster)monster);
     }
 
     @Override
@@ -90,12 +90,12 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
         return highScore;
     }
 
-    @Override
-    public ArrayList<IGuide> guideList()
-    {
-        ArrayList<? extends IGuide> guides = map.getGuideList();
-        return (ArrayList<IGuide>) guides;
-    }
+//    @Override
+//    public ArrayList<IGuide> guideList()
+//    {
+//        ArrayList<? extends IGuide> guides = map.getGuideList();
+//        return (ArrayList<IGuide>) guides;
+//    }
 
     @Override
     public boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player)
@@ -143,7 +143,7 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     {
         player.setHealth(player.getHealth() + player.getInventory().potionArrayList().get(index).getHealthRecovery());
         player.setTime(player.getTime() + player.getInventory().potionArrayList().get(index).getTimeRecovery());
-        player.getInventory().removeItem(player.getInventory().getItemIndex(player.getInventory().potionArrayList().get(index)));
+        player.getInventory().removeItem(player.getInventory().getItemIndex((IItem) player.getInventory().potionArrayList().get(index)));
     }
 
     @Override
@@ -155,15 +155,29 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     @Override
     public void useKey(int index)
     {
-        player.getInventory().removeItem(player.getInventory().getItemIndex(player.getInventory().keyArrayList().get(index)));
+        player.getInventory().removeItem(player.getInventory().getItemIndex((IItem) player.getInventory().keyArrayList().get(index)));
     }
 
     @Override
     public void useItem(int index)
     {
-        Item item = player.getInventory().getItem(index);
-
-
+        Item item = (Item) player.getInventory().getItem(index);
     }
 
+    @Override
+    public void setDifficultyLevel(int i)
+    {
+        switch (i)
+        {
+        case 1:
+            GameConstants.setEasyDifficulty();
+            break;
+        case 2:
+            GameConstants.setNormalDifficulty();
+            break;
+        case 3:
+            GameConstants.setHardDifficulty();
+            break;
+        }
+    }
 }

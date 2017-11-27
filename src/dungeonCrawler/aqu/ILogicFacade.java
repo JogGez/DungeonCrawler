@@ -9,15 +9,15 @@ public interface ILogicFacade
 {
     void injectData(IDataFacade dataLayer);
 
-    void createPlayerInstance(String name);
+    IPlayer createPlayerInstance(String name);
     IPlayer getPlayer();
 
-    void createMapInstance();
+    IMap createMapInstance();
     IMap getMap();
 
-    void doBattle(int index);
+    IBattle doBattle(int index);
 
-    void doBattle(IMonster monster);
+    IBattle doBattle(IMonster monster);
 
     ITimeTracker getTimeTracker(Date date);
 
@@ -25,7 +25,7 @@ public interface ILogicFacade
 
     IHighScore getHighScore();
 
-    ArrayList<IGuide> guideList();
+//    ArrayList<IGuide> guideList();
     
     boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player);
 
@@ -46,4 +46,6 @@ public interface ILogicFacade
     void useKey(int index);
 
     void useItem(int index);
+
+    void setDifficultyLevel(int i);
 }

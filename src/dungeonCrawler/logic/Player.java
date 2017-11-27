@@ -56,7 +56,8 @@ class Player implements dungeonCrawler.aqu.IPlayer
      * @return inventory
      */
 
-    public Inventory getInventory()
+    @Override
+    public IInventory getInventory()
     {
         return inventory;
     }
@@ -144,7 +145,8 @@ class Player implements dungeonCrawler.aqu.IPlayer
     }
 
 
-    public Weapon getWeapon()
+    @Override
+    public IWeapon getWeapon()
     {
         return this.weapon;
     }
@@ -165,10 +167,10 @@ class Player implements dungeonCrawler.aqu.IPlayer
      * Method
      * @param weapon 
      */
-
-    public void setWeapon(Weapon weapon)
+    @Override
+    public void setWeapon(IWeapon weapon)
     {
-        this.weapon = weapon;
+        this.weapon = (Weapon) weapon;
     }
     
     /**

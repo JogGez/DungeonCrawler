@@ -10,6 +10,5 @@ package dungeonCrawler.logic;
  * @author Frederik
  */
 public interface RoomContent
-{     
- 
+{
 }

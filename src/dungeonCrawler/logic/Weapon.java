@@ -1,5 +1,9 @@
 package dungeonCrawler.logic;
 
+import jdk.nashorn.internal.ir.ReturnNode;
+
+import javax.naming.Name;
+
 class Weapon extends Item implements dungeonCrawler.aqu.IWeapon
 {
 
@@ -8,7 +12,6 @@ class Weapon extends Item implements dungeonCrawler.aqu.IWeapon
 
     public Weapon(String name, String description, String ascii, int power, int multiplier)
     {
-       
         //Weapon inheriet from Item.
         //(this.name = name; (we dont do this)because our properties inheriet from Item, that's why we don't need to allocate them.
         this.setName(name);
@@ -16,6 +19,24 @@ class Weapon extends Item implements dungeonCrawler.aqu.IWeapon
         this.setAscii(ascii);
         this.power = power;
         this.multiplier = multiplier;
+    }
+
+    @Override
+    public String getName()
+    {
+        return super.getName();
+    }
+
+    @Override
+    public String getASCII()
+    {
+        return super.getAscii();
+    }
+
+    @Override
+    public String getDescription()
+    {
+        return super.getDescription();
     }
 
     @Override

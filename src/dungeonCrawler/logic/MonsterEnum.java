@@ -1,7 +1,5 @@
 package dungeonCrawler.logic;
 
-import dungeonCrawler.aqu.IMonster;
-
 import java.util.Random;
 
 enum MonsterEnum

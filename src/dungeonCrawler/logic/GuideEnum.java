@@ -10,7 +10,7 @@ enum GuideEnum
 {
     // TODO tiløje flere guides. 
     BUDDHA ( new Guide("Buddha", "The chubby and kind spiritual guide", GameTextASCII.getBuddha())),
-    JESUS (new Guide("Jesus", "The mighty son of God", GameTextASCII.getJesus()) ),
+    JESUS (new Guide("Jesus", "The mighty son of God", GameTextASCII.getJesus())),
     BABAR (new Guide("Babar", "The real jungle king", GameTextASCII.getBabar()))
     ;
    

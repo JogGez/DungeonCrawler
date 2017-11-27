@@ -4,7 +4,6 @@ import dungeonCrawler.aqu.*;
 import dungeonCrawler.logic.GameText;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,20 +18,17 @@ public class Game implements IGame
     private ILogicFacade logic;
     // Parser for handling the user input
     private Parser parser;
+    //Creating print to console object
+    private PrintToConsole printToConsole;
     // Stores what room we are currently in
     private IMap map;
     // We are storing the class player's name for player.
     private IPlayer player;
-    // Creating a battle class object.
-    private IBattle battle;
-    //Creating print to console object
-    private PrintToConsole printToConsole;
     //Creating print to console object
     private GameText gameText;
     //Create timetracker.
     private ITimeTracker timeTracker;
-
-    private IHighScore highScore;
+    //Create highscore..
 
 
     /**
@@ -78,11 +74,8 @@ public class Game implements IGame
         // Instantiating player and initiating name
 
         //player = new Player(parser.getUserInput());
-        logic.createPlayerInstance(parser.getUserInput());
-        player = logic.getPlayer();
-
-        logic.createMapInstance();
-        map = logic.getMap();
+        player = logic.createPlayerInstance(parser.getUserInput());
+        map = logic.createMapInstance();
 
         logic.injectGameText();
 
@@ -143,7 +136,7 @@ public class Game implements IGame
                 printToConsole.print(gameText.getTimeRanOut());
             }
 
-            else if (weWon == true)
+            else if (gameCompleted == true)
             {
                 finished = true;
                 printToConsole.print(gameText.getIsLuciferDead());
@@ -154,17 +147,6 @@ public class Game implements IGame
         printToConsole.print(gameText.getThanksForPLaying());
         menu();
 
-    }
-
-    /**
-     * Method that prints Highscore
-     */
-    private void printHighScore()
-    {
-        //Prints high score
-        printToConsole.printHightScore(highScore);
-        parser.getUserInput();
-        this.menu();
     }
 
     /**
@@ -180,7 +162,7 @@ public class Game implements IGame
         {
             case "1":
                 printToConsole.print(gameText.getEmptyLine());//Prints empty line
-                play();
+                selectDifficulty();
                 break;
             case "2":
                 printToConsole.print(gameText.getEmptyLine());//Prints empty line
@@ -198,6 +180,77 @@ public class Game implements IGame
                 printToConsole.print(gameText.getThanksForPLaying());//"Thanks for playing "+player name+". Good bye!"
                 System.exit(0);
                 break;
+        }
+    }
+
+    private void selectDifficulty()
+    {
+        //Prints menu
+        printToConsole.print(gameText.getSetDifficultyLevel());
+
+
+        switch (parser.getUserInput())
+        {
+        case "1":
+            printToConsole.print(gameText.getEmptyLine());//Prints empty line
+            logic.setDifficultyLevel(1);
+            play();
+            break;
+        case "2":
+            printToConsole.print(gameText.getEmptyLine());//Prints empty line
+            logic.setDifficultyLevel(2);
+            play();
+            break;
+        case "3":
+            printToConsole.print(gameText.getEmptyLine());//Prints empty line
+            logic.setDifficultyLevel(3);
+            play();
+            break;
+        }
+    }
+
+    /**
+     * Method that prints Highscore
+     */
+    private void printHighScore()
+    {
+        //Prints high score
+        printToConsole.print(gameText.getHighScore());
+        parser.getUserInput();
+        this.menu();
+    }
+
+    /**
+     * Method that prints a help message to the screen.
+     */
+    private void printHelp()
+    {
+        //Prints "Help menu"
+        printToConsole.print(gameText.getHelpMenu());
+        String input = parser.getUserInput();
+
+        if (parser.getUserInput().contains("1"))
+        {
+            //Prints "Your command words are:"
+            printToConsole.print(gameText.getHelpCommandWords());
+
+            // prints all the available commands to screen
+            parser.showCommands();
+        }
+        else if (parser.getUserInput().contains("2"))
+        {
+            //Prints "The goals of the game is to defeat the devil"
+            printToConsole.print(gameText.getHelpGoals());
+        }
+        else if (parser.getUserInput().contains("3"))
+        {
+            //Prints "No tips or tricks available :( "
+            printToConsole.print(gameText.getNoTipsAvaiable());
+        }
+        else
+        {
+            //Prints "Invalid menu choice"
+            printToConsole.print(gameText.getInvalidChoice());
         }
     }
 
@@ -248,7 +301,6 @@ public class Game implements IGame
         }
         return quitGame;
     }
-
 
     /**
      * @param command
@@ -303,13 +355,7 @@ public class Game implements IGame
                 printToConsole.print(gameText.getMap());
                 break;
             case "exits":
-                int counter = 1;
-                for (String s : checkExits())
-                {
-                    //Prints exits from current room
-                    printToConsole.print(gameText.getExits(counter, s));
-                    counter++;
-                }
+                printToConsole.print(gameText.getExits());
                 printToConsole.print(gameText.getEmptyLine());//Prints empty line
                 break;
             case "health":
@@ -362,7 +408,6 @@ public class Game implements IGame
         }
     }
 
-
     public void showSlot(int index)
     {
         printToConsole.print(gameText.getItemInfo("inventory",index));
@@ -387,63 +432,28 @@ public class Game implements IGame
 
     public void useSlot(int index)
     {
-//        IItem item = player.getInventory().getItem(index);
-//
-//        if (item instanceof IWeapon)
-//        {
-//            player.setCurrentWeapon((IWeapon) item);
-//            //Prints "Your current weapon is now: " + player.getCurrentWeapon().name
-//            printToConsole.print(gameText.getSetCurrentWeapon());
-//        }
-//        else if (item instanceof IPotion)
-//        {
-//            player.setHealth(player.getHealth() + ((IPotion) item).getHealthRecovery());
-//            logic
-//            player.getInventory().removeItem(player.getInventory().getItemIndex(item));
-//            player.setTime(player.getTime() + ((IPotion) item).getTimeRecovery());
-//            //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
-//            printToConsole.print(gameText.getPlayerHealth(player));
-//            // Prints "Your time is now: " + player.getTime() + "sec"
-//            printToConsole.print(gameText.getPlayerTime(timeTracker));
-//        }
-//        else
-//        {
-//            //Prints "Slot is empty."
-//            printToConsole.print(gameText.getSlotIsEmpty());
-//        }
-    }
+            IItem item = player.getInventory().getItem(index);
 
-    /**
-     * Method that prints a help message to the screen.
-     */
-    private void printHelp()
-    {
-        //Prints "Help menu"
-        printToConsole.print(gameText.getHelpMenu());
-        String input = parser.getUserInput();
-
-        if (parser.getUserInput().contains("1"))
+        if (item instanceof IWeapon)
         {
-            //Prints "Your command words are:"
-            printToConsole.print(gameText.getHelpCommandWords());
-
-            // prints all the available commands to screen
-            parser.showCommands();
+            player.setWeapon((IWeapon) item);
+            //Prints "Your current weapon is now: " + player.getCurrentWeapon().name
+            printToConsole.print(gameText.getSetCurrentWeapon());
         }
-        else if (parser.getUserInput().contains("2"))
+        else if (item instanceof IPotion)
         {
-            //Prints "The goals of the game is to defeat the devil"
-            printToConsole.print(gameText.getHelpGoals());
-        }
-        else if (parser.getUserInput().contains("3"))
-        {
-            //Prints "No tips or tricks available :( "
-            printToConsole.print(gameText.getNoTipsAvaiable());
+            player.setHealth(player.getHealth() + ((IPotion) item).getHealthRecovery());
+            player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+            player.setTime(player.getTime() + ((IPotion) item).getTimeRecovery());
+            //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
+            printToConsole.print(gameText.getPlayerHealth());
+            // Prints "Your time is now: " + player.getTime() + "sec"
+            printToConsole.print(gameText.getPlayerTime(timeTracker));
         }
         else
         {
-            //Prints "Invalid menu choice"
-            printToConsole.print(gameText.getInvalidChoice());
+            //Prints "Slot is empty."
+            printToConsole.print(gameText.getSlotIsEmpty());
         }
     }
 
@@ -504,11 +514,7 @@ public class Game implements IGame
                     printToConsole.print(gameText.getYouRanIntoAWall());
                 break;
             case "back":
-                player.setLocation(new Point(player.getLastLocation().x, player.getLastLocation().y));
-                //Prints "You went back to the previous room."
-                printToConsole.print(gameText.getYouWentBackToPreviousRoom());
-                map.guideMove();
-                checkRoom();
+                playerMove(new Point(player.getLastLocation().x, player.getLastLocation().y));
                 break;
             default:
                 //Prints "Go where? No such direction found..."
@@ -523,11 +529,20 @@ public class Game implements IGame
         {
             player.setLocation(location);
 
-            //Prints "You entered new room."
-            printToConsole.print(gameText.getYouEnteredANewRoom(logic.getCurrentRoom()));
+            if (location.equals(player.getLastLocation()))
+            {
+                //Prints "You went back to the previous room."
+                printToConsole.print(gameText.getYouWentBackToPreviousRoom());
+            }
+            else
+            {
+                //Prints "You entered new room."
+                printToConsole.print(gameText.getYouEnteredANewRoom(logic.getCurrentRoom()));
+                map.setRoomHasBeenEntered(player.getLocation());
+            }
 
-            map.setRoomHasBeenEntered(player.getLocation());
             map.guideMove();
+            map.thiefMove();
             checkRoom();
         }
         else if (map.isRoomLocked(location) && logic.getNumberOfAvailableKeys() == 0)
@@ -562,15 +577,30 @@ public class Game implements IGame
 
             map.setRoomHasBeenEntered(player.getLocation());
             map.guideMove();
+            map.thiefMove();
             checkRoom();
         }
 
     }
 
-
-
     public void checkRoom()
     {
+        if (map.roomContainsGuide())
+        {
+            printToConsole.print(gameText.getGuide());
+            map.getItemFromGuide();
+        }
+
+        if (map.roomContainsThief())
+        {
+            printToConsole.print(gameText.getThief());
+            map.removeThief();
+        }
+
+
+
+
+
         for (int i = 0; i < map.getNumberOfContent(); i++)
         {
             switch (map.checkRoomContent(i))
@@ -588,9 +618,7 @@ public class Game implements IGame
                     String input = parser.getUserInput();//returns a String
                     if (input.equals("battle") || input.equals("b"))
                     {
-                        logic.doBattle(i);
-
-                        startBattle();
+                        startBattle(logic.doBattle(i));
 
                         logic.getCurrentRoom().removeContent(i);
 
@@ -606,6 +634,10 @@ public class Game implements IGame
                         printToConsole.print(gameText.getWhatDoYouMean());
                     }
                 }
+                if (i < map.getNumberOfContent() - 1)
+                {
+                    parser.userPressEnter();
+                }
                 break;
             case "Chest":
                 //Prints info about chest.
@@ -616,7 +648,8 @@ public class Game implements IGame
                     String input = parser.getUserInput();
                     if (input.equals("open") || input.equals("o"))
                     {
-//                        IItem item = ((IChest)logic.getCurrentRoom().getContent(i)).getItem();
+
+                        printToConsole.print(gameText.getItemInfo("chest",i));
 
                         printToConsole.print(gameText.getShowInventory());
 
@@ -642,7 +675,6 @@ public class Game implements IGame
                                     chestInput = true;
                                 }
                             }
-
                         }
 
                         //Checks through the players inventory
@@ -921,7 +953,7 @@ public class Game implements IGame
         }
     }
 
-    public void startBattle()
+    public void startBattle(IBattle battle)
     {
         while (!battle.getIsBattleOver())
         {
@@ -936,12 +968,12 @@ public class Game implements IGame
             }
             else if (input.toLowerCase().contains("drink"))
             {
-                drink();
+                drinkPotion();
             }
         }
     }
 
-    private void drink()
+    private void drinkPotion()
     {
         if (logic.getNumberOfAvailablePotions() > 0)
         {
@@ -969,50 +1001,25 @@ public class Game implements IGame
         }
     }
 
-    boolean weWon = false;
+    boolean gameCompleted = false;
 
     public void lastBossBattle()
     {
         // "The eye of Sauron teleports you to the lair of the demon realm"
         printToConsole.print(gameText.getAllRoomsEntered());
 
+        printToConsole.print(gameText.getMonstersInfo(logic.getLucifer()));
 
-        IMonster lucifer = logic.getLucifer();
-//        printToConsole.print(gameText.getContentInfo(lucifer));
         printToConsole.print(gameText.getPlayerInfo());
-        printToConsole.print(gameText.getAttackOrDrinkPotion());
-        logic.doBattle(lucifer);
-        //IBattle battle = new Battle(player, lucifer);
 
-        while (!battle.getIsBattleOver())
+
+        startBattle(logic.doBattle(logic.getLucifer()));
+
+        if (logic.getLucifer().getHealth() <= 0)
         {
-
-            //Prints "attack or drink potion"
-            //printToConsole.print(gameText.getAttackOrDrinkPotion());
-
-            String input = parser.getUserInput();
-            if (input.toLowerCase().contains("attack") || input.toLowerCase().contains("a"))
-            {
-                //Prints status of battle
-                printToConsole.print(gameText.getBattle( battle));
-            }
-            else if (input.toLowerCase().contains("drink"))
-            {
-                drink();
-            }
-            else
-            {
-                //Prints "Type \"attack\" or \"drink\""
-                printToConsole.print(gameText.getAttackOrDrinkPotion());
-            }
-
-        }
-        if (lucifer.getHealth() <= 0)
-        {
-            weWon = true;
+            gameCompleted = true;
         }
     }
-
 
     /**
      * This is the quit method that return a true or false value.
@@ -1021,7 +1028,6 @@ public class Game implements IGame
      * @param command quit command.
      * @return boolean
      */
-
     private boolean quit(Command command)
     {
         // Checks if command says more that "quit", and cancels the request if so
@@ -1035,29 +1041,6 @@ public class Game implements IGame
         {
             return true;
         }
-    }
-
-    public ArrayList<String> checkExits()
-    {
-        ArrayList<String> exitList = new ArrayList<>();
-
-        if (map.roomExists(new Point(player.getLocation().x - 1, player.getLocation().y)))
-        {
-            exitList.add("left");
-        }
-        if (map.roomExists(new Point(player.getLocation().x + 1, player.getLocation().y)))
-        {
-            exitList.add("right");
-        }
-        if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
-        {
-            exitList.add("up");
-        }
-        if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y - 1)))
-        {
-            exitList.add("down");
-        }
-        return exitList;
     }
 
     @Override

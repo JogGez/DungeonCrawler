@@ -66,7 +66,6 @@ public class Parser
         return new Command(commands.getCommandWord(word1), word2, word3);
     }
 
-
     /**
      * Print all available commands to the console through the CommandWords class.
      */

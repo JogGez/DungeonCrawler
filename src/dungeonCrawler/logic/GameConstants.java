@@ -13,67 +13,163 @@ import java.awt.*;
  */
 class GameConstants
 {
-    //Static because we will never change those values.
-    private static Point mapSize = new Point (3,4);
-     //number of contents in a room.
-    private static int roomContents = 2;
-    private static int playerHealth = 3000;
-    private static int inventorySize = 3;
-    private static int playerTime = 500;
-    private static int playerPower = 50;
-    private static int movingGuides = 2;
-    private static int lockedRooms = 2;
+    // Static because of static methods.
+    private static Point mapSize;
+     // number of contents in a room.
+    private static int roomContents;
+    //
+    private static int playerHealth;
+    private static int inventorySize;
+    private static int playerTime;
+    private static int playerPower;
+    private static int numberOfGuides;
+    private static int numberOfThieves;
+    private static int thiefPickingRounds;
+    private static int lockedRooms;
 
-    public static int getLockedRooms()
+    // Combined chance must be under 100%
+    private static int chanceOfMonster;
+    private static int chanceOfChest;
+    private static int chanceOfFriend;
+
+    // Combined chance must be under 100%
+    private static int chanceOfWeapon;
+    private static int chanceOfHealthPotion;
+    private static int chanceOfTimePotion;
+
+    // Private constructor to maintain static and to prevent instantiating
+    private GameConstants()
+    {
+    }
+
+    public static void setEasyDifficulty()
+    {
+       mapSize = new Point (3,4);
+       roomContents = 2;
+       playerHealth = 1000;
+       inventorySize = 5;
+       playerTime = 300;
+       playerPower = 100;
+       numberOfGuides = 2;
+       numberOfThieves = 1;
+       thiefPickingRounds = 3;
+       lockedRooms = 2;
+
+       chanceOfMonster = 25;
+       chanceOfChest = 50;
+       chanceOfFriend = 15;
+
+       chanceOfWeapon = 30;
+       chanceOfHealthPotion = 30;
+       chanceOfTimePotion = 30;
+
+    }
+
+    public static void setNormalDifficulty()
+    {
+        mapSize = new Point (4,5);
+        roomContents = 2;
+        playerHealth = 500;
+        inventorySize = 4;
+        playerTime = 240;
+        playerPower = 20;
+        numberOfGuides = 2;
+        numberOfThieves = 2;
+        thiefPickingRounds = 3;
+        lockedRooms = 4;
+    }
+
+    public static void setHardDifficulty()
+    {
+        mapSize = new Point (5,6);
+        roomContents = 3;
+        playerHealth = 300;
+        inventorySize = 3;
+        playerTime = 180;
+        playerPower = 10;
+        numberOfGuides = 3;
+        numberOfThieves = 3;
+        thiefPickingRounds = 2;
+        lockedRooms = 6;
+    }
+
+    static int getChanceOfMonster()
+    {
+        return chanceOfMonster;
+    }
+
+    static int getChanceOfChest()
+    {
+        return chanceOfChest;
+    }
+
+    static int getChanceOfFriend()
+    {
+        return chanceOfFriend;
+    }
+
+    static int getChanceOfWeapon()
+    {
+        return chanceOfWeapon;
+    }
+
+    static int getChanceOfHealthPotion()
+    {
+        return chanceOfHealthPotion;
+    }
+
+    static int getChanceOfTimePotion()
+    {
+        return chanceOfTimePotion;
+    }
+
+    static int getLockedRooms()
     {
         return lockedRooms;
     }
 
-    public static void setEasyLevel()
-    {
-       mapSize = new Point (3,4);
-       roomContents = 2;
-       playerHealth = 6000;
-       inventorySize = 3;
-       playerTime = 200;
-       playerPower = 100;
-       movingGuides = 2;
-       lockedRooms = 2;
-    }
-
-    public static Point getMapSize()
+    static Point getMapSize()
     {
         return mapSize;
     }
 
-    public static int getRoomContents()
+    static int getRoomContents()
     {
         return roomContents;
     }
 
-    public static int getPlayerHealth()
+    static int getPlayerHealth()
     {
         return playerHealth;
     }
 
-    public static int getInventorySize()
+    static int getInventorySize()
     {
         return inventorySize;
     }
 
-    public static int getPlayerTime()
+    static int getPlayerTime()
     {
         return playerTime;
     }
 
-    public static int getPlayerPower()
+    static int getPlayerPower()
     {
         return playerPower;
     }
 
-    public static int getMovingGuides()
+    static int getNumberOfGuides()
     {
-        return movingGuides;
+        return numberOfGuides;
     }
 
+    static int getNumberOfThieves()
+    {
+        return numberOfThieves;
+    }
+
+    static int getThiftPickingRounds()
+    {
+        return thiefPickingRounds;
+    }
 }

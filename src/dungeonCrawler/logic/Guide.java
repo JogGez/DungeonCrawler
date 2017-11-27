@@ -19,9 +19,8 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide
     private String name;
     private String description;
     private Point location;
-
-
     private String ascii;
+    private Item item;
 
     /**
      * Instantiates a new Guide.
@@ -38,6 +37,7 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide
         this.ascii = ascii;
         this.description = description;
         this.location = new Point(0, 0);
+        this.item = Item.getRandomItem();
     }
 
     /**
@@ -94,7 +94,6 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide
         int randomX = (int)(Math.random()*mapSize.x);
         int randomY = (int)(Math.random()*mapSize.y);
         location = new Point(randomX, randomY);
-
     }
 
 
@@ -120,4 +119,8 @@ class Guide implements IRoomContent, dungeonCrawler.aqu.IGuide
         return ascii;
     }
 
+    Item getItem()
+    {
+        return item;
+    }
 }

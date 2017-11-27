@@ -1,5 +1,6 @@
 package dungeonCrawler.logic;
 
+import com.sun.javafx.image.BytePixelSetter;
 import dungeonCrawler.aqu.IRoomContent;
 
 import java.awt.*;
@@ -19,37 +20,31 @@ class Room implements dungeonCrawler.aqu.IRoom
     //Is room locked.
     private boolean isLocked;
 
-    public void setLocked(boolean locked)
-    {
-        isLocked = locked;
-    }
     // The location of the room.
     private Point location;
     //
     private String description;
     // How many things are in the room
     private int numberOfContent;
-
-    public boolean isLocked()
-    {
-        return isLocked;
-    }
     // List of all the roomContent in the room
-    private ArrayList<RoomContent> roomContent = new ArrayList<>();
+    private ArrayList<RoomContent> roomContent;
+
     /**
      * Instantiates a new Room.
      */
+
     //Constructor
     //Parameters: point (coordinate) and numberOfContent.
     //Sets: location, name & description, hasBeenEntered, numberOfContent.
-    public Room(Point p, int numberOfContent, String name, String description, boolean isLocked)
+    public Room(Point location, int numberOfContent, String name, String description, boolean isLocked)
     {
-        this.location = p;
+        this.location = location;
         this.name = name;
         this.hasBeenEntered = false;
         this.numberOfContent = numberOfContent;
         this.description = description;
-        this.isLocked =isLocked;
+        this.isLocked = isLocked;
+        this.roomContent = new ArrayList<>();
 
         // TODO
         // Loop that generates a random number (0-100) and adds a (nothing here//monster//chest//helper) according to the number generated.
@@ -59,27 +54,39 @@ class Room implements dungeonCrawler.aqu.IRoom
         {
             //Generating number 0-100.
             int randomNumber = (int) (Math.random() * 100);
+
+            // MONSTER: If the number generated is 20-49 a monster is added in the roomslot.
+            if (randomNumber < GameConstants.getChanceOfMonster())
+            {
+                roomContent.add(MonsterEnum.getRandomMonster());
+            }
+            // CHEST: If the number generated is 50-84 a chest is added in the roomslot.
+            else if (randomNumber <= GameConstants.getChanceOfMonster() + GameConstants.getChanceOfChest())
+            {
+                roomContent.add(new Chest());
+            }
+            // GUIDE: If the number generated is 85-100 a helper is added in the roomslot.
+            else if (randomNumber <= GameConstants.getChanceOfMonster() + GameConstants.getChanceOfChest() + GameConstants.getChanceOfFriend())
+            {
+                // TODO Add someone here
+                roomContent.add(null);
+            }
             // If the number generated is 0-19 nothing here is added in the roomslot.
-            if (randomNumber < 0)
+            else if (randomNumber < 100)
             {
                 roomContent.add(null);
             }
-            // MONSTER: If the number generated is 20-49 a monster is added in the roomslot.
-            else if (randomNumber < 25)
-            {
-                roomContent.add((RoomContent) MonsterEnum.getRandomMonster());
-            }
-            // CHEST: If the number generated is 50-84 a chest is added in the roomslot.
-            else if (randomNumber <= 100)
-            {
-                roomContent.add((RoomContent)new Chest());
-            }
-            // GUIDE: If the number generated is 85-100 a helper is added in the roomslot.
-//            else if (randomNumber <= 100)
-//            {
-//                roomContent.add(new Guide());
-//            }
         }
+    }
+
+    public void setLocked(boolean locked)
+    {
+        isLocked = locked;
+    }
+
+    public boolean isLocked()
+    {
+        return isLocked;
     }
 
     @Override
@@ -124,6 +131,11 @@ class Room implements dungeonCrawler.aqu.IRoom
     public RoomContent getContent(int index)
     {
         return roomContent.get(index);
+    }
+
+    public ArrayList<RoomContent> getContentArray()
+    {
+        return roomContent;
     }
 
     /**
