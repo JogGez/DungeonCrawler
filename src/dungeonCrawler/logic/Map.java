@@ -1,6 +1,7 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IGuide;
+import dungeonCrawler.aqu.IItem;
 import dungeonCrawler.aqu.IThief;
 
 import java.awt.*;
@@ -336,30 +337,7 @@ class Map implements dungeonCrawler.aqu.IMap
         ArrayList<? extends IThief> thieves = thiefList;
         return (ArrayList<IThief>) thieves;
     }
-
-    public boolean guideAndPlayerSameRoom(Guide guide, Player player)
-    {
-        if (guide.getLocation().equals(player.getLocation()))
-        {
-            return true;
-        }
-        return false;
-    }
     
-    
-    public boolean guideAndPlayerSameRoom()
-    {
-        for (Guide guide : guideList)
-        {
-            if (guide.getLocation().equals(player.getLocation()))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-        
     public void unlockRoom(Point playerLocation)
     {
         getCurrentRoom().setLocked(false);
@@ -421,18 +399,21 @@ class Map implements dungeonCrawler.aqu.IMap
         }
     }
 
+   
     @Override
-    public void getItemFromGuide(int inventoryIndex)
+    public IItem getItemFromGuide()
     {
         for (Guide guide : guideList)
         {
             if (getCurrentRoom().getLocation().equals(guide.getLocation()))
             {
-                player.getInventory().addItem(guide.getItem(),inventoryIndex);
+                
+                //player.getInventory().addItem(guide.getItem(),inventoryIndex);
+                return guide.getItem();
             }
-        }
-
-    }
+        } 
+        return null;
+    } 
 
 
     public Room getRoom(Point point)

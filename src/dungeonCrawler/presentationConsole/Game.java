@@ -582,7 +582,8 @@ public class Game implements IGame
         if (map.roomContainsGuide())
         {
             printToConsole.print(gameText.getGuide());
-            //map.getItemFromGuide();
+            changeInventory(map.getItemFromGuide());
+            
         }
 
         if (map.roomContainsThief())
@@ -590,11 +591,7 @@ public class Game implements IGame
             printToConsole.print(gameText.getThief());
             map.removeThief();
         }
-
-
-
-
-
+        
         for (int i = 0; i < map.getNumberOfContent(); i++)
         {
             switch (map.checkRoomContent(i))

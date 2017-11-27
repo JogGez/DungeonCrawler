@@ -40,5 +40,5 @@ public interface IMap
 
     void removeThief();
 
-    void getItemFromGuide(int InventoryIndex);
+    IItem getItemFromGuide();
 }
