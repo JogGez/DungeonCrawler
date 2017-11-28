@@ -77,6 +77,14 @@ class GameConstants
         numberOfThieves = 2;
         thiefPickingRounds = 3;
         lockedRooms = 4;
+        
+        chanceOfMonster = 25;
+        chanceOfChest = 50;
+        chanceOfFriend = 15;
+
+        chanceOfWeapon = 30;
+        chanceOfHealthPotion = 30;
+        chanceOfTimePotion = 30;
     }
 
     public static void setHardDifficulty()
@@ -91,6 +99,14 @@ class GameConstants
         numberOfThieves = 3;
         thiefPickingRounds = 2;
         lockedRooms = 6;
+        
+        chanceOfMonster = 25;
+        chanceOfChest = 50;
+        chanceOfFriend = 15;
+
+        chanceOfWeapon = 30;
+        chanceOfHealthPotion = 30;
+        chanceOfTimePotion = 30;
     }
 
     static int getChanceOfMonster()
