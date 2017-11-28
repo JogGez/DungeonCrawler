@@ -1,13 +1,12 @@
 package dungeonCrawler.logic;
 
-import dungeonCrawler.aqu.IMonster;
-import dungeonCrawler.aqu.IPlayer;
+import dungeonCrawler.aqu.IBattle;
 
 /**
  * Battle class, where battles happens
  * @author Linea Hoffmann
  */
-class Battle implements dungeonCrawler.aqu.IBattle
+class Battle implements IBattle
 {
     // Declare datafields, with no value, with private access modifieres
     // Reference datatypes of the objects. 

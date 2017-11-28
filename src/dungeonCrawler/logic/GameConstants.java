@@ -22,7 +22,7 @@ class GameConstants
     private static int inventorySize;
     private static int playerTime;
     private static int playerPower;
-    private static int numberOfGuides;
+    private static int numberOfMerchants;
     private static int numberOfThieves;
     private static int thiefPickingRounds;
     private static int lockedRooms;
@@ -30,7 +30,7 @@ class GameConstants
     // Combined chance must be under 100%
     private static int chanceOfMonster;
     private static int chanceOfChest;
-    private static int chanceOfFriend;
+    private static int chanceOfGuide;
 
     // Combined chance must be under 100%
     private static int chanceOfWeapon;
@@ -50,14 +50,14 @@ class GameConstants
        inventorySize = 5;
        playerTime = 300;
        playerPower = 100;
-       numberOfGuides = 2;
+       numberOfMerchants = 2;
        numberOfThieves = 1;
        thiefPickingRounds = 3;
        lockedRooms = 2;
 
        chanceOfMonster = 25;
-       chanceOfChest = 50;
-       chanceOfFriend = 15;
+       chanceOfChest = 25;
+       chanceOfGuide = 50;
 
        chanceOfWeapon = 30;
        chanceOfHealthPotion = 30;
@@ -73,7 +73,7 @@ class GameConstants
         inventorySize = 4;
         playerTime = 240;
         playerPower = 20;
-        numberOfGuides = 2;
+        numberOfMerchants = 2;
         numberOfThieves = 2;
         thiefPickingRounds = 3;
         lockedRooms = 4;
@@ -95,7 +95,7 @@ class GameConstants
         inventorySize = 3;
         playerTime = 180;
         playerPower = 10;
-        numberOfGuides = 3;
+        numberOfMerchants = 3;
         numberOfThieves = 3;
         thiefPickingRounds = 2;
         lockedRooms = 6;
@@ -119,9 +119,9 @@ class GameConstants
         return chanceOfChest;
     }
 
-    static int getChanceOfFriend()
+    static int getChanceOfGuide()
     {
-        return chanceOfFriend;
+        return chanceOfGuide;
     }
 
     static int getChanceOfWeapon()
@@ -174,9 +174,9 @@ class GameConstants
         return playerPower;
     }
 
-    static int getNumberOfGuides()
+    static int getNumberOfMerchants()
     {
-        return numberOfGuides;
+        return numberOfMerchants;
     }
 
     static int getNumberOfThieves()

@@ -15,9 +15,6 @@ enum RoomEnum
     WEAPONQUARTER ("Weapon Quarter", "Rusty weapon racks")
     ;
 
-    
-    
-   
     private final String name;
     private final String description;
 
@@ -29,11 +26,10 @@ enum RoomEnum
      
     public static String[] getRandomString()
     {
-        
         //Values all the values in the enum. 
         int randomNumber = new Random().nextInt(values().length); // gives a random number
         // retruns name and description from values (values is the enums array of contens). 
-        return new String[]{values()[randomNumber].getName(),values()[randomNumber].getDescription()};
+        return new String[]{values()[randomNumber].name,values()[randomNumber].description};
     }
     
     public String getName()

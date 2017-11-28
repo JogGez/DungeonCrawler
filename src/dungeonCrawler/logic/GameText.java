@@ -5,7 +5,6 @@ import dungeonCrawler.data.HighScore;
 import dungeonCrawler.presentationConsole.CommandWord;
 
 import java.awt.*;
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,12 +15,6 @@ public class GameText
 
     public GameText()
     {
-    }
-
-    public GameText(Player player, Map map)
-    {
-        this.player = player;
-        this.map = map;
     }
 
     public void injectVariables(Player player, Map map)
@@ -64,8 +57,6 @@ public class GameText
                 "\n3. Hard";
     }
 
-
-
     public String getEnterPlayerName()
     {
         return "Enter your name here: ";
@@ -80,7 +71,7 @@ public class GameText
     {
 
         return "Well... hello there "+player.getName()+
-                "\nI'am Slave and I'll be your guide through this adventure."+
+                "\nI'am Slave and I'll be your merchant through this adventure."+
                 "\nType '"+ CommandWord.HELP + "' if you ever need help."+
                 "\nType \"enter\" to enter the DUNGEON...";
     }
@@ -230,7 +221,7 @@ public class GameText
         return output;
     }
 
-    public String getShowInventory()
+    public String getInventory(IInventory inventory)
     {
         String top = " \u256D";
         String mTop = " \u2551";
@@ -238,16 +229,16 @@ public class GameText
         String mBottom = " \u2551";
         String bottom = " \u2570";
         String slot = "  ";
-        for (int i = 0; i < player.getInventory().getSize(); i++)
+        for (int i = 0; i < inventory.getSize(); i++)
         {
             String inventoriesItem;
-            if (player.getInventory().getItem(i) == null)
+            if (inventory.getItem(i) == null)
             {
                 inventoriesItem = "empty";
             }
             else
             {
-                inventoriesItem = player.getInventory().getItem(i).getName();
+                inventoriesItem = inventory.getItem(i).getName();
             }
 
 
@@ -285,7 +276,9 @@ public class GameText
         }
         else if (map.getCurrentRoom().getContent(index) instanceof Guide)
         {
-            return "Guide";
+            Guide guide = (Guide)map.getCurrentRoom().getContent(index);
+
+            contentInfo = getGuideInfo(guide);
         }
         else
         {
@@ -295,23 +288,15 @@ public class GameText
         return contentInfo;
     }
 
+    private String getGuideInfo(Guide guide)
+    {
+        return  guide.getAscii() +
+                "\n" + "Name: " + guide.getName() +
+                "\n" + "Description: " + guide.getDescription();
+    }
+
     public String getItemInfo(IItem item)
     {
-//        Item item;
-//        switch (location)
-//        {
-//        case "chest":
-//            Chest chest = (Chest) (map.getCurrentRoom().getContent(index));
-//            item = chest.getItem();
-//            break;
-//        case "inventory":
-//            item = (Item) player.getInventory().getItem(index);
-//            break;
-//        default:
-//            return "Get info from where?";
-//        }
-
-
         String contentInfo;
 
         if (item instanceof Weapon)
@@ -358,8 +343,7 @@ public class GameText
                 "\n" + "Name: " + monster.getName() +
                 "\n" + "Description: " + monster.getDescription() +
                 "\n" + "Health: " + monster.getHealth() +
-                "\n" + "Power: " + monster.getPower() +
-                "\n";
+                "\n" + "Power: " + monster.getPower();
     }
 
     public String getChestInfo(IChest chest)
@@ -418,7 +402,7 @@ public class GameText
 
     public String getPlayerHealth()
     {
-        return "Your health is now: " + player.getHealth() + "hp";
+        return "Your health is: " + player.getHealth() + "hp";
     }
     
     public String getPlayerTime(ITimeTracker timeTracker)
@@ -448,7 +432,7 @@ public class GameText
         return "There is a guide, you can either \"talk\" , \"skip\" or \"kill\"!";
     }
 
-    public String getHelperTalk()
+    public String getGuideTalk()
     {
         return "Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!";
     }
@@ -556,9 +540,9 @@ public class GameText
                     {
                         insert = "  X   ";
                     }
-                    for (IGuide guide : map.guideArrayList())
+                    for (IMerchant merchant : map.merchantArrayList())
                     {
-                        if (room.getLocation().x == guide.getLocation().x && room.getLocation().y == guide.getLocation().y)
+                        if (room.getLocation().x == merchant.getLocation().x && room.getLocation().y == merchant.getLocation().y)
                         {
                             insert = "  G   ";
                         }
@@ -581,7 +565,7 @@ public class GameText
 //                mapList.set(0 , mapList.get(0) + "   X = Unseen Rooms  ");
 //                mapList.set(1 , mapList.get(1) + "   O = Seen Rooms ");
 //                mapList.set(2 , mapList.get(2) + "   P = Player ");
-//                mapList.set(3 , mapList.get(3) + "   G = Guides ");
+//                mapList.set(3 , mapList.get(3) + "   G = Merchants ");
 
 
         String output = "";
@@ -615,14 +599,14 @@ public class GameText
         return output;
     }
 
-    public String getGuide()
+    public String getMerchant()
     {
-        return "You found a guide and he offers you a gift";
+        return "You found a merchant and he offers you a trade";
     }
 
     public String getThief()
     {
-        return "You found a thief and for his crime you set him free...";
+        return "You found a thief and for his crime you take his life";
     }
     
     public String getWrongPlayerNameLength()

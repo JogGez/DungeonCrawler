@@ -11,7 +11,7 @@ import java.awt.Point;
  *
  * @author Computer
  */
-public class GameSettings
+class GameSettings
 {
     //Static because we will never change those values.
     private static Point mapSize = new Point (3,1);
@@ -21,7 +21,7 @@ public class GameSettings
     private static int inventorySize = 3;
     private static int playerTime = 500;
     private static int playerPower = 50;
-    private static int movingGuides = 2;
+    private static int movingMerchants = 2;
 
     
     
@@ -33,7 +33,7 @@ public class GameSettings
        inventorySize = 3;
        playerTime = 200;
        playerPower = 100;
-       movingGuides = 2;
+       movingMerchants = 2;
     }
 
     public static Point getMapSize()
@@ -96,14 +96,14 @@ public class GameSettings
         GameSettings.playerPower = playerPower;
     }
      
-   public static int getMovingGuides()
+   public static int getMovingMerchants()
     {
-        return movingGuides;
+        return movingMerchants;
     }
 
-    public static void setMovingGuides(int movingGuides)
+    public static void setMovingMerchants(int movingMerchants)
     {
-        GameSettings.movingGuides = movingGuides;
+        GameSettings.movingMerchants = movingMerchants;
     }
             
 }

@@ -6,15 +6,12 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IKey;
-import java.util.ArrayList;
-
-
 
 /**
  *
  * @author Linea Hoffmann
  */
-class Key extends Item implements dungeonCrawler.aqu.IKey
+class Key extends Item implements IKey
 {
     public Key (String name, String description, String ascii)
     {

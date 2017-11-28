@@ -1,14 +1,12 @@
 package dungeonCrawler.logic;
 
-import dungeonCrawler.aqu.IWeapon;
-
 import java.util.Random;
 
 /**
  *
  * @author Linea Hoffmann
  */
-public enum WeaponEnum
+enum WeaponEnum
 {
     EXCALIBUR (new Weapon("Excalibur", "The Sword of King Arthur", GameTextASCII.getSword(), 1000, 1000)),
     DURANDAL ( new Weapon("Durandal", "Sword of Roland, legendary paladin of Charlemagne", GameTextASCII.getSword(), 100, 15 )),
@@ -46,7 +44,7 @@ public enum WeaponEnum
     public static Weapon getRandomWeapon()
     {
         //Creates a reference to weapon w. 
-        // Contains a random guide from the enum.
+        // Contains a random merchant from the enum.
         Weapon w = values()[new Random().nextInt(values().length)].weapon;
         
         // Returns a new instances of weapon, where it uses the reference from weaponEnum (w from above)

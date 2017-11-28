@@ -1,6 +1,6 @@
 package dungeonCrawler.logic;
 
-import com.sun.javafx.image.BytePixelSetter;
+import dungeonCrawler.aqu.IRoom;
 import dungeonCrawler.aqu.IRoomContent;
 
 import java.awt.*;
@@ -10,16 +10,14 @@ import java.util.ArrayList;
  * The type Room.
  */
 // Class that hold the information about a room
-class Room implements dungeonCrawler.aqu.IRoom
+class Room implements IRoom
 {
     // Room name.
     private String name;
-
     // Has room been entered.
     private boolean hasBeenEntered;
-    //Is room locked.
+    // Is room locked.
     private boolean isLocked;
-
     // The location of the room.
     private Point location;
     //
@@ -65,11 +63,11 @@ class Room implements dungeonCrawler.aqu.IRoom
             {
                 roomContent.add(new Chest());
             }
-            // GUIDE: If the number generated is 85-100 a helper is added in the roomslot.
-            else if (randomNumber <= GameConstants.getChanceOfMonster() + GameConstants.getChanceOfChest() + GameConstants.getChanceOfFriend())
+            // MERCHANT: If the number generated is 85-100 a helper is added in the roomslot.
+            else if (randomNumber <= GameConstants.getChanceOfMonster() + GameConstants.getChanceOfChest() + GameConstants.getChanceOfGuide())
             {
                 // TODO Add someone here
-                roomContent.add(null);
+                roomContent.add(GuideEnum.getRandomGuide());
             }
             // If the number generated is 0-19 nothing here is added in the roomslot.
             else if (randomNumber < 100)
@@ -127,7 +125,6 @@ class Room implements dungeonCrawler.aqu.IRoom
      * @param index
      * @return
      */
-
     @Override
     public IRoomContent getContent(int index)
     {
@@ -160,9 +157,9 @@ class Room implements dungeonCrawler.aqu.IRoom
         {
             return "Chest";
         }
-        else if (getContent(index) instanceof Guide)
+        else if (getContent(index) instanceof Merchant)
         {
-            return "Guide";
+            return "Merchant";
         }
         else
         {

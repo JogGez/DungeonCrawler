@@ -1,15 +1,10 @@
 package dungeonCrawler.aqu;
 
-import java.awt.*;
-import java.util.ArrayList;
-
-public interface IGuide
+public interface IGuide extends IRoomContent
 {
     String getName();
 
     String getDescription();
 
     String getAscii();
-    Point getLocation();
-    void move(ArrayList<String>exitList);
 }

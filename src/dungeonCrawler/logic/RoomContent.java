@@ -5,10 +5,12 @@
  */
 package dungeonCrawler.logic;
 
+import dungeonCrawler.aqu.IRoomContent;
+
 /**
  *
  * @author Frederik
  */
-public interface RoomContent
+interface RoomContent extends IRoomContent
 {
 }

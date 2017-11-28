@@ -5,14 +5,13 @@
  */
 package dungeonCrawler.logic;
 
-import dungeonCrawler.aqu.IKey;
 import java.util.Random;
 
 /**
  *
  * @author Linea Hoffmann
  */
-public enum KeyEnum
+enum KeyEnum
 {
     KEY1 (new Key ("The Normal Key", "The key to unlock the all locked rooms", GameTextASCII.getKey())),
     KEY2 (new Key("The Sweet Key", "The key to unlock all your childhood memories", GameTextASCII.getKey2())),

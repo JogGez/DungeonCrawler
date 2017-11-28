@@ -1,10 +1,12 @@
 package dungeonCrawler.logic;
 
+import dungeonCrawler.aqu.IItem;
+
 /**
  *
  * @author Linea Hoffmann
  */
-abstract class Item implements dungeonCrawler.aqu.IItem
+abstract class Item implements IItem
 {
     private String name;
     private String description;

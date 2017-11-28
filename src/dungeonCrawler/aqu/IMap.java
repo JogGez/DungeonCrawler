@@ -24,7 +24,7 @@ public interface IMap
 
     boolean isRoomLocked(Point checkPoint);
     
-    void guideMove();
+    void merchantMove();
 
     void thiefMove();
 
@@ -36,9 +36,13 @@ public interface IMap
 
     boolean roomContainsThief();
 
-    boolean roomContainsGuide();
+    boolean roomContainsMerchant();
 
     void removeThief();
 
-    IItem getItemFromGuide();
+    IItem getItemFromMerchant();
+
+    void unlockRoom(Point location);
+
+    IMerchant getMerchant();
 }

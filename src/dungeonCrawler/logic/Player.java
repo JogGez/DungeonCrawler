@@ -7,6 +7,7 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IInventory;
 import dungeonCrawler.aqu.IWeapon;
+import dungeonCrawler.aqu.IPlayer;
 
 import java.awt.*;
 
@@ -15,9 +16,8 @@ import java.awt.*;
  *
  * @author Jonathan
  */
-class Player implements dungeonCrawler.aqu.IPlayer
+class Player implements IPlayer
 {
-  
     /**
     We aren't making the system print out a line, because later on it would
     result in a error. Therefore we are going to create a seperate class under game => play.
@@ -32,7 +32,6 @@ class Player implements dungeonCrawler.aqu.IPlayer
     private Point lastLocation;
     private int time;
 
-    
      /**
      * Constructor for player
      * 
@@ -55,7 +54,6 @@ class Player implements dungeonCrawler.aqu.IPlayer
      * Method
      * @return inventory
      */
-
     @Override
     public IInventory getInventory()
     {
@@ -95,9 +93,6 @@ class Player implements dungeonCrawler.aqu.IPlayer
         this.location = location;
     }
 
-
-   
-
     /**
      * Gets name.
      * Method
@@ -108,7 +103,6 @@ class Player implements dungeonCrawler.aqu.IPlayer
     {
         return name;
     }
-    
 
     /**
      * Gets health.
@@ -132,7 +126,6 @@ class Player implements dungeonCrawler.aqu.IPlayer
         this.health = health;
     }
 
-
     /**
      * Gets score.
      *
@@ -143,7 +136,6 @@ class Player implements dungeonCrawler.aqu.IPlayer
     {
         return score;
     }
-
 
     @Override
     public IWeapon getWeapon()
@@ -172,14 +164,7 @@ class Player implements dungeonCrawler.aqu.IPlayer
     {
         this.weapon = (Weapon) weapon;
     }
-    
-    /**
-     * Gets current weapon
-     * Method
-     * @return the current weapon
-     */
 
-    
     @Override
     public int getTime()
     {

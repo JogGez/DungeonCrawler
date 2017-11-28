@@ -2,7 +2,6 @@ package dungeonCrawler.aqu;
 
 import dungeonCrawler.logic.GameText;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public interface ILogicFacade
@@ -16,7 +15,6 @@ public interface ILogicFacade
     IMap getMap();
 
     IBattle doBattle(int index);
-
     IBattle doBattle(IMonster monster);
 
     ITimeTracker getTimeTracker(Date date);
@@ -25,9 +23,7 @@ public interface ILogicFacade
 
     IHighScore getHighScore();
 
-//    ArrayList<IGuide> guideList();
-    
-    boolean guideAndPlayerSameRoom(IGuide guide, IPlayer player);
+//    ArrayList<IMerchant> merchantList();
 
     GameText getGameText();
 
