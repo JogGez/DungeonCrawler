@@ -193,7 +193,7 @@ public class Game implements IGame
             case "5":
                 printToConsole.print(gameText.getEmptyLine());//Prints empty line
                 //Print thank you for playing
-                printToConsole.print(gameText.getThanksForPLaying());//"Thanks for playing "+player name+". Good bye!"
+               // printToConsole.print(gameText.getThanksForPLaying());//"Thanks for playing "+player name+". Good bye!"
                 System.exit(0);
                 break;
         }
