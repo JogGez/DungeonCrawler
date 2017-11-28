@@ -43,7 +43,7 @@ class Player implements dungeonCrawler.aqu.IPlayer
         this.name = name;
         this.health = GameConstants.getPlayerHealth();
         this.score = 0;
-        this.weapon = new Weapon("Hands", "Puny hands, not good for fighting :(", "", GameConstants.getPlayerPower(), 0 );
+        this.weapon = new Weapon("Hands", "Puny hands, not good for fighting :(", "", GameConstants.getPlayerPower(), 0);
         this.location = new Point(0,0);
         this.lastLocation = new Point(0,0);
         this.inventory = new dungeonCrawler.logic.Inventory(GameConstants.getInventorySize());
