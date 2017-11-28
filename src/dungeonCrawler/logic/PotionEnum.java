@@ -2,13 +2,14 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IPotion;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Morten Bindslev
  */
-enum PotionEnum
+enum PotionEnum implements Serializable
 {
     HEALTHPOTION1 (new Potion("Health Potion", "Health Potion from the mighty wizard Merlin.", GameTextASCII.getPotion(), 50, 0)),
     HEALTHPOTION2 (new Potion("Health Potion", "Health Potion from the mighty wizard Gandalf.", GameTextASCII.getPotion(), 75, 0)),

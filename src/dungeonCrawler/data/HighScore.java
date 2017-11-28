@@ -4,10 +4,7 @@ package dungeonCrawler.data;
 
 import dungeonCrawler.aqu.IHighScore;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
 //// Test to XML file
 //import javax.xml.parsers.*;
@@ -18,7 +15,7 @@ import java.util.*;
 /**
  * The type High score handler.
  */
-public class HighScore implements IHighScore
+public class HighScore implements IHighScore, Serializable
 {
     private class ScoreItem implements Comparable<ScoreItem>
     {

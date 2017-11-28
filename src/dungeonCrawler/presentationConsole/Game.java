@@ -4,6 +4,7 @@ import dungeonCrawler.aqu.*;
 import dungeonCrawler.logic.GameText;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
  * @version 1.0
  * @since 2017-09-22
  */
-public class Game implements IGame
+public class Game implements IGame, Serializable
 {
     private ILogicFacade logic;
     // Parser for handling the user input
@@ -61,53 +62,56 @@ public class Game implements IGame
     /**
      * Method that starts the game and runs till the end of the game.
      */
-    public void play()
+    public void play(boolean newGame)
     {
-        //Prints "Enter your name here: "
-        printToConsole.print(gameText.getEnterPlayerName());
-
-        // Instantiating player and initiating name
-        
-        // Checks if the player name is longer than 10 characters. 
-        String playerName = "";
-        while(true)
+        if (newGame == true)
         {
-            playerName = parser.getUserInput();
-            if (playerName.length()<=10)
+            //Prints "Enter your name here: "
+            printToConsole.print(gameText.getEnterPlayerName());
+
+            // Instantiating player and initiating name
+
+            // Checks if the player name is longer than 10 characters.
+            String playerName = "";
+            while(true)
             {
-                break;
+                playerName = parser.getUserInput();
+                if (playerName.length()<=10)
+                {
+                    break;
+                }
+                else
+                {
+                    printToConsole.print(gameText.getWrongPlayerNameLength());
+                }
             }
-            else
+            //player = new Player(parser.getUserInput());
+            player = logic.createPlayerInstance(playerName);
+
+            // Creats the map instance in logic.facade, and sends the reference back to here.
+            map = logic.createMapInstance();
+
+            logic.injectGameText();
+
+            //Prints Start info (passing object player to be able to print name)
+            printToConsole.print(gameText.getMessageHello());
+
+            boolean acceptedInput = false;
+            while (!acceptedInput)
             {
-                printToConsole.print(gameText.getWrongPlayerNameLength());
-            }   
-        }
-        //player = new Player(parser.getUserInput());
-        player = logic.createPlayerInstance(playerName);
-        
-        // Creats the map instance in logic.facade, and sends the reference back to here. 
-        map = logic.createMapInstance();
+                String input = parser.getUserInput();//returns a String
 
-        logic.injectGameText();
-
-        //Prints Start info (passing object player to be able to print name)
-        printToConsole.print(gameText.getMessageHello());
-
-        boolean acceptedInput = false;
-        while (!acceptedInput)
-        {
-            String input = parser.getUserInput();//returns a String
-
-            if (input.equals("enter") || input.equals("e"))
-            {
-                acceptedInput = true;
+                if (input.equals("enter") || input.equals("e"))
+                {
+                    acceptedInput = true;
+                }
+                else
+                {
+                    //Prints "Type \"enter\" to begin the game."
+                    printToConsole.print(gameText.getEnterToStartGame());
+                }
             }
-            else
-            {
-                //Prints "Type \"enter\" to begin the game."
-                printToConsole.print(gameText.getEnterToStartGame());
-            }
-
+            map.setRoomHasBeenEntered(player.getLocation());
         }
         //Starting timetracker.
         timeTracker = logic.getTimeTracker(new Date());
@@ -115,7 +119,7 @@ public class Game implements IGame
         // sets the current room as entered
         // Compare the players coordinates with the map room coordinates.
         // There is a for-each loop in setRoomHasBeenEntered, that goes through the coordinates.
-        map.setRoomHasBeenEntered(player.getLocation());
+
 
         checkRoom();
 
@@ -177,7 +181,8 @@ public class Game implements IGame
                 selectDifficulty();
                 break;
             case "2":
-
+                logic.loadGame();
+                play(false);
                 break;
             case "3":
                 printHighScore();
@@ -203,17 +208,17 @@ public class Game implements IGame
         case "1":
             printToConsole.print(gameText.getEmptyLine());//Prints empty line
             logic.setDifficultyLevel(1);
-            play();
+            play(true);
             break;
         case "2":
             printToConsole.print(gameText.getEmptyLine());//Prints empty line
             logic.setDifficultyLevel(2);
-            play();
+            play(true);
             break;
         case "3":
             printToConsole.print(gameText.getEmptyLine());//Prints empty line
             logic.setDifficultyLevel(3);
-            play();
+            play(true);
             break;
         }
     }
@@ -310,6 +315,7 @@ public class Game implements IGame
         }
         else if (commandWord == CommandWord.SAVE)
         {
+            player.setTime(timeTracker.calculateRemainingTime());
             logic.saveGame();
         }
         return quitGame;

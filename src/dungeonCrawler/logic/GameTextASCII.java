@@ -1,13 +1,15 @@
 package dungeonCrawler.logic;
 
 
+import java.io.Serializable;
+
 /**
  * Final class which holds all the GameTextASCII art used in the game.
  * Made final to prevent extending the class.
  *
  * @author JogGez
  */
-final class GameTextASCII
+final class GameTextASCII implements Serializable
 {
     // Private constructor to prevent instantiation.
     private GameTextASCII()

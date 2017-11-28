@@ -2,11 +2,13 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IBattle;
 
+import java.io.Serializable;
+
 /**
  * Battle class, where battles happens
  * @author Linea Hoffmann
  */
-class Battle implements IBattle
+class Battle implements IBattle, Serializable
 {
     // Declare datafields, with no value, with private access modifieres
     // Reference datatypes of the objects. 

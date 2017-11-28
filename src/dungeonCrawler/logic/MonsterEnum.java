@@ -1,8 +1,9 @@
 package dungeonCrawler.logic;
 
+import java.io.Serializable;
 import java.util.Random;
 
-enum MonsterEnum
+enum MonsterEnum implements Serializable
 {
     SPIDER  (new Monster("Shelob", "Web crawler that will suck your body dry", GameTextASCII.getSpider(), 100, 5)),
     BAT (new Monster("Shikaka", "The white flying bat", GameTextASCII.getBat(), 100, 5)),  //calls constructor with value 2

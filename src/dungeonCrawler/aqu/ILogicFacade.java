@@ -46,4 +46,6 @@ public interface ILogicFacade
     void setDifficultyLevel(int i);
     
     void saveGame();
+
+    void loadGame();
 }

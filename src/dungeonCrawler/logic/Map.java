@@ -34,6 +34,10 @@ class Map implements IMap, Serializable
     /**
      * Contructor Map
      */
+    public  Map()
+    {
+
+    }
     public Map(Player player)
     {
         // Initializing (gives value to) private fields (constructor parameter)

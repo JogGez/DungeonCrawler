@@ -7,10 +7,12 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IRoomContent;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Frederik
  */
-interface RoomContent extends IRoomContent
+interface RoomContent extends IRoomContent, Serializable
 {
 }

@@ -1,12 +1,13 @@
 package dungeonCrawler.logic;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * 
  * @author 
  */
-enum RoomEnum
+enum RoomEnum implements Serializable
 {
     CELLAR ("Cellar", "Filled with old dusty skeletons"),
     BUTCHERY ("Buthery", "Bloody gory scenery"),

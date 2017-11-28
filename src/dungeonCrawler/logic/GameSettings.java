@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * @author Computer
  */
-class GameSettings
+class GameSettings implements Serializable
 {
     // Static because of static methods.
     private static Point mapSize;
@@ -57,7 +57,7 @@ class GameSettings
        lockedRooms = 2;
 
        chanceOfMonster = 0;
-       chanceOfChest = 0;
+       chanceOfChest = 50;
        chanceOfGuide = 0;
 
        chanceOfWeapon = 30;

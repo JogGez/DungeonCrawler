@@ -1,12 +1,13 @@
 package dungeonCrawler.logic;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Linea Hoffmann
  */
-enum MerchantEnum
+enum MerchantEnum implements Serializable
 {
     // TODO tiløje flere merchants.
     BUDDHA ( new Merchant("Buddha", "The chubby and kind spiritual merchant", GameTextASCII.getBuddha())),
