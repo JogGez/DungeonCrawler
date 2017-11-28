@@ -80,7 +80,7 @@ class GameConstants
         
         chanceOfMonster = 25;
         chanceOfChest = 50;
-        chanceOfFriend = 15;
+        chanceOfGuide = 15;
 
         chanceOfWeapon = 30;
         chanceOfHealthPotion = 30;
@@ -102,7 +102,7 @@ class GameConstants
         
         chanceOfMonster = 25;
         chanceOfChest = 50;
-        chanceOfFriend = 15;
+        chanceOfGuide = 15;
 
         chanceOfWeapon = 30;
         chanceOfHealthPotion = 30;

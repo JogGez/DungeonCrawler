@@ -582,7 +582,7 @@ public class GameText
     {
         return (i+1) +
                 ". Key:" +
-                player.getInventory().keyArrayList().get(i);
+                ((Item)player.getInventory().keyArrayList().get(i)).getName();
     }
 
     public String getHighScore()
