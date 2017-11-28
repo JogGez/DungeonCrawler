@@ -50,14 +50,14 @@ class GameConstants
        inventorySize = 5;
        playerTime = 300;
        playerPower = 100;
-       numberOfMerchants = 2;
+       numberOfMerchants = 5;
        numberOfThieves = 1;
        thiefPickingRounds = 3;
        lockedRooms = 2;
 
-       chanceOfMonster = 25;
-       chanceOfChest = 25;
-       chanceOfGuide = 50;
+       chanceOfMonster = 0;
+       chanceOfChest = 0;
+       chanceOfGuide = 0;
 
        chanceOfWeapon = 30;
        chanceOfHealthPotion = 30;
@@ -80,7 +80,7 @@ class GameConstants
         
         chanceOfMonster = 25;
         chanceOfChest = 50;
-        chanceOfFriend = 15;
+        chanceOfGuide = 15;
 
         chanceOfWeapon = 30;
         chanceOfHealthPotion = 30;
@@ -102,7 +102,7 @@ class GameConstants
         
         chanceOfMonster = 25;
         chanceOfChest = 50;
-        chanceOfFriend = 15;
+        chanceOfGuide = 15;
 
         chanceOfWeapon = 30;
         chanceOfHealthPotion = 30;

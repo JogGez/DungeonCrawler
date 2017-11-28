@@ -588,7 +588,7 @@ public class Game implements IGame
                             // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
                             if (input.equals(String.valueOf(i + 1)))
                             {
-                                merchantIndex = Integer.parseInt(input);
+                                merchantIndex = Integer.parseInt(input) - 1;
                             }
                         }
                         // Drops the item
