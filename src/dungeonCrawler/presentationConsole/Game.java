@@ -26,9 +26,8 @@ public class Game implements IGame
     private IPlayer player;
     //Creating print to console object
     private GameText gameText;
-    //Create timetracker.
+    //Create timeTracker.
     private ITimeTracker timeTracker;
-    //Create highscore..
 
 
     /**
@@ -42,10 +41,6 @@ public class Game implements IGame
 
         //Instantiating PrintToConsole
         printToConsole = new PrintToConsole();
-
-
-
-
     }
 
     /**
@@ -161,12 +156,14 @@ public class Game implements IGame
         }
         // Writes the last output before closing the application, also says goodbye to the username
         printToConsole.print(gameText.getThanksForPLaying());
+        parser.userPressEnter();
+
         menu();
 
     }
 
     /**
-     * Method that prints menu and and acts on userinput
+     * Method that prints menu and and acts on user input
      */
     private void menu()
     {
@@ -177,33 +174,29 @@ public class Game implements IGame
         switch (parser.getUserInput())
         {
             case "1":
-                printToConsole.print(gameText.getEmptyLine());//Prints empty line
                 selectDifficulty();
                 break;
             case "2":
-                printToConsole.print(gameText.getEmptyLine());//Prints empty line
+
                 break;
             case "3":
-                printToConsole.print(gameText.getEmptyLine());//Prints empty line
                 printHighScore();
                 break;
             case "4":
-                printToConsole.print(gameText.getEmptyLine());//Prints empty line
                 break;
             case "5":
-                printToConsole.print(gameText.getEmptyLine());//Prints empty line
                 //Print thank you for playing
                 printToConsole.print(gameText.getThanksForPLaying());//"Thanks for playing "+player name+". Good bye!"
                 System.exit(0);
                 break;
         }
+        printToConsole.print(gameText.getEmptyLine());//Prints empty line
     }
 
     private void selectDifficulty()
     {
         //Prints menu
         printToConsole.print(gameText.getSetDifficultyLevel());
-
 
         switch (parser.getUserInput())
         {
@@ -372,7 +365,6 @@ public class Game implements IGame
                 break;
             case "exits":
                 printToConsole.print(gameText.getExits());
-                printToConsole.print(gameText.getEmptyLine());//Prints empty line
                 break;
             case "health":
                 //Prints players current hp
@@ -383,16 +375,13 @@ public class Game implements IGame
                 printToConsole.print(gameText.getYouCurrentlyHavePoints());
                 break;
             case "weapon":
-
                 //Prints players current weapon
                 printToConsole.print(gameText.getItemInfo((IItem)player.getWeapon()));
                 break;
-
             case "inventory":
-                printToConsole.print(gameText.getShowInventory());
+                printToConsole.print(gameText.getInventory(player.getInventory()));
                 break;
             case "slot":
-
                 if (0 <= (Integer.parseInt(command.getThirdWord()) - 1) &&
                         (Integer.parseInt(command.getThirdWord()) - 1) <
                                 player.getInventorySize())
@@ -414,9 +403,7 @@ public class Game implements IGame
                 break;
             case "time":
                 printToConsole.print("Time left: " + timeTracker.calculateRemainingTime() + " seconds");
-
                 break;
-
             default:
                 //Prints "Huh?"
                 printToConsole.print(gameText.getHuh());
@@ -535,7 +522,7 @@ public class Game implements IGame
                 map.setRoomHasBeenEntered(player.getLocation());
             }
 
-            map.guideMove();
+            map.merchantMove();
             map.thiefMove();
             checkRoom();
         }
@@ -557,7 +544,7 @@ public class Game implements IGame
             String input = parser.getUserInput();
             int index = Integer.parseInt(input) -1;
             logic.getCurrentRoom().setLocked(false);
-            //map.unlockRoom(location);
+            map.unlockRoom(location);
 
             logic.useKey(index);
 
@@ -570,20 +557,60 @@ public class Game implements IGame
             printToConsole.print(gameText.getYouEnteredANewRoom(logic.getCurrentRoom()));
 
             map.setRoomHasBeenEntered(player.getLocation());
-            map.guideMove();
+            map.merchantMove();
             map.thiefMove();
             checkRoom();
         }
-
     }
 
     public void checkRoom()
     {
-        if (map.roomContainsGuide())
+        if (map.roomContainsMerchant())
         {
-            printToConsole.print(gameText.getGuide());
-            changeInventory(map.getItemFromGuide());
-            
+            printToConsole.print(gameText.getMerchant());
+            printToConsole.print(gameText.getInventory(map.getMerchant().getInventory()));
+
+
+            int merchantIndex = 0;
+            outerLoop:
+            while (true)
+            {
+                String input = parser.getUserInput();
+
+                //Checks amount of inventory slots.
+                for (int j = 0; j < map.getMerchant().getInventory().getSize(); j++)
+                {
+                    //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
+                    if (Integer.toString(j + 1).equals(input) || input.equals("s") || input.equals("skip"))
+                    {
+                        for (int i = 0; i < map.getMerchant().getInventory().getSize(); i++)
+                        {
+                            // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
+                            if (input.equals(String.valueOf(i + 1)))
+                            {
+                                merchantIndex = Integer.parseInt(input);
+                            }
+                        }
+                        // Drops the item
+                        if (input.equals("skip") || input.equals("s"))
+                        {
+                            //Prints "You dropped the inventoriesItem"
+                            printToConsole.print(gameText.getYouDroppedTheItem());
+                        }
+
+                        //Jumps all the way out of the while-loop, because of the outerLoop.
+                        break outerLoop;
+                    }
+                }
+                //Prints "Hmm... Wrong command"
+                printToConsole.print(gameText.getWhatDoYouMean());
+            }
+
+            changeInventory(map.getMerchant().getInventory().getItem(merchantIndex));
+            printToConsole.print(gameText.getInventory(player.getInventory()));
+
+
+//            changeInventory(map.getItemFromMerchant());
         }
 
         if (map.roomContainsThief())
@@ -662,19 +689,19 @@ public class Game implements IGame
                 }
                 break;
             case "Guide":
-                //Prints info about guide.
+                //Prints info about Guide.
                 printToConsole.print(gameText.getContentInfo(i));
 
                 while (true)
                 {
-                    //Prints "There is a helper, you can either \"talk\" , \"flee\" or \"kill\"!"
+                    //Prints "There is a Guide, you can either \"talk\" , \"flee\" or \"kill\"!"
                     printToConsole.print(gameText.getThereIsAGuide());
 
                     String input = parser.getUserInput();
                     if (input.equals("talk") || input.equals("t"))
                     {
                         //Prints "Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!"
-                        printToConsole.print(gameText.getHelperTalk());
+                        printToConsole.print(gameText.getGuideTalk());
                     }
                     else if (input.equals("skip")|| input.equals("s"))
                     {
@@ -684,10 +711,9 @@ public class Game implements IGame
                     {
                         //Prints "You killed the helper, oh mighty swordsman!"
                         printToConsole.print(gameText.getKilledGuide());
-                        logic.getCurrentRoom().removeContent(i);
+                        map.getCurrentRoom().removeContent(i);
                         break;
                     }
-
                 }
 
                 if (i < map.getNumberOfContent() - 1)
@@ -704,7 +730,6 @@ public class Game implements IGame
         {
             parser.userPressEnter();
             lastBossBattle();
-
         }
     }
 
@@ -732,7 +757,6 @@ public class Game implements IGame
     {
         if (logic.getNumberOfAvailablePotions() > 0)
         {
-
             //Prints "Type number to use."
             printToConsole.print(gameText.getTypeSlotNumberToUse());
 
@@ -766,7 +790,6 @@ public class Game implements IGame
         printToConsole.print(gameText.getMonstersInfo(logic.getLucifer()));
 
         printToConsole.print(gameText.getPlayerInfo());
-
 
         startBattle(logic.doBattle(logic.getLucifer()));
 
@@ -807,53 +830,48 @@ public class Game implements IGame
     public void changeInventory (IItem item)
     {
         printToConsole.print(gameText.getItemInfo(item));
-        printToConsole.print(gameText.getShowInventory());
+        printToConsole.print(gameText.getInventory(player.getInventory()));
         printToConsole.print(gameText.getWhatSlot());
-       
-       
-            //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
-            outerloop:
-            while (true)
+
+        //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
+        outerLoop:
+        while (true)
+        {
+            String input = parser.getUserInput();
+
+            //Checks amount of inventory slots.
+            for (int j = 0; j < player.getInventorySize(); j++)
             {
-                String input = parser.getUserInput();
 
-                //Checks amount of inventory slots.
-                for (int j = 0; j < player.getInventorySize(); j++)
+                //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
+                if (Integer.toString(j + 1).equals(input) || input.equals("d") || input.equals("drop"))
                 {
-                    
-                    //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
-                    if (Integer.toString(j + 1).equals(input) || input.equals("d") || input.equals("drop"))
+                    for (int i = 0; i < player.getInventorySize(); i++)
                     {
-                        for (int i = 0; i < player.getInventorySize(); i++)
+                        // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
+                        if (input.equals(String.valueOf(i + 1)))
                         {
-                            // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
-                            if (input.equals(String.valueOf(i + 1)))
-                            {
-                                player.getInventory().addItem(item, i);
+                            player.getInventory().addItem(item, i);
 
-                                //Prints "You saved this inventoriesItem in slot: " + (i+1)
-                                printToConsole.print(gameText.getYouSavedItemInThisSlot(i));
-                            }
+                            //Prints "You saved this inventoriesItem in slot: " + (i+1)
+                            printToConsole.print(gameText.getYouSavedItemInThisSlot(i));
                         }
-                        // Drops the item
-                        if (input.equals("drop") || input.equals("d"))
-                        {
-                            //Prints "You dropped the inventoriesItem"
-                            printToConsole.print(gameText.getYouDroppedTheItem());
-                        }
-
-                        //Jumps alle the way out of the while-loop, because of the outerloop. 
-                        break outerloop;
                     }
+                    // Drops the item
+                    if (input.equals("drop") || input.equals("d"))
+                    {
+                        //Prints "You dropped the inventoriesItem"
+                        printToConsole.print(gameText.getYouDroppedTheItem());
+                    }
+
+                    //Jumps all the way out of the while-loop, because of the outerLoop.
+                    break outerLoop;
                 }
-                //Prints "Hmm... Wrong command"
-                printToConsole.print(gameText.getWhatDoYouMean());  
             }
-            
-            
-        
+            //Prints "Hmm... Wrong command"
+            printToConsole.print(gameText.getWhatDoYouMean());
+        }
     }
-        
 }
 
 

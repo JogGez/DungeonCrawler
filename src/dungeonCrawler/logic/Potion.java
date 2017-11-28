@@ -1,10 +1,12 @@
 package dungeonCrawler.logic;
 
+import dungeonCrawler.aqu.IPotion;
+
 /**
  * Inherit from the Item class
  * @author 
  */
-class Potion extends Item implements dungeonCrawler.aqu.IPotion
+class Potion extends Item implements IPotion
 {
     //Int variable healthRecovery 
     private int healthRecovery;

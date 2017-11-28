@@ -1,12 +1,12 @@
 package dungeonCrawler.logic;
 
-import dungeonCrawler.aqu.IGuide;
+import dungeonCrawler.aqu.IMap;
+import dungeonCrawler.aqu.IMerchant;
 import dungeonCrawler.aqu.IItem;
 import dungeonCrawler.aqu.IThief;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -15,16 +15,16 @@ import java.util.stream.IntStream;
  *
  * @author
  */
-class Map implements dungeonCrawler.aqu.IMap
+class Map implements IMap
 {
     // Data fields
     private int height;
     private int width;
     private Point mapSize;
     private ArrayList<Room> roomList; //Declare the ArrayList, Roomlist(name), containing IRoom(Object).
-    private ArrayList<Guide> guideList;
+    private ArrayList<Merchant> merchantList;
     private ArrayList<Thief> thiefList;
-    private int numberOfGuides;
+    private int numberOfMerchants;
     private int numberOfThiefs;
     private int numberOfContent;
     private Player player;
@@ -39,22 +39,22 @@ class Map implements dungeonCrawler.aqu.IMap
         this.width = GameConstants.getMapSize().x;
         this.height = GameConstants.getMapSize().y;
         this.mapSize = GameConstants.getMapSize();
-        this.numberOfGuides = GameConstants.getNumberOfGuides();
+        this.numberOfMerchants = GameConstants.getNumberOfMerchants();
         this.numberOfThiefs = GameConstants.getNumberOfThieves();
         this.numberOfContent = GameConstants.getRoomContents();
         this.player = player;
 
         //Instantiate a ArrayList, allocates the ArrayList.
         roomList = new ArrayList<>();
-        guideList = new ArrayList<>();
+        merchantList = new ArrayList<>();
         thiefList = new ArrayList<>();
 
-        for (int x = 0; x < numberOfGuides; x++)
+        for (int x = 0; x < numberOfMerchants; x++)
         {
-            Guide guide = GuideEnum.getRandomGuide();
-            guide.setRandomLocation(new Point(width, height));
+            Merchant merchant = MerchantEnum.getRandomMerchant();
+            merchant.setRandomLocation(new Point(width, height));
 
-            guideList.add(guide);
+            merchantList.add(merchant);
         }
 
         for (int x = 0; x < numberOfThiefs; x++)
@@ -225,36 +225,36 @@ class Map implements dungeonCrawler.aqu.IMap
 
     // TODO Move method and send map & roomList with it
     @Override
-    public void guideMove()
+    public void merchantMove()
     {
-        for (Guide guide : guideList)
+        for (Merchant merchant : merchantList)
         {
             ArrayList<String> exitList = new ArrayList<>();
 
-            if (roomExists(new Point(guide.getLocation().x - 1, guide.getLocation().y)))
+            if (roomExists(new Point(merchant.getLocation().x - 1, merchant.getLocation().y)))
             {
                 exitList.add("left");
             }
 
-            if (roomExists(new Point(guide.getLocation().x + 1, guide.getLocation().y)))
+            if (roomExists(new Point(merchant.getLocation().x + 1, merchant.getLocation().y)))
             {
                 exitList.add("right");
             }
 
-            if (roomExists(new Point(guide.getLocation().x, guide.getLocation().y + 1)))
+            if (roomExists(new Point(merchant.getLocation().x, merchant.getLocation().y + 1)))
             {
                 exitList.add("up");
             }
 
-            if (roomExists(new Point(guide.getLocation().x, guide.getLocation().y - 1)))
+            if (roomExists(new Point(merchant.getLocation().x, merchant.getLocation().y - 1)))
             {
                 exitList.add("down");
             }
 
-            //TODO Guide skal interagere med os - giv os et eller andet.
+            //TODO Merchant skal interagere med os - giv os et eller andet.
 
-            //Checks if player and guide is in the same room
-            guide.move(exitList);
+            //Checks if player and merchant is in the same room
+            merchant.move(exitList);
         }
     }
 
@@ -326,10 +326,10 @@ class Map implements dungeonCrawler.aqu.IMap
         return "";
     }
 
-    public ArrayList<IGuide> guideArrayList()
+    public ArrayList<IMerchant> merchantArrayList()
     {
-        ArrayList<? extends IGuide> guides = guideList;
-        return (ArrayList<IGuide>) guides;
+        ArrayList<? extends IMerchant> merchants = merchantList;
+        return (ArrayList<IMerchant>) merchants;
     }
 
     public ArrayList<IThief> thiefArrayList()
@@ -338,9 +338,29 @@ class Map implements dungeonCrawler.aqu.IMap
         return (ArrayList<IThief>) thieves;
     }
     
-    public void unlockRoom(Point playerLocation)
+    public void unlockRoom(Point location)
     {
-        getCurrentRoom().setLocked(false);
+        for (Room room : roomList)
+        {
+            if (room.getLocation().equals(location))
+            {
+                room.setLocked(false);
+            }
+        }
+    }
+
+    @Override
+    public IMerchant getMerchant()
+    {
+        for (Merchant merchant :merchantList)
+        {
+            if (merchant.getLocation().equals(player.getLocation()))
+            {
+                return merchant;
+            }
+        }
+
+        return null;
     }
 
     @Override
@@ -371,11 +391,11 @@ class Map implements dungeonCrawler.aqu.IMap
     }
 
     @Override
-    public boolean roomContainsGuide()
+    public boolean roomContainsMerchant()
     {
-        for (Guide guide : guideList)
+        for (Merchant merchant : merchantList)
         {
-            if (getCurrentRoom().getLocation().equals(guide.getLocation()))
+            if (getCurrentRoom().getLocation().equals(merchant.getLocation()))
             {
                 return true;
             }
@@ -387,31 +407,22 @@ class Map implements dungeonCrawler.aqu.IMap
     @Override
     public void removeThief()
     {
-        for(Iterator<Thief> i = thiefList.iterator(); i.hasNext();)
-        {
-            Thief thief = i.next();
-            //Do Something
-            if (getCurrentRoom().getLocation().equals(thief.getLocation()))
-            {
-                i.remove();
-            }
-
-        }
+        //Do Something
+        thiefList.removeIf(thief -> getCurrentRoom().getLocation().equals(thief.getLocation()));
     }
 
    
     @Override
-    public IItem getItemFromGuide()
+    public IItem getItemFromMerchant()
     {
-        for (Guide guide : guideList)
-        {
-            if (getCurrentRoom().getLocation().equals(guide.getLocation()))
-            {
-                
-                //player.getInventory().addItem(guide.getItem(),inventoryIndex);
-                return guide.getItem();
-            }
-        } 
+//        for (Merchant merchant : merchantList)
+//        {
+//            if (getCurrentRoom().getLocation().equals(merchant.getLocation()))
+//            {
+//                //player.getInventory().addItem(merchant.getItem(),inventoryIndex);
+//                return merchant.getItem();
+//            }
+//        }
         return null;
     } 
 

@@ -2,13 +2,14 @@ package dungeonCrawler.logic;
 
 import com.sun.prism.shader.DrawRoundRect_LinearGradient_PAD_Loader;
 import dungeonCrawler.aqu.IMap;
+import dungeonCrawler.aqu.IThief;
 import dungeonCrawler.presentationConsole.Game;
 import jdk.nashorn.internal.ir.IfNode;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Thief implements dungeonCrawler.aqu.IThief
+class Thief implements IThief
 {
     private String ascii;
     private String name;

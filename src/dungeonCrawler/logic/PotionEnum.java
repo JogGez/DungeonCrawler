@@ -8,7 +8,7 @@ import java.util.Random;
  *
  * @author Morten Bindslev
  */
-public enum PotionEnum
+enum PotionEnum
 {
     HEALTHPOTION1 (new Potion("Health Potion", "Health Potion from the mighty wizard Merlin.", GameTextASCII.getPotion(), 50, 0)),
     HEALTHPOTION2 (new Potion("Health Potion", "Health Potion from the mighty wizard Gandalf.", GameTextASCII.getPotion(), 75, 0)),

@@ -1,10 +1,8 @@
 package dungeonCrawler.logic;
 
-import jdk.nashorn.internal.ir.ReturnNode;
+import dungeonCrawler.aqu.IWeapon;
 
-import javax.naming.Name;
-
-class Weapon extends Item implements dungeonCrawler.aqu.IWeapon
+class Weapon extends Item implements IWeapon
 {
 
     private int power;
