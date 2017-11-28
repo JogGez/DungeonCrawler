@@ -1,12 +1,13 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IItem;
+import java.io.Serializable;
 
 /**
  *
  * @author Linea Hoffmann
  */
-abstract class Item implements IItem
+abstract class Item implements IItem, Serializable
 {
     private String name;
     private String description;
@@ -53,15 +54,15 @@ abstract class Item implements IItem
     {
         int randomItem = (int)(Math.random()*100);
 
-        if (randomItem < GameConstants.getChanceOfWeapon())
+        if (randomItem < GameSettings.getChanceOfWeapon())
         {
             return WeaponEnum.getRandomWeapon();
         }
-        else if (randomItem < GameConstants.getChanceOfWeapon() + GameConstants.getChanceOfHealthPotion())
+        else if (randomItem < GameSettings.getChanceOfWeapon() + GameSettings.getChanceOfHealthPotion())
         {
             return PotionEnum.getRandomPotion();
         }
-        else if (randomItem < GameConstants.getChanceOfWeapon() + GameConstants.getChanceOfHealthPotion() + GameConstants.getChanceOfTimePotion())
+        else if (randomItem < GameSettings.getChanceOfWeapon() + GameSettings.getChanceOfHealthPotion() + GameSettings.getChanceOfTimePotion())
         {
             return PotionEnum.getRandomPotion();
         }

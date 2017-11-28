@@ -56,7 +56,11 @@ public enum CommandWord
     /**
      * Unknown command word.
      */
-    UNKNOWN("?");
+    UNKNOWN("?"),
+    /**
+     * save command word.
+     */
+    SAVE("save");
     
     private String commandString;
     

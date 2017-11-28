@@ -6,13 +6,14 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IChest;
+import java.io.Serializable;
 
 /**
  * The type Chest.
  *
  * @author Frederik
  */
-class Chest implements RoomContent, IChest
+class Chest implements RoomContent, IChest, Serializable
 {
     Item item;
 

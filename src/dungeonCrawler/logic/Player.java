@@ -10,13 +10,14 @@ import dungeonCrawler.aqu.IWeapon;
 import dungeonCrawler.aqu.IPlayer;
 
 import java.awt.*;
+import java.io.Serializable;
 
 /**
  * The Player class
  *
  * @author Jonathan
  */
-class Player implements IPlayer
+class Player implements IPlayer, Serializable
 {
     /**
     We aren't making the system print out a line, because later on it would
@@ -40,13 +41,13 @@ class Player implements IPlayer
     public Player(String name)
     {
         this.name = name;
-        this.health = GameConstants.getPlayerHealth();
+        this.health = GameSettings.getPlayerHealth();
         this.score = 0;
-        this.weapon = new Weapon("Hands", "Puny hands, not good for fighting :(", "", GameConstants.getPlayerPower(), 0);
+        this.weapon = new Weapon("Hands", "Puny hands, not good for fighting :(", "", GameSettings.getPlayerPower(), 0);
         this.location = new Point(0,0);
         this.lastLocation = new Point(0,0);
-        this.inventory = new dungeonCrawler.logic.Inventory(GameConstants.getInventorySize());
-        this.time = GameConstants.getPlayerTime();
+        this.inventory = new dungeonCrawler.logic.Inventory(GameSettings.getInventorySize());
+        this.time = GameSettings.getPlayerTime();
     }
     
     /**

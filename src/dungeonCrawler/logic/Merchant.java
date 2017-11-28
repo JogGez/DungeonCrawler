@@ -5,6 +5,7 @@ import dungeonCrawler.aqu.IMerchant;
 import dungeonCrawler.aqu.IRoomContent;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  */
 
 // Merchant class, the old helper that doesn't move
-class Merchant implements IRoomContent, IMerchant
+class Merchant implements IRoomContent, IMerchant, Serializable
 {
     private String name;
     private String description;

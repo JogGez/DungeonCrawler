@@ -1,12 +1,13 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IPotion;
+import java.io.Serializable;
 
 /**
  * Inherit from the Item class
  * @author 
  */
-class Potion extends Item implements IPotion
+class Potion extends Item implements IPotion, Serializable
 {
     //Int variable healthRecovery 
     private int healthRecovery;

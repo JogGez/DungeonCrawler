@@ -7,9 +7,10 @@ import dungeonCrawler.presentationConsole.Game;
 import jdk.nashorn.internal.ir.IfNode;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class Thief implements IThief
+class Thief implements IThief, Serializable
 {
     private String ascii;
     private String name;
@@ -67,7 +68,7 @@ class Thief implements IThief
             if (roomContent instanceof Chest && currentJob == null)
             {
                 currentJob = roomContent;
-                currentJobCompletion = GameConstants.getThiftPickingRounds();
+                currentJobCompletion = GameSettings.getThiftPickingRounds();
                 return;
             }
             else if (roomContent instanceof Chest && currentJob != null && currentJobCompletion != 0)

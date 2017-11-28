@@ -1,8 +1,9 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IWeapon;
+import java.io.Serializable;
 
-class Weapon extends Item implements IWeapon
+class Weapon extends Item implements IWeapon, Serializable
 {
 
     private int power;

@@ -308,6 +308,10 @@ public class Game implements IGame
         {
             quitGame = quit(command);
         }
+        else if (commandWord == CommandWord.SAVE)
+        {
+            logic.saveGame();
+        }
         return quitGame;
     }
 

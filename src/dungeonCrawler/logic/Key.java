@@ -6,12 +6,13 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IKey;
+import java.io.Serializable;
 
 /**
  *
  * @author Linea Hoffmann
  */
-class Key extends Item implements IKey
+class Key extends Item implements IKey, Serializable
 {
     public Key (String name, String description, String ascii)
     {

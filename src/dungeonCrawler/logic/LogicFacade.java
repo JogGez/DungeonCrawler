@@ -154,14 +154,19 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
         switch (i)
         {
         case 1:
-            GameConstants.setEasyDifficulty();
+            GameSettings.setEasyDifficulty();
             break;
         case 2:
-            GameConstants.setNormalDifficulty();
+            GameSettings.setNormalDifficulty();
             break;
         case 3:
-            GameConstants.setHardDifficulty();
+            GameSettings.setHardDifficulty();
             break;
         }
+    }
+    @Override
+    public void saveGame()
+    {
+        data.saveGame(player, map, "fileName.sav");
     }
 }

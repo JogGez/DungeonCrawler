@@ -4,6 +4,7 @@ import dungeonCrawler.aqu.IInventory;
 import dungeonCrawler.aqu.IItem;
 import dungeonCrawler.aqu.IPotion;
 import dungeonCrawler.aqu.IKey;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +13,7 @@ import java.util.Arrays;
  * 
  * @author 
  */
-class Inventory implements IInventory
+class Inventory implements IInventory, Serializable
 {
     Item[] items;
  /**
