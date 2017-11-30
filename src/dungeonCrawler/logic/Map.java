@@ -6,6 +6,7 @@ import dungeonCrawler.aqu.IItem;
 import dungeonCrawler.aqu.IThief;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -15,7 +16,7 @@ import java.util.stream.IntStream;
  *
  * @author
  */
-class Map implements IMap
+class Map implements IMap, Serializable
 {
     // Data fields
     private int height;
@@ -33,15 +34,19 @@ class Map implements IMap
     /**
      * Contructor Map
      */
+    public  Map()
+    {
+
+    }
     public Map(Player player)
     {
         // Initializing (gives value to) private fields (constructor parameter)
-        this.width = GameConstants.getMapSize().x;
-        this.height = GameConstants.getMapSize().y;
-        this.mapSize = GameConstants.getMapSize();
-        this.numberOfMerchants = GameConstants.getNumberOfMerchants();
-        this.numberOfThiefs = GameConstants.getNumberOfThieves();
-        this.numberOfContent = GameConstants.getRoomContents();
+        this.width = GameSettings.getMapSize().x;
+        this.height = GameSettings.getMapSize().y;
+        this.mapSize = GameSettings.getMapSize();
+        this.numberOfMerchants = GameSettings.getNumberOfMerchants();
+        this.numberOfThiefs = GameSettings.getNumberOfThieves();
+        this.numberOfContent = GameSettings.getRoomContents();
         this.player = player;
 
         //Instantiate a ArrayList, allocates the ArrayList.
@@ -64,7 +69,7 @@ class Map implements IMap
         }
 
         // Controls how many locked we are gonna have. (2 rooms are locked, cannot be the same)
-        int[] lockedRooms = new Random().ints(1, width * height).distinct().limit(GameConstants.getLockedRooms()).toArray();
+        int[] lockedRooms = new Random().ints(1, width * height).distinct().limit(GameSettings.getLockedRooms()).toArray();
         int roomNumber = 0;
 
         //Creates the coordinate system of the rooms.

@@ -5,10 +5,11 @@ import dungeonCrawler.data.HighScore;
 import dungeonCrawler.presentationConsole.CommandWord;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameText
+public class GameText implements Serializable
 {
     Player player;
     Map map;

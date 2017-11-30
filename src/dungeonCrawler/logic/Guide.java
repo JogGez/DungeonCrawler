@@ -1,6 +1,7 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IGuide;
+import java.io.Serializable;
 
 /**
  * The type Merchant.
@@ -8,7 +9,7 @@ import dungeonCrawler.aqu.IGuide;
  * @author Jonathan & Linea
  */
 // Guide class, the old helper that doesn't move
-class Guide implements RoomContent, IGuide
+class Guide implements RoomContent, IGuide, Serializable
 {
     private String name;
     private String description;

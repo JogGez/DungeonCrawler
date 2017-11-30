@@ -2,6 +2,7 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IMonster;
 import dungeonCrawler.aqu.IRoomContent;
+import java.io.Serializable;
 
 /**
  * The type Monster.
@@ -9,7 +10,7 @@ import dungeonCrawler.aqu.IRoomContent;
  * @author Computer
  */
 //Monster Class, inherit from IRoomContent because ???
-class Monster implements RoomContent, IMonster
+class Monster implements RoomContent, IMonster, Serializable
 {
     private String name;
     private String description;

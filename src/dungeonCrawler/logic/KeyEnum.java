@@ -5,13 +5,14 @@
  */
 package dungeonCrawler.logic;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Linea Hoffmann
  */
-enum KeyEnum
+enum KeyEnum implements Serializable
 {
     KEY1 (new Key ("The Normal Key", "The key to unlock the all locked rooms", GameTextASCII.getKey())),
     KEY2 (new Key("The Sweet Key", "The key to unlock all your childhood memories", GameTextASCII.getKey2())),

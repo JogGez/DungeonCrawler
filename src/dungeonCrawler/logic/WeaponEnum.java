@@ -1,12 +1,13 @@
 package dungeonCrawler.logic;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Linea Hoffmann
  */
-enum WeaponEnum
+enum WeaponEnum implements Serializable
 {
     EXCALIBUR (new Weapon("Excalibur", "The Sword of King Arthur", GameTextASCII.getSword(), 1000, 1000)),
     DURANDAL ( new Weapon("Durandal", "Sword of Roland, legendary paladin of Charlemagne", GameTextASCII.getSword(), 100, 15 )),

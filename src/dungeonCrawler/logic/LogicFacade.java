@@ -1,10 +1,12 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.*;
+import dungeonCrawler.data.GameHandler;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
+public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade, Serializable
 {
     IDataFacade data;
     Player player;
@@ -43,8 +45,7 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
         {
             this.map = new Map(player);
             return map;
-        }
-        else
+        } else
         {
             return null;
         }
@@ -59,13 +60,13 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     @Override
     public IBattle doBattle(int index)
     {
-        return new Battle(player, (Monster)map.getCurrentRoom().getContent(index));
+        return new Battle(player, (Monster) map.getCurrentRoom().getContent(index));
     }
 
     @Override
     public IBattle doBattle(IMonster monster)
     {
-        return new Battle(player, (Monster)monster);
+        return new Battle(player, (Monster) monster);
     }
 
     @Override
@@ -96,7 +97,7 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
 
     public void injectGameText()
     {
-        gameText.injectVariables(player,map);
+        gameText.injectVariables(player, map);
     }
 
     // TODO Skal heller ikke være her
@@ -108,8 +109,8 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     // Skal heller ikke være her. Kun dem du sender, modtager og instantiere referencer i Facaden. 
     public void saveItemToInventory(int inventoryIndex, int contensIndex)
     {
-        Chest chest = (Chest)(map.getCurrentRoom().getContent(contensIndex));
-        player.getInventory().addItem(chest.getItem(),inventoryIndex);
+        Chest chest = (Chest) (map.getCurrentRoom().getContent(contensIndex));
+        player.getInventory().addItem(chest.getItem(), inventoryIndex);
     }
 
     //TODO Skal ikke være her
@@ -153,15 +154,40 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade
     {
         switch (i)
         {
-        case 1:
-            GameConstants.setEasyDifficulty();
-            break;
-        case 2:
-            GameConstants.setNormalDifficulty();
-            break;
-        case 3:
-            GameConstants.setHardDifficulty();
-            break;
+            case 1:
+                GameSettings.setEasyDifficulty();
+                break;
+            case 2:
+                GameSettings.setNormalDifficulty();
+                break;
+            case 3:
+                GameSettings.setHardDifficulty();
+                break;
         }
+    }
+
+    @Override
+    public void saveGame()
+    {
+        data.saveGame(player, map, "fileName.sav");
+    }
+
+    @Override
+    public void loadGame()
+    {
+        data.loadGame("fileName.sav");
+        player = new Player("");
+        map = new Map(player);
+        player = (Player) data.getPlayer();
+        map = (Map) data.getMap();
+        System.out.println(map.roomContainsMerchant());
+//        Player saveMe = new Player("");
+//        saveMe = (Player) data.getPlayer();
+//        player = saveMe;
+//        System.out.println(player.getName());
+//        Map saveMap = new Map();
+//        saveMap = (Map) data.getMap();
+//        map = saveMap;
+//
     }
 }

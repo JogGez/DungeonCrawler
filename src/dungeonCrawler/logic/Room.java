@@ -4,13 +4,14 @@ import dungeonCrawler.aqu.IRoom;
 import dungeonCrawler.aqu.IRoomContent;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * The type Room.
  */
 // Class that hold the information about a room
-class Room implements IRoom
+class Room implements IRoom, Serializable
 {
     // Room name.
     private String name;
@@ -54,17 +55,17 @@ class Room implements IRoom
             int randomNumber = (int) (Math.random() * 100);
 
             // MONSTER: If the number generated is 20-49 a monster is added in the roomslot.
-            if (randomNumber < GameConstants.getChanceOfMonster())
+            if (randomNumber < GameSettings.getChanceOfMonster())
             {
                 roomContent.add(MonsterEnum.getRandomMonster());
             }
             // CHEST: If the number generated is 50-84 a chest is added in the roomslot.
-            else if (randomNumber <= GameConstants.getChanceOfMonster() + GameConstants.getChanceOfChest())
+            else if (randomNumber <= GameSettings.getChanceOfMonster() + GameSettings.getChanceOfChest())
             {
                 roomContent.add(new Chest());
             }
             // MERCHANT: If the number generated is 85-100 a helper is added in the roomslot.
-            else if (randomNumber <= GameConstants.getChanceOfMonster() + GameConstants.getChanceOfChest() + GameConstants.getChanceOfGuide())
+            else if (randomNumber <= GameSettings.getChanceOfMonster() + GameSettings.getChanceOfChest() + GameSettings.getChanceOfGuide())
             {
                 // TODO Add someone here
                 roomContent.add(GuideEnum.getRandomGuide());

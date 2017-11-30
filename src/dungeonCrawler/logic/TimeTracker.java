@@ -8,13 +8,14 @@ package dungeonCrawler.logic;
 import dungeonCrawler.aqu.IPlayer;
 import dungeonCrawler.aqu.ITimeTracker;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Computer
  */
-class TimeTracker implements ITimeTracker
+class TimeTracker implements ITimeTracker, Serializable
 {
     private Date startTime;
     //Reference to the player in game, "the old maxtime value"
@@ -34,7 +35,6 @@ class TimeTracker implements ITimeTracker
         Date currentTime = new Date();
         long elapsedTime = (((currentTime.getTime() - startTime.getTime()) / 1000));
         int timeLeft = player.getTime() - (int) elapsedTime;
-        
         return timeLeft;
     }
     
