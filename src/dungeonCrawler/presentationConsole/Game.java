@@ -535,7 +535,8 @@ public class Game implements IGame, Serializable
 
                     if (map.isRoomLocked(point) && player.getInventory().keyArrayList().size() == 0)
                     {
-                            printToConsole.print(gameText.getTeleportToLockedRoomNoKey());
+                        player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+                        printToConsole.print(gameText.getTeleportToLockedRoomNoKey());
                     }
                     else
                     {
