@@ -20,7 +20,7 @@ public class ControllerPlayMainScene implements IGame
     // We are storing the class player's name for player.
     private IPlayer player;
     //Creating print to console object
-    private GameText gameText;
+    private GameText gameText= new GameText();
     //Create timeTracker.
     private ITimeTracker timeTracker;
 
@@ -33,6 +33,7 @@ public class ControllerPlayMainScene implements IGame
     public void handleMove(ActionEvent event)
     {
         if(((Control)event.getSource()).getId().equals("Up"))
+//        if(((Control)event.getSource()).getId().contains("Up"))
         {
             playerMove(new Point(logic.getPlayer().getLocation().x, logic.getPlayer().getLocation().y + 1));
         }
@@ -50,7 +51,7 @@ public class ControllerPlayMainScene implements IGame
         }
         else
         {
-           textareaPlayScene.setText(logic.getGameText().getYouRanIntoAWall()); //logic.gameText.getYouRanIntoAWall()
+           textareaPlayScene.setText(gameText.getYouRanIntoAWall()); //logic.gameText.getYouRanIntoAWall()//logic.getGameText().getYouRanIntoAWall()
         }
 
     }
@@ -129,9 +130,9 @@ public class ControllerPlayMainScene implements IGame
 //
 //            int merchantIndex = 0;
 //            outerLoop:
-//            while (true)
-//            {
-//                String input = parser.getUserInput();
+////            while (true)
+////            {
+////                String input = parser.getUserInput();
 //
 //                //Checks amount of inventory slots.
 //                for (int j = 0; j < map.getMerchant().getInventory().getSize(); j++)
@@ -160,7 +161,7 @@ public class ControllerPlayMainScene implements IGame
 //                }
 //                //Prints "Hmm... Wrong command"
 //                textareaPlayScene.setText(gameText.getWhatDoYouMean());
-//            }
+////            }
 //
 //            changeInventory(map.getMerchant().getInventory().getItem(merchantIndex));
 //            textareaPlayScene.setText(gameText.getInventory(player.getInventory()));
@@ -288,6 +289,52 @@ public class ControllerPlayMainScene implements IGame
 //        {
 //            parser.userPressEnter();
 //            lastBossBattle();
+//        }
+//    }
+//
+//    public void changeInventory (IItem item)
+//    {
+//        printToConsole.print(gameText.getItemInfo(item));
+//        printToConsole.print(gameText.getInventory(player.getInventory()));
+//        printToConsole.print(gameText.getWhatSlot());
+//
+//        //A While loop that checks if his input is valid for his inventory size, or if he wants to drop his item.
+//        outerLoop:
+//        while (true)
+//        {
+//            String input = parser.getUserInput();
+//
+//            //Checks amount of inventory slots.
+//            for (int j = 0; j < player.getInventorySize(); j++)
+//            {
+//
+//                //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
+//                if (Integer.toString(j + 1).equals(input) || input.equals("d") || input.equals("drop"))
+//                {
+//                    for (int i = 0; i < player.getInventorySize(); i++)
+//                    {
+//                        // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
+//                        if (input.equals(String.valueOf(i + 1)))
+//                        {
+//                            player.getInventory().addItem(item, i);
+//
+//                            //Prints "You saved this inventoriesItem in slot: " + (i+1)
+//                            printToConsole.print(gameText.getYouSavedItemInThisSlot(i));
+//                        }
+//                    }
+//                    // Drops the item
+//                    if (input.equals("drop") || input.equals("d"))
+//                    {
+//                        //Prints "You dropped the inventoriesItem"
+//                        printToConsole.print(gameText.getYouDroppedTheItem());
+//                    }
+//
+//                    //Jumps all the way out of the while-loop, because of the outerLoop.
+//                    break outerLoop;
+//                }
+//            }
+//            //Prints "Hmm... Wrong command"
+//            printToConsole.print(gameText.getWhatDoYouMean());
 //        }
 //    }
 
