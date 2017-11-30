@@ -1,6 +1,8 @@
 package dungeonCrawler.aqu;
 
-public interface IGuide extends IRoomContent
+import java.io.Serializable;
+
+public interface IGuide extends IRoomContent, Serializable
 {
     String getName();
 

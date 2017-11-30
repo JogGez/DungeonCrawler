@@ -1,6 +1,8 @@
 package dungeonCrawler.aqu;
 
-public interface IGame
+import java.io.Serializable;
+
+public interface IGame extends Serializable
 {
     void injectLogic(ILogicFacade logicLayer);
     void begin();

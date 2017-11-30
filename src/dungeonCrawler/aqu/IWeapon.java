@@ -1,14 +1,10 @@
 package dungeonCrawler.aqu;
 
-public interface IWeapon
+import java.io.Serializable;
+
+public interface IWeapon extends Serializable
 {
     int getPower();
 
     int getMultiplier();
-
-    String getName();
-
-    String getDescription();
-
-    String getASCII();
 }

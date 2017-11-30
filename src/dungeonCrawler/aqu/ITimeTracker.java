@@ -1,6 +1,8 @@
 package dungeonCrawler.aqu;
 
-public interface ITimeTracker
+import java.io.Serializable;
+
+public interface ITimeTracker extends Serializable
 {
     int calculateRemainingTime();
 }

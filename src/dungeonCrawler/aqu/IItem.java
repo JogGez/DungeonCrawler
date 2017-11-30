@@ -1,11 +1,8 @@
 package dungeonCrawler.aqu;
 
 
-
-
 public interface IItem
 {
-    
 
     String getName();
 

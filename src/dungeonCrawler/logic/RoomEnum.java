@@ -32,16 +32,5 @@ enum RoomEnum implements Serializable
         // retruns name and description from values (values is the enums array of contens). 
         return new String[]{values()[randomNumber].name,values()[randomNumber].description};
     }
-    
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getDescription()
-    {
-        return description;
-    }
-    
 }
 

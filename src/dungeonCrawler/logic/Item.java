@@ -66,16 +66,19 @@ abstract class Item implements IItem, Serializable
         {
             return PotionEnum.getRandomPotion();
         }
-        else
+        else if (randomItem < GameSettings.getChanceOfWeapon() + GameSettings.getChanceOfHealthPotion() + GameSettings.getChanceOfTimePotion() + GameSettings.getChanceOfKey())
         {
             return KeyEnum.getRandomKey();
         }
+        else if (randomItem < GameSettings.getChanceOfWeapon() + GameSettings.getChanceOfHealthPotion() +
+                GameSettings.getChanceOfTimePotion() + GameSettings.getChanceOfKey() + GameSettings.getChanceOfSpecial())
+        {
+            return SpecialEnum.getRandomSpecial();
+        }
+        else
+        {
+            return null;
+        }
 
-    }
-    
-    // Method, because future more items, future-proof. 
-    static Item getKey()
-    {
-        return KeyEnum.getRandomKey();
     }
 }

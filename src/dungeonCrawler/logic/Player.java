@@ -183,4 +183,10 @@ class Player implements IPlayer, Serializable
     {
         return inventory.getSize();
     }
+
+    @Override
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 }

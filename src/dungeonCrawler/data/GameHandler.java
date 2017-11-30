@@ -12,15 +12,15 @@ import java.io.*;
  *
  * @author Computer
  */
-public class GameHandler implements Serializable
+class GameHandler implements Serializable
 {
-    public static void saveGame(GameState gameState, String fileName)
+    public static void saveGame(GameStateDTO gameStateDTO, String fileName)
     {
         try
         {
             FileOutputStream fileOut = new FileOutputStream(fileName);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(gameState);
+            out.writeObject(gameStateDTO);
             fileOut.close();
             out.close();
             //TODO
@@ -31,17 +31,16 @@ public class GameHandler implements Serializable
         }
     }
 
-    public static GameState loadGame(GameState gameState, String fileName)
+    public static GameStateDTO loadGame(GameStateDTO gameStateDTO, String fileName)
     {
         try {
             FileInputStream fileIn = new FileInputStream(fileName);
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            gameState = (GameState) in.readObject();
+            gameStateDTO = (GameStateDTO) in.readObject();
             in.close();
             fileIn.close();
 
         } catch (IOException i)
-
         {
             i.printStackTrace();
 
@@ -52,9 +51,7 @@ public class GameHandler implements Serializable
             c.printStackTrace();
         }
 
-        System.out.println(gameState.getMap().checkRoomContent(1));
-        System.out.println(gameState.map.checkRoomContent(1));
-        return gameState;
+        return gameStateDTO;
     }
     
 }

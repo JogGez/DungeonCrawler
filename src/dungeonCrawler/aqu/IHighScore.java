@@ -1,6 +1,8 @@
 package dungeonCrawler.aqu;
 
-public interface IHighScore
+import java.io.Serializable;
+
+public interface IHighScore extends Serializable
 {
     void writeText();
 

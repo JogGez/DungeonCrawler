@@ -1,9 +1,10 @@
 package dungeonCrawler.aqu;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public interface IThief
+public interface IThief extends Serializable
 {
     String getAscii();
 

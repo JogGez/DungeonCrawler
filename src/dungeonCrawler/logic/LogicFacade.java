@@ -1,7 +1,7 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.*;
-import dungeonCrawler.data.GameHandler;
+import dungeonCrawler.data.GameStateDTO;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -169,25 +169,22 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade, Serializabl
     @Override
     public void saveGame()
     {
-        data.saveGame(player, map, "fileName.sav");
+        GameStateDTO stateDTO = new GameStateDTO(player, map);
+        data.save(stateDTO, "fileName.sav");
+
+//        GameHandler.saveGame(stateDTO, "fileName.sav");
     }
 
     @Override
     public void loadGame()
     {
-        data.loadGame("fileName.sav");
-        player = new Player("");
-        map = new Map(player);
-        player = (Player) data.getPlayer();
-        map = (Map) data.getMap();
-        System.out.println(map.roomContainsMerchant());
-//        Player saveMe = new Player("");
-//        saveMe = (Player) data.getPlayer();
-//        player = saveMe;
-//        System.out.println(player.getName());
-//        Map saveMap = new Map();
-//        saveMap = (Map) data.getMap();
-//        map = saveMap;
-//
+        GameStateDTO stateDTO = new GameStateDTO(player, map);
+
+        stateDTO = data.load(stateDTO,"fileName.sav");
+
+        player = (Player)stateDTO.getPlayer();
+        map = (Map)stateDTO.getMap();
     }
+
+
 }

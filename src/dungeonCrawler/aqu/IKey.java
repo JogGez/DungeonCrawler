@@ -5,11 +5,13 @@
  */
 package dungeonCrawler.aqu;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Linea Hoffmann
  */
-public interface IKey
+public interface IKey extends Serializable
 {
     
    

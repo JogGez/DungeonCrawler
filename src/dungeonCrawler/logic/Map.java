@@ -1,9 +1,6 @@
 package dungeonCrawler.logic;
 
-import dungeonCrawler.aqu.IMap;
-import dungeonCrawler.aqu.IMerchant;
-import dungeonCrawler.aqu.IItem;
-import dungeonCrawler.aqu.IThief;
+import dungeonCrawler.aqu.*;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -194,8 +191,8 @@ class Map implements IMap, Serializable
      *
      * @return ArrayList
      */
-//    @Override
-    public ArrayList<Room> getRoomList()
+    @Override
+    public ArrayList<? extends IRoom> getRoomList()
     {
         return roomList;
     }
@@ -331,16 +328,14 @@ class Map implements IMap, Serializable
         return "";
     }
 
-    public ArrayList<IMerchant> merchantArrayList()
+    public ArrayList<? extends IMerchant> merchantArrayList()
     {
-        ArrayList<? extends IMerchant> merchants = merchantList;
-        return (ArrayList<IMerchant>) merchants;
+        return merchantList;
     }
 
-    public ArrayList<IThief> thiefArrayList()
+    public ArrayList<? extends IThief> thiefArrayList()
     {
-        ArrayList<? extends IThief> thieves = thiefList;
-        return (ArrayList<IThief>) thieves;
+        return thiefList;
     }
     
     public void unlockRoom(Point location)
