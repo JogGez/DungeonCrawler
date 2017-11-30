@@ -964,7 +964,8 @@ public class Game implements IGame, Serializable
     {
         logic = logicLayer;
     }
-    
+
+
     public void changeInventory (IItem item)
     {
         printToConsole.print(gameText.getItemInfo(item));

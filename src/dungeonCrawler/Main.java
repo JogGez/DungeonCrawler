@@ -5,7 +5,8 @@ import dungeonCrawler.aqu.IDataFacade;
 import dungeonCrawler.aqu.ILogicFacade;
 import dungeonCrawler.data.DataFacade;
 import dungeonCrawler.logic.LogicFacade;
-import dungeonCrawler.presentationConsole.Game;
+//import dungeonCrawler.presentationConsole.Game;
+import dungeonCrawler.presentationGUI.Game;
 
 /**
  * The type Main.

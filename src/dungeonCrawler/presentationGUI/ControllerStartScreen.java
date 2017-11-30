@@ -1,5 +1,8 @@
 package dungeonCrawler.presentationGUI;
 
+//import dungeonCrawler.aqu.IGame;
+import dungeonCrawler.aqu.IGame;
+import dungeonCrawler.aqu.ILogicFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,8 +17,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ControllerStartScreen
+public class ControllerStartScreen implements IGame
 {
+    ILogicFacade logic;
 
     @FXML
     private Button btnPlay;
@@ -32,17 +36,16 @@ public class ControllerStartScreen
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("DifficultyScreen.fxml"));
 
-
         AnchorPane anchorPane = loader.load();
+        IGame controller = loader.getController();
+        controller.injectLogic(logic);
 
-        ControllerDifficultyScreen controllerDifficultyScreen = loader.getController();
         Scene scene2 = new Scene(anchorPane);
         //Get Stage information
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.show();
-
     }
 
     @FXML
@@ -50,10 +53,7 @@ public class ControllerStartScreen
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("HighScoreScreen.fxml"));
-
-
         AnchorPane anchorPane = loader.load();
-
         ControllerHighscoreScreen controllerHighscoreScreen = loader.getController();
         Scene scene2 = new Scene(anchorPane);
         //Get Stage information
@@ -61,6 +61,7 @@ public class ControllerStartScreen
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.show();
+
 
     }
 
@@ -76,7 +77,6 @@ public class ControllerStartScreen
               FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("LoadGameScreen.fxml"));
 
-
         AnchorPane anchorPane = loader.load();
 
         ControllerLoadGameScreen controllerLoadGameScreen = loader.getController();
@@ -86,6 +86,14 @@ public class ControllerStartScreen
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.show();
+    }
+
+
+    public void injectLogic(ILogicFacade logicLayer)
+    {
+        logic=logicLayer;
 
     }
+
+
 }
