@@ -13,12 +13,12 @@ import java.io.Serializable;
  *
  * @author Computer
  */
-public class GameState implements Serializable
+public class GameStateDTO implements Serializable
 {
-    IPlayer player;
-    IMap map;
+    private IPlayer player;
+    private IMap map;
 
-    public GameState(IPlayer player, IMap map)
+    public GameStateDTO(IPlayer player, IMap map)
     {
         this.player = player;
         this.map = map;

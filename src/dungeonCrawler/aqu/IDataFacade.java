@@ -1,12 +1,15 @@
 package dungeonCrawler.aqu;
 
-import dungeonCrawler.data.GameState;
+import dungeonCrawler.data.GameStateDTO;
 
-public interface IDataFacade
+import java.io.Serializable;
+
+public interface IDataFacade extends Serializable
 {
     IHighScore getHighScore();
-    void saveGame(IPlayer player, IMap map, String fileName);
-    void loadGame(String fileName);
-    IMap getMap();
-    IPlayer getPlayer();
+    void save(GameStateDTO gameStateDTO, String filename);
+    GameStateDTO load(GameStateDTO gameStateDTO, String filename);
+    //    IMap getMap();
+//    IPlayer getPlayer();
+
 }

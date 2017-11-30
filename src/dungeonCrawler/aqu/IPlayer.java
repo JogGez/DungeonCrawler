@@ -1,8 +1,9 @@
 package dungeonCrawler.aqu;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public interface IPlayer
+public interface IPlayer extends Serializable
 {
     IInventory getInventory();
 
@@ -31,4 +32,6 @@ public interface IPlayer
     void setTime(int time);
 
     int getInventorySize();
+
+    void setName(String name);
 }

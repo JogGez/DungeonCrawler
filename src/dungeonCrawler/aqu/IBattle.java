@@ -1,6 +1,8 @@
 package dungeonCrawler.aqu;
 
-public interface IBattle
+import java.io.Serializable;
+
+public interface IBattle extends Serializable
 {
     // Getter method for isBattleOver
     boolean getIsBattleOver();

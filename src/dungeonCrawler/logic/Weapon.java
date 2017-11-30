@@ -5,7 +5,6 @@ import java.io.Serializable;
 
 class Weapon extends Item implements IWeapon, Serializable
 {
-
     private int power;
     private int multiplier;
 
@@ -18,24 +17,6 @@ class Weapon extends Item implements IWeapon, Serializable
         this.setAscii(ascii);
         this.power = power;
         this.multiplier = multiplier;
-    }
-
-    @Override
-    public String getName()
-    {
-        return super.getName();
-    }
-
-    @Override
-    public String getASCII()
-    {
-        return super.getAscii();
-    }
-
-    @Override
-    public String getDescription()
-    {
-        return super.getDescription();
     }
 
     @Override

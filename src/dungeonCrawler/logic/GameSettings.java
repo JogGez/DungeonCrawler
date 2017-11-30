@@ -37,12 +37,14 @@ class GameSettings implements Serializable
     private static int chanceOfWeapon;
     private static int chanceOfHealthPotion;
     private static int chanceOfTimePotion;
+    private static int chanceOfKey;
+    private static int chanceOfSpecial;
 
     // Private constructor to maintain static and to prevent instantiating
+
     private GameSettings()
     {
     }
-
     public static void setEasyDifficulty()
     {
        mapSize = new Point (3,4);
@@ -51,19 +53,20 @@ class GameSettings implements Serializable
        inventorySize = 5;
        playerTime = 300;
        playerPower = 100;
-       numberOfMerchants = 5;
+       numberOfMerchants = 0;
        numberOfThieves = 1;
        thiefPickingRounds = 3;
        lockedRooms = 2;
 
        chanceOfMonster = 0;
-       chanceOfChest = 50;
+       chanceOfChest = 100;
        chanceOfGuide = 0;
 
-       chanceOfWeapon = 30;
-       chanceOfHealthPotion = 30;
-       chanceOfTimePotion = 30;
-
+       chanceOfWeapon = 0;
+       chanceOfHealthPotion = 0;
+       chanceOfTimePotion = 0;
+       chanceOfKey = 0;
+       chanceOfSpecial = 100;
     }
 
     public static void setNormalDifficulty()
@@ -78,7 +81,7 @@ class GameSettings implements Serializable
         numberOfThieves = 2;
         thiefPickingRounds = 3;
         lockedRooms = 4;
-        
+
         chanceOfMonster = 25;
         chanceOfChest = 50;
         chanceOfGuide = 15;
@@ -86,6 +89,13 @@ class GameSettings implements Serializable
         chanceOfWeapon = 30;
         chanceOfHealthPotion = 30;
         chanceOfTimePotion = 30;
+        chanceOfKey = 0;
+        chanceOfSpecial = 10;
+    }
+
+    static int getChanceOfKey()
+    {
+        return chanceOfKey;
     }
 
     public static void setHardDifficulty()
@@ -100,7 +110,7 @@ class GameSettings implements Serializable
         numberOfThieves = 3;
         thiefPickingRounds = 2;
         lockedRooms = 6;
-        
+
         chanceOfMonster = 25;
         chanceOfChest = 50;
         chanceOfGuide = 15;
@@ -108,6 +118,19 @@ class GameSettings implements Serializable
         chanceOfWeapon = 30;
         chanceOfHealthPotion = 30;
         chanceOfTimePotion = 30;
+        chanceOfKey = 0;
+
+        chanceOfSpecial = 10;
+    }
+
+    static int getThiefPickingRounds()
+    {
+        return thiefPickingRounds;
+    }
+
+    static int getChanceOfSpecial()
+    {
+        return chanceOfSpecial;
     }
 
     static int getChanceOfMonster()

@@ -4,7 +4,9 @@ import dungeonCrawler.aqu.*;
 import dungeonCrawler.logic.GameText;
 
 import java.awt.*;
+import java.io.File;
 import java.io.Serializable;
+import java.nio.file.Paths;
 import java.util.Date;
 
 /**
@@ -50,10 +52,13 @@ public class Game implements IGame, Serializable
      */
     public void begin()
     {
+        logic.setDifficultyLevel(1);
         gameText = logic.getGameText();
         //Prints welcome logo and welcome text
         printToConsole.print(gameText.getAsciiTitle());
         printToConsole.print(gameText.getWelcomeText());
+
+
 
         // Call menu
         menu();
@@ -64,8 +69,10 @@ public class Game implements IGame, Serializable
      */
     public void play(boolean newGame)
     {
+        printToConsole.print(gameText.getSeperator());
         if (newGame == true)
         {
+
             //Prints "Enter your name here: "
             printToConsole.print(gameText.getEnterPlayerName());
 
@@ -78,6 +85,7 @@ public class Game implements IGame, Serializable
                 playerName = parser.getUserInput();
                 if (playerName.length()<=10)
                 {
+                    printToConsole.print(gameText.getSeperator());
                     break;
                 }
                 else
@@ -103,6 +111,7 @@ public class Game implements IGame, Serializable
 
                 if (input.equals("enter") || input.equals("e"))
                 {
+                    printToConsole.print(gameText.getSeperator());
                     acceptedInput = true;
                 }
                 else
@@ -111,15 +120,12 @@ public class Game implements IGame, Serializable
                     printToConsole.print(gameText.getEnterToStartGame());
                 }
             }
+            // sets the current room as entered
             map.setRoomHasBeenEntered(player.getLocation());
         }
+
         //Starting timetracker.
         timeTracker = logic.getTimeTracker(new Date());
-
-        // sets the current room as entered
-        // Compare the players coordinates with the map room coordinates.
-        // There is a for-each loop in setRoomHasBeenEntered, that goes through the coordinates.
-
 
         checkRoom();
 
@@ -171,6 +177,7 @@ public class Game implements IGame, Serializable
      */
     private void menu()
     {
+        printToConsole.print(gameText.getSeperator());
         //Prints menu
         printToConsole.print(gameText.getMenu());
 
@@ -182,12 +189,50 @@ public class Game implements IGame, Serializable
                 break;
             case "2":
                 logic.loadGame();
+                player = logic.getPlayer();
+                map = logic.getMap();
+
+                logic.injectGameText();
+
+                printToConsole.print(gameText.getWelcomeBack());
+
+
                 play(false);
                 break;
             case "3":
                 printHighScore();
                 break;
             case "4":
+                // TODO move me :)
+                // create a file that is really a directory
+                File aDirectory = new File(Paths.get(".").toAbsolutePath().normalize().toString());
+
+                // get a listing of all files in the directory
+//                String[] filesInDir = aDirectory.list();
+
+                File[] filesInDir = aDirectory.listFiles(
+                        (dir, name) -> name.toLowerCase().endsWith(".sav")
+                );
+
+                // sort the list of files (optional)
+                // Arrays.sort(filesInDir);
+                printToConsole.print(gameText.getFilesInFolder(filesInDir));
+                String fileName = "";
+                boolean acceptedInput = false;
+                while (!acceptedInput)
+                {
+                    String input = parser.getUserInput();//returns a String
+
+                    if (input.equals("1")||input.equals("2")||input.equals("3"))
+                    {
+                        fileName = filesInDir[Integer.parseInt(input) - 1].getName();
+                        acceptedInput = true;
+                    }
+                    else
+                    {
+                        printToConsole.print(gameText.getWhatDoYouMean());
+                    }
+                }
                 break;
             case "5":
                 //Print thank you for playing
@@ -195,28 +240,25 @@ public class Game implements IGame, Serializable
                 System.exit(0);
                 break;
         }
-        printToConsole.print(gameText.getEmptyLine());//Prints empty line
     }
 
     private void selectDifficulty()
     {
         //Prints menu
+        printToConsole.print(gameText.getSeperator());
         printToConsole.print(gameText.getSetDifficultyLevel());
 
         switch (parser.getUserInput())
         {
         case "1":
-            printToConsole.print(gameText.getEmptyLine());//Prints empty line
             logic.setDifficultyLevel(1);
             play(true);
             break;
         case "2":
-            printToConsole.print(gameText.getEmptyLine());//Prints empty line
             logic.setDifficultyLevel(2);
             play(true);
             break;
         case "3":
-            printToConsole.print(gameText.getEmptyLine());//Prints empty line
             logic.setDifficultyLevel(3);
             play(true);
             break;
@@ -316,6 +358,8 @@ public class Game implements IGame, Serializable
         else if (commandWord == CommandWord.SAVE)
         {
             player.setTime(timeTracker.calculateRemainingTime());
+//            GameStateDTO stateDTO = new GameStateDTO(player, map);
+//            GameHandler.saveGame(stateDTO, "fileName.sav");
             logic.saveGame();
         }
         return quitGame;
@@ -434,12 +478,86 @@ public class Game implements IGame, Serializable
         else if (item instanceof IPotion)
         {
             player.setHealth(player.getHealth() + ((IPotion) item).getHealthRecovery());
-            player.getInventory().removeItem(player.getInventory().getItemIndex(item));
             player.setTime(player.getTime() + ((IPotion) item).getTimeRecovery());
+            player.getInventory().removeItem(player.getInventory().getItemIndex(item));
             //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
             printToConsole.print(gameText.getPlayerHealth());
             // Prints "Your time is now: " + player.getTime() + "sec"
             printToConsole.print(gameText.getPlayerTime(timeTracker));
+        }
+        else if (item instanceof IKey)
+        {
+            printToConsole.print(gameText.getUseKey());
+        }
+        else if (item instanceof ISpecial)
+        {
+            if (((ISpecial) item).getTypeString().equals("teleport"))
+            {
+                printToConsole.print(gameText.getMap());
+                while (true)
+                {
+                    printToConsole.print(gameText.getTypeXCoordinate());
+                    String inputX;
+                    while (true)
+                    {
+                        inputX = parser.getUserInput();
+                        if (inputX.matches("\\d+"))
+                        {
+                            if (Integer.parseInt(inputX) >= 0 && Integer.parseInt(inputX) <= map.getWidth()-1)
+                            break;
+                            else printToConsole.print(gameText.getWrongInputCoordinate());
+                        }
+                        else
+                        {
+                            printToConsole.print(gameText.getWrongInputCoordinate());
+                        }
+                    }
+
+                    printToConsole.print(gameText.getTypeYCoordinate());
+                    String inputY;
+                    while (true)
+                    {
+                        inputY = parser.getUserInput();
+                        if (inputY.matches("\\d+"))
+                        {
+                            if (Integer.parseInt(inputY) >= 0 && Integer.parseInt(inputY) <= map.getHeight()-1)
+                                break;
+                            else printToConsole.print(gameText.getWrongInputCoordinate());
+                        }
+                        else
+                        {
+                            printToConsole.print(gameText.getWrongInputCoordinate());
+                        }
+                    }
+
+                    Point point = new Point(Integer.parseInt(inputX), Integer.parseInt(inputY));
+
+                    if (map.isRoomLocked(point) && player.getInventory().keyArrayList().size() == 0)
+                    {
+                            printToConsole.print(gameText.getTeleportToLockedRoomNoKey());
+                    }
+                    else
+                    {
+                        player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+                        //((ISpecial) item).use(player,map,point);
+                        playerMove(point);
+                    }
+
+                    break;
+                }
+            }
+            else if (((ISpecial) item).getTypeString().equals("bomb"))
+            {
+                printToConsole.print(gameText.getUseSpecialBomb());
+                ((ISpecial) item).use(player,map);
+                player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+            }
+            else if (((ISpecial) item).getTypeString().equals("awesome_name"))
+            {
+                ((ISpecial) item).use(player);
+                printToConsole.print(gameText.getPlayerName());
+                player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+            }
         }
         else
         {
@@ -676,15 +794,17 @@ public class Game implements IGame, Serializable
                     String input = parser.getUserInput();
                     if (input.equals("open") || input.equals("o"))
                     {
-
+                        printToConsole.print(gameText.getSeperator());
                         changeInventory(((IChest)map.getCurrentRoom().getContent(i)).getItem());
 
                         //This removes the chest
                         logic.getCurrentRoom().removeContent(i);
+
                         break;
                     }
                     else if (input.equals("skip") || input.equals("s"))
                     {
+                        printToConsole.print(gameText.getSeperator());
                         break;
                     }
                     else

@@ -2,9 +2,10 @@ package dungeonCrawler.aqu;
 
 import dungeonCrawler.logic.GameText;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public interface ILogicFacade
+public interface ILogicFacade  extends Serializable
 {
     void injectData(IDataFacade dataLayer);
 

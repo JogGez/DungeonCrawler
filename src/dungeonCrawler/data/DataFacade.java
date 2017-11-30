@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 public class DataFacade implements IDataFacade, Serializable
 {
-    GameState gameState;
+
 
     @Override
     public IHighScore getHighScore()
@@ -20,30 +20,19 @@ public class DataFacade implements IDataFacade, Serializable
         return score;
     }
 
-    @Override
-    public void saveGame(IPlayer player, IMap map, String filename)
+    public GameStateDTO load(GameStateDTO gameStateDTO, String filename)
     {
-        gameState = new GameState(player, map);
-        GameHandler.saveGame(gameState, filename);
+        gameStateDTO = GameHandler.loadGame(gameStateDTO,filename);
+        return gameStateDTO;
     }
 
-    @Override
-    public void loadGame(String fileName)
+    public void save(GameStateDTO gameStateDTO, String filename)
     {
-        this.gameState = GameHandler.loadGame(gameState, "fileName.sav");
+        GameHandler.saveGame(gameStateDTO,filename);
     }
 
-    @Override
-    public IMap getMap()
-    {
-        return gameState.map;
-    }
 
-    @Override
-    public IPlayer getPlayer()
-    {
-        return gameState.player;
-    }
+
 
 
 

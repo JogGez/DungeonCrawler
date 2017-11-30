@@ -1,6 +1,8 @@
 package dungeonCrawler.aqu;
 
-public interface IPotion
+import java.io.Serializable;
+
+public interface IPotion extends Serializable
 {
     int getHealthRecovery();
 

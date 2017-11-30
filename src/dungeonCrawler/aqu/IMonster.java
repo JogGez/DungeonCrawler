@@ -1,6 +1,8 @@
 package dungeonCrawler.aqu;
 
-public interface IMonster
+import java.io.Serializable;
+
+public interface IMonster extends Serializable
 {
     String getName();
 

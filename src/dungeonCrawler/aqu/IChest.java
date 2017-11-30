@@ -1,6 +1,8 @@
 package dungeonCrawler.aqu;
 
-public interface IChest
+import java.io.Serializable;
+
+public interface IChest extends Serializable
 {
     IItem getItem();
 

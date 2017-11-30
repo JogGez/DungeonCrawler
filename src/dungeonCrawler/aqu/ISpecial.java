@@ -1,5 +1,15 @@
 package dungeonCrawler.aqu;
 
-public interface ISpecial
+import java.awt.*;
+import java.io.Serializable;
+
+public interface ISpecial extends IItem, Serializable
 {
+    void use(IPlayer player, IMap map);
+
+    String getTypeString();
+
+    void use(IPlayer player, IMap map, Point point);
+
+    void use(IPlayer player);
 }

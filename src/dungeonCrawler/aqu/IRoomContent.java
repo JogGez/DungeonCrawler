@@ -5,11 +5,13 @@
  */
 package dungeonCrawler.aqu;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Frederik
  */
-public interface IRoomContent
+public interface IRoomContent extends Serializable
 {     
  
 }

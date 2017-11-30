@@ -2,9 +2,10 @@ package dungeonCrawler.aqu;
 
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public interface IMap
+public interface IMap extends Serializable
 {
     int getHeight();
 
@@ -19,6 +20,8 @@ public interface IMap
     boolean getRoomHasBeenEntered(Point p);
 
 //    ArrayList<IRoom> getRoomList();
+
+    ArrayList<? extends IRoom> getRoomList();
 
     int numberOfEnteredRooms();
 
