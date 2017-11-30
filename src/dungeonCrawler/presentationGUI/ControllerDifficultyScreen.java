@@ -8,6 +8,11 @@ package dungeonCrawler.presentationGUI;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import dungeonCrawler.aqu.*;
+import dungeonCrawler.logic.GameText;
+import dungeonCrawler.presentationConsole.Parser;
+import dungeonCrawler.presentationConsole.PrintToConsole;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +28,22 @@ import javafx.stage.Stage;
  *
  * @author Slayga
  */
-public class ControllerDifficultyScreen implements Initializable {
+public class ControllerDifficultyScreen implements Initializable
+{
 
+    private ILogicFacade logic;
+    // Parser for handling the user input
+    private Parser parser;
+    //Creating print to console object
+    private PrintToConsole printToConsole;
+    // Stores what room we are currently in
+    private IMap map;
+    // We are storing the class player's name for player.
+    private IPlayer player;
+    //Creating print to console object
+    private GameText gameText;
+    //Create timeTracker.
+    private ITimeTracker timeTracker;
     @FXML
     private Button btnEasy;
     @FXML
@@ -38,9 +57,33 @@ public class ControllerDifficultyScreen implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)
+    {
         // TODO
-    }    
+    }
+
+    @FXML
+    private void handleSetEasy(ActionEvent event) throws  IOException
+    {
+        logic.setDifficultyLevel(1);
+        //TODO Gå videre til play
+    }
+
+    @FXML
+    private void handleSetNormal(ActionEvent event) throws  IOException
+    {
+        logic.setDifficultyLevel(2);
+        //TODO Gå videre til play
+    }
+
+    @FXML
+    private void handleSetHard(ActionEvent event) throws  IOException
+    {
+        logic.setDifficultyLevel(3);
+        //TODO Gå videre til play
+    }
+
+
 
     @FXML
     private void handleBack(ActionEvent event) throws IOException 
@@ -51,5 +94,5 @@ public class ControllerDifficultyScreen implements Initializable {
         window.setScene(scene1);
         window.show();
     }
-    
+
 }

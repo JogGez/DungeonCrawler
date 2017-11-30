@@ -1,5 +1,6 @@
 package dungeonCrawler.presentationGUI;
 
+import dungeonCrawler.aqu.ILogicFacade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,5 +24,10 @@ public class Game extends Application
     public void begin()
     {
         launch();
+    }
+
+    public void injectLogic(ILogicFacade logic)
+    {
+
     }
 }
