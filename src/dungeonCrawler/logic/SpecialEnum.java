@@ -5,9 +5,12 @@ import java.util.Random;
 
 enum SpecialEnum implements Serializable
 {
-    TELEPORT (new Special("Teleport","Teleport to anywhere on the map",GameTextASCII.getJesus(),Special.Type.TELEPORT)),
-    BOMB (new Special("BOMB","Lower the health of all enemies around you by 50% (Up, Down, Left, Right)",GameTextASCII.getJesus(),Special.Type.BOMB)),
-    AWESOME_NAME (new Special("Awesome Name","Change to name to something AWESOME",GameTextASCII.getJesus(),Special.Type.AWESOME_NAME));
+    TELEPORT (new Special("Teleport","Teleport to anywhere on the map",GameTextASCII.getTeleporter(),Special.Type.TELEPORT)),
+    BOMB (new Special("BOMB","Lower the health of all enemies around you by 50% (Up, Down, Left, Right)",GameTextASCII.getBombBig(),Special.Type.BOMB)),
+    VISION (new Special("Vision","Show the content of all rooms around you",GameTextASCII.getGlasses(),Special.Type.VISION)),
+    AWESOME_NAME (new Special("Awesome Name","Change to name to something AWESOME",GameTextASCII.getAwesomeName(),Special.Type.AWESOME_NAME));
+
+
 
     private final Special special;
 

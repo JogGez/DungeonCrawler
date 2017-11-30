@@ -127,6 +127,7 @@ public class Game implements IGame, Serializable
         //Starting timetracker.
         timeTracker = logic.getTimeTracker(new Date());
 
+        //gameText.getVisionMap();
         checkRoom();
 
         // Boolean witch hold the value for exiting the game.
@@ -556,6 +557,12 @@ public class Game implements IGame, Serializable
             {
                 ((ISpecial) item).use(player);
                 printToConsole.print(gameText.getPlayerName());
+                player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+            }
+            else if (((ISpecial) item).getTypeString().equals("vision"))
+            {
+                //((ISpecial) item).use(player);
+                printToConsole.print(gameText.getVisionMap());
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
             }
         }

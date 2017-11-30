@@ -12,7 +12,7 @@ class Special extends Item  implements ISpecial, Serializable
 {
     public enum Type
     {
-        TELEPORT, BOMB, AWESOME_NAME
+        TELEPORT, BOMB, AWESOME_NAME, VISION
     }
 
     private Type type;

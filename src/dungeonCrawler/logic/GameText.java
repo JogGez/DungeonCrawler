@@ -1,8 +1,10 @@
 package dungeonCrawler.logic;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import dungeonCrawler.aqu.*;
 import dungeonCrawler.data.HighScore;
 import dungeonCrawler.presentationConsole.CommandWord;
+import sun.awt.geom.AreaOp;
 
 import javax.lang.model.element.NestingKind;
 import java.awt.*;
@@ -827,5 +829,87 @@ public class GameText implements Serializable
     public String getUseSpecialBomb()
     {
         return "BOOM ... Monsters health reduced by 50%";
+    }
+
+    public String getVisionMap()
+    {
+        ArrayList<String> topLeft = new ArrayList<>();
+        ArrayList<String> topCenter = new ArrayList<>();
+        ArrayList<String> topRight = new ArrayList<>();
+        ArrayList<String> left = new ArrayList<>();
+        ArrayList<String> right = new ArrayList<>();
+        ArrayList<String> bottomLeft = new ArrayList<>();
+        ArrayList<String> bottomCenter = new ArrayList<>();
+        ArrayList<String> bottomRight = new ArrayList<>();
+
+        for (Room room : ((ArrayList<Room>) map.getRoomList()))
+        {
+            System.out.println((room.getLocation().y + 1) == (player.getLocation().y + 1) && (room.getLocation().x - 1) == (player.getLocation().x - 1));
+            if ((room.getLocation().y + 1) == (player.getLocation().y + 1) && (room.getLocation().x - 1) == (player.getLocation().x - 1))
+            {
+                System.out.println(room.getLocation());
+                topLeft = getContentFromRoom(room);
+            }
+            else if (room.getLocation().y + 1 == player.getLocation().y + 1)
+            {
+                topCenter = getContentFromRoom(room);
+            }
+            else if (room.getLocation().y + 1 == player.getLocation().y + 1 && room.getLocation().x + 1 == player.getLocation().x + 1)
+            {
+                topRight = getContentFromRoom(room);
+            }
+            else if (room.getLocation().x - 1 == player.getLocation().x - 1)
+            {
+                left = getContentFromRoom(room);
+            }
+            else if (room.getLocation().x + 1 == player.getLocation().x + 1)
+            {
+                right = getContentFromRoom(room);
+            }
+            else if (room.getLocation().y - 1 == player.getLocation().y - 1 && room.getLocation().x - 1 == player.getLocation().x - 1)
+            {
+                bottomLeft = getContentFromRoom(room);
+            }
+            else if (room.getLocation().y - 1 == player.getLocation().y - 1)
+            {
+                bottomCenter = getContentFromRoom(room);
+            }
+            else if (room.getLocation().y - 1 == player.getLocation().y - 1 && room.getLocation().x + 1 == player.getLocation().x + 1)
+            {
+                bottomRight = getContentFromRoom(room);
+            }
+        }
+
+        ArrayList<String> top = new ArrayList<>();
+        ArrayList<String> middle = new ArrayList<>();
+        ArrayList<String> bottom = new ArrayList<>();
+
+        for (int i = 0; i < GameSettings.getRoomContents()-1; i++)
+        {
+            //top.add(topLeft.get(i) + top.get(i)+ topRight.get(i));
+            //System.out.println(topLeft.get(i) + top.get(i)+ topRight.get(i));
+        }
+
+
+
+
+
+
+        return null;
+    }
+
+    private ArrayList<String> getContentFromRoom(Room room)
+    {
+        ArrayList<String> list = new ArrayList<>();
+        for (RoomContent content : room.getContentArray())
+        {
+            if (content instanceof Monster) list.add("Monster");
+            else if (content instanceof Chest) list.add("Chest");
+            else if (content instanceof Guide) list.add("Guide");
+            else if (content == null) list.add("");
+            else list.add("NO ROOM");
+        }
+
+        return list;
     }
 }
