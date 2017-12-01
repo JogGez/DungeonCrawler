@@ -413,7 +413,7 @@ public class GameText implements Serializable
 
     public String getTypeSlotNumberToUse()
     {
-        return + type + "number to use.";
+        return  type + "number to use.";
     }
 
     public String getPotionRecovery(int i)
