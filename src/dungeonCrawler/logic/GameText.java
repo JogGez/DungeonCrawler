@@ -18,6 +18,8 @@ public class GameText implements Serializable
 {
     Player player;
     Map map;
+    String type = "Love";
+    
 
     public GameText()
     {
@@ -70,7 +72,7 @@ public class GameText implements Serializable
 
     public String getEnterToStartGame()
     {
-        return "Type \"enter\" to start the game.";
+        return type + " \"enter\" to start the game.";
     }
 
     public String getMessageHello()
@@ -78,8 +80,8 @@ public class GameText implements Serializable
 
         return "Well... hello there "+player.getName()+
                 "\nI'am Slave and I'll be your merchant through this adventure."+
-                "\nType '"+ CommandWord.HELP + "' if you ever need help."+
-                "\nType \"enter\" to enter the DUNGEON...";
+                "\n" + type + " '"+ CommandWord.HELP + "' if you ever need help."+
+                "\n" + type + " \"enter\" to enter the DUNGEON...";
     }
 
     public String getThanksForPLaying()
@@ -348,7 +350,7 @@ public class GameText implements Serializable
     
     public String getPlayerInfo()
     {
-        return "Your Health: " + player.getHealth() +
+        return  "Your Health: " + player.getHealth() +
                 "\n" + "Your Power: " + player.getWeapon().getPower() +
                 "\n" + "Your Multiplier: " + player.getWeapon().getMultiplier();
     }
@@ -359,7 +361,8 @@ public class GameText implements Serializable
                 "\n" + "Name: " + monster.getName() +
                 "\n" + "Description: " + monster.getDescription() +
                 "\n" + "Health: " + monster.getHealth() +
-                "\n" + "Power: " + monster.getPower();
+                "\n" + "Power: " + monster.getPower() +
+                "\n";
     }
 
     public String getChestInfo(IChest chest)
@@ -368,13 +371,13 @@ public class GameText implements Serializable
                 "\n" + "Name: " + chest.getName() +
                 "\n" + "Description: " + chest.getDescription() +
                 "\n" +
-                "\n" + "There is a chest, type \"open\" to open!" +
-                "\n Or you can type \"skip\" to skip it!";
+                "\n" + "There is a chest," + type + " \"open\" to open!" +
+                "\n Or you can" + type + " \"skip\" to skip it!";
     }
 
     public String getBattleOrFlee()
     {
-        return "Type \"battle\" or \"flee\".";
+        return type + " \"battle\" or \"flee\".";
     }
 
     public String getAttackOrDrinkPotion()
@@ -386,24 +389,6 @@ public class GameText implements Serializable
     {
         return battle.start();
     }
-
-//    public String getWeapon(Item item)
-//    {
-//        return item.getAscii()+
-//                "\nName: " + item.getName()+
-//                "\nPOWER: " + ((IWeapon) item).getPower()+
-//                "\nMULTIPLIER: " + ((IWeapon) item).getMultiplier() + "x"+
-//                "\n"+item.getDescription();
-//    }
-//
-//    public String getPotion(Item item)
-//    {
-//        return item.getAscii()+
-//                "\nName: " + item.getName()+
-//                "\nHEALTH RECOVERY: " + ((IPotion) item).getHealthRecovery()+
-//                "\nTIME RECOVERY: " + ((IPotion) item).getTimeRecovery()+
-//                "\n"+item.getDescription();
-//    }
 
     public String getSlotIsEmpty()
     {
@@ -428,7 +413,7 @@ public class GameText implements Serializable
 
     public String getTypeSlotNumberToUse()
     {
-        return "Type number to use.";
+        return + type + "number to use.";
     }
 
     public String getPotionRecovery(int i)
@@ -460,14 +445,14 @@ public class GameText implements Serializable
 
     public String getThereIsAChest()
     {
-        return "There is a chest, type \"open\" to open!" +
-                                "\n Or you can type \"skip\" to skip it!";
+        return "There is a chest, " + type + "\"open\" to open!" +
+                                "\n Or you can" + type + "\"skip\" to skip it!";
     }
 
     public String getWhatSlot()
     {
         return "Do you want to insert this into a slot?"+
-                "\nType slot number or \"drop\" to drop.";
+                "\n" + type + " slot number or \"drop\" to drop.";
     }
 
     public String getYouSavedItemInThisSlot(int j)
@@ -808,12 +793,12 @@ public class GameText implements Serializable
 
     public String getTypeXCoordinate()
     {
-        return "Type X Coordinate";
+        return type + " X Coordinate";
     }
 
     public String getTypeYCoordinate()
     {
-        return "Type Y Coordinate";
+        return type + " Y Coordinate";
     }
 
     public String getWrongInputCoordinate()
