@@ -8,6 +8,7 @@ class Weapon extends Item implements IWeapon, Serializable
     private int power;
     private int multiplier;
 
+
     public Weapon(String name, String description, String ascii, int power, int multiplier)
     {
         //Weapon inheriet from Item.
@@ -18,6 +19,7 @@ class Weapon extends Item implements IWeapon, Serializable
         this.power = power;
         this.multiplier = multiplier;
     }
+
 
     @Override
     public int getPower()

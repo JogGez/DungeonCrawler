@@ -1,16 +1,11 @@
 package dungeonCrawler.logic;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import dungeonCrawler.aqu.*;
 import dungeonCrawler.data.HighScore;
 import dungeonCrawler.presentationConsole.CommandWord;
-import sun.awt.geom.AreaOp;
 
-import javax.lang.model.element.NestingKind;
 import java.awt.*;
 import java.io.File;
 import java.io.Serializable;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -18,7 +13,7 @@ public class GameText implements Serializable
 {
     Player player;
     Map map;
-    String type = "Love";
+    String type = "Press";
     
 
     public GameText()
@@ -413,7 +408,7 @@ public class GameText implements Serializable
 
     public String getTypeSlotNumberToUse()
     {
-        return + type + "number to use.";
+        return  type + "number to use.";
     }
 
     public String getPotionRecovery(int i)
