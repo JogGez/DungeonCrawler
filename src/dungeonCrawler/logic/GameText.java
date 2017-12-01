@@ -349,8 +349,8 @@ public class GameText implements Serializable
     public String getPlayerInfo()
     {
         return "Your Health: " + player.getHealth() +
-        "\n" + "Your Power: " + player.getWeapon().getPower() + "\n" +
-        "Your Multiplier: " + player.getWeapon().getMultiplier();
+                "\n" + "Your Power: " + player.getWeapon().getPower() +
+                "\n" + "Your Multiplier: " + player.getWeapon().getMultiplier();
     }
 
     public String getMonstersInfo(IMonster monster)

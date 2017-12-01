@@ -1,49 +1,38 @@
 package dungeonCrawler.presentationGUI;
 
-import dungeonCrawler.aqu.IGame;
 import dungeonCrawler.aqu.ILogicFacade;
-import dungeonCrawler.logic.LogicFacade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.awt.*;
 
-public class Game extends Application implements IGame
+public class Game extends Application
 {
-
-    ILogicFacade logic;
-
-
+    private static ILogicFacade logic;
 
     @Override
     public void start(Stage stage) throws Exception
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         Parent root = loader.load();
 
-        ILogicFacade logic = new LogicFacade();
-        IGame controller =loader.getController();
+        MenuController controller =loader.getController();
         controller.injectLogic(logic);
-
-
+        stage.getIcons().add(new Image("file:Swords.png"));
         stage.setTitle("Dungeon Crawler");
         stage.setScene(new Scene(root));
         stage.show();
     }
 
-    @Override
+
     public void injectLogic(ILogicFacade logicLayer)
     {
         logic = logicLayer;
     }
 
-
-
-    // Skal ændres, skal laves om til det samme som vores start i consoleGame.
-    //Må ikke være begin eller start. 
     public void begin()
     {
         launch();

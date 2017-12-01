@@ -53,14 +53,14 @@ class GameSettings implements Serializable
        inventorySize = 5;
        playerTime = 300;
        playerPower = 100;
-       numberOfMerchants = 0;
+       numberOfMerchants = 1;
        numberOfThieves = 1;
        thiefPickingRounds = 3;
        lockedRooms = 2;
 
-       chanceOfMonster = 0;
-       chanceOfChest = 100;
-       chanceOfGuide = 0;
+       chanceOfMonster = 50;
+       chanceOfChest = 25;
+       chanceOfGuide = 25;
 
        chanceOfWeapon = 0;
        chanceOfHealthPotion = 0;

@@ -6,10 +6,8 @@
 package dungeonCrawler.presentationGUI;
 
 import java.io.IOException;
-import java.util.Date;
 
 import dungeonCrawler.aqu.*;
-import dungeonCrawler.logic.GameText;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -25,10 +25,9 @@ import javafx.stage.Stage;
  *
  * @author Slayga
  */
-public class ControllerDifficultyScreen implements IGame
+public class DifficultyController
 {
-
-    ILogicFacade logic;
+    private ILogicFacade logic;
 
     @FXML
     private Button btnEasy;
@@ -43,7 +42,7 @@ public class ControllerDifficultyScreen implements IGame
     @FXML
     private void handleBack(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene1 = new Scene(root);
         window.setScene(scene1);
@@ -53,40 +52,46 @@ public class ControllerDifficultyScreen implements IGame
 
     public void handleBtnEasy(ActionEvent event) throws IOException
     {
-        showStartScene(event);
         logic.setDifficultyLevel(1);
+        showStartScene(event);
+
     }
 
     public void handleBtnNormal(ActionEvent event) throws IOException
     {
-        showStartScene(event);
         logic.setDifficultyLevel(2);
+        showStartScene(event);
     }
 
     public void handleBtnHard(ActionEvent event) throws IOException
     {
-        showStartScene(event);
         logic.setDifficultyLevel(3);
+        showStartScene(event);
     }
 
     private void showStartScene(ActionEvent event) throws IOException
     {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("PlayMainScene.fxml"));
+        loader.setLocation(getClass().getResource("Play.fxml"));
 
-        GridPane gridPane = loader.load();
-        IGame controller = loader.getController();
+        AnchorPane anchorPane = loader.load();
+        PlayController controller = loader.getController();
         controller.injectLogic(logic);
 
-        Scene scene2 = new Scene(gridPane);
+        Scene scene2 = new Scene(anchorPane);
         //Get Stage information
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.getIcons().add(new Image("file:Swords.png"));
+        window.setMinWidth(800);
+        window.setMinHeight(600);
+        window.setWidth(1024);
+        window.setHeight(768);
         window.setScene(scene2);
         window.show();
     }
 
-    @Override
+
     public void injectLogic(ILogicFacade logicLayer)
     {
         logic = logicLayer;

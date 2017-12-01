@@ -19,7 +19,8 @@ import javafx.stage.Stage;
  *
  * @author Slayga
  */
-public class ControllerLoadGameScreen {
+public class LoadController
+{
 
     @FXML
     private Button btnBack;
@@ -27,7 +28,7 @@ public class ControllerLoadGameScreen {
     @FXML
     private void handleBack(ActionEvent event) throws IOException 
     {
-        Parent root = FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene1 = new Scene(root);
         window.setScene(scene1);
