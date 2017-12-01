@@ -348,7 +348,7 @@ public class GameText implements Serializable
     
     public String getPlayerInfo()
     {
-        return "Your Health: " + player.getHealth() +
+        return  "Your Health: " + player.getHealth() +
                 "\n" + "Your Power: " + player.getWeapon().getPower() +
                 "\n" + "Your Multiplier: " + player.getWeapon().getMultiplier();
     }
@@ -359,7 +359,8 @@ public class GameText implements Serializable
                 "\n" + "Name: " + monster.getName() +
                 "\n" + "Description: " + monster.getDescription() +
                 "\n" + "Health: " + monster.getHealth() +
-                "\n" + "Power: " + monster.getPower();
+                "\n" + "Power: " + monster.getPower() +
+                "\n";
     }
 
     public String getChestInfo(IChest chest)
