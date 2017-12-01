@@ -13,7 +13,13 @@ enum RoomEnum implements Serializable
     BUTCHERY ("Buthery", "Bloody gory scenery"),
     TORTURE ("Torture Chamber", "All sorts of random objects"),
     THRONE ("Throne Room", "Big dusty old throne"),
-    WEAPONQUARTER ("Weapon Quarter", "Rusty weapon racks")
+    WEAPONQUARTER ("Weapon Quarter", "Rusty weapon racks"),
+    WINECELLAR ("Wine Cellar", "The older the better"),
+    DININGHALL ("Dining Hall", "Where all the feast was"),
+    CATACOMBES ("The Catacombes", "Skelets, skelets everywhere"),
+    CHAMBERS ("The Chambers", "The master chamber, where Kings where born"),
+    BATHROOM ("Bathroom", "It's now if you need to take a toilet break"),
+    
     ;
 
     private final String name;
