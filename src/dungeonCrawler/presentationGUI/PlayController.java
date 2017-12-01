@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class PlayController implements IGame, Initializable
+public class PlayController implements Initializable
 {
     @FXML
     public TextArea textAreaMain;
@@ -326,34 +326,23 @@ public class PlayController implements IGame, Initializable
     }
 
 
-    @Override
-    public void injectLogic(ILogicFacade logicLayer)
+
+    public void startGame(ILogicFacade logicLayer, String name)
     {
         logic = logicLayer;
 
         gameText = logic.getGameText();
 
-        if (true)
-        {
-            TextInputDialog dialog = new TextInputDialog("");
+        // Creats the map instance in logic.facade, and sends the reference back to here.
+        player = logic.createPlayerInstance(name);
 
-            dialog.setTitle("Player Name:");
-            dialog.setHeaderText(null);
-            dialog.setContentText("Name:");
+        map = logic.createMapInstance();
+
+        logic.injectGameText();
+
+        map.setRoomHasBeenEntered(player.getLocation());
 
 
-            Optional<String> result = dialog.showAndWait();
-
-            result.ifPresent(name -> player = logic.createPlayerInstance(name));
-
-            // Creats the map instance in logic.facade, and sends the reference back to here.
-
-            map = logic.createMapInstance();
-
-            logic.injectGameText();
-
-            map.setRoomHasBeenEntered(player.getLocation());
-        }
 
         //Starting timetracker.
         timeTracker = logic.getTimeTracker(new Date());

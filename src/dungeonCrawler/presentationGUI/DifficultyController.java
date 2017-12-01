@@ -6,6 +6,7 @@
 package dungeonCrawler.presentationGUI;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import dungeonCrawler.aqu.*;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -71,24 +73,45 @@ public class DifficultyController
 
     private void showStartScene(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Play.fxml"));
+        TextInputDialog dialog = new TextInputDialog("");
 
-        AnchorPane anchorPane = loader.load();
-        PlayController controller = loader.getController();
-        controller.injectLogic(logic);
+            dialog.setTitle("Player Name:");
+            dialog.setHeaderText(null);
+            dialog.setContentText("Name:");
 
-        Scene scene2 = new Scene(anchorPane);
-        //Get Stage information
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.getIcons().add(new Image("file:Swords.png"));
-        window.setMinWidth(800);
-        window.setMinHeight(600);
-        window.setWidth(1024);
-        window.setHeight(768);
-        window.setScene(scene2);
-        window.show();
+            Optional<String> result = dialog.showAndWait();
+
+
+            if (result.isPresent() && result.get().length() > 0)
+            {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("Play.fxml"));
+
+                AnchorPane anchorPane = loader.load();
+                PlayController controller = loader.getController();
+                controller.startGame(logic, result.get());
+
+                Scene scene2 = new Scene(anchorPane);
+                //Get Stage information
+
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.getIcons().add(new Image("file:Swords.png"));
+                window.setMinWidth(800);
+                window.setMinHeight(600);
+                window.setWidth(1024);
+                window.setHeight(768);
+                window.setScene(scene2);
+                window.show();
+            }
+
+
+
+
+
+
+
+
     }
 
 
