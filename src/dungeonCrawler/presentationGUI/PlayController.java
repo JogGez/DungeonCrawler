@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 
@@ -24,6 +25,14 @@ public class PlayController implements Initializable
     public TextArea textAreaMap;
     @FXML
     public TextArea textAreaInventory;
+    @FXML
+    public Label labelName;
+    @FXML
+    public Label labelHealth;
+    @FXML
+    public Label labelPower;
+    @FXML
+    public Label labelWeapon;
 
 
     private ILogicFacade logic;
@@ -49,41 +58,55 @@ public class PlayController implements Initializable
     public void initialize(URL location, ResourceBundle resources)
     {
 
+
     }
 
     @FXML
     public void handleMove(ActionEvent event)
     {
 
-        switch (((Control)event.getSource()).getId())
+        setLabel();
+        switch (((Control) event.getSource()).getId())
         {
             case ("btnUp"):
                 if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
                 {
                     playerMove(new Point(player.getLocation().x, player.getLocation().y + 1));
                 }
-                else textAreaMain.setText(gameText.getYouRanIntoAWall());
+                else
+                {
+                    textAreaMain.setText(gameText.getYouRanIntoAWall());
+                }
                 break;
             case "btnDown":
                 if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y - 1)))
                 {
                     playerMove(new Point(player.getLocation().x, player.getLocation().y - 1));
                 }
-                else textAreaMain.setText(gameText.getYouRanIntoAWall());
+                else
+                {
+                    textAreaMain.setText(gameText.getYouRanIntoAWall());
+                }
                 break;
             case "btnLeft":
                 if (map.roomExists(new Point(player.getLocation().x - 1, player.getLocation().y)))
                 {
                     playerMove(new Point(player.getLocation().x - 1, player.getLocation().y));
                 }
-                else textAreaMain.setText(gameText.getYouRanIntoAWall());
+                else
+                {
+                    textAreaMain.setText(gameText.getYouRanIntoAWall());
+                }
                 break;
             case "btnRight":
                 if (map.roomExists(new Point(player.getLocation().x + 1, player.getLocation().y)))
                 {
                     playerMove(new Point(player.getLocation().x + 1, player.getLocation().y));
                 }
-                else textAreaMain.setText(gameText.getYouRanIntoAWall());
+                else
+                {
+                    textAreaMain.setText(gameText.getYouRanIntoAWall());
+                }
                 break;
             case "btnBack":
                 playerMove(new Point(player.getLastLocation().x, player.getLastLocation().y));
@@ -93,6 +116,7 @@ public class PlayController implements Initializable
 
     private void playerMove(Point location)
     {
+        setLabel();
         if (!map.isRoomLocked(location))
         {
 
@@ -213,13 +237,13 @@ public class PlayController implements Initializable
         {
             switch (map.checkRoomContent(i))
             {
-            case "Monster":
-                //Prints info about monster.
-                textAreaMain.setText(gameText.getContentInfo(i));
-                //Prints "Your health is currently " + player.getHealth() + "hp"
-                textAreaMain.appendText(gameText.getPlayerInfo());
-                //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
-                textAreaMain.appendText(gameText.getBattleOrFlee());
+                case "Monster":
+                    //Prints info about monster.
+                    textAreaMain.setText(gameText.getContentInfo(i));
+                    //Prints "Your health is currently " + player.getHealth() + "hp"
+                    textAreaMain.appendText(gameText.getPlayerInfo());
+                    //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
+                    textAreaMain.appendText(gameText.getBattleOrFlee());
 
 //                while (true)
 //                {
@@ -246,10 +270,10 @@ public class PlayController implements Initializable
 //                {
 //                    parser.userPressEnter();
 //                }
-                break;
-            case "Chest":
-                //Prints info about chest.
-                textAreaMain.setText(gameText.getContentInfo(i));
+                    break;
+                case "Chest":
+                    //Prints info about chest.
+                    textAreaMain.setText(gameText.getContentInfo(i));
 
 //                while (true)
 //                {
@@ -279,10 +303,10 @@ public class PlayController implements Initializable
 //                {
 //                    parser.userPressEnter();
 //                }
-                break;
-            case "Guide":
-                //Prints info about Guide.
-                textAreaMain.setText(gameText.getContentInfo(i));
+                    break;
+                case "Guide":
+                    //Prints info about Guide.
+                    textAreaMain.setText(gameText.getContentInfo(i));
 
 //                while (true)
 //                {
@@ -312,8 +336,8 @@ public class PlayController implements Initializable
 //                {
 //                    parser.userPressEnter();
 //                }
-                break;
-            case "":
+                    break;
+                case "":
             }
 
         }
@@ -324,7 +348,6 @@ public class PlayController implements Initializable
 //            lastBossBattle();
         }
     }
-
 
 
     public void startGame(ILogicFacade logicLayer, String name)
@@ -343,7 +366,6 @@ public class PlayController implements Initializable
         map.setRoomHasBeenEntered(player.getLocation());
 
 
-
         //Starting timetracker.
         timeTracker = logic.getTimeTracker(new Date());
 
@@ -351,8 +373,20 @@ public class PlayController implements Initializable
         textAreaMap.setText(gameText.getMap());
         textAreaInventory.setText(gameText.getInventory(player.getInventory()));
         //checkRoom();
+        setLabel();
+
+
     }
 
+    public void setLabel()
+    {
+        labelName.setText("Name: " + player.getName());
+        labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
+        labelPower.setText("Power: " + String.valueOf(player.getWeapon().getPower()));
+        labelWeapon.setText("Weapon: " + ((IItem) player.getWeapon()).getName());
+
+
+    }
 
 
     public void handleAttack(ActionEvent event)

@@ -7,4 +7,6 @@ public interface IWeapon extends Serializable
     int getPower();
 
     int getMultiplier();
+
+
 }
