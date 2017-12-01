@@ -388,24 +388,6 @@ public class GameText implements Serializable
         return battle.start();
     }
 
-//    public String getWeapon(Item item)
-//    {
-//        return item.getAscii()+
-//                "\nName: " + item.getName()+
-//                "\nPOWER: " + ((IWeapon) item).getPower()+
-//                "\nMULTIPLIER: " + ((IWeapon) item).getMultiplier() + "x"+
-//                "\n"+item.getDescription();
-//    }
-//
-//    public String getPotion(Item item)
-//    {
-//        return item.getAscii()+
-//                "\nName: " + item.getName()+
-//                "\nHEALTH RECOVERY: " + ((IPotion) item).getHealthRecovery()+
-//                "\nTIME RECOVERY: " + ((IPotion) item).getTimeRecovery()+
-//                "\n"+item.getDescription();
-//    }
-
     public String getSlotIsEmpty()
     {
         return "Slot is empty.";
