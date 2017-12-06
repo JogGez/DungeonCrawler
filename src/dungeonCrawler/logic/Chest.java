@@ -6,6 +6,8 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IChest;
+import dungeonCrawler.aqu.IItem;
+
 import java.io.Serializable;
 
 /**
@@ -31,7 +33,7 @@ class Chest implements RoomContent, IChest, Serializable
     }
 
     @Override
-    public Item getItem()
+    public IItem getItem()
     {
         return item;
     }

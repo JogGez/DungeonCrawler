@@ -12,7 +12,7 @@ class Special extends Item  implements ISpecial, Serializable
 {
     public enum Type
     {
-        TELEPORT, BOMB, AWESOME_NAME, VISION
+        TELEPORT, BOMB, AWESOME_NAME, VISION, EXTRA_SLOT
     }
 
     private Type type;
@@ -32,6 +32,9 @@ class Special extends Item  implements ISpecial, Serializable
         {
         case AWESOME_NAME:
             player.setName("(¯`·._.·(¯`·._.· " + "The " + player.getName().toUpperCase() + " ·._.·´¯)·._.·´¯)");
+            break;
+        case EXTRA_SLOT:
+            player.getInventory().addOneSlot();
             break;
         }
     }

@@ -35,6 +35,7 @@ class TimeTracker implements ITimeTracker, Serializable
         Date currentTime = new Date();
         long elapsedTime = (((currentTime.getTime() - startTime.getTime()) / 1000));
         int timeLeft = player.getTime() - (int) elapsedTime;
+        if (timeLeft <= 0) timeLeft = 0;
         return timeLeft;
     }
     

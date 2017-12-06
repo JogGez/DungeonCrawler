@@ -51,22 +51,22 @@ class GameSettings implements Serializable
        roomContents = 2;
        playerHealth = 1000;
        inventorySize = 5;
-       playerTime = 300;
-       playerPower = 100;
-       numberOfMerchants = 1;
+       playerTime = 240;
+       playerPower = 25;
+       numberOfMerchants = 2;
        numberOfThieves = 1;
        thiefPickingRounds = 3;
        lockedRooms = 2;
 
-       chanceOfMonster = 50;
-       chanceOfChest = 25;
-       chanceOfGuide = 25;
+       chanceOfMonster = 40;
+       chanceOfChest = 40;
+       chanceOfGuide = 20;
 
-       chanceOfWeapon = 0;
-       chanceOfHealthPotion = 0;
-       chanceOfTimePotion = 0;
-       chanceOfKey = 0;
-       chanceOfSpecial = 100;
+       chanceOfWeapon = 15;
+       chanceOfHealthPotion = 15;
+       chanceOfTimePotion = 15;
+       chanceOfKey = 15;
+       chanceOfSpecial = 40;
     }
 
     public static void setNormalDifficulty()

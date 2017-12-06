@@ -46,7 +46,7 @@ class Player implements IPlayer, Serializable
         this.weapon = new Weapon("Hands", "Puny hands, not good for fighting :(", "", GameSettings.getPlayerPower(), 0);
         this.location = new Point(0,0);
         this.lastLocation = new Point(0,0);
-        this.inventory = new dungeonCrawler.logic.Inventory(GameSettings.getInventorySize());
+        this.inventory = new Inventory(GameSettings.getInventorySize());
         this.time = GameSettings.getPlayerTime();
     }
     

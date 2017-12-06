@@ -6,12 +6,15 @@
 package dungeonCrawler.presentationGUI;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import dungeonCrawler.aqu.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,9 +30,10 @@ import javafx.stage.Stage;
  *
  * @author Slayga
  */
-public class DifficultyController
+public class NewGameController implements Initializable
 {
     private ILogicFacade logic;
+    public static String playerName;
 
     @FXML
     private Button btnEasy;
@@ -40,18 +44,20 @@ public class DifficultyController
     @FXML
     private Button btnBack;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        logic = Game.getLogic();
+    }
+
 
     @FXML
     private void handleBack(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene1 = new Scene(root);
-        window.setScene(scene1);
-        window.show();
+        Game.switchScene("MainMenu.fxml");
     }
 
-
+    @FXML
     public void handleBtnEasy(ActionEvent event) throws IOException
     {
         logic.setDifficultyLevel(1);
@@ -59,59 +65,39 @@ public class DifficultyController
 
     }
 
+    @FXML
     public void handleBtnNormal(ActionEvent event) throws IOException
     {
         logic.setDifficultyLevel(2);
         showStartScene(event);
     }
 
+    @FXML
     public void handleBtnHard(ActionEvent event) throws IOException
     {
         logic.setDifficultyLevel(3);
         showStartScene(event);
     }
 
+    @FXML
     private void showStartScene(ActionEvent event) throws IOException
     {
         TextInputDialog dialog = new TextInputDialog("");
 
-            dialog.setTitle("Player Name:");
-            dialog.setHeaderText(null);
-            dialog.setContentText("Name:");
+        dialog.setTitle("Player Name:");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Name:");
 
 
-            Optional<String> result = dialog.showAndWait();
+        Optional<String> result = dialog.showAndWait();
 
 
-            if (result.isPresent() && result.get().length() > 0)
-            {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("Play.fxml"));
-
-                AnchorPane anchorPane = loader.load();
-                PlayController controller = loader.getController();
-                controller.startGame(logic, result.get());
-
-                Scene scene2 = new Scene(anchorPane);
-                //Get Stage information
-
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.getIcons().add(new Image("file:Swords.png"));
-                window.setMinWidth(800);
-                window.setMinHeight(600);
-                window.setWidth(1024);
-                window.setHeight(768);
-                window.setScene(scene2);
-                window.show();
-            }
-
-
-
-
-
-
-
-
+        if (result.isPresent() && result.get().length() > 0)
+        {
+            playerName = result.get();
+            Game.switchScene("Play.fxml");
+        }
+        playerName = "";
     }
 
 
@@ -119,6 +105,5 @@ public class DifficultyController
     {
         logic = logicLayer;
     }
-
 
 }

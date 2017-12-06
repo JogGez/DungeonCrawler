@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.MainMenuController">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+          <ColumnConstraints maxWidth="1.7976931348623157E308" percentWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView pickOnBounds="true" smooth="false" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@fire2_asciianimator.gif" />
+               </image>
+            </ImageView>
+            <ImageView nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" smooth="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@fire2_asciianimator.gif" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <children>
+                  <Button fx:id="btnPlay" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handlePlay" text="Play" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Monospaced Regular" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnLoad" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLoadGame" text="Load Game" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Monospaced Regular" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnHighscore" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleHighscore" text="Highscore" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Monospaced Regular" size="18.0" />
+                     </font></Button>
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Settings" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Monospaced Regular" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnExit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleExit" text="Exit" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Monospaced Regular" size="18.0" />
+                     </font></Button>
+               </children>
+            </VBox>
+            <Label fx:id="lblTitle" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="&lt;Insert ASCII&gt;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="Monospaced Regular" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

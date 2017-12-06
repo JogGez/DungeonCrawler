@@ -1,0 +1,8 @@
+.root{
+    -fx-font-size: 12px;
+    -fx-font-family: "System";
+    -fx-base: rgb(75, 75, 75);
+    -fx-background: rgb(0, 0, 0);
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}

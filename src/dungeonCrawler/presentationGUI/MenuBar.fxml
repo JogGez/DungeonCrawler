@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<MenuBar xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.MenuBarController">
+    <menus>
+        <Menu mnemonicParsing="false" text="Game">
+            <items>
+                <MenuItem fx:id="menuNewGame" mnemonicParsing="false" onAction="#switchToNewGame" text="New Game" />
+            <MenuItem fx:id="menuSaveGame" disable="true" mnemonicParsing="false" onAction="#switchToSaveGame" text="Save Game" />
+                <MenuItem fx:id="menuLoadGame" mnemonicParsing="false" onAction="#switchToLoadGame" text="Load Game" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#exitGame" text="Exit" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Theme" />
+      <Menu mnemonicParsing="false" text="Help">
+        <items>
+          <MenuItem mnemonicParsing="false" text="About" />
+        </items>
+      </Menu>
+    </menus>
+</MenuBar>

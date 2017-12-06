@@ -4,64 +4,70 @@ import dungeonCrawler.aqu.IInventory;
 import dungeonCrawler.aqu.IItem;
 import dungeonCrawler.aqu.IPotion;
 import dungeonCrawler.aqu.IKey;
+
 import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * 
- * @author 
+ * @author
  */
 class Inventory implements IInventory, Serializable
 {
     Item[] items;
- /**
- * 
- * @param size 
- */
+
+    /**
+     * @param size
+     */
     public Inventory(int size)
     {
         this.items = new Item[size];
     }
 
+    @Override
+    public void addOneSlot()
+    {
+        this.items = Arrays.copyOf(items, items.length + 1);
+    }
 
-/**
- * 
- * @param index
- * @return 
- */
+    /**
+     * @param index
+     * @return
+     */
 
     @Override
     public IItem getItem(int index)
     {
         return items[index];
     }
-/**
- * 
- * @param item
- * @return 
- */
+
+    /**
+     * @param item
+     * @return
+     */
 
     @Override
     public int getItemIndex(IItem item)
     {
         return Arrays.asList(items).indexOf(item);
     }
-/**
- * 
- * @param index 
- */
+
+    /**
+     * @param index
+     */
     @Override
     public void removeItem(int index)
     {
         items[index] = null;
-        
+
     }
-/**
- * Method that creats a empty array, and adds our potions. 
- * @return ArrayList with potions
- */
+
+    /**
+     * Method that creats a empty array, and adds our potions.
+     *
+     * @return ArrayList with potions
+     */
     @Override
     public ArrayList<IPotion> potionArrayList()
     {
@@ -72,17 +78,19 @@ class Inventory implements IInventory, Serializable
             // Controls if its a weapon or potions in our Items
             if (items[i] instanceof Potion)
             {
-                availablePotions.add((Potion)items[i]);
+                availablePotions.add((Potion) items[i]);
             }
         }
 
         return availablePotions;
     }
-/**
- * Tells how big the ArrayList is.
- * Used to control our ArrayList size. 
- * @return int
- */
+
+    /**
+     * Tells how big the ArrayList is.
+     * Used to control our ArrayList size.
+     *
+     * @return int
+     */
     @Override
     public int getSize()
     {
@@ -99,7 +107,7 @@ class Inventory implements IInventory, Serializable
             // Controls if its a weapon or potions in our Items
             if (items[i] instanceof Key)
             {
-                availableKeys.add((Key)items[i]);
+                availableKeys.add((Key) items[i]);
             }
         }
 

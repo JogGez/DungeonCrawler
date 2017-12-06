@@ -10,6 +10,8 @@ public interface IMerchant extends Serializable
 
     String getName();
 
+    void setRandomLocation(Point mapSize);
+
     String getDescription();
 
     String getAscii();

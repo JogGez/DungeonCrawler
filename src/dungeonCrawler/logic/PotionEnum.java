@@ -13,7 +13,7 @@ enum PotionEnum implements Serializable
 {
     HEALTHPOTION1 (new Potion("Health Potion", "Health Potion from the mighty wizard Merlin.", GameTextASCII.getPotion(), 50, 0)),
     HEALTHPOTION2 (new Potion("Health Potion", "Health Potion from the mighty wizard Gandalf.", GameTextASCII.getPotion(), 75, 0)),
-    HEALTHPOTION3 (new Potion("Health Potion", "Health Potion from the mighty wizard Albus Dumbledore.", GameTextASCII.getPotion(), 100, 0)),
+    HEALTHPOTION3 (new Potion("Health Potion", "Health Potion from the mighty wizard Albus Dumbledore.", GameTextASCII.getCoke(), 100, 0)),
     
     TIMEPOTION1 (new Potion("Time Potion", "Time Potion from the mighty wizard Merlin.", GameTextASCII.getPotion(), 0, 30)),
     TIMEPOTION2 (new Potion("Time Potion", "Time Potion from the mighty wizard Gandalf.", GameTextASCII.getPotion(), 0, 45)),
