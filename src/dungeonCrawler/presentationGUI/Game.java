@@ -58,13 +58,13 @@ public class Game extends Application
         stage.setScene(new Scene(root));
         stage.show();
 
-        Media sound=new Media(new File("Fire.mp3").toURI().toString());
+        Media sound = new Media(new File("Fire.mp3").toURI().toString());
         MediaPlayer mediaPlayer=new MediaPlayer(sound);
         mediaPlayer.setVolume(0.7);
         mediaPlayer.play();
 
-        Media sound1=new Media(new File("Menu.mp3").toURI().toString());
-        MediaPlayer mediaPlayer1=new MediaPlayer(sound1);
+        Media sound1 = new Media(new File("Menu.mp3").toURI().toString());
+        MediaPlayer mediaPlayer1 = new MediaPlayer(sound1);
         mediaPlayer1.setVolume(0.6);
         mediaPlayer1.play();
     }

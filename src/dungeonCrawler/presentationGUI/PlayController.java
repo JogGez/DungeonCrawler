@@ -175,6 +175,7 @@ public class PlayController implements Initializable
             vBox.setId(String.valueOf(i));
             vBox.getChildren().addAll(btnAdd, textArea, btnUse, btnShow);
             hboxInventory.getChildren().add(vBox);
+            textArea.setEditable(false);
         }
 
         for (javafx.scene.control.Menu menu : Game.menuBar.getMenus())
