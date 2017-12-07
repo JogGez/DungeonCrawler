@@ -118,8 +118,7 @@ public class PlayController implements Initializable
             textAreaMain.setText(gameText.getMessageHello());
 
             btnEnter.setText("Enter");
-        }
-        else
+        } else
         {
             logic.loadGame();
             player = logic.getPlayer();
@@ -142,7 +141,7 @@ public class PlayController implements Initializable
 
         labelName.setText("Name: " + player.getName());
         labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
-        labelWeapon.setText("Weapon: " + ((IItem)player.getWeapon()).getName());
+        labelWeapon.setText("Weapon: " + ((IItem) player.getWeapon()).getName());
         labelTime.setText("Time: " + String.valueOf(player.getTime()));
 
         //checkRoom();
@@ -199,6 +198,7 @@ public class PlayController implements Initializable
 
         if (player.getHealth() <= 0) alert.setContentText(gameText.getYouHaveDied());
         else if (timeTracker.calculateRemainingTime() <= 0) alert.setContentText(gameText.getTimeRanOut());
+        else if (logic.getLucifer().getHealth() <= 0) alert.setContentText(gameText.getIsLuciferDead());
 
         alert.showAndWait();
 
@@ -210,49 +210,45 @@ public class PlayController implements Initializable
     {
         switch (((Control) event.getSource()).getId())
         {
-        case ("btnUp"):
-            if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
-            {
-                playerMove(new Point(player.getLocation().x, player.getLocation().y + 1));
-            }
-            else
-            {
-                textAreaMain.setText(gameText.getYouRanIntoAWall());
-            }
-            break;
-        case "btnDown":
-            if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y - 1)))
-            {
-                playerMove(new Point(player.getLocation().x, player.getLocation().y - 1));
-            }
-            else
-            {
-                textAreaMain.setText(gameText.getYouRanIntoAWall());
-            }
-            break;
-        case "btnLeft":
-            if (map.roomExists(new Point(player.getLocation().x - 1, player.getLocation().y)))
-            {
-                playerMove(new Point(player.getLocation().x - 1, player.getLocation().y));
-            }
-            else
-            {
-                textAreaMain.setText(gameText.getYouRanIntoAWall());
-            }
-            break;
-        case "btnRight":
-            if (map.roomExists(new Point(player.getLocation().x + 1, player.getLocation().y)))
-            {
-                playerMove(new Point(player.getLocation().x + 1, player.getLocation().y));
-            }
-            else
-            {
-                textAreaMain.setText(gameText.getYouRanIntoAWall());
-            }
-            break;
-        case "btnBack":
-            playerMove(new Point(player.getLastLocation().x, player.getLastLocation().y));
-            break;
+            case ("btnUp"):
+                if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y + 1)))
+                {
+                    playerMove(new Point(player.getLocation().x, player.getLocation().y + 1));
+                } else
+                {
+                    textAreaMain.setText(gameText.getYouRanIntoAWall());
+                }
+                break;
+            case "btnDown":
+                if (map.roomExists(new Point(player.getLocation().x, player.getLocation().y - 1)))
+                {
+                    playerMove(new Point(player.getLocation().x, player.getLocation().y - 1));
+                } else
+                {
+                    textAreaMain.setText(gameText.getYouRanIntoAWall());
+                }
+                break;
+            case "btnLeft":
+                if (map.roomExists(new Point(player.getLocation().x - 1, player.getLocation().y)))
+                {
+                    playerMove(new Point(player.getLocation().x - 1, player.getLocation().y));
+                } else
+                {
+                    textAreaMain.setText(gameText.getYouRanIntoAWall());
+                }
+                break;
+            case "btnRight":
+                if (map.roomExists(new Point(player.getLocation().x + 1, player.getLocation().y)))
+                {
+                    playerMove(new Point(player.getLocation().x + 1, player.getLocation().y));
+                } else
+                {
+                    textAreaMain.setText(gameText.getYouRanIntoAWall());
+                }
+                break;
+            case "btnBack":
+                playerMove(new Point(player.getLastLocation().x, player.getLastLocation().y));
+                break;
         }
     }
 
@@ -267,8 +263,7 @@ public class PlayController implements Initializable
             {
                 //Prints "You went back to the previous room."
                 textAreaMain.setText(gameText.getYouWentBackToPreviousRoom());
-            }
-            else
+            } else
             {
                 //Prints "You entered new room."
                 textAreaMain.setText(gameText.getYouEnteredANewRoom(logic.getCurrentRoom()));
@@ -282,13 +277,11 @@ public class PlayController implements Initializable
             checkRoom();
 
 
-        }
-        else if (map.isRoomLocked(location) && logic.getNumberOfAvailableKeys() == 0)
+        } else if (map.isRoomLocked(location) && logic.getNumberOfAvailableKeys() == 0)
         {
             textAreaMain.setText(gameText.getRoomIsLockedNoKey());
 //            checkRoom();
-        }
-        else
+        } else
         {
             textAreaMain.setText(gameText.getRoomIsLockedHaveKey());
 
@@ -331,8 +324,7 @@ public class PlayController implements Initializable
 
 
                 checkRoom();
-            }
-            else
+            } else
             {
                 textAreaMain.setText("You canceled??? Why???");
             }
@@ -363,7 +355,7 @@ public class PlayController implements Initializable
             String availableItems = "";
             for (int j = 0; j < map.getMerchant().getInventory().getSize(); j++)
             {
-                availableItems += (j+1) + ". " + map.getMerchant().getInventory().getItem(j).getName() + "\n";
+                availableItems += (j + 1) + ". " + map.getMerchant().getInventory().getItem(j).getName() + "\n";
 
                 ButtonType buttonType = new ButtonType("" + (j + 1));
                 alert.getButtonTypes().add(buttonType);
@@ -375,12 +367,11 @@ public class PlayController implements Initializable
 
             if (result.get().getText().matches("[0-9]+"))
             {
-                textAreaMain.appendText("\n\n"+ "Please select a slot to exchange with the Merchant");
-                MerchantIndex = Integer.parseInt(result.get().getText()) -1;
-                disableButtons(new Button[] {btnSkip},false,true);
+                textAreaMain.appendText("\n\n" + "Please select a slot to exchange with the Merchant");
+                MerchantIndex = Integer.parseInt(result.get().getText()) - 1;
+                disableButtons(new Button[]{btnSkip}, false, true);
                 return;
-            }
-            else
+            } else
             {
                 map.getMerchant().setRandomLocation(new Point(map.getWidth(), map.getHeight()));
                 textAreaMap.setText(gameText.getMap());
@@ -447,19 +438,19 @@ public class PlayController implements Initializable
         {
             switch (map.checkRoomContent(ContentIndex))
             {
-            case "Monster":
-                //Prints info about monster.
-                textAreaMain.setText(gameText.getContentInfo(ContentIndex));
-                //Prints "Your health is currently " + player.getHealth() + "hp"
-                textAreaMain.appendText("\n\n" + gameText.getPlayerInfo());
-                //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
-                textAreaMain.appendText("\n\n" + gameText.getBattleOrFlee());
+                case "Monster":
+                    //Prints info about monster.
+                    textAreaMain.setText(gameText.getContentInfo(ContentIndex));
+                    //Prints "Your health is currently " + player.getHealth() + "hp"
+                    textAreaMain.appendText("\n\n" + gameText.getPlayerInfo());
+                    //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
+                    textAreaMain.appendText("\n\n" + gameText.getBattleOrFlee());
 
 
-                disableButtons(new Button[]{btnAttack, btnFlee}, false, false);
-                labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
+                    disableButtons(new Button[]{btnAttack, btnFlee}, false, false);
+                    labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
 
-                return;
+                    return;
 
 //                while (true)
 //                {
@@ -487,15 +478,15 @@ public class PlayController implements Initializable
 //                    parser.userPressEnter();
 //                }
 
-            case "Chest":
+                case "Chest":
 
-                itemFrom = "chest";
-                //Prints info about chest.
-                textAreaMain.setText(gameText.getContentInfo(ContentIndex));
-                textAreaMain.appendText("\n\n" + gameText.getThereIsAChest());
+                    itemFrom = "chest";
+                    //Prints info about chest.
+                    textAreaMain.setText(gameText.getContentInfo(ContentIndex));
+                    textAreaMain.appendText("\n\n" + gameText.getThereIsAChest());
 
-                disableButtons(new Button[]{btnOpen, btnSkip}, false, false);
-                labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
+                    disableButtons(new Button[]{btnOpen, btnSkip}, false, false);
+                    labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
 //                while (true)
 //                {
 //                    String input = parser.getUserInput();
@@ -524,16 +515,16 @@ public class PlayController implements Initializable
 //                {
 //                    parser.userPressEnter();
 //                }
-                return;
-            case "Guide":
-                //Prints info about Guide.
-                textAreaMain.setText(gameText.getContentInfo(ContentIndex));
-                textAreaMain.appendText("\n\n" + gameText.getThereIsAGuide());
+                    return;
+                case "Guide":
+                    //Prints info about Guide.
+                    textAreaMain.setText(gameText.getContentInfo(ContentIndex));
+                    textAreaMain.appendText("\n\n" + gameText.getThereIsAGuide());
 
-                guideTalkLimit = 0;
+                    guideTalkLimit = 0;
 
-                disableButtons(new Button[]{btnAttack, btnFlee, btnSkip, btnTalk}, false, false);
-                labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
+                    disableButtons(new Button[]{btnAttack, btnFlee, btnSkip, btnTalk}, false, false);
+                    labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
 //                while (true)
 //                {
 //                    //Prints "There is a Guide, you can either \"talk\" , \"flee\" or \"kill\"!"
@@ -562,8 +553,8 @@ public class PlayController implements Initializable
 //                {
 //                    parser.userPressEnter();
 //                }
-                return;
-            case "":
+                    return;
+                case "":
             }
 
         }
@@ -589,8 +580,18 @@ public class PlayController implements Initializable
 
             battle = logic.doBattle(logic.getLucifer());
 
+            if (logic.getLucifer().getHealth() <= 0 )
+            {
+                gameOver();
+                lastBattle = false;
+                return;
+
+            }
+
         }
+
     }
+
 
     public void updateInventory()
     {
@@ -821,6 +822,7 @@ public class PlayController implements Initializable
             {
                 disableButtons();
                 btnContinue.setVisible(true);
+                //if (logic.getLucifer().getHealth() <= 0)
             }
         }
         else
@@ -888,6 +890,14 @@ public class PlayController implements Initializable
     @FXML
     private void handleContinue(ActionEvent actionEvent)
     {
+        if (lastBattle == true || player.getHealth() <= 0)
+        {
+            //TODO move text to attack
+            textAreaMain.setText(gameText.getIsLuciferDead());
+            gameOver();
+            return;
+        }
+        else
         btnContinue.setVisible(false);
         checkRoom();
 
