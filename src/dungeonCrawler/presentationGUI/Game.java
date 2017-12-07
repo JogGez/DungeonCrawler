@@ -11,8 +11,11 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -54,6 +57,16 @@ public class Game extends Application
         stage.setMinHeight(768);
         stage.setScene(new Scene(root));
         stage.show();
+
+        Media sound=new Media(new File("Fire.mp3").toURI().toString());
+        MediaPlayer mediaPlayer=new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.7);
+        mediaPlayer.play();
+
+        Media sound1=new Media(new File("Menu.mp3").toURI().toString());
+        MediaPlayer mediaPlayer1=new MediaPlayer(sound1);
+        mediaPlayer1.setVolume(0.6);
+        mediaPlayer1.play();
     }
 
 //    public static void changeScene(String fxml) throws IOException

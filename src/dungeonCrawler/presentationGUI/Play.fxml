@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
@@ -11,148 +12,165 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.PlayController">
    <children>
-      <GridPane fx:id="mainGrid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" maxWidth="1060.0" minWidth="10.0" percentWidth="5.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" percentWidth="60.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" percentWidth="30.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="536.0" minWidth="10.0" percentWidth="5.0" prefWidth="30.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="723.0" minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="723.0" minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="65.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="25.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="363.0" minHeight="-Infinity" percentHeight="5.0" prefHeight="30.0" vgrow="NEVER" />
-         </rowConstraints>
+      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextArea fx:id="textAreaMain" editable="false" promptText="Main" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Monospaced Regular" size="16.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </TextArea>
-            <GridPane fx:id="buttonGridPane" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <GridPane fx:id="mainGrid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="1060.0" minWidth="10.0" percentWidth="5.0" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" percentWidth="60.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" percentWidth="30.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="536.0" minWidth="10.0" percentWidth="5.0" prefWidth="30.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="723.0" minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="723.0" minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="65.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="25.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="363.0" minHeight="-Infinity" percentHeight="5.0" prefHeight="30.0" vgrow="NEVER" />
                </rowConstraints>
                <children>
-                  <Button fx:id="btnUp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Up" GridPane.columnIndex="1">
+                  <TextArea fx:id="textAreaMain" editable="false" promptText="Main" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
-                        <Font name="Monospaced Regular" size="12.0" />
-                     </font></Button>
-                  <Button fx:id="btnDown" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Font name="Monospaced Regular" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextArea>
+                  <GridPane fx:id="buttonGridPane" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button fx:id="btnUp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Up" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Monospaced Regular" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnDown" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Monospaced Regular" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Monospaced Regular" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Left" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Monospaced Regular" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnAttack" mnemonicParsing="false" onAction="#handleAttack" text="Attack" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="Monospaced Regular" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnFlee" mnemonicParsing="false" onAction="#handleFlee" text="Flee" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="Monospaced Regular" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnOpen" mnemonicParsing="false" onAction="#handleOpen" text="Open" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Monospaced Regular" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnSkip" mnemonicParsing="false" onAction="#handleSkip" text="Skip" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Monospaced Regular" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnTalk" mnemonicParsing="false" onAction="#handleTalk" text="Talk" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Monospaced Regular" size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </GridPane>
+                  <TextArea fx:id="textAreaMap" editable="false" promptText="Map" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                      <font>
-                        <Font name="Monospaced Regular" size="12.0" />
-                     </font></Button>
-                  <Button fx:id="btnRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Font name="Monospaced Regular" size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextArea>
+                  <TextArea fx:id="textAreaInventory" editable="false" promptText="Inventory" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                      <font>
-                        <Font name="Monospaced Regular" size="12.0" />
-                     </font></Button>
-                  <Button fx:id="btnLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Left" GridPane.rowIndex="1">
+                        <Font name="Monospaced Regular" size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextArea>
+                  <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label fx:id="labelName" text="labelPlayerName" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Monospaced Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelHealth" text="labelPlayerHealth">
+                           <font>
+                              <Font name="Monospaced Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelWeapon" text="labelPlayerWeapon">
+                           <font>
+                              <Font name="Monospaced Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label fx:id="labelTime" text="labelTime" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
-                        <Font name="Monospaced Regular" size="12.0" />
-                     </font></Button>
-                  <Button fx:id="btnAttack" mnemonicParsing="false" onAction="#handleAttack" text="Attack" GridPane.halignment="CENTER">
+                        <Font name="Monospaced Regular" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnEnter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startGame" text="ENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
-                        <Font name="Monospaced Regular" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="btnFlee" mnemonicParsing="false" onAction="#handleFlee" text="Flee" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="Monospaced Regular" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="btnOpen" mnemonicParsing="false" onAction="#handleOpen" text="Open" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Monospaced Regular" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="btnSkip" mnemonicParsing="false" onAction="#handleSkip" text="Skip" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Monospaced Regular" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="btnTalk" mnemonicParsing="false" onAction="#handleTalk" text="Talk" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Monospaced Regular" size="13.0" />
+                        <Font name="Monospaced Regular" size="36.0" />
                      </font>
                   </Button>
+                  <Button fx:id="btnContinue" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleContinue" text="Continue" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Monospaced Regular" size="36.0" />
+                     </font>
+                  </Button>
+                  <HBox fx:id="hboxInventory" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </HBox>
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
             </GridPane>
-            <TextArea fx:id="textAreaMap" editable="false" promptText="Map" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <font>
-                  <Font name="Monospaced Regular" size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </TextArea>
-            <TextArea fx:id="textAreaInventory" editable="false" promptText="Inventory" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <font>
-                  <Font name="Monospaced Regular" size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </TextArea>
-            <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <Label fx:id="labelName" text="labelPlayerName" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Monospaced Regular" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelHealth" text="labelPlayerHealth">
-                     <font>
-                        <Font name="Monospaced Regular" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelWeapon" text="labelPlayerWeapon">
-                     <font>
-                        <Font name="Monospaced Regular" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <Label fx:id="labelTime" text="labelTime" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Monospaced Regular" size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnEnter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startGame" text="ENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Monospaced Regular" size="36.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnContinue" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleContinue" text="Continue" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Monospaced Regular" size="36.0" />
-               </font>
-            </Button>
-            <HBox fx:id="hboxInventory" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </HBox>
+            <ImageView fx:id="ImageHeart" fitHeight="250.0" fitWidth="250.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false" StackPane.alignment="CENTER">
+               <image>
+                  <Image url="@Heart.gif" />
+               </image>
+            </ImageView>
          </children>
-      </GridPane>
+      </StackPane>
    </children>
 </AnchorPane>

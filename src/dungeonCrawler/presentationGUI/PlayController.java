@@ -2,6 +2,9 @@ package dungeonCrawler.presentationGUI;
 
 import dungeonCrawler.aqu.*;
 import dungeonCrawler.logic.GameText;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,12 +13,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
+import javafx.util.Duration;
 
 import java.awt.*;
+import java.io.File;
 import java.net.URL;
 import java.util.Date;
 import java.util.Optional;
@@ -85,6 +92,8 @@ public class PlayController implements Initializable
     private Label labelName;
 
     public static boolean NewGame = true;
+    @FXML
+    private ImageView ImageHeart;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -666,6 +675,9 @@ public class PlayController implements Initializable
             textAreaMain.appendText("\n" + gameText.getPlayerTime(timeTracker));
             labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
             labelTime.setText("Time: " + String.valueOf(timeTracker.calculateRemainingTime()));
+
+            ImageHeart.setVisible(true);
+
         }
         else if (item instanceof IKey)
         {
@@ -820,12 +832,18 @@ public class PlayController implements Initializable
                     battle = logic.doBattle(ContentIndex);
                 }
 
+                AudioClip soundMyNoise = new AudioClip(new File("attack.wav").toURI().toString());
+                soundMyNoise.play();
+
                 textAreaMain.appendText("\n" + gameText.getBattle(battle));
                 labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
                 labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
 
                 if (battle.getIsBattleOver())
                 {
+                    AudioClip soundMyNoise2 = new AudioClip(new File("TheWilhelmScream.mp3").toURI().toString());
+                    soundMyNoise2.setVolume(1);
+                    soundMyNoise2.play();
                     battle = null;
                     logic.getCurrentRoom().removeContent(ContentIndex);
                     disableButtons();
@@ -833,6 +851,8 @@ public class PlayController implements Initializable
                 }
                 break;
             case "Guide":
+                AudioClip soundMyNoise2 = new AudioClip(new File("attack.wav").toURI().toString());
+                soundMyNoise2.play();
                 textAreaMain.appendText("\n" + gameText.getKilledGuide());
                 map.getCurrentRoom().removeContent(ContentIndex);
                 disableButtons();
