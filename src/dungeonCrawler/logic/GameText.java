@@ -383,6 +383,11 @@ public class GameText implements Serializable
         return type + " \"battle\" or \"flee\".";
     }
 
+    public String getFinaleBattle()
+    {
+        return type + " \"battle\" you can't flee from the devil himself!.";
+    }
+
     public String getAttackOrDrinkPotion()
     {
         return "Attack or drink potion";

@@ -356,7 +356,7 @@ public class PlayController implements Initializable
             //textAreaMain.appendText("\n" + gameText.getInventory(map.getMerchant().getInventory()));
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Select witch item you want?");
+            alert.setTitle("Select which item you want?");
             alert.setHeaderText(null);
 
 
@@ -581,11 +581,11 @@ public class PlayController implements Initializable
             //Prints "Your health is currently " + player.getHealth() + "hp"
             textAreaMain.appendText("\n" + gameText.getMonstersInfo(logic.getLucifer()));
             //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
-            textAreaMain.appendText("\n" + gameText.getBattleOrFlee());
+            textAreaMain.appendText("\n" + gameText.getFinaleBattle());
 
             lastBattle = true;
 
-            disableButtons(new Button[]{btnAttack, btnFlee}, false, false);
+            disableButtons(new Button[]{btnAttack}, false, false);
 
             battle = logic.doBattle(logic.getLucifer());
 

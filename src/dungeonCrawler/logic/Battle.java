@@ -58,7 +58,7 @@ class Battle implements IBattle, Serializable
         else if (monster.getHealth() <= 0)
         {
             isBattleOver = true;
-            return "You beat the Monster ... MIGHT WARRIOR :D ...";
+            return "You beat the Monster ... MIGHTY WARRIOR :D ...";
         }
 
         return "Monster lost " + playerHit + "hp and currently has " + monster.getHealth() + "hp left \n" +
