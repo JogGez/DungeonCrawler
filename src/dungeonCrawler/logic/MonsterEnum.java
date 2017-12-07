@@ -18,7 +18,7 @@ enum MonsterEnum implements Serializable
     RABBIT (new Monster("Killer Rabbit of Caerbannog", "Rabbit of Caerbannog from the AWSOME movie \"Monty Python and the Holy Grail.\"", GameTextASCII.getRabbit(), 100, 5)),
     SHEEP (new Monster("Sheep", "Simple easy to kill sheep.", GameTextASCII.getSheep(), 100, 5)),
     GRIM (new Monster("The Grim Reaper", "Death is coming to collect you soul.", GameTextASCII.getGrim(), 100, 5)),
-    GHOST (new Monster("Slimer", "The Jar Jar Binks of the Ghostbusters universe.", GameTextASCII.getGrim(), 100, 5)),
+    GHOST (new Monster("Slimer", "The Jar Jar Binks of the Ghostbusters universe.", GameTextASCII.getGhost(), 100, 5)),
     ; // semicolon needed when fields / methods follow
 
     private final Monster monster;

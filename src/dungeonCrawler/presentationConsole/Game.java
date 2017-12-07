@@ -54,6 +54,7 @@ public class Game implements IGame, Serializable
     {
         logic.setDifficultyLevel(1);
         gameText = logic.getGameText();
+        gameText.setType("type");
         //Prints welcome logo and welcome text
         printToConsole.print(gameText.getAsciiTitle());
         printToConsole.print(gameText.getWelcomeText());
@@ -286,6 +287,7 @@ public class Game implements IGame, Serializable
         printToConsole.print(gameText.getHelpMenu());
         String input = parser.getUserInput();
 
+        // TODO change to switch
         if (parser.getUserInput().contains("1"))
         {
             //Prints "Your command words are:"
@@ -324,6 +326,7 @@ public class Game implements IGame, Serializable
         // Gets the last commandWord from the Command object
         CommandWord commandWord = command.getCommandWord();
 
+        // TODO Change to switch
         // Checks if the commandWord is unknown
         if (commandWord == CommandWord.UNKNOWN)
         {
@@ -469,7 +472,7 @@ public class Game implements IGame, Serializable
 
     public void useSlot(int index)
     {
-            IItem item = player.getInventory().getItem(index);
+        IItem item = player.getInventory().getItem(index);
 
         if (item instanceof IWeapon)
         {
@@ -664,12 +667,12 @@ public class Game implements IGame, Serializable
         }
         else if (map.isRoomLocked(location) && logic.getNumberOfAvailableKeys() == 0)
         {
-            printToConsole.print("Room is locked and you have no keys :(");
+            printToConsole.print(gameText.getRoomIsLockedNoKey());
             checkRoom();
         }
         else
         {
-            printToConsole.print("Room is locked, but you have a key :)");
+            printToConsole.print(gameText.getRoomIsLockedHaveKey());
             printToConsole.print(gameText.getTypeSlotNumberToUse());
 
             for (int j = 0; j < logic.getNumberOfAvailableKeys(); j++)
@@ -685,7 +688,7 @@ public class Game implements IGame, Serializable
             logic.useKey(index);
 
             //Prints "Yom yom ... Your health is now: " + player.getHealth() + "hp"
-            printToConsole.print("Room has been unlocked");
+            printToConsole.print(gameText.getRoomHasBeenUnlocked());
 
             player.setLocation(location);
 

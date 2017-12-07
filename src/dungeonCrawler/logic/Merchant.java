@@ -94,7 +94,7 @@ class Merchant implements IRoomContent, IMerchant, Serializable
         }
     }
 
-
+    @Override
     public void setRandomLocation(Point mapSize)
     {
         int randomX = (int) (Math.random() * mapSize.x);

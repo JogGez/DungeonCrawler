@@ -9,6 +9,8 @@ public interface IInventory extends Serializable
 
 //    int getItemIndex(IItem item);
 
+    void addOneSlot();
+
     IItem getItem(int index);
 
     int getItemIndex(IItem item);

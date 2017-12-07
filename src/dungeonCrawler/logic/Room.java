@@ -129,7 +129,7 @@ class Room implements IRoom, Serializable
     @Override
     public IRoomContent getContent(int index)
     {
-        return (IRoomContent) roomContent.get(index);
+        return roomContent.get(index);
     }
 
     public ArrayList<RoomContent> getContentArray()

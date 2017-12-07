@@ -1,11 +1,16 @@
 package dungeonCrawler.logic;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import dungeonCrawler.aqu.*;
 import dungeonCrawler.data.HighScore;
 import dungeonCrawler.presentationConsole.CommandWord;
+import sun.awt.geom.AreaOp;
 
+import javax.lang.model.element.NestingKind;
 import java.awt.*;
 import java.io.File;
 import java.io.Serializable;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,7 +18,13 @@ public class GameText implements Serializable
 {
     Player player;
     Map map;
-    String type = "Press";
+
+    public void setType(String type)
+    {
+        this.type = type;
+    }
+
+    String type = "";
     
 
     public GameText()
@@ -73,8 +84,9 @@ public class GameText implements Serializable
     public String getMessageHello()
     {
 
-        return "Well... hello there "+player.getName()+
-                "\nI'am Slave and I'll be your merchant through this adventure."+
+        return GameTextASCII.getGateKeeper() + "\n\n"+
+                "Well... hello there "+player.getName()+
+                "\nI'am the gate keeper and before you enter the dungeon here are some advice."+
                 "\n" + type + " '"+ CommandWord.HELP + "' if you ever need help."+
                 "\n" + type + " \"enter\" to enter the DUNGEON...";
     }
@@ -336,7 +348,7 @@ public class GameText implements Serializable
         }
         else
         {
-            return "";
+            return "Empty Slot.";
         }
 
 
@@ -356,18 +368,14 @@ public class GameText implements Serializable
                 "\n" + "Name: " + monster.getName() +
                 "\n" + "Description: " + monster.getDescription() +
                 "\n" + "Health: " + monster.getHealth() +
-                "\n" + "Power: " + monster.getPower() +
-                "\n";
+                "\n" + "Power: " + monster.getPower();
     }
 
     public String getChestInfo(IChest chest)
     {
         return  chest.getAscii() +
                 "\n" + "Name: " + chest.getName() +
-                "\n" + "Description: " + chest.getDescription() +
-                "\n" +
-                "\n" + "There is a chest," + type + " \"open\" to open!" +
-                "\n Or you can" + type + " \"skip\" to skip it!";
+                "\n" + "Description: " + chest.getDescription();
     }
 
     public String getBattleOrFlee()
@@ -377,7 +385,7 @@ public class GameText implements Serializable
 
     public String getAttackOrDrinkPotion()
     {
-        return "attack or drink potion";
+        return "Attack or drink potion";
     }
 
     public String getBattle(IBattle battle)
@@ -408,14 +416,12 @@ public class GameText implements Serializable
 
     public String getTypeSlotNumberToUse()
     {
-        return  type + "number to use.";
+        return type + " which key to use.";
     }
 
     public String getPotionRecovery(int i)
     {
-        return (i+1) +
-                ". Potion:" +
-                player.getInventory().potionArrayList().get(i).getHealthRecovery();
+        return (i+1) + ". Potion:" + player.getInventory().potionArrayList().get(i).getHealthRecovery();
     }
 
     public String getYouHaveNoPotions()
@@ -425,12 +431,60 @@ public class GameText implements Serializable
 
     public String getThereIsAGuide()
     {
-        return "There is a guide, you can either \"talk\" , \"skip\" or \"kill\"!";
+        return "There is a guide, you can either " + type + " \"talk\" , \"skip\" , \"flee\" or \"attack\"!";
     }
 
     public String getGuideTalk()
     {
-        return "Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!";
+        String[] guideAdvice = new String[]
+                {
+                        "Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!",
+                        "You must kill all the monsters before getting to the Devil.",
+                        "Remember to check how much time is left and act accordingly.",
+                        "Remember to check you heath before getting into battles.",
+                        "Remember to equip the weapon you want.",
+                        "Killing guides will accomplish nothing. ",
+                        "Skipping will help you get a faster time, but you may miss somethings.",
+                        "Teleporting to a locked room will make you waste you special.",
+                        "BOMBs are useful if you know where the monsters are.",
+                        "Live long and prosper!",
+                        "This game was made in 87 days by 6 coding novices and 1 not so much. ",
+                        "Remember to debug your code before pushing to github.",
+                        "Make love not war.",
+                        "All your base are belong to us.",
+                        "Chances of getting the keys to locked room in chests are very slim. (better find a Merchant)",
+                        "Thieves will steal your chests if you leave them alone.",
+                        "This array contains over 40 answers.",
+                        "If it rains, better wear a raincoat :)",
+                        "This game contains a lot of random generations.",
+                        "You can't drop items collected, but you can replace them.",
+                        "Internet neutrality is a human right",
+                        "Doubt kills more dreams, than failure ever will.",
+                        "May the Force be with you.",
+                        "If you keep talking to me, time will run out.",
+                        "Merchants will trade you stuff, one item for an item.",
+                        "Drink potions to restore you life or get more time.",
+                        "ASCII art was once very popular.",
+                        "JAVA and C# are almost identical, with a few exceptions.",
+                        "Thieves are weak, and will die instantly when you find them.",
+                        "Each weapon in the game has different hit powers, multipliers and chance of missings",
+                        "Finding or creating ASCII art takes a lot of time.",
+                        "You can't use special powers or switch weapons while investigating a room.",
+                        "Difficulty setting in the game will actually change the size of the map and some other things.",
+                        "You can save the game at any time.",
+                        "If you die at any time in the game you must start over. (or load a saved game.)",
+                        "Weapon can be equipped, potions, keys and specials are gone after use.",
+                        "If you would like to read all the answers, check the GameText class.",
+                        "Your high score is calculated from how much time it takes you to complete the game.",
+                        "You shall not pass!!! ( just kiddin i'am a guide not a wizard :( ) ",
+                        "Each game you play will be different. I guarantee it.",
+                        "This list took about an hour to make... Makes you wonder...",
+                        "There are only 2 genders, everything else is a mental disorder.",
+                        "The world is truly flat, no doubt about that.",
+                        "Leave me alone :("
+                };
+
+        return guideAdvice[new Random().nextInt(guideAdvice.length)];
     }
 
     public String getKilledGuide()
@@ -440,14 +494,14 @@ public class GameText implements Serializable
 
     public String getThereIsAChest()
     {
-        return "There is a chest, " + type + "\"open\" to open!" +
-                                "\n Or you can" + type + "\"skip\" to skip it!";
+        return "There is a chest, " + type + " \"open\" to open!" +
+                                "\n Or " + type + " \"skip\" to skip it!";
     }
 
     public String getWhatSlot()
     {
         return "Do you want to insert this into a slot?"+
-                "\n" + type + " slot number or \"drop\" to drop.";
+                "\n" + type + " slot number or \"skip\" to drop.";
     }
 
     public String getYouSavedItemInThisSlot(int j)
@@ -487,7 +541,8 @@ public class GameText implements Serializable
 
     public String getTimeRanOut ()
     {
-        return "Your time ran out, and you are now dead";
+        return "You have died, time ran out." +
+                "\n" + "Thanks for playing.";
     }
 
     public String getAllRoomsEntered ()
@@ -501,11 +556,18 @@ public class GameText implements Serializable
         "\nBut the princess is in another castle... and the game is over.";
     }
 
-    public String getRoomIsLocked()
+    public String getRoomIsLockedNoKey()
     {
-        return "Room is locked";
+        return "Room is locked and you have no keys :(";
 
     }
+
+    public String getRoomIsLockedHaveKey()
+    {
+        return "Room is locked, but you have a key :)";
+    }
+
+
 
     public String getMap()
     {
@@ -557,7 +619,7 @@ public class GameText implements Serializable
                     {
                         if (room.getLocation().x == merchant.getLocation().x && room.getLocation().y == merchant.getLocation().y)
                         {
-                            insert = "  G  ";
+                            insert = "  M  ";
                         }
                     }
                     for (IThief thief : map.thiefArrayList())
@@ -601,9 +663,7 @@ public class GameText implements Serializable
 
     public String getKey(int i)
     {
-        return (i+1) +
-                ". Key:" +
-                ((Item)player.getInventory().keyArrayList().get(i)).getName();
+        return (i+1) + ". " + ((Item)player.getInventory().keyArrayList().get(i)).getName();
     }
 
     public String getHighScore()
@@ -891,5 +951,51 @@ public class GameText implements Serializable
         }
 
         return list;
+    }
+
+    public String getRoomIsEmpty()
+    {
+        return "Room is empty...";
+    }
+
+    public String getRoomHasBeenUnlocked()
+    {
+        return "Room has been unlocked.";
+    }
+
+    public String getInventorySlot(int index, IInventory inventory)
+    {
+        String inventoriesItem;
+        if (inventory.getItem(index) == null)
+        {
+            inventoriesItem = "empty";
+        }
+        else
+        {
+            inventoriesItem = inventory.getItem(index).getName();
+            if (inventory.getItem(index) instanceof Weapon) inventoriesItem += " (Weapon)";
+            else if (inventory.getItem(index) instanceof Potion) inventoriesItem += " (Potion)";
+            else if (inventory.getItem(index) instanceof Key) inventoriesItem += " (Key)";
+            else if (inventory.getItem(index) instanceof Special) inventoriesItem += " (Special)";
+        }
+
+//        top += "-" + inventoriesItem.replaceAll(".", "-") + "--";
+//        mTop += " " + inventoriesItem.replaceAll(".", " ") + " |";
+//        middle += " " + inventoriesItem + " |";
+//        mBottom += " " + inventoriesItem.replaceAll(".", " ") + " |";
+//        bottom += "-" + inventoriesItem.replaceAll(".", "-") + "--";
+
+
+        return inventoriesItem;
+    }
+
+    public String getGuideLimit()
+    {
+        return "My daily limit of 10 answers has been reached. Please find another guide to keep talking...";
+    }
+
+    public String getUseSpecialExtraSlot()
+    {
+        return "You just go an extra inventory slot. Good on ya mate :)";
     }
 }
