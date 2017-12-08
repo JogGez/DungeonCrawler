@@ -198,7 +198,7 @@ public class PlayController implements Initializable
 
         if (player.getHealth() <= 0) alert.setContentText(gameText.getYouHaveDied());
         else if (timeTracker.calculateRemainingTime() <= 0) alert.setContentText(gameText.getTimeRanOut());
-        else if (logic.getLucifer().getHealth() <= 0) alert.setContentText(gameText.getIsLuciferDead());
+        else if (lastBattle == true) alert.setContentText(gameText.getIsLuciferDead());
 
         alert.showAndWait();
 
@@ -568,7 +568,12 @@ public class PlayController implements Initializable
 
         if (map.hasAllRoomBeenEntered())
         {
-            textAreaMain.setText(gameText.getAllRoomsEntered());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Boss Battle");
+            alert.setHeaderText(null);
+            alert.setContentText(gameText.getAllRoomsEntered());
+            alert.showAndWait();
+
             //Prints "Your health is currently " + player.getHealth() + "hp"
             textAreaMain.appendText("\n" + gameText.getMonstersInfo(logic.getLucifer()));
             //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
@@ -580,13 +585,6 @@ public class PlayController implements Initializable
 
             battle = logic.doBattle(logic.getLucifer());
 
-            if (logic.getLucifer().getHealth() <= 0 )
-            {
-                gameOver();
-                lastBattle = false;
-                return;
-
-            }
 
         }
 
@@ -892,8 +890,12 @@ public class PlayController implements Initializable
     {
         if (lastBattle == true || player.getHealth() <= 0)
         {
-            //TODO move text to attack
-            textAreaMain.setText(gameText.getIsLuciferDead());
+            if (player.getHealth() <= 0)
+            {
+                gameOver();
+                return;
+            }
+            else textAreaMain.setText(gameText.getIsLuciferDead());
             gameOver();
             return;
         }
