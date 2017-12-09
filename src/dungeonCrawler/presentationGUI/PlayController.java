@@ -196,6 +196,9 @@ public class PlayController implements Initializable
         alert.setTitle("GAME OVER");
         alert.setHeaderText(null);
 
+        player.setScore((timeTracker.calculateRemainingTime() * logic.getDifficultyLevel()) + (player.getHealth() - 100));
+        logic.getHighScore().addHighScore(player);
+
         if (player.getHealth() <= 0) alert.setContentText(gameText.getYouHaveDied());
         else if (timeTracker.calculateRemainingTime() <= 0) alert.setContentText(gameText.getTimeRanOut());
         else if (lastBattle == true) alert.setContentText(gameText.getIsLuciferDead());

@@ -45,8 +45,9 @@ class Battle implements IBattle, Serializable
 
         //Computes the player and monster get.health ( how much the player/monster has, after the Hit)
         // set.Health calls from Player and Monster class
-        monster.setHealth(monster.getHealth() - playerHit);
         player.setHealth(player.getHealth() - monsterHit);
+        monster.setHealth(monster.getHealth() - playerHit);
+
         
         //If, else if that use the get.Health, from the calculation above
         // 

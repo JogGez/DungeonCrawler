@@ -167,6 +167,12 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade, Serializabl
     }
 
     @Override
+    public int getDifficultyLevel()
+    {
+        return GameSettings.getDifficultyLevel();
+    }
+
+    @Override
     public void saveGame()
     {
         GameStateDTO stateDTO = new GameStateDTO(player, map);

@@ -177,7 +177,7 @@ class Map implements IMap, Serializable
         //For each loop: Which type, name, and list it runs through
         for (Room room : roomList)
         {
-            // if x == x and y==y, for point p, reurns entered. 
+                // if x == x and y==y, for point p, reurns entered.
             if (room.getLocation().x == p.x && room.getLocation().y == p.y)
             {
                 return getRoomHasBeenEntered(p);
