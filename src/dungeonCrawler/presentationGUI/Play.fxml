@@ -107,7 +107,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <font>
-                        <Font name="Monospaced Regular" size="18.0" />
+                        <Font name="Consolas" size="16.0" />
                      </font>
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
