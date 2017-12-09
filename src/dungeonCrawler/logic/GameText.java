@@ -50,7 +50,7 @@ public class GameText implements Serializable
     public String getWelcomeText()
     {
         return "Welcome to Dungeon Crawler!"+
-                "\nThis is a new, incredibly boring adventure game.";
+                "\nThis is a newly created, incredible adventure game.";
     }
 
     public String getMenu()
@@ -86,7 +86,9 @@ public class GameText implements Serializable
 
         return GameTextASCII.getGateKeeper() + "\n\n"+
                 "Well... hello there "+player.getName()+
-                "\nI'am the gate keeper and before you enter the dungeon here are some advice."+
+                "\nI'm the gate keeper!"+
+                "\nPrepare to enter the dungeon!"+
+                "\nChoose 'Help' in the menubar if you need advice."+
                 "\n" + type + " '"+ CommandWord.HELP + "' if you ever need help."+
                 "\n" + type + " \"enter\" to enter the DUNGEON...";
     }
@@ -380,12 +382,12 @@ public class GameText implements Serializable
 
     public String getBattleOrFlee()
     {
-        return type + " \"battle\" or \"flee\".";
+        return type + " \"attack\" or \"flee\".";
     }
 
     public String getFinaleBattle()
     {
-        return type + " \"battle\" you can't flee from the devil himself!.";
+        return type + " \"attack\" you can't flee from the devil himself!.";
     }
 
     public String getAttackOrDrinkPotion()
@@ -577,69 +579,113 @@ public class GameText implements Serializable
     public String getMap()
     {
         ArrayList<String> mapList = new ArrayList<>();
-        String top = "  " + " ╔";
-        String space = "  " + " \u2551";
-        String bottom = "  " + " \u2570";
-        String xCordinates = "      ";
+        String top = "  " + " ╔-------";
+        String space = "  " + " ║-------";
+        String bottom = "  " + " ╰-------";
+        String xCordinates = "       ";
 
-        for (int i = 0; i < map.getWidth(); i++)
+        int j = 0;
+        for (; j < map.getWidth()-1; j++)
         {
-            space += "     ";
-            top += "-----";
-            bottom += "-----";
-            xCordinates += i + "    ";
+            space += "|-------";
+            top += "|-------";
+            bottom += "|-------";
+            xCordinates += j + "       ";
         }
 
-        space += "\u2551";
+        space += "║";
         top += "╗";
-        bottom += "\u256F X";
+        bottom += "╯ x";
+        xCordinates += j + "     ";
 
         for (int i = 0; i < map.getHeight(); i++)
         {
+            String over = "   ║";
             String mapString = " " + i + " \u2551";
+            String under = "   ║";
 
             for (IRoom room : map.getRoomList())
             {
                 if (room.getLocation().y == i)
                 {
+
                     String insert = "";
                     if (room.getLocation().x == player.getLocation().x &&
                             room.getLocation().y == player.getLocation().y)
                     {
-                        insert = "  P  ";
+                        insert = "   P   ";
                     }
                     else if (room.isLocked())
                     {
-                        insert = "  L  ";
+                        insert = "   L   ";
                     }
                     else if (room.getHasBeenEntered())
                     {
-                        insert = "  O  ";
+                        insert = "   O   ";
                     }
                     else if (!room.getHasBeenEntered())
                     {
-                        insert = "  X  ";
+                        insert = "   X   ";
                     }
+
+                    String t = " ";
+                    String b = " ";
+
                     for (IMerchant merchant : map.merchantArrayList())
                     {
                         if (room.getLocation().x == merchant.getLocation().x && room.getLocation().y == merchant.getLocation().y)
                         {
-                            insert = "  M  ";
+                            b = "M";
                         }
                     }
+
                     for (IThief thief : map.thiefArrayList())
                     {
                         if (room.getLocation().x == thief.getLocation().x && room.getLocation().y == thief.getLocation().y)
                         {
-                            insert = "  T  ";
+                            t = "T";
                         }
                     }
 
+                    if (room.getHasBeenEntered())
+                    {
+                        over += "  ╭"+ t +"╮  ";
+                        under += "  ╰"+ b +"╯  ";
+                    }
+                    else if (!room.getHasBeenEntered())
+                    {
+                        over += "  \\"+ t +"/  ";
+                        under += "  /"+ b +"\\  ";
+                    }
+
+
+
+
+
                     mapString += insert;
+
+//                    over += "       ";
+//                    under += "       ";
+
+
+                    if (room.getLocation().x < map.getWidth() - 1)
+                    {
+                        mapString += "|";
+                        over += "|";
+                        under += "|";
+                    }
+
+
                 }
             }
-            mapString += "\u2551";
+            over += "║";
+            mapString += "║";
+            under += "║";
+
+            mapList.add(0, under);
             mapList.add(0, mapString);
+            mapList.add(0, over);
+
             if (i < map.getHeight()-1)
                 mapList.add(0,space);
 
@@ -647,7 +693,7 @@ public class GameText implements Serializable
 
 
         mapList.add(0, top);
-        mapList.add(0,"   Y");
+        mapList.add(0,"   y");
         mapList.add(bottom);
         mapList.add(xCordinates);
 

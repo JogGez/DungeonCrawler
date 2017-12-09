@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class MainMenuController implements Initializable
@@ -41,6 +42,10 @@ public class MainMenuController implements Initializable
     private Button btnLoad;
     @FXML
     private Label lblTitle;
+    @FXML
+    private ImageView imageBackground;
+    @FXML
+    private Button btnSettings;
 
 
     @Override
@@ -58,7 +63,7 @@ public class MainMenuController implements Initializable
     public void handlePlay(ActionEvent actionEvent) throws IOException
     {
         Game.switchScene("NewGame.fxml");
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
@@ -67,7 +72,7 @@ public class MainMenuController implements Initializable
     private void handleLoadGame(ActionEvent event) throws IOException
     {
         Game.switchScene("Load.fxml");
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
@@ -76,21 +81,28 @@ public class MainMenuController implements Initializable
     public void handleHighscore(ActionEvent actionEvent) throws IOException
     {
         Game.switchScene("HighScore.fxml");
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
-
+    
+    @FXML
+    private void handleSettings(ActionEvent event)
+    {
+        Game.switchScene("Settings.fxml");
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
+        soundMyNoise.setVolume(1);
+        soundMyNoise.play();
+    }
+    
     @FXML
     private void handleExit(ActionEvent event)
     {
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
         Platform.exit();
     }
-
-
 
     public void injectLogic(ILogicFacade logicLayer)
     {

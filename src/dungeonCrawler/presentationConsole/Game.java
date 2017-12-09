@@ -773,7 +773,7 @@ public class Game implements IGame, Serializable
                 while (true)
                 {
                     String input = parser.getUserInput();//returns a String
-                    if (input.equals("battle") || input.equals("b"))
+                    if (input.equals("attack") || input.equals("b"))
                     {
                         startBattle(logic.doBattle(i));
 
