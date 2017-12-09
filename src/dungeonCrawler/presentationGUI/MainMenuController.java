@@ -90,7 +90,7 @@ public class MainMenuController implements Initializable
     private void handleSettings(ActionEvent event)
     {
         Game.switchScene("Settings.fxml");
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
