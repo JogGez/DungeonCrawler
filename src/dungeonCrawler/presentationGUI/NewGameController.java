@@ -44,7 +44,7 @@ public class NewGameController implements Initializable
     @FXML
     private void handleBack(ActionEvent event) throws IOException
     {
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
         Game.switchScene("MainMenu.fxml");

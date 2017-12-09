@@ -22,7 +22,7 @@ public class LoadController
     private void handleBack(ActionEvent event) throws IOException 
     {
         Game.switchScene("MainMenu.fxml");
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
