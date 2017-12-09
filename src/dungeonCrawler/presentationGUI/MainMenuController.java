@@ -63,7 +63,7 @@ public class MainMenuController implements Initializable
     public void handlePlay(ActionEvent actionEvent) throws IOException
     {
         Game.switchScene("NewGame.fxml");
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
@@ -72,7 +72,7 @@ public class MainMenuController implements Initializable
     private void handleLoadGame(ActionEvent event) throws IOException
     {
         Game.switchScene("Load.fxml");
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
@@ -81,7 +81,7 @@ public class MainMenuController implements Initializable
     public void handleHighscore(ActionEvent actionEvent) throws IOException
     {
         Game.switchScene("HighScore.fxml");
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
@@ -98,7 +98,7 @@ public class MainMenuController implements Initializable
     @FXML
     private void handleExit(ActionEvent event)
     {
-        AudioClip soundMyNoise = new AudioClip(new File("click.mp3").toURI().toString());
+        AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
         Platform.exit();

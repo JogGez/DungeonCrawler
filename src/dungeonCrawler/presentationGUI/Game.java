@@ -23,7 +23,8 @@ import java.net.URL;
 public class Game extends Application
 {
     private static ILogicFacade logic;
-    private static Stage stage;
+    public static MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer1;
 
     // Creating a static root to pass to the controller
     private static BorderPane root = new BorderPane();
@@ -37,7 +38,7 @@ public class Game extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        this.stage = stage;
+        Stage stage1 = stage;
 
         MenuBar menuBar = FXMLLoader.load(getClass().getResource("MenuBar.fxml"));
         this.menuBar = menuBar;
@@ -58,13 +59,13 @@ public class Game extends Application
         stage.setScene(new Scene(root));
         stage.show();
 
-        Media sound = new Media(new File("Fire.mp3").toURI().toString());
-        MediaPlayer mediaPlayer=new MediaPlayer(sound);
+        Media sound = new Media(new File("Resources\\sounds\\Fire.mp3").toURI().toString());
+        mediaPlayer=new MediaPlayer(sound);
         mediaPlayer.setVolume(0.7);
         mediaPlayer.play();
 
-        Media sound1 = new Media(new File("Menu.mp3").toURI().toString());
-        MediaPlayer mediaPlayer1 = new MediaPlayer(sound1);
+        Media sound1 = new Media(new File("Resources\\sounds\\Menu.mp3").toURI().toString());
+        mediaPlayer1 = new MediaPlayer(sound1);
         mediaPlayer1.setVolume(0.6);
         mediaPlayer1.play();
     }

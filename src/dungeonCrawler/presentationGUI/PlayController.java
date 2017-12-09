@@ -19,6 +19,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.awt.*;
@@ -95,6 +97,7 @@ public class PlayController implements Initializable
     @FXML
     private ImageView ImageHeart;
 
+    AudioClip gatekeepAudio;
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
@@ -118,6 +121,15 @@ public class PlayController implements Initializable
             textAreaMain.setText(gameText.getMessageHello());
 
             btnEnter.setText("Enter");
+
+            Game.mediaPlayer.stop();
+            Game.mediaPlayer1.stop();
+
+
+            gatekeepAudio = new AudioClip(new File("Resources\\sounds\\blah-blah-blah.mp3").toURI().toString());
+            gatekeepAudio.play();
+
+
         } else
         {
             logic.loadGame();
@@ -184,6 +196,8 @@ public class PlayController implements Initializable
                 item.setDisable(false);
             }
         }
+
+        gatekeepAudio.stop();
 
         btnEnter.setVisible(false);
 
@@ -336,6 +350,8 @@ public class PlayController implements Initializable
 
     public void checkRoom()
     {
+        labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
+
         if (timeTracker.calculateRemainingTime() <= 0)
         {
             gameOver();
@@ -434,6 +450,7 @@ public class PlayController implements Initializable
         }
 
 
+
         for (; ContentIndex < map.getNumberOfContent(); ContentIndex++)
         {
             switch (map.checkRoomContent(ContentIndex))
@@ -446,9 +463,7 @@ public class PlayController implements Initializable
                     //Prints "Type \"battle\" or \"flee\"." // We need to type more information!
                     textAreaMain.appendText("\n\n" + gameText.getBattleOrFlee());
 
-
                     disableButtons(new Button[]{btnAttack, btnFlee}, false, false);
-                    labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
 
                     return;
 
@@ -486,7 +501,6 @@ public class PlayController implements Initializable
                     textAreaMain.appendText("\n\n" + gameText.getThereIsAChest());
 
                     disableButtons(new Button[]{btnOpen, btnSkip}, false, false);
-                    labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
 //                while (true)
 //                {
 //                    String input = parser.getUserInput();
@@ -524,7 +538,6 @@ public class PlayController implements Initializable
                     guideTalkLimit = 0;
 
                     disableButtons(new Button[]{btnAttack, btnFlee, btnSkip, btnTalk}, false, false);
-                    labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
 //                while (true)
 //                {
 //                    //Prints "There is a Guide, you can either \"talk\" , \"flee\" or \"kill\"!"
@@ -563,7 +576,7 @@ public class PlayController implements Initializable
         textAreaMain.setText(gameText.getRoomIsEmpty());
         disableButtons(new Button[]{btnUp, btnDown, btnLeft, btnRight}, true, false);
 
-        labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
+
 
 
         if (map.hasAllRoomBeenEntered())
@@ -810,6 +823,7 @@ public class PlayController implements Initializable
 
     boolean lastBattle = false;
 
+    AudioClip attackSound;
     public void handleAttack(ActionEvent event)
     {
         if (lastBattle)
@@ -833,8 +847,9 @@ public class PlayController implements Initializable
                     battle = logic.doBattle(ContentIndex);
                 }
 
-                AudioClip soundMyNoise = new AudioClip(new File("attack.wav").toURI().toString());
-                soundMyNoise.play();
+                if (attackSound != null) attackSound.stop();
+                attackSound = new AudioClip(new File("Resources\\sounds\\attack.wav").toURI().toString());
+                attackSound.play();
 
                 textAreaMain.appendText("\n" + gameText.getBattle(battle));
                 labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
@@ -842,9 +857,10 @@ public class PlayController implements Initializable
 
                 if (battle.getIsBattleOver())
                 {
-                    AudioClip soundMyNoise2 = new AudioClip(new File("TheWilhelmScream.mp3").toURI().toString());
-                    soundMyNoise2.setVolume(1);
-                    soundMyNoise2.play();
+                    if (attackSound != null) attackSound.stop();
+                    attackSound = new AudioClip(new File("Resources\\sounds\\TheWilhelmScream.mp3").toURI().toString());
+                    attackSound.setVolume(1);
+                    attackSound.play();
                     battle = null;
                     logic.getCurrentRoom().removeContent(ContentIndex);
                     disableButtons();
@@ -852,8 +868,9 @@ public class PlayController implements Initializable
                 }
                 break;
             case "Guide":
-                AudioClip soundMyNoise2 = new AudioClip(new File("attack.wav").toURI().toString());
-                soundMyNoise2.play();
+                if (guideAudio != null) guideAudio.stop();
+                attackSound = new AudioClip(new File("Resources\\sounds\\attack.wav").toURI().toString());
+                attackSound.play();
                 textAreaMain.appendText("\n" + gameText.getKilledGuide());
                 map.getCurrentRoom().removeContent(ContentIndex);
                 disableButtons();
@@ -907,11 +924,18 @@ public class PlayController implements Initializable
 
     int guideTalkLimit = 0;
 
+
+    AudioClip guideAudio;
     @FXML
     private void handleTalk(ActionEvent actionEvent)
     {
         if (guideTalkLimit < 10)
         {
+            if (guideAudio != null) guideAudio.stop();
+
+            guideAudio = new AudioClip(new File("Resources\\sounds\\wa-wa-effect.mp3").toURI().toString());
+            guideAudio.play();
+
             textAreaMain.appendText("\n\n" + gameText.getGuideTalk());
             guideTalkLimit++;
         }
@@ -925,8 +949,17 @@ public class PlayController implements Initializable
     @FXML
     private void handleSkip(ActionEvent actionEvent)
     {
-        ContentIndex++;
+        if (map.roomContainsMerchant())
+        {
+            map.getMerchant().setRandomLocation(new Point(map.getWidth(), map.getHeight()));
+            textAreaMap.setText(gameText.getMap());
+        }
+        else
+        {
+            ContentIndex++;
+        }
         checkRoom();
+
     }
 
     public void disableButtons(Button[] buttons, boolean showInventory, boolean showInventoryNumbers)
