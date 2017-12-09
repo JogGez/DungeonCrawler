@@ -387,7 +387,7 @@ public class GameText implements Serializable
 
     public String getFinaleBattle()
     {
-        return type + " \"battle\" you can't flee from the devil himself!.";
+        return type + " \"attack\" you can't flee from the devil himself!.";
     }
 
     public String getAttackOrDrinkPotion()

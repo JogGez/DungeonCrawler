@@ -889,6 +889,8 @@ public class PlayController implements Initializable
 
         textAreaMap.setText(gameText.getMap());
 
+        if (guideAudio != null) guideAudio.stop();
+
         checkRoom();
     }
 
@@ -958,6 +960,8 @@ public class PlayController implements Initializable
         {
             ContentIndex++;
         }
+
+        if (guideAudio != null) guideAudio.stop();
         checkRoom();
 
     }

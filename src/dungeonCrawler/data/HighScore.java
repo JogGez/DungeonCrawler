@@ -134,7 +134,6 @@ public class HighScore implements IHighScore, Serializable
 
     }
 
-
     /**
      * Check if file exists and is a file and not a folder.
      *
