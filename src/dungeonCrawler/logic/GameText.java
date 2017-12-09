@@ -50,7 +50,7 @@ public class GameText implements Serializable
     public String getWelcomeText()
     {
         return "Welcome to Dungeon Crawler!"+
-                "\nThis is a new, incredibly boring adventure game.";
+                "\nThis is a newly created, incredible adventure game.";
     }
 
     public String getMenu()
@@ -86,7 +86,9 @@ public class GameText implements Serializable
 
         return GameTextASCII.getGateKeeper() + "\n\n"+
                 "Well... hello there "+player.getName()+
-                "\nI'am the gate keeper and before you enter the dungeon here are some advice."+
+                "\nI'm the gate keeper!"+
+                "\nPrepare to enter the dungeon!"+
+                "\nChoose 'Help' in the menubar if you need advice."+
                 "\n" + type + " '"+ CommandWord.HELP + "' if you ever need help."+
                 "\n" + type + " \"enter\" to enter the DUNGEON...";
     }

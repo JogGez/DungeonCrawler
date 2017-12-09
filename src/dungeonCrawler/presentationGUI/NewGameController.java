@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dungeonCrawler.presentationGUI;
 
 import java.io.File;
@@ -27,11 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Slayga
- */
+
 public class NewGameController implements Initializable
 {
     private ILogicFacade logic;
