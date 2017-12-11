@@ -5,7 +5,9 @@ import dungeonCrawler.aqu.IBattle;
 import java.io.Serializable;
 
 /**
- * Battle class, where battles happens
+ * Battle class
+ * The class where the methods for battles plays out.
+ * Implements IBattle and Serializable. 
  * @author Linea Hoffmann
  */
 class Battle implements IBattle, Serializable
@@ -17,7 +19,12 @@ class Battle implements IBattle, Serializable
     private boolean isBattleOver; // Allocates memory storage, primitive datatype
 
     
-    //Constructor: set values for player, and monster, and isBattleOver.
+   
+    /**
+     * Constructor: set values for player, and monster, and isBattleOver.
+     * @param player
+     * @param monster 
+     */
     public Battle(Player player, Monster monster)
     {
         // Initializing (gives value to) private fields (constructor parameter)
@@ -26,15 +33,28 @@ class Battle implements IBattle, Serializable
         this.isBattleOver = false;
     }
     
-    // Getter method for isBattleOver
+    
+    /**
+     * // Getter method for isBattleOver
+     * @return boolean
+     */
     @Override
     public boolean getIsBattleOver()
     {
         return isBattleOver;
     }
 
-    //TODO Kig på metoden. ifh til retunering af String.
+    
     //Method start, returns a String
+    /**
+     * Method start. 
+     * Contains two refrence variables int playerHit & int monsterHit 
+     * which gives us the player current weapon and generetes monsters hit.
+     * The if statement checks if the player health is = 0 is true and then returns a string. 
+     * else it checks the monsters health if that is = 0 is true and returns a string.
+     * if none of the above is true the method will return a string. 
+     * @return String
+     */
     @Override
     public String start()
     {
@@ -50,7 +70,6 @@ class Battle implements IBattle, Serializable
 
         
         //If, else if that use the get.Health, from the calculation above
-        // 
         if (player.getHealth() <= 0)
         {
             isBattleOver = true;// sets the value + (While loop in game, that would continue forever, if not set.)
