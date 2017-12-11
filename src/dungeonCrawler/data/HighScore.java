@@ -123,9 +123,11 @@ public class HighScore implements IHighScore, Serializable
     public void addHighScore(IPlayer player)
     {
         readText();
-        highScore.set(0, new ScoreItem(player.getName(), player.getScore()));
+        if (highScore.get(0).score <= player.getScore())
+        {
+            highScore.set(0, new ScoreItem(player.getName(), player.getScore()));
+        }
         writeText();
-        System.out.println(player.getScore());
     }
 
     public String[] getHighScoreArray()
