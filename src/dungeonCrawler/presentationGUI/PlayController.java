@@ -206,6 +206,7 @@ public class PlayController implements Initializable
 
         checkRoom();
 
+        //TODO this makes an error, but doesn't crash the game if it's after btnEnter.setVisible(false);
         if (gatekeepAudio.isPlaying())
         {
             gatekeepAudio.stop();
