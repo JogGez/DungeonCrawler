@@ -52,7 +52,7 @@ class GameSettings implements Serializable
        roomContents = 2;
        playerHealth = 1000;
        inventorySize = 5;
-       playerTime = 10;
+       playerTime = 180;
        playerPower = 25;
        numberOfMerchants = 2;
        numberOfThieves = 1;

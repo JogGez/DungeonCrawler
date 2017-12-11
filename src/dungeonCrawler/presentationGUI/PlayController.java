@@ -161,6 +161,10 @@ public class PlayController implements Initializable
 
     public void startGame()
     {
+        Game.mediaPlayer.stop();
+        Game.mediaPlayer1.stop();
+
+
         for (int i = 0; i < player.getInventory().getSize(); i++)
         {
             TextArea textArea = new TextArea(gameText.getInventorySlot(i, player.getInventory()));
@@ -197,11 +201,16 @@ public class PlayController implements Initializable
             }
         }
 
-        gatekeepAudio.stop();
 
         btnEnter.setVisible(false);
 
         checkRoom();
+
+        if (gatekeepAudio.isPlaying())
+        {
+            gatekeepAudio.stop();
+        }
+
     }
 
     private void gameOver()
