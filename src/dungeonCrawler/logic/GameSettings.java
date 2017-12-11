@@ -57,7 +57,7 @@ class GameSettings implements Serializable
        numberOfMerchants = 2;
        numberOfThieves = 1;
        thiefPickingRounds = 3;
-       lockedRooms = 0;
+       lockedRooms = 2;
 
        chanceOfMonster = 40;
        chanceOfChest = 40;

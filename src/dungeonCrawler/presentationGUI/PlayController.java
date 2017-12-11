@@ -1,5 +1,6 @@
 package dungeonCrawler.presentationGUI;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import dungeonCrawler.aqu.*;
 import dungeonCrawler.logic.GameText;
 import javafx.animation.KeyFrame;
@@ -93,6 +94,7 @@ public class PlayController implements Initializable
     @FXML
     private Label labelName;
 
+    public static boolean isLoadGame = false;
     public static boolean NewGame = true;
     @FXML
     private ImageView ImageHeart;
@@ -125,12 +127,16 @@ public class PlayController implements Initializable
             Game.mediaPlayer.stop();
             Game.mediaPlayer1.stop();
 
-
             gatekeepAudio = new AudioClip(new File("Resources\\sounds\\blah-blah-blah.mp3").toURI().toString());
             gatekeepAudio.play();
 
+            if (isLoadGame == true)
+            {
+                gatekeepAudio.stop();
+            }
 
-        } else
+        }
+        else
         {
             logic.loadGame();
             player = logic.getPlayer();
@@ -142,6 +148,7 @@ public class PlayController implements Initializable
 
             btnEnter.setText("Continue");
 
+            isLoadGame = true;
             NewGame = true;
         }
 
@@ -204,13 +211,12 @@ public class PlayController implements Initializable
 
         btnEnter.setVisible(false);
 
-        checkRoom();
-
         //TODO this makes an error, but doesn't crash the game if it's after btnEnter.setVisible(false);
-        if (gatekeepAudio.isPlaying())
+        if (!isLoadGame)
         {
             gatekeepAudio.stop();
         }
+        checkRoom();
 
     }
 

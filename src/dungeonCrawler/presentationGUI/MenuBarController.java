@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import dungeonCrawler.aqu.ILogicFacade;
 import dungeonCrawler.aqu.IPlayer;
+import dungeonCrawler.aqu.ITimeTracker;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +22,7 @@ public class MenuBarController implements Initializable
     private IPlayer player;
     @FXML
     public MenuItem menuSaveGame;
+    private ITimeTracker timeTracker;
 
     /**
      * Event handler for MenuItem one
@@ -82,13 +84,7 @@ public class MenuBarController implements Initializable
         }
     }
 
-    @FXML
-    private void switchToSaveGame(ActionEvent actionEvent)
-    {
-//        player.setTime(timeTracker.calculateRemainingTime());
 
-        logic.saveGame();
-    }
 
     @FXML
     private void exitGame(ActionEvent actionEvent)
@@ -101,5 +97,13 @@ public class MenuBarController implements Initializable
     {
         logic = Game.getLogic();
         player = logic.getPlayer();
+    }
+
+    @FXML
+    private void switchToSaveGame(ActionEvent actionEvent)
+    {
+        //TODO playerens tid bliver ikke gemt.
+//        player.setTime(timeTracker.calculateRemainingTime());
+        logic.saveGame();
     }
 }

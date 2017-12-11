@@ -60,7 +60,7 @@ public class Game extends Application
         stage.show();
 
         Media sound = new Media(new File("Resources\\sounds\\Fire.mp3").toURI().toString());
-        mediaPlayer=new MediaPlayer(sound);
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setVolume(0.7);
         mediaPlayer.play();
 
