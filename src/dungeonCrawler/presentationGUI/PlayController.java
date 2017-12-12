@@ -214,6 +214,7 @@ public class PlayController implements Initializable
         alert.setHeaderText(null);
 
         player.setScore(timeTracker.calculateRemainingTime() * logic.getDifficultyLevel() + (player.getHealth() / 2));
+        logic.getHighScore().addHighScore(player);
 
         if (player.getHealth() <= 0) alert.setContentText(gameText.getYouHaveDied() + "\nAnd your score was " + player.getScore());
         else if (timeTracker.calculateRemainingTime() <= 0) alert.setContentText(gameText.getTimeRanOut() + "\nAnd your score was " + player.getScore());
