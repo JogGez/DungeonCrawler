@@ -190,7 +190,7 @@ public class Game implements IGame, Serializable
                 selectDifficulty();
                 break;
             case "2":
-                logic.loadGame();
+                logic.loadGame(1);
                 player = logic.getPlayer();
                 map = logic.getMap();
 
@@ -364,7 +364,7 @@ public class Game implements IGame, Serializable
             player.setTime(timeTracker.calculateRemainingTime());
 //            GameStateDTO stateDTO = new GameStateDTO(player, map);
 //            GameHandler.saveGame(stateDTO, "fileName.sav");
-            logic.saveGame();
+            logic.saveGame(1);
         }
         return quitGame;
     }

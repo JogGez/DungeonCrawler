@@ -2,6 +2,7 @@ package dungeonCrawler.presentationGUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import dungeonCrawler.aqu.ILogicFacade;
@@ -11,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -85,9 +88,38 @@ public class MenuBarController implements Initializable
     @FXML
     private void switchToSaveGame(ActionEvent actionEvent)
     {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Save Game");
+        alert.setHeaderText(null);
+
+        ButtonType buttonType1 = new ButtonType("Save 1");
+        ButtonType buttonType2 = new ButtonType("Save 2");
+        ButtonType buttonType3 = new ButtonType("Save 3");
+        alert.getButtonTypes().addAll(buttonType1,buttonType2,buttonType3);
+
+        alert.setContentText("Please choose which slot to save.");
+        alert.getDialogPane().lookupButton(ButtonType.OK).setVisible(false);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+
 //        player.setTime(timeTracker.calculateRemainingTime());
 
-        logic.saveGame();
+        if (result.get().getText().contains("Save 1"))
+        {
+            logic.saveGame(1);
+        }
+        else if (result.get().getText().contains("Save 2"))
+        {
+            logic.saveGame(2);
+        }
+        else if (result.get().getText().contains("Save 3"))
+        {
+            logic.saveGame(3);
+        }
+
+
+
     }
 
     @FXML

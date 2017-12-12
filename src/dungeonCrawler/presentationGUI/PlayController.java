@@ -2,6 +2,7 @@ package dungeonCrawler.presentationGUI;
 
 import dungeonCrawler.aqu.*;
 import dungeonCrawler.logic.GameText;
+import dungeonCrawler.logic.LogicFacade;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -13,11 +14,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -26,9 +26,7 @@ import javafx.util.Duration;
 import java.awt.*;
 import java.io.File;
 import java.net.URL;
-import java.util.Date;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class PlayController implements Initializable
 {
@@ -65,10 +63,6 @@ public class PlayController implements Initializable
     @FXML
     private Button btnFlee;
     @FXML
-    private Button btnDrink;
-    @FXML
-    private Button btnKill;
-    @FXML
     private Button btnTalk;
     @FXML
     private Button btnOpen;
@@ -87,17 +81,19 @@ public class PlayController implements Initializable
     @FXML
     private Label labelWeapon;
     @FXML
-    private Label labelPower;
-    @FXML
     private Label labelHealth;
     @FXML
     private Label labelName;
+    @FXML
+    private ImageView ImagePlaceHolder;
+    @FXML
+    private StackPane ImagePane;
 
     public static boolean NewGame = true;
-    @FXML
-    private ImageView ImageHeart;
 
+    MediaPlayer mediaPlayer;
     AudioClip gatekeepAudio;
+
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
@@ -117,23 +113,18 @@ public class PlayController implements Initializable
 
             map.setRoomHasBeenEntered(player.getLocation());
 
-
             textAreaMain.setText(gameText.getMessageHello());
 
             btnEnter.setText("Enter");
 
-            Game.mediaPlayer.stop();
-            Game.mediaPlayer1.stop();
-
-
             gatekeepAudio = new AudioClip(new File("Resources\\sounds\\blah-blah-blah.mp3").toURI().toString());
             gatekeepAudio.play();
 
-
-        } else
+        }
+        else
         {
-            logic.loadGame();
             player = logic.getPlayer();
+
             map = logic.getMap();
 
             logic.injectGameText();
@@ -145,6 +136,13 @@ public class PlayController implements Initializable
             NewGame = true;
         }
 
+        Game.mediaPlayer.stop();
+        Game.mediaPlayer1.stop();
+
+        Media sound = new Media(new File("Resources\\sounds\\AmbienceCave.mp3").toURI().toString());
+        mediaPlayer=new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.2);
+        mediaPlayer.play();
 
         //Starting timetracker.
         timeTracker = logic.getTimeTracker(new Date());
@@ -197,9 +195,14 @@ public class PlayController implements Initializable
             }
         }
 
-        gatekeepAudio.stop();
+        if (gatekeepAudio != null) gatekeepAudio.stop();
 
         btnEnter.setVisible(false);
+
+        showImage("Resources\\images\\Gate2.gif", 2.5);
+
+        playAudio("Resources\\sounds\\GateOpen.mp3",1, 1);
+
 
         checkRoom();
     }
@@ -270,7 +273,6 @@ public class PlayController implements Initializable
     {
         if (!map.isRoomLocked(location))
         {
-
             player.setLocation(location);
 
             if (location.equals(player.getLastLocation()))
@@ -286,6 +288,10 @@ public class PlayController implements Initializable
 
             map.merchantMove();
             map.thiefMove();
+
+            showImage("Resources\\images\\G4.gif", 2.5);
+
+            playAudio("Resources\\sounds\\Door.wav",1,0.2);
 
             textAreaMap.setText(gameText.getMap());
             checkRoom();
@@ -336,6 +342,7 @@ public class PlayController implements Initializable
 
                 updateInventory();
 
+                showImage("Resources\\images\\Key4.gif", 2);
 
                 checkRoom();
             } else
@@ -392,47 +399,7 @@ public class PlayController implements Initializable
                 map.getMerchant().setRandomLocation(new Point(map.getWidth(), map.getHeight()));
                 textAreaMap.setText(gameText.getMap());
             }
-//
-//            int merchantIndex = 0;
-//            outerLoop:
-//            while (true)
-//            {
-//                String input = parser.getUserInput();
-//
-//                //Checks amount of inventory slots.
-//                for (int j = 0; j < map.getMerchant().getInventory().getSize(); j++)
-//                {
-//                    //If input is equal to our inventory size (+1 because array starts at 0), it will stop our loop.
-//                    if (Integer.toString(j + 1).equals(input) || input.equals("s") || input.equals("skip"))
-//                    {
-//                        for (int i = 0; i < map.getMerchant().getInventory().getSize(); i++)
-//                        {
-//                            // If the players input is equal to i(+1 because array starts at 0), it will add the item to our designated slot.
-//                            if (input.equals(String.valueOf(i + 1)))
-//                            {
-//                                merchantIndex = Integer.parseInt(input) - 1;
-//                            }
-//                        }
-//                        // Drops the item
-//                        if (input.equals("skip") || input.equals("s"))
-//                        {
-//                            //Prints "You dropped the inventoriesItem"
-//                            printToConsole.print(gameText.getYouDroppedTheItem());
-//                        }
-//
-//                        //Jumps all the way out of the while-loop, because of the outerLoop.
-//                        break outerLoop;
-//                    }
-//                }
-//                //Prints "Hmm... Wrong command"
-//                printToConsole.print(gameText.getWhatDoYouMean());
-//            }
-//
-//            changeInventory(map.getMerchant().getInventory().getItem(merchantIndex));
-//            printToConsole.print(gameText.getInventory(player.getInventory()));
 
-
-//            changeInventory(map.getItemFromMerchant());
             disableButtons();
             btnContinue.setVisible(true);
             return;
@@ -467,32 +434,6 @@ public class PlayController implements Initializable
 
                     return;
 
-//                while (true)
-//                {
-//                    String input = parser.getUserInput();//returns a String
-//                    if (input.equals("battle") || input.equals("b"))
-//                    {
-//                        startBattle(logic.doBattle(i));
-//
-//                        logic.getCurrentRoom().removeContent(i);
-//
-//                        break;
-//                    }
-//                    else if (input.equals("flee") || input.equals("f"))
-//                    {
-//                        player.setLocation(player.getLastLocation());
-//                        break;
-//                    }
-//                    else
-//                    {
-//                        printToConsole.print(gameText.getWhatDoYouMean());
-//                    }
-//                }
-//                if (i < map.getNumberOfContent() - 1)
-//                {
-//                    parser.userPressEnter();
-//                }
-
                 case "Chest":
 
                     itemFrom = "chest";
@@ -501,71 +442,17 @@ public class PlayController implements Initializable
                     textAreaMain.appendText("\n\n" + gameText.getThereIsAChest());
 
                     disableButtons(new Button[]{btnOpen, btnSkip}, false, false);
-//                while (true)
-//                {
-//                    String input = parser.getUserInput();
-//                    if (input.equals("open") || input.equals("o"))
-//                    {
-//                        printToConsole.print(gameText.getSeperator());
-//                        changeInventory(((IChest)map.getCurrentRoom().getContent(i)).getItem());
-//
-//                        //This removes the chest
-//                        logic.getCurrentRoom().removeContent(i);
-//
-//                        break;
-//                    }
-//                    else if (input.equals("skip") || input.equals("s"))
-//                    {
-//                        printToConsole.print(gameText.getSeperator());
-//                        break;
-//                    }
-//                    else
-//                    {
-//                        //Prints "Hmm... Wrong command"
-//                        printToConsole.print(gameText.getWhatDoYouMean());
-//                    }
-//                }
-//                if (i < map.getNumberOfContent() - 1)
-//                {
-//                    parser.userPressEnter();
-//                }
+
                     return;
                 case "Guide":
                     //Prints info about Guide.
                     textAreaMain.setText(gameText.getContentInfo(ContentIndex));
                     textAreaMain.appendText("\n\n" + gameText.getThereIsAGuide());
 
-                    guideTalkLimit = 0;
+                    guideTalkCount = 0;
 
                     disableButtons(new Button[]{btnAttack, btnFlee, btnSkip, btnTalk}, false, false);
-//                while (true)
-//                {
-//                    //Prints "There is a Guide, you can either \"talk\" , \"flee\" or \"kill\"!"
-//                    printToConsole.print(gameText.getThereIsAGuide());
-//
-//                    String input = parser.getUserInput();
-//                    if (input.equals("talk") || input.equals("t"))
-//                    {
-//                        //Prints "Hello my name is \"insert name here\" here is a tip ;) ... DON'T DIE!!!"
-//                        printToConsole.print(gameText.getGuideTalk());
-//                    }
-//                    else if (input.equals("skip")|| input.equals("s"))
-//                    {
-//                        break;
-//                    }
-//                    else if (input.equals("kill")|| input.equals("k"))
-//                    {
-//                        //Prints "You killed the helper, oh mighty swordsman!"
-//                        printToConsole.print(gameText.getKilledGuide());
-//                        map.getCurrentRoom().removeContent(i);
-//                        break;
-//                    }
-//                }
-//
-//                if (i < map.getNumberOfContent() - 1)
-//                {
-//                    parser.userPressEnter();
-//                }
+
                     return;
                 case "":
             }
@@ -576,16 +463,29 @@ public class PlayController implements Initializable
         textAreaMain.setText(gameText.getRoomIsEmpty());
         disableButtons(new Button[]{btnUp, btnDown, btnLeft, btnRight}, true, false);
 
-
-
-
         if (map.hasAllRoomBeenEntered())
         {
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Boss Battle");
             alert.setHeaderText(null);
             alert.setContentText(gameText.getAllRoomsEntered());
             alert.showAndWait();
+
+
+
+
+            showImage("Resources\\images\\DevilTrans.gif", 6);
+
+            playAudio("Resources\\sounds\\DevilTheme.mp3",0.7, 0.7);
+
+            playAudio("Resources\\sounds\\DevilGrowl.mp3",3, 0.7);
+
+            playAudio("Resources\\sounds\\Monster_04.mp3",5, 0.7);
+
+            playAudio("Resources\\sounds\\AmbienceHell.mp3",0, 0.7);
+
+            mediaPlayer.stop();
 
             //Prints "Your health is currently " + player.getHealth() + "hp"
             textAreaMain.appendText("\n" + gameText.getMonstersInfo(logic.getLucifer()));
@@ -597,7 +497,6 @@ public class PlayController implements Initializable
             disableButtons(new Button[]{btnAttack}, false, false);
 
             battle = logic.doBattle(logic.getLucifer());
-
 
         }
 
@@ -632,12 +531,8 @@ public class PlayController implements Initializable
         if (itemFrom.equals("chest"))
         {
             player.getInventory().addItem(((IChest)map.getCurrentRoom().getContent(ContentIndex)).getItem(), index);
-
             updateInventory();
-
             logic.getCurrentRoom().removeContent(ContentIndex);
-
-
             disableButtons();
             btnContinue.setVisible(true);
         }
@@ -658,12 +553,6 @@ public class PlayController implements Initializable
                 textAreaMain.appendText("\n\n" + "Merchant is happy :) ... Thanks you for the trade.");
                 textAreaMap.setText(gameText.getMap());
             }
-
-
-
-
-
-
         }
     }
 
@@ -676,6 +565,8 @@ public class PlayController implements Initializable
             player.setWeapon((IWeapon) item);
             textAreaMain.setText(gameText.getSetCurrentWeapon());
             labelWeapon.setText("Weapon: " + ((IItem)player.getWeapon()).getName());
+
+            showImage("Resources\\images\\Sword.gif", 2);
         }
         else if (item instanceof IPotion)
         {
@@ -689,7 +580,8 @@ public class PlayController implements Initializable
             labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
             labelTime.setText("Time: " + String.valueOf(timeTracker.calculateRemainingTime()));
 
-            ImageHeart.setVisible(true);
+
+            showImage("Resources\\images\\Heart.gif", 2);
 
         }
         else if (item instanceof IKey)
@@ -816,6 +708,44 @@ public class PlayController implements Initializable
         updateInventory();
     }
 
+    Timeline timeline;
+
+    private void showImage(String image, double time)
+    {
+        ImagePane.setOpacity(1);
+        ImagePane.setVisible(true);
+        ImagePlaceHolder.setImage(new Image(new File(image).toURI().toString()));
+        timeline = new Timeline();
+        timeline.setCycleCount(2);
+        timeline.setAutoReverse(true);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(time), new KeyValue(ImagePlaceHolder.opacityProperty(), 1.0));
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.setOnFinished(arg0 ->
+                               {
+                                   ImagePane.setVisible(false);
+                                   ImagePlaceHolder.setOpacity(0);
+                               });
+        timeline.play();
+    }
+
+    private void playAudio(String audio, double delay, double volume)
+    {
+        AudioClip gateAudio = new AudioClip(new File(audio).toURI().toString());
+        gateAudio.setVolume(volume);
+
+        timeline = new Timeline();
+        timeline.setCycleCount(2);
+        timeline.setAutoReverse(true);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(delay));
+//        KeyFrame keyFrame = new KeyFrame(Duration.seconds(delay), new KeyValue(ImagePlaceHolder.opacityProperty(), 1.0));
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.setOnFinished(arg0 ->
+                               {
+                                   gateAudio.play();
+                               });
+        timeline.play();
+    }
+
     public void showItem(int index)
     {
         textAreaMain.setText(gameText.getItemInfo(player.getInventory().getItem(index)));
@@ -826,9 +756,25 @@ public class PlayController implements Initializable
     AudioClip attackSound;
     public void handleAttack(ActionEvent event)
     {
+        ArrayList<String> sounds = new ArrayList<>();
+        sounds.add("Resources\\sounds\\Hit1.wav");
+        sounds.add("Resources\\sounds\\Hit2.wav");
+        sounds.add("Resources\\sounds\\Hit3.wav");
+        sounds.add("Resources\\sounds\\Hit4.wav");
+        sounds.add("Resources\\sounds\\Hit32.mp3");
+        sounds.add("Resources\\sounds\\Hit33.mp3");
+        sounds.add("Resources\\sounds\\Hit34.mp3");
+        sounds.add("Resources\\sounds\\Hit35.mp3");
+        sounds.add("Resources\\sounds\\Hit36.mp3");
+
         if (lastBattle)
         {
             textAreaMain.appendText("\n" + gameText.getBattle(battle));
+
+            int random = new Random().nextInt(sounds.size());
+            attackSound = new AudioClip(new File(sounds.get(random)).toURI().toString());
+            attackSound.play();
+
 
             if (battle.getIsBattleOver())
             {
@@ -848,16 +794,18 @@ public class PlayController implements Initializable
                 }
 
                 if (attackSound != null) attackSound.stop();
-                attackSound = new AudioClip(new File("Resources\\sounds\\attack.wav").toURI().toString());
-                attackSound.play();
+
 
                 textAreaMain.appendText("\n" + gameText.getBattle(battle));
                 labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
                 labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
 
+
+
+
                 if (battle.getIsBattleOver())
                 {
-                    if (attackSound != null) attackSound.stop();
+                    int random = new Random().nextInt(sounds.size());
                     attackSound = new AudioClip(new File("Resources\\sounds\\TheWilhelmScream.mp3").toURI().toString());
                     attackSound.setVolume(1);
                     attackSound.play();
@@ -866,10 +814,18 @@ public class PlayController implements Initializable
                     disableButtons();
                     btnContinue.setVisible(true);
                 }
+                else
+                {
+                    int random = new Random().nextInt(sounds.size());
+                    attackSound = new AudioClip(new File(sounds.get(random)).toURI().toString());
+                    attackSound.play();
+                }
                 break;
             case "Guide":
                 if (guideAudio != null) guideAudio.stop();
-                attackSound = new AudioClip(new File("Resources\\sounds\\attack.wav").toURI().toString());
+
+                int random = new Random().nextInt(sounds.size());
+                attackSound = new AudioClip(new File(sounds.get(random)).toURI().toString());
                 attackSound.play();
                 textAreaMain.appendText("\n" + gameText.getKilledGuide());
                 map.getCurrentRoom().removeContent(ContentIndex);
@@ -902,6 +858,10 @@ public class PlayController implements Initializable
         textAreaMain.appendText("\n" + gameText.getWhatSlot());
 
         disableButtons(new Button[]{btnSkip}, false, true);
+
+        showImage("Resources\\images\\ChestTrans3.gif", 2.5);
+
+        playAudio("Resources\\sounds\\ChestOpen.mp3",0.7, 0.7);
     }
 
     @FXML
@@ -919,19 +879,21 @@ public class PlayController implements Initializable
             return;
         }
         else
+
+
         btnContinue.setVisible(false);
+
         checkRoom();
 
     }
 
-    int guideTalkLimit = 0;
-
+    int guideTalkCount = 0;
 
     AudioClip guideAudio;
     @FXML
     private void handleTalk(ActionEvent actionEvent)
     {
-        if (guideTalkLimit < 10)
+        if (guideTalkCount < 10)
         {
             if (guideAudio != null) guideAudio.stop();
 
@@ -939,7 +901,7 @@ public class PlayController implements Initializable
             guideAudio.play();
 
             textAreaMain.appendText("\n\n" + gameText.getGuideTalk());
-            guideTalkLimit++;
+            guideTalkCount++;
         }
         else
         {
@@ -1048,5 +1010,13 @@ public class PlayController implements Initializable
                 nodeIn.setDisable(false);
             }
         }
+    }
+
+    @FXML
+    private void handleImageClick(MouseEvent mouseEvent)
+    {
+        timeline.stop();
+        ImagePane.setVisible(false);
+        ImagePlaceHolder.setOpacity(0);
     }
 }

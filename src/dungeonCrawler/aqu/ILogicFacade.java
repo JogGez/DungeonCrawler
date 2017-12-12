@@ -46,7 +46,7 @@ public interface ILogicFacade  extends Serializable
 
     void setDifficultyLevel(int i);
     
-    void saveGame();
+    void saveGame(int index);
 
-    void loadGame();
+    void loadGame(int index);
 }

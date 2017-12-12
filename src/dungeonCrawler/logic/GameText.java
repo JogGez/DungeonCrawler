@@ -613,7 +613,7 @@ public class GameText implements Serializable
                     if (room.getLocation().x == player.getLocation().x &&
                             room.getLocation().y == player.getLocation().y)
                     {
-                        insert = "   P   ";
+                        insert = "---P---";
                     }
                     else if (room.isLocked())
                     {
@@ -657,10 +657,6 @@ public class GameText implements Serializable
                         over += "  \\"+ t +"/  ";
                         under += "  /"+ b +"\\  ";
                     }
-
-
-
-
 
                     mapString += insert;
 
@@ -748,7 +744,8 @@ public class GameText implements Serializable
 
     public String getWelcomeBack()
     {
-        return "Welcome back " + player.getName();
+        return "Welcome back " + player.getName() + "\n" +
+                "Nice to have you back.";
     }
 
     public String getSeperator()

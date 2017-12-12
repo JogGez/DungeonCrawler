@@ -8,23 +8,23 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="dungeonCrawler.presentationGUI.LoadController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.LoadController">
    <children>
       <GridPane layoutX="64.0" layoutY="67.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" prefHeight="115.0" prefWidth="187.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="btnLoad1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLoad" text="Load 1" VBox.vgrow="ALWAYS">
+                  <Button fx:id="btnLoad1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLoad1" text="Load 1" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="Monospaced Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnLoad2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLoad" text="Load 2" VBox.vgrow="ALWAYS">
+                  <Button fx:id="btnLoad2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLoad2" text="Load 2" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="Monospaced Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnLoad3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLoad" text="Load 3" VBox.vgrow="ALWAYS">
+                  <Button fx:id="btnLoad3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLoad3" text="Load 3" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="Monospaced Regular" size="14.0" />
                      </font>

@@ -11,6 +11,7 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade, Serializabl
     IDataFacade data;
     Player player;
     Map map;
+    TimeTracker timeTracker;
     GameText gameText;
     IHighScore highScore;
 
@@ -72,8 +73,8 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade, Serializabl
     @Override
     public ITimeTracker getTimeTracker(Date date)
     {
-        TimeTracker time = new TimeTracker(date, player);
-        return time;
+        timeTracker = new TimeTracker(date, player);
+        return timeTracker;
     }
 
     @Override
@@ -167,20 +168,22 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade, Serializabl
     }
 
     @Override
-    public void saveGame()
+    public void saveGame(int index)
     {
+        player.setTime(timeTracker.calculateRemainingTime());
+
         GameStateDTO stateDTO = new GameStateDTO(player, map);
-        data.save(stateDTO, "fileName.sav");
+        data.save(stateDTO, "SaveGame" + index + ".sav");
 
 //        GameHandler.saveGame(stateDTO, "fileName.sav");
     }
 
     @Override
-    public void loadGame()
+    public void loadGame(int index)
     {
         GameStateDTO stateDTO = new GameStateDTO(player, map);
 
-        stateDTO = data.load(stateDTO,"fileName.sav");
+        stateDTO = data.load(stateDTO,"SaveGame" + index + ".sav");
 
         player = (Player)stateDTO.getPlayer();
         map = (Map)stateDTO.getMap();

@@ -163,13 +163,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </HBox>
+                  <StackPane fx:id="ImagePane" opacity="0.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                     <children>
+                        <ImageView fx:id="ImagePlaceHolder" fitHeight="400.0" fitWidth="400.0" onMouseClicked="#handleImageClick" opacity="0.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
+                     </children>
+                  </StackPane>
                </children>
             </GridPane>
-            <ImageView fx:id="ImageHeart" fitHeight="250.0" fitWidth="250.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false" StackPane.alignment="CENTER">
-               <image>
-                  <Image url="@Heart.gif" />
-               </image>
-            </ImageView>
          </children>
       </StackPane>
    </children>
