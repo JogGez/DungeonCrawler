@@ -9,4 +9,6 @@ public interface IHighScore extends Serializable
     void readText();
 
     String[] getHighScoreArray();
+
+    void addHighScore(IPlayer player);
 }

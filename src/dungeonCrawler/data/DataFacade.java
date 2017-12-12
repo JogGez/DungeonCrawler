@@ -11,7 +11,6 @@ import java.io.Serializable;
 public class DataFacade implements IDataFacade, Serializable
 {
 
-
     @Override
     public IHighScore getHighScore()
     {

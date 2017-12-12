@@ -39,6 +39,7 @@ class GameSettings implements Serializable
     private static int chanceOfTimePotion;
     private static int chanceOfKey;
     private static int chanceOfSpecial;
+    private static int scoreMulitplier;
 
     // Private constructor to maintain static and to prevent instantiating
 
@@ -51,7 +52,7 @@ class GameSettings implements Serializable
        roomContents = 2;
        playerHealth = 1000;
        inventorySize = 5;
-       playerTime = 240;
+       playerTime = 300;
        playerPower = 25;
        numberOfMerchants = 0;
        numberOfThieves = 0;
@@ -67,6 +68,8 @@ class GameSettings implements Serializable
        chanceOfTimePotion = 15;
        chanceOfKey = 15;
        chanceOfSpecial = 40;
+
+       scoreMulitplier = 1;
     }
 
     public static void setNormalDifficulty()
@@ -91,12 +94,10 @@ class GameSettings implements Serializable
         chanceOfTimePotion = 30;
         chanceOfKey = 0;
         chanceOfSpecial = 10;
+
+        scoreMulitplier = 2;
     }
 
-    static int getChanceOfKey()
-    {
-        return chanceOfKey;
-    }
 
     public static void setHardDifficulty()
     {
@@ -119,9 +120,16 @@ class GameSettings implements Serializable
         chanceOfHealthPotion = 30;
         chanceOfTimePotion = 30;
         chanceOfKey = 0;
-
         chanceOfSpecial = 10;
+
+        scoreMulitplier = 3;
     }
+    static int getChanceOfKey()
+    {
+        return chanceOfKey;
+    }
+
+    static int getDifficultyLevel(){return scoreMulitplier;}
 
     static int getThiefPickingRounds()
     {

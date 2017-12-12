@@ -85,17 +85,15 @@ public class GameText implements Serializable
     {
 
         return GameTextASCII.getGateKeeper() + "\n\n"+
-                "Well... hello there "+player.getName()+
-                "\nI'm the gate keeper!"+
-                "\nPrepare to enter the dungeon!"+
-                "\nChoose 'Help' in the menubar if you need advice."+
+                "Well... hello there "+player.getName()+"! "+"I'm the gatekeeper."+
+                "\nPrepare to enter the dungeon and find that devil!"+
                 "\n" + type + " '"+ CommandWord.HELP + "' if you ever need help."+
-                "\n" + type + " \"enter\" to enter the DUNGEON...";
+                "\n" + type + " \'enter\' to enter the DUNGEON...";
     }
 
     public String getThanksForPLaying()
     {
-        return "Thanks for playing "+player.getName()+". Good bye!";
+        return "Thanks for playing "+player.getName()+". Goodbye!";
     }
 
     public String getYouHaveDied()
@@ -157,7 +155,6 @@ public class GameText implements Serializable
     {
         return "Invalid menu choice";
     }
-
 
     public String getYouCurrentlyHaveHp()
     {

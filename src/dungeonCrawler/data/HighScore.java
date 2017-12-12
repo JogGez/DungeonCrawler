@@ -3,6 +3,7 @@ package dungeonCrawler.data;
 //import com.sun.xml.internal.fastinfoset.util.StringArray;
 
 import dungeonCrawler.aqu.IHighScore;
+import dungeonCrawler.aqu.IPlayer;
 
 import java.io.*;
 import java.util.*;
@@ -117,6 +118,16 @@ public class HighScore implements IHighScore, Serializable
         }
         // returns the highscore
         Collections.sort(highScore);
+    }
+
+    public void addHighScore(IPlayer player)
+    {
+        readText();
+        if (highScore.get(0).score <= player.getScore())
+        {
+            highScore.set(0, new ScoreItem(player.getName(), player.getScore()));
+        }
+        writeText();
     }
 
     public String[] getHighScoreArray()

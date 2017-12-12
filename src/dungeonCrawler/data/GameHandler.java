@@ -23,8 +23,6 @@ class GameHandler implements Serializable
             out.writeObject(gameStateDTO);
             fileOut.close();
             out.close();
-            //TODO
-            System.out.println("Filen er gemt");
         } catch (IOException i)
         {
             i.printStackTrace();
@@ -53,5 +51,7 @@ class GameHandler implements Serializable
 
         return gameStateDTO;
     }
+
+
     
 }
