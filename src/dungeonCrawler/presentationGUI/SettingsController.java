@@ -10,9 +10,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.media.AudioClip;
+import jdk.nashorn.internal.ir.IfNode;
 
 public class SettingsController implements Initializable {
 
@@ -31,8 +33,11 @@ public class SettingsController implements Initializable {
     @FXML
     private Slider sldrMusicVolume;
 
-    private double effectVolume = 100;
-    private double musicVolume = 100;
+    private static double effectVolume = 100;
+    private static double musicVolume = 100;
+    private static boolean skipAnimation = false;
+    @FXML
+    private CheckBox cbxSkipAnimation;
 
     /**
      * Initializes the controller class.
@@ -73,5 +78,33 @@ public class SettingsController implements Initializable {
         AudioClip soundMyNoise = new AudioClip(new File("Resources\\sounds\\click.mp3").toURI().toString());
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
-    } 
+    }
+
+    public static double getEffectVolume()
+    {
+        return effectVolume;
+    }
+
+    public static double getMusicVolume()
+    {
+        return musicVolume;
+    }
+
+    public static boolean getSkibAnimation()
+    {
+        return skipAnimation;
+    }
+
+    @FXML
+    private void handleSkipAnimation(ActionEvent actionEvent)
+    {
+        if (cbxSkipAnimation.isSelected())
+        {
+            skipAnimation = true;
+        }
+        else
+        {
+            skipAnimation = false;
+        }
+    }
 }

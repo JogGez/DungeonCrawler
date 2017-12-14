@@ -168,19 +168,19 @@ class Map implements IMap, Serializable
      * Getter Method
      * Returens the setter methods value.
      *
-     * @param p
+     * @param roomLocation
      * @return boolean
      */
     @Override
-    public boolean getRoomHasBeenEntered(Point p)
+    public boolean getRoomHasBeenEntered(Point roomLocation)
     {
         //For each loop: Which type, name, and list it runs through
         for (Room room : roomList)
         {
-                // if x == x and y==y, for point p, reurns entered.
-            if (room.getLocation().x == p.x && room.getLocation().y == p.y)
+                // if x == x and y==y, for point roomLocation, reurns entered.
+            if (room.getLocation().x == roomLocation.x && room.getLocation().y == roomLocation.y)
             {
-                return getRoomHasBeenEntered(p);
+                return getRoomHasBeenEntered(roomLocation);
             }
         }
         return false;
@@ -267,8 +267,6 @@ class Map implements IMap, Serializable
             {
                 exitList.add("down");
             }
-
-            //TODO Merchant skal interagere med os - giv os et eller andet.
 
             //Checks if player and merchant is in the same room
             merchant.move(exitList);

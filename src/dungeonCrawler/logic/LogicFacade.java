@@ -101,25 +101,11 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade, Serializabl
         gameText.injectVariables(player, map);
     }
 
-    // TODO Skal heller ikke være her
-    public IRoom getCurrentRoom()
-    {
-        return map.getCurrentRoom();
-    }
-
     // Skal heller ikke være her. Kun dem du sender, modtager og instantiere referencer i Facaden. 
     public void saveItemToInventory(int inventoryIndex, int contensIndex)
     {
         Chest chest = (Chest) (map.getCurrentRoom().getContent(contensIndex));
         player.getInventory().addItem(chest.getItem(), inventoryIndex);
-    }
-
-    //TODO Skal ikke være her
-    // Kun fåes igennem vores inevntory, igen grund til metoder i facade klassen. 
-    @Override
-    public int getNumberOfAvailablePotions()
-    {
-        return player.getInventory().potionArrayList().size();
     }
 
     // Bliver ikke brugt ?? 
@@ -142,12 +128,6 @@ public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade, Serializabl
     public void useKey(int index)
     {
         player.getInventory().removeItem(player.getInventory().getItemIndex((IItem) player.getInventory().keyArrayList().get(index)));
-    }
-
-    @Override
-    public void useItem(int index)
-    {
-        Item item = (Item) player.getInventory().getItem(index);
     }
 
     @Override

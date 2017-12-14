@@ -54,17 +54,17 @@ class Room implements IRoom, Serializable
             //Generating number 0-100.
             int randomNumber = (int) (Math.random() * 100);
 
-            // MONSTER: If the number generated is 20-49 a monster is added in the roomslot.
+            // MONSTER: If the number generated is under getChangeOfMonster int a monster is added in the room slot.
             if (randomNumber < GameSettings.getChanceOfMonster())
             {
                 roomContent.add(MonsterEnum.getRandomMonster());
             }
-            // CHEST: If the number generated is 50-84 a chest is added in the roomslot.
+            // CHEST: If the number generated is under getChangeOfMonster + getChanceOfChest int  a chest is added in the room slot.
             else if (randomNumber <= GameSettings.getChanceOfMonster() + GameSettings.getChanceOfChest())
             {
                 roomContent.add(new Chest());
             }
-            // MERCHANT: If the number generated is 85-100 a helper is added in the roomslot.
+            // GUIDE: If the number generated is under getChangeOfMonster + getChanceOfChest + getChanceOfGuide int a helper is added in the room slot.
             else if (randomNumber <= GameSettings.getChanceOfMonster() + GameSettings.getChanceOfChest() + GameSettings.getChanceOfGuide())
             {
                 // TODO Add someone here
