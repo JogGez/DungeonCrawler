@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.MainMenuController">
+<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.MainMenuController">
    <children>
       <ImageView fx:id="imageBackground" fitHeight="768.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -64,7 +70,7 @@
                      </font></Button>
                </children>
             </VBox>
-            <Label fx:id="lblTitle" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="&lt;Insert ASCII&gt;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
+            <Label fx:id="lblTitle" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="&lt;Insert ASCII&gt;" wrapText="true" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
                <font>
                   <Font name="Monospaced Regular" size="14.0" />
                </font>

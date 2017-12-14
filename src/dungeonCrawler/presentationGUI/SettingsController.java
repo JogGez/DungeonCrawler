@@ -22,7 +22,18 @@ public class SettingsController implements Initializable {
     private Label lblSoundVolume;
     @FXML
     private Button btnBack;
-    
+    @FXML
+    private Label lblEffectsVolume;
+    @FXML
+    private Slider sldrEffectsVolume;
+    @FXML
+    private Label lblMusicVolume;
+    @FXML
+    private Slider sldrMusicVolume;
+
+    private double effectVolume = 100;
+    private double musicVolume = 100;
+
     /**
      * Initializes the controller class.
      */
@@ -30,12 +41,27 @@ public class SettingsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     {
 
-        lblSoundVolume.setText("");
-        sldrSound.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> ov,
-                Number old_val, Number new_val) {
-                    
-                    lblSoundVolume.setText(String.format("%.0f", new_val) + "%");
+        lblEffectsVolume.setText("");
+        lblMusicVolume.setText("");
+        sldrEffectsVolume.setValue(effectVolume);
+        sldrEffectsVolume.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val)
+            {
+                    lblEffectsVolume.setText(String.format("%.0f", new_val) + "%");
+                    effectVolume = new_val.doubleValue();
+
+            }
+        });
+
+        sldrMusicVolume.setValue(musicVolume);
+        sldrMusicVolume.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val)
+            {
+                lblMusicVolume.setText(String.format("%.0f", new_val) + "%");
+                Game.mediaPlayer.setVolume(new_val.doubleValue()/100);
+                Game.mediaPlayer1.setVolume(new_val.doubleValue()/100);
+//                PlayController.mediaPlayer.setVolume(new_val.doubleValue()/100);
+                musicVolume = new_val.doubleValue();
             }
         });
     }

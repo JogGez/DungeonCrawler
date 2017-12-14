@@ -1113,7 +1113,7 @@ final class GameTextASCII implements Serializable
                 "    \\\\/ ()_) \\.\n" +
                 "     ^^ <__> \\()\n" +
                 "       //||\\\\\n" +
-                "      //_||_\\\\  ds\n" +
+                "      //_||_\\\\\n" +
                 "     // \\||/ \\\\\n" +
                 "    //   ||   \\\\\n" +
                 "   \\/    |/    \\/\n" +
@@ -1371,7 +1371,7 @@ final class GameTextASCII implements Serializable
 
     public static String getFatDragon()
     {
-        return  "                          ^\\    ^                  \n" +
+        return  "                         ^\\    ^                  \n" +
                 "                        / \\\\  / \\                 \n" +
                 "                       /.  \\\\/   \\      |\\___/|   \n" +
                 "    *----*           / / |  \\\\    \\  __/  O  O\\   \n" +
