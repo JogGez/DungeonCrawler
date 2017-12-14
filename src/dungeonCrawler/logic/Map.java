@@ -148,7 +148,7 @@ class Map implements IMap, Serializable
 
     /**
      * Setter method for Room Has Been Entered
- Controls the Arraylist roomlist, that was created from the Map.
+     * Controls the Arraylist roomlist, that was created from the Map.
      *
      * @param playerLocation
      */
@@ -322,6 +322,11 @@ class Map implements IMap, Serializable
         return numberOfEnteredRooms() == roomList.size();
     }
 
+    /**
+     * Looks at what object is in the room
+     * @param index
+     * @return String
+     */
     @Override
     public String checkRoomContent(int index)
     {
@@ -350,16 +355,28 @@ class Map implements IMap, Serializable
         return "";
     }
 
+    /**
+     * List of merchants
+     * @return ArrayList
+     */
     public ArrayList<? extends IMerchant> merchantArrayList()
     {
         return merchantList;
     }
 
+    /**
+     * List of thieves
+     * @return Arraylist
+     */
     public ArrayList<? extends IThief> thiefArrayList()
     {
         return thiefList;
     }
-    
+
+    /**
+     * Sets the boolean locked to false
+     * @param location
+     */
     public void unlockRoom(Point location)
     {
         for (Room room : roomList)
@@ -371,6 +388,10 @@ class Map implements IMap, Serializable
         }
     }
 
+    /**
+     * Getter method for merchant
+     * @return IMerchant
+     */
     @Override
     public IMerchant getMerchant()
     {
@@ -385,6 +406,10 @@ class Map implements IMap, Serializable
         return null;
     }
 
+    /**
+     * Getter method for the room the player is in
+     * @return Room
+     */
     @Override
     public Room getCurrentRoom()
     {
@@ -398,6 +423,10 @@ class Map implements IMap, Serializable
         return new Room(new Point(0, 0), 0, "Empty", "none", false);
     }
 
+    /**
+     * Checks if the room has a thief or not
+     * @return boolean
+     */
     @Override
     public boolean roomContainsThief()
     {
@@ -412,6 +441,10 @@ class Map implements IMap, Serializable
         return false;
     }
 
+    /**
+     * Checks if the room has a merchant or not
+     * @return boolean
+     */
     @Override
     public boolean roomContainsMerchant()
     {
@@ -426,6 +459,9 @@ class Map implements IMap, Serializable
         return false;
     }
 
+    /**
+     * Removes the thief from the room
+     */
     @Override
     public void removeThief()
     {
@@ -433,22 +469,11 @@ class Map implements IMap, Serializable
         thiefList.removeIf(thief -> getCurrentRoom().getLocation().equals(thief.getLocation()));
     }
 
-   
-    @Override
-    public IItem getItemFromMerchant()
-    {
-//        for (Merchant merchant : merchantList)
-//        {
-//            if (getCurrentRoom().getLocation().equals(merchant.getLocation()))
-//            {
-//                //player.getInventory().addItem(merchant.getItem(),inventoryIndex);
-//                return merchant.getItem();
-//            }
-//        }
-        return null;
-    } 
-
-
+    /**
+     *
+     * @param point
+     * @return Room
+     */
     public Room getRoom(Point point)
     {
         for (Room room : roomList)
@@ -461,7 +486,10 @@ class Map implements IMap, Serializable
         return new Room(new Point(0, 0), 0, "Empty", "none", false);
     }
 
-
+    /**
+     * Gives you X and Y for the Map Size
+     * @return Point
+     */
     Point getMapSize()
     {
         return mapSize;

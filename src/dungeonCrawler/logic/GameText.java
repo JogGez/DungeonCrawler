@@ -1,58 +1,89 @@
 package dungeonCrawler.logic;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import dungeonCrawler.aqu.*;
 import dungeonCrawler.data.HighScore;
 import dungeonCrawler.presentationConsole.CommandWord;
-import sun.awt.geom.AreaOp;
 
-import javax.lang.model.element.NestingKind;
 import java.awt.*;
 import java.io.File;
 import java.io.Serializable;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
+
+/**
+ *
+ * @author Gruppen, minus Morten Bindslev
+ */
+
 
 public class GameText implements Serializable
 {
     Player player;
     Map map;
 
+    /**
+     * Sets type to String
+     * @param type
+     */
     public void setType(String type)
     {
         this.type = type;
     }
 
     String type = "";
-    
 
+
+    /**
+     * Constructor for GameText
+     */
     public GameText()
     {
     }
 
+    /**
+     * Used to get player and map info
+     * @param player
+     * @param map
+     */
     public void injectVariables(Player player, Map map)
     {
         this.player = player;
         this.map = map;
     }
 
+    /**
+     * White space, String
+     * @return String
+     */
     public String getEmptyLine()
     {
         return "";
     }
 
+    /**
+     * Title of ascii
+     * @return String
+     */
     public String getAsciiTitle()
     {
         return GameTextASCII.getTitle();
     }
 
+    /**
+     * String for welcome start
+     * @return String
+     */
     public String getWelcomeText()
     {
         return "Welcome to Dungeon Crawler!"+
                 "\nThis is a newly created, incredible adventure game.";
     }
 
+    /**
+     * String for console game menu
+     * @return String
+     */
     public String getMenu()
     {
         return "Main Menu"+
@@ -63,6 +94,10 @@ public class GameText implements Serializable
                 "\n5. Exit";
     }
 
+    /**
+     * String for difficulty level
+     * @return String
+     */
     public String getSetDifficultyLevel()
     {
         return "Select Difficulty Level"+
@@ -71,16 +106,28 @@ public class GameText implements Serializable
                 "\n3. Hard";
     }
 
+    /**
+     * String for player name
+     * @return String
+     */
     public String getEnterPlayerName()
     {
         return "Enter your name here: ";
     }
 
+    /**
+     * String for start game
+     * @return String
+     */
     public String getEnterToStartGame()
     {
         return type + " \"enter\" to start the game.";
     }
 
+    /**
+     * String for hello message
+     * @return String
+     */
     public String getMessageHello()
     {
 
@@ -91,16 +138,28 @@ public class GameText implements Serializable
                 "\n" + type + " \'enter\' to enter the DUNGEON...";
     }
 
+    /**
+     * String for when game ends
+     * @return String
+     */
     public String getThanksForPLaying()
     {
         return "Thanks for playing "+player.getName()+". Goodbye!";
     }
 
+    /**
+     * String for death
+     * @return String
+     */
     public String getYouHaveDied()
     {
         return "You have died :(";
     }
 
+    /**
+     * String for invalid command
+     * @return String
+     */
     public String getWhatDoYouMean()
     {
         String[] wrongUserInput = new String[]
@@ -111,21 +170,37 @@ public class GameText implements Serializable
         return wrongUserInput[new Random().nextInt(wrongUserInput.length)];
     }
 
+    /**
+     * String for use what
+     * @return String
+     */
     public String getUseWhat()
     {
         return "Use what?";
     }
 
+    /**
+     * String for inventory slot of out of bounds
+     * @return String
+     */
     public String getSlotIsOutOfRange()
     {
         return "Slot is out of range";
     }
 
+    /**
+     * String for show what
+     * @return String
+     */
     public String getShowWhat()
     {
         return "Show what?";
     }
 
+    /**
+     * String for help menu
+     * @return String
+     */
     public String getHelpMenu()
     {
         return "Welcome to the Help menu system..."+
@@ -136,51 +211,92 @@ public class GameText implements Serializable
                 "\n3. Game Tips & Tricks";
     }
 
+    /**
+     * String for valid commands
+     * @return String
+     */
     public String getHelpCommandWords()
     {
         return "Your command words are:";
     }
 
+    /**
+     * String for goals
+     * @return String
+     */
     public String getHelpGoals()
     {
         return "The goals of the game is to defeat the devil";
     }
 
+    /**
+     * String for no available tips
+     * @return String
+     */
     public String getNoTipsAvaiable()
     {
         return "No tips or tricks available :( ";
     }
 
+    /**
+     * String for invalid choice
+     * @return String
+     */
     public String getInvalidChoice()
     {
         return "Invalid menu choice";
     }
 
+    /**
+     * String for players current health
+     * @return String
+     */
     public String getYouCurrentlyHaveHp()
     {
         return "You currently have: "+player.getHealth()+ " hp";
     }
 
+    /**
+     * String for players current score
+     * @return String
+     */
     public String getYouCurrentlyHavePoints()
     {
         return "You currently have: "+player.getScore()+" points";
     }
 
+    /**
+     * String for name
+     * @return String
+     */
     public String getName()
     {
         return "Name: ";
     }
 
+    /**
+     * String for huh
+     * @return String
+     */
     public String getHuh()
     {
         return "Huh?";
     }
 
+    /**
+     * String for go where
+     * @return String
+     */
     public String getGoWhere()
     {
         return "Go where?";
     }
 
+    /**
+     * String for entered new room
+     * @param room
+     * @return String
+     */
     public String getYouEnteredANewRoom(IRoom room)
     {
         return "You entered " + room.getName()
@@ -188,21 +304,37 @@ public class GameText implements Serializable
                 + "\n";
     }
 
+    /**
+     * String for walking to a wall
+     * @return String
+     */
     public String getYouRanIntoAWall()
     {
         return "You ran into wall :(";
     }
 
+    /**
+     * String for go back
+     * @return String
+     */
     public String getYouWentBackToPreviousRoom()
     {
         return "You went back to the previous room.";
     }
 
+    /**
+     * String for unavailable direction
+     * @return String
+     */
     public String getNoSuchDirection()
     {
         return "Go where? No such direction found...";
     }
 
+    /**
+     * String for room exits
+     * @return String
+     */
     public String getExits()
     {
         ArrayList<String> exitList = new ArrayList<>();
@@ -235,6 +367,11 @@ public class GameText implements Serializable
         return output;
     }
 
+    /**
+     * String for inventory items
+     * @param inventory
+     * @return String
+     */
     public String getInventory(IInventory inventory)
     {
         String top = " ╔";
@@ -276,6 +413,11 @@ public class GameText implements Serializable
         return top + "\n" + mTop + "\n" + middle + "\n" + mBottom + "\n" + bottom + "\n" + slot;
     }
 
+    /**
+     * String for room content
+     * @param index
+     * @return String
+     */
     public String getContentInfo(int index)
     {
         String contentInfo;
@@ -306,6 +448,11 @@ public class GameText implements Serializable
         return contentInfo;
     }
 
+    /**
+     * String for guide info
+     * @param guide
+     * @return String
+     */
     private String getGuideInfo(Guide guide)
     {
         return  guide.getAscii() +
@@ -313,6 +460,11 @@ public class GameText implements Serializable
                 "\n" + "Description: " + guide.getDescription();
     }
 
+    /**
+     * String for item info
+     * @param item
+     * @return String
+     */
     public String getItemInfo(IItem item)
     {
         String contentInfo;
@@ -353,7 +505,11 @@ public class GameText implements Serializable
 
         return contentInfo;
     }
-    
+
+    /**
+     * String for player info
+     * @return String
+     */
     public String getPlayerInfo()
     {
         return  "Your Health: " + player.getHealth() +
@@ -361,6 +517,11 @@ public class GameText implements Serializable
                 "\n" + "Your Multiplier: " + player.getWeapon().getMultiplier();
     }
 
+    /**
+     * String for monster info
+     * @param monster
+     * @return String
+     */
     public String getMonstersInfo(IMonster monster)
     {
         return  monster.getAscii() +
@@ -370,6 +531,11 @@ public class GameText implements Serializable
                 "\n" + "Power: " + monster.getPower();
     }
 
+    /**
+     * String for chest info
+     * @param chest
+     * @return String
+     */
     public String getChestInfo(IChest chest)
     {
         return  chest.getAscii() +
@@ -377,67 +543,122 @@ public class GameText implements Serializable
                 "\n" + "Description: " + chest.getDescription();
     }
 
+    /**
+     * String for battle or run
+     * @return String
+     */
     public String getBattleOrFlee()
     {
         return type + " \"attack\" or \"flee\".";
     }
 
+    /**
+     * String for Lucifer battle
+     * @return String
+     */
     public String getFinaleBattle()
     {
         return type + " \"attack\" you can't flee from the devil himself!.";
     }
 
+    /**
+     * String for attack or drink
+     * @return String
+     */
     public String getAttackOrDrinkPotion()
     {
         return "Attack or drink potion";
     }
 
+    /**
+     * String for battled started
+     * @param battle
+     * @return String
+     */
     public String getBattle(IBattle battle)
     {
         return battle.start();
     }
 
+    /**
+     * String for empty slot
+     * @return String
+     */
     public String getSlotIsEmpty()
     {
         return "Slot is empty.";
     }
 
+    /**
+     * String for current weapon
+     * @return String
+     */
     public String getSetCurrentWeapon()
     {
 
         return "Your current weapon is now: " + ((IItem)player.getWeapon()).getName();
     }
 
+    /**
+     * String for players current health
+     * @return String
+     */
     public String getPlayerHealth()
     {
         return "Your health is: " + player.getHealth() + "hp";
     }
-    
+
+    /**
+     * String for players current time
+     * @param timeTracker
+     * @return String
+     */
     public String getPlayerTime(ITimeTracker timeTracker)
     {
         return "Your time is now: " + timeTracker.calculateRemainingTime()+ "sec";
     }
 
+    /**
+     * String for what key to use
+     * @return String
+     */
     public String getTypeSlotNumberToUse()
     {
         return type + " which key to use.";
     }
 
+    /**
+     * String for health potions healing
+     * @param i
+     * @return String
+     */
     public String getPotionRecovery(int i)
     {
         return (i+1) + ". Potion:" + player.getInventory().potionArrayList().get(i).getHealthRecovery();
     }
 
+    /**
+     * String for No potions left
+     * @return String
+     */
     public String getYouHaveNoPotions()
     {
         return "You have no potions :(";
     }
 
+    /**
+     * String for encountered guide
+     * @return String
+     */
     public String getThereIsAGuide()
     {
         return "There is a guide, you can either " + type + " \"talk\" , \"skip\" , \"flee\" or \"attack\"!";
     }
 
+    /**
+     * String for guide talking
+     * @return String
+     */
     public String getGuideTalk()
     {
         String[] guideAdvice = new String[]
@@ -491,75 +712,132 @@ public class GameText implements Serializable
         return guideAdvice[new Random().nextInt(guideAdvice.length)];
     }
 
+    /**
+     * String for killing the guide
+     * @return String
+     */
     public String getKilledGuide()
     {
         return "You killed the guide, oh mighty swordsman!";
     }
 
+    /**
+     * String for encounter of the chest
+     * @return
+     */
     public String getThereIsAChest()
     {
         return "There is a chest, " + type + " \"open\" to open!" +
                                 "\n Or " + type + " \"skip\" to skip it!";
     }
 
+    /**
+     * String for what slot
+     * @return String
+     */
     public String getWhatSlot()
     {
         return "Do you want to insert this into a slot?"+
                 "\n" + type + " slot number or \"skip\" to drop.";
     }
 
+    /**
+     * String for item saved to slot
+     * @param j
+     * @return String
+     */
     public String getYouSavedItemInThisSlot(int j)
     {
         return "You saved this item in slot: " + (j+1);
     }
 
+    /**
+     * String for item dropped
+     * @return String
+     */
     public String getYouDroppedTheItem()
     {
         return "You dropped the item";
     }
 
+    /**
+     * String for wrong command
+     * @return String
+     */
     public String getHmmWrongCommand()
     {
         return "Hmm... Wrong command";
     }
 
+    /**
+     * String for empty room
+     * @return String
+     */
     public String getItsAEmptySpace()
     {
         return "Empty space :(";
     }
 
+    /**
+     * String for a line
+     * @return String
+     */
     public String getManyHyphens()
     {
         return "-----------------------------------------------";
     }
 
+    /**
+     * String for quit what
+     * @return String
+     */
     public String getQuitWhat()
     {
         return "Quit what?";
     }
 
+    /**
+     * String for battle what
+     * @return String
+     */
     public String getBattleWhat()
     {
         return "Battle what?";
     }
 
+    /**
+     * String for time has run out
+     * @return String
+     */
     public String getTimeRanOut ()
     {
         return "You have died, time ran out." +
                 "\n" + "Thanks for playing.";
     }
 
+    /**
+     * String for all rooms has been entered
+     * @return String
+     */
     public String getAllRoomsEntered ()
     {
         return "The eye of Sauron teleports you to the lair of the demon realm";
     }
 
+    /**
+     * String for Lucifer defeated
+     * @return
+     */
     public String getIsLuciferDead ()
     {
         return "You defeated the devil!" +
         "\nBut the princess is in another castle... and the game is over.";
     }
 
+    /**
+     * String
+     * @return
+     */
     public String getRoomIsLockedNoKey()
     {
         return "Room is locked and you have no keys :(";
