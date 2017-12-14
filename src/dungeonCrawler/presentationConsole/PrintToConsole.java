@@ -5,7 +5,7 @@ public class PrintToConsole
 {
     /**
      * Class constructor
-     * Used for instantiate TextToPrintToConsole
+     * Used for instantiate PrintToConsole
      */
     //No-arg Constructor
     public PrintToConsole()

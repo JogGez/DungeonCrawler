@@ -13,7 +13,7 @@ public class Parser
 
 
     /**
-     * Instantiates a new Parser.
+     * Constructor for Parser.
      */
     public Parser() 
     {
@@ -23,7 +23,6 @@ public class Parser
 
     /**
      * Gets the input from the user.
-     *
      * @return the command
      */
     public Command getCommand() 
@@ -76,7 +75,6 @@ public class Parser
 
     /**
      * Get the Player name from user input.
-     *
      * @return the string
      */
     public String getUserInput()
@@ -86,7 +84,7 @@ public class Parser
     }
     
     /**
-     * Method 
+     * Waiting for user input
      */
     public void userPressEnter()
     {
@@ -103,5 +101,4 @@ public class Parser
             
         }
     }
-
 }

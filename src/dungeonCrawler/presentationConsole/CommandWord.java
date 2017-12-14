@@ -69,7 +69,11 @@ public enum CommandWord
     {
         this.commandString = commandString;
     }
-    
+
+    /**
+     * Private String commandString
+     * @return String
+     */
     // Getter for the private String commandString
     public String toString()
     {
