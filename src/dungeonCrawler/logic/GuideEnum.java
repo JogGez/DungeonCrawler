@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- *
- * @author Linea Hoffmann
+ * Static guides
+ * @author Gruppen, minus Morten Bindslev
  */
 enum GuideEnum implements Serializable
 {
