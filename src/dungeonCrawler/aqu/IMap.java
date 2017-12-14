@@ -43,8 +43,6 @@ public interface IMap extends Serializable
 
     void removeThief();
 
-    IItem getItemFromMerchant();
-
     void unlockRoom(Point location);
 
     IMerchant getMerchant();

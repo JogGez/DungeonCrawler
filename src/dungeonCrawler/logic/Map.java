@@ -412,19 +412,7 @@ class Map implements IMap, Serializable
     }
 
    
-    @Override
-    public IItem getItemFromMerchant()
-    {
-//        for (Merchant merchant : merchantList)
-//        {
-//            if (getCurrentRoom().getLocation().equals(merchant.getLocation()))
-//            {
-//                //player.getInventory().addItem(merchant.getItem(),inventoryIndex);
-//                return merchant.getItem();
-//            }
-//        }
-        return null;
-    } 
+
 
 
     public Room getRoom(Point point)

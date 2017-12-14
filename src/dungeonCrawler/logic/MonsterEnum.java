@@ -56,6 +56,6 @@ enum MonsterEnum implements Serializable
     public static Monster getLucifer()
     {
         // And here we return a new instance of our merchant from our Enumlist. Where it uses the reference MonsterEnum monsterValues
-        return new Monster("Lucifer", "The LORD of the Underworld, The one true evil.", GameTextASCII.getDevil(), 1000, 50);
+        return new Monster("Lucifer", "The LORD of the Underworld, The one true evil.", GameTextASCII.getDevil3(), 1000, 50);
     }
 }
