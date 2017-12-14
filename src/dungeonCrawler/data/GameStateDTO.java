@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Computer
+ * @author Gruppen, minus Morten Bindslev
  */
 public class GameStateDTO implements Serializable
 {

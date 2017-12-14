@@ -15,6 +15,8 @@ import java.util.*;
 
 /**
  * The type High score handler.
+ *
+ * @author Gruppen, minus Morten Bindslev
  */
 public class HighScore implements IHighScore, Serializable
 {
