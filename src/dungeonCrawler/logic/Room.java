@@ -45,7 +45,7 @@ class Room implements IRoom, Serializable
         this.isLocked = isLocked;
         this.roomContent = new ArrayList<>();
 
-        // TODO
+        
         // Loop that generates a random number (0-100) and adds a (nothing here//monster//chest//helper) according to the number generated.
         // Loop runs as long theres available spaces in the room.
         // Every run of the loop fills a roomslot.
