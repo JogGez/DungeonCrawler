@@ -59,6 +59,7 @@ class GameSettings implements Serializable
        thiefPickingRounds = 3;
        lockedRooms = 0;
 
+       //Chance has to be a total of 100
        chanceOfMonster = 40;
        chanceOfChest = 40;
        chanceOfGuide = 20;
@@ -85,6 +86,7 @@ class GameSettings implements Serializable
         thiefPickingRounds = 3;
         lockedRooms = 4;
 
+        //Chance has to be a total of 100
         chanceOfMonster = 25;
         chanceOfChest = 50;
         chanceOfGuide = 15;
@@ -112,6 +114,7 @@ class GameSettings implements Serializable
         thiefPickingRounds = 2;
         lockedRooms = 6;
 
+        //Chance has to be a total of 100
         chanceOfMonster = 25;
         chanceOfChest = 50;
         chanceOfGuide = 15;

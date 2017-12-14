@@ -197,6 +197,11 @@ class Map implements IMap, Serializable
         return roomList;
     }
 
+    /**
+     * Counter for entered rooms
+     *
+     * @return int
+     */
     @Override
     public int numberOfEnteredRooms()
     {
@@ -211,6 +216,12 @@ class Map implements IMap, Serializable
         return numberOfRoomsEntered;
     }
 
+    /**
+     * Checks if room is locked.
+     *
+     * @param checkPoint
+     * @return boolean
+     */
     @Override
     public boolean isRoomLocked(Point checkPoint)
     {
@@ -226,6 +237,10 @@ class Map implements IMap, Serializable
     }
 
     // TODO Move method and send map & roomList with it
+
+    /**
+     * Makes the merchant move
+     */
     @Override
     public void merchantMove()
     {
@@ -260,6 +275,9 @@ class Map implements IMap, Serializable
         }
     }
 
+    /**
+     * Makes the thiefMove
+     */
     @Override
     public void thiefMove()
     {
@@ -293,7 +311,11 @@ class Map implements IMap, Serializable
             thief.move(exitList, this);
         }
     }
-    
+
+    /**
+     * Checks if all rooms has been entered.
+     * @return boolean
+     */
     @Override
     public boolean hasAllRoomBeenEntered()
     {
