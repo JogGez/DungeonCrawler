@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * The type guide
  *
- * @author Gruppen, minus Morten Bindslev
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 // Guide class, the old helper that doesn't move
 class Guide implements RoomContent, IGuide, Serializable
@@ -17,6 +17,9 @@ class Guide implements RoomContent, IGuide, Serializable
 
     /**
      * Constructor for guide
+     * @param name
+     * @param description
+     * @param ascii
      */
     public Guide(String name, String description, String ascii)
     {

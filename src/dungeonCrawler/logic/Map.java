@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 /**
  * The Map class.
  *
- * @author
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class Map implements IMap, Serializable
 {
@@ -27,14 +27,10 @@ class Map implements IMap, Serializable
     private int numberOfContent;
     private Player player;
 
-
     /**
-     * Contructor Map
+     * Constructor for Map
+     * @param player
      */
-    public  Map()
-    {
-
-    }
     public Map(Player player)
     {
         // Initializing (gives value to) private fields (constructor parameter)
@@ -166,7 +162,7 @@ class Map implements IMap, Serializable
 
     /**
      * Getter Method
-     * Returens the setter methods value.
+     * Returns the setter methods value.
      *
      * @param roomLocation
      * @return boolean
@@ -274,7 +270,7 @@ class Map implements IMap, Serializable
     }
 
     /**
-     * Makes the thiefMove
+     * Makes the thief Move, uses method from thief move
      */
     @Override
     public void thiefMove()
@@ -364,7 +360,7 @@ class Map implements IMap, Serializable
 
     /**
      * List of thieves
-     * @return Arraylist
+     * @return ArrayList
      */
     public ArrayList<? extends IThief> thiefArrayList()
     {

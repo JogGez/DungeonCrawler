@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- *
+ * Static potions
  * @author Morten Bindslev
  */
 enum PotionEnum implements Serializable
@@ -22,16 +22,25 @@ enum PotionEnum implements Serializable
 
     private final Potion potion;
 
+
     PotionEnum(Potion potion)
     {
         this.potion = potion;
     }
 
+    /**
+     * Getter method to get a potion from enum
+     * @return
+     */
     public Potion getPotion()
     {
         return new Potion(potion.getName(), potion.getDescription(), potion.getAscii(), potion.getHealthRecovery(), potion.getTimeRecovery());
     }
 
+    /**
+     * Getter method to get random potion from enum
+     * @return
+     */
     public static Potion getRandomPotion()
     {
         Potion potionValues = values()[new Random().nextInt(values().length)].potion;

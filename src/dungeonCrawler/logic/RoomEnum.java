@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * 
- * @author 
+ * Static room names/descriptions
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 enum RoomEnum implements Serializable
 {
@@ -30,7 +30,11 @@ enum RoomEnum implements Serializable
         this.name = name;
         this.description = description;
     }
-     
+
+    /**
+     * Getter method for random room string in enum
+     * @return String Array
+     */
     public static String[] getRandomString()
     {
         //Values all the values in the enum. 

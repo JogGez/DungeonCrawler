@@ -9,17 +9,17 @@ import java.io.Serializable;
 
 /**
  * DataFacade Class
- * This Class provides the methods, that the logic package requires from the data packages
+ * This Class provides the methods, that the logic package requires from the data package
  * Implements IDataFacade, Serializable
  *
- * @author Gruppen, minus Morten Bindslev
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 public class DataFacade implements IDataFacade, Serializable
 {
 
     /**
-     *
-     * @return
+     * Getter method for HighScore
+     * @return IHighScore
      */
     @Override
     public IHighScore getHighScore()
@@ -29,21 +29,25 @@ public class DataFacade implements IDataFacade, Serializable
         return score;
     }
 
+    /**
+     * Method for HighScore to load game
+     * @param gameStateDTO
+     * @param filename
+     * @return GameStateDTO
+     */
     public GameStateDTO load(GameStateDTO gameStateDTO, String filename)
     {
         gameStateDTO = GameHandler.loadGame(gameStateDTO,filename);
         return gameStateDTO;
     }
 
+    /**
+     * Method for HighScore to save game
+     * @param gameStateDTO
+     * @param filename
+     */
     public void save(GameStateDTO gameStateDTO, String filename)
     {
         GameHandler.saveGame(gameStateDTO,filename);
     }
-
-
-
-
-
-
-  
 }

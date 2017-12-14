@@ -12,7 +12,7 @@ public class CommandWords
     private LinkedHashMap<String, CommandWord> validCommands;
 
     /**
-     * Instantiates a new Command words.
+     * Constructor for CommandWords.
      */
 // Constructor that initiates the valid commands HashMap and fills it with all the commands from the CommandWord enum
     public CommandWords()
@@ -33,9 +33,8 @@ public class CommandWords
 
     /**
      * Gets command word.
-     *
      * @param commandWord the command word
-     * @return the command word
+     * @return CommandWord
      */
 // Method that checks if a given String command is valid and the returns the actual CommandWord object
     public CommandWord getCommandWord(String commandWord)
@@ -53,9 +52,8 @@ public class CommandWords
 
     /**
      * Is command boolean.
-     *
      * @param aString the a string
-     * @return the boolean
+     * @return boolean
      */
 // Method that checks if a given String command is valid and then returns a boolean
     public boolean isCommand(String aString)

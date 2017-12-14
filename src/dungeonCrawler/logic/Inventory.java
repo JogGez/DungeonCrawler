@@ -11,14 +11,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * 
- * @author Gruppen, mins Morten Bindslev
+ * Inventory for items
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class Inventory implements IInventory, Serializable
 {
     Item[] items;
 
     /**
+     * Constructor for inventory
      * @param size
      */
     public Inventory(int size)
@@ -26,6 +27,9 @@ class Inventory implements IInventory, Serializable
         this.items = new Item[size];
     }
 
+    /**
+     * Method to add a slot to the inventory array
+     */
     @Override
     public void addOneSlot()
     {
@@ -33,10 +37,10 @@ class Inventory implements IInventory, Serializable
     }
 
     /**
+     * Getter method for item
      * @param index
-     * @return
+     * @return IItem
      */
-
     @Override
     public IItem getItem(int index)
     {
@@ -44,10 +48,10 @@ class Inventory implements IInventory, Serializable
     }
 
     /**
+     * Getter method for index for item slot
      * @param item
-     * @return
+     * @return int
      */
-
     @Override
     public int getItemIndex(IItem item)
     {
@@ -55,13 +59,13 @@ class Inventory implements IInventory, Serializable
     }
 
     /**
+     * Method for removing item on index number
      * @param index
      */
     @Override
     public void removeItem(int index)
     {
         items[index] = null;
-
     }
 
     /**
@@ -116,6 +120,9 @@ class Inventory implements IInventory, Serializable
     }
 
     @Override
+    /**
+     * Method for adding items to the array
+     */
     public void addItem(IItem item, int inventoryIndex)
     {
         items[inventoryIndex] = (Item) item;

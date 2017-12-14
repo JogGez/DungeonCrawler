@@ -3,6 +3,10 @@ package dungeonCrawler.logic;
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ * Static monsters
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
+ */
 enum MonsterEnum implements Serializable
 {
     SPIDER  (new Monster("Shelob", "Web crawler that will suck your body dry.", GameTextASCII.getSpider(), 100, 5)),
@@ -39,11 +43,19 @@ enum MonsterEnum implements Serializable
         this.monster = monster;
     }
 
+    /**
+     * Getter method to get monster from enum
+     * @return Monster
+     */
     public Monster getMonster()
     {
         return new Monster(monster.getName(), monster.getDescription(), monster.getAscii(), monster.getHealth(), monster.getPower());
     }
 
+    /**
+     * Getter method to get random monster from enum
+     * @return Monster
+     */
     public static Monster getRandomMonster()
     {
         // Picks a random monster from our Enum.
@@ -53,6 +65,10 @@ enum MonsterEnum implements Serializable
         return new Monster(monsterValues.getName(), monsterValues.getDescription(), monsterValues.getAscii(), monsterValues.getHealth(), monsterValues.getPower());
     }
 
+    /**
+     * Getter method to get monster Lucifer from enum
+     * @return Monster
+     */
     public static Monster getLucifer()
     {
         // And here we return a new instance of our merchant from our Enumlist. Where it uses the reference MonsterEnum monsterValues

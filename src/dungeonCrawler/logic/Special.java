@@ -8,8 +8,13 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-class Special extends Item  implements ISpecial, Serializable
+/**
+ * Inherit from the Item class
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
+ */
+class Special extends Item implements ISpecial, Serializable
 {
+    // Used for switch cases
     public enum Type
     {
         TELEPORT, BOMB, AWESOME_NAME, VISION, EXTRA_SLOT
@@ -17,6 +22,13 @@ class Special extends Item  implements ISpecial, Serializable
 
     private Type type;
 
+    /**
+     * Constructor for Special
+     * @param name
+     * @param description
+     * @param ascii
+     * @param type
+     */
     public Special(String name, String description, String ascii, Type type)
     {
         this.setName(name);
@@ -25,6 +37,10 @@ class Special extends Item  implements ISpecial, Serializable
         this.type = type;
     }
 
+    /**
+     * Method to use special item
+     * @param player
+     */
     @Override
     public void use(IPlayer player)
     {
@@ -39,6 +55,11 @@ class Special extends Item  implements ISpecial, Serializable
         }
     }
 
+    /**
+     * Method to use special item
+     * @param player
+     * @param map
+     */
     @Override
     public void use(IPlayer player, IMap map)
     {
@@ -63,6 +84,12 @@ class Special extends Item  implements ISpecial, Serializable
         }
     }
 
+    /**
+     * Method to use special item
+     * @param player
+     * @param map
+     * @param point
+     */
     @Override
     public void use(IPlayer player, IMap map, Point point)
     {
@@ -74,6 +101,10 @@ class Special extends Item  implements ISpecial, Serializable
         }
     }
 
+    /**
+     * Getter method for special type
+     * @return String
+     */
     @Override
     public String getTypeString()
     {

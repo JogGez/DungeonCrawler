@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 /**
  * The type Room.
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 // Class that hold the information about a room
 class Room implements IRoom, Serializable
@@ -29,9 +30,8 @@ class Room implements IRoom, Serializable
     private ArrayList<RoomContent> roomContent;
 
     /**
-     * Instantiates a new Room.
+     * Constructor for Room
      */
-
     //Constructor
     //Parameters: point (coordinate) and numberOfContent.
     //Sets: location, name & description, hasBeenEntered, numberOfContent.
@@ -45,7 +45,7 @@ class Room implements IRoom, Serializable
         this.isLocked = isLocked;
         this.roomContent = new ArrayList<>();
 
-        // TODO
+        
         // Loop that generates a random number (0-100) and adds a (nothing here//monster//chest//helper) according to the number generated.
         // Loop runs as long theres available spaces in the room.
         // Every run of the loop fills a roomslot.
@@ -78,16 +78,28 @@ class Room implements IRoom, Serializable
         }
     }
 
+    /**
+     * Setter method for locked Room
+     * @param locked
+     */
     public void setLocked(boolean locked)
     {
         isLocked = locked;
     }
 
+    /**
+     * Method to lock room
+     * @return boolean
+     */
     public boolean isLocked()
     {
         return isLocked;
     }
 
+    /**
+     * Getter method for number of room content
+     * @return int
+     */
     @Override
     public int getNumberOfContent()
     {
@@ -95,6 +107,10 @@ class Room implements IRoom, Serializable
     }
 
     // Getter of HasBeenEntered
+    /**
+     * Getter method for room entered
+     * @return boolean
+     */
     @Override
     public boolean getHasBeenEntered()
     {
@@ -102,18 +118,31 @@ class Room implements IRoom, Serializable
     }
 
     // Setter of HasBeenEntered
+
+    /**
+     * Setter method for room has been entered
+     * @param hasBeenEntered
+     */
     @Override
     public void setHasBeenEntered(boolean hasBeenEntered)
     {
         this.hasBeenEntered = hasBeenEntered;
     }
 
+    /**
+     * Getter method for room name
+     * @return String
+     */
     @Override
     public String getName()
     {
         return name;
     }
 
+    /**
+     * Getter method for room description
+     * @return String
+     */
     @Override
     public String getDescription()
     {
@@ -122,9 +151,8 @@ class Room implements IRoom, Serializable
 
     /**
      * Method for finding a value in roomContent array, and returning the value.
-     *
      * @param index
-     * @return
+     * @return IRoomContent
      */
     @Override
     public IRoomContent getContent(int index)
@@ -132,14 +160,17 @@ class Room implements IRoom, Serializable
         return roomContent.get(index);
     }
 
+    /**
+     * Getter method for room content array
+     * @return ArrayList
+     */
     public ArrayList<RoomContent> getContentArray()
     {
         return roomContent;
     }
 
     /**
-     * // Method for removing roomContent
-     *
+     * Method for removing room content in array
      * @param index
      */
     @Override
@@ -148,6 +179,11 @@ class Room implements IRoom, Serializable
         roomContent.set(index, null);
     }
 
+    /**
+     * Method to check room content
+     * @param index
+     * @return String
+     */
     public String checkRoomContent(int index)
     {
         if (getContent(index) instanceof Monster)
@@ -169,8 +205,7 @@ class Room implements IRoom, Serializable
     }
 
     /**
-     * // Getter of location.
-     *
+     * Getter method for room location.
      * @return Point
      */
     @Override

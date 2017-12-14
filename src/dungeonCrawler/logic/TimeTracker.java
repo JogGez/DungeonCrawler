@@ -12,23 +12,30 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
- * @author Computer
+ * The type TimeTracker
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class TimeTracker implements ITimeTracker, Serializable
 {
     private Date startTime;
     //Reference to the player in game, "the old maxtime value"
     private IPlayer player;
-    
-    
+
+    /**
+     * Constructor for TimeTracker
+     * @param startTime
+     * @param player
+     */
     public TimeTracker(Date startTime, IPlayer player)
     {
         this.player = player;        
         this.startTime = startTime;
-        
     }
-    
+
+    /**
+     * Method to calculate the remaining time for player
+     * @return int
+     */
     @Override
     public int calculateRemainingTime()
     {

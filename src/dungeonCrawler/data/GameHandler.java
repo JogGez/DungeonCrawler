@@ -1,19 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dungeonCrawler.data;
 
 
 import java.io.*;
 
 /**
+ * GameHandler Class
  *
- * @author Gruppen, minus Morten Bindslev
+ * This Class handles saving and loading the game using Serialization
+ *
+ * Implements Serializable
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class GameHandler implements Serializable
 {
+    /**
+     * Method for game handler to save current Game state
+     * @param gameStateDTO
+     * @param fileName
+     */
     public static void saveGame(GameStateDTO gameStateDTO, String fileName)
     {
         try
@@ -29,6 +33,12 @@ class GameHandler implements Serializable
         }
     }
 
+    /**
+     * Method for game handler to load an existing game
+     * @param gameStateDTO
+     * @param fileName
+     * @return GameStateDTO
+     */
     public static GameStateDTO loadGame(GameStateDTO gameStateDTO, String fileName)
     {
         try {
@@ -51,7 +61,4 @@ class GameHandler implements Serializable
 
         return gameStateDTO;
     }
-
-
-    
 }

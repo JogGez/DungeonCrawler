@@ -12,8 +12,7 @@ public class Command
     private String thirdWord;
 
     /**
-     * Instantiates a new Command.
-     *
+     * Constructor for Command
      * @param firstWord the command word
      * @param secondWord  the second word
      */
@@ -27,7 +26,6 @@ public class Command
 
     /**
      * Gets command word.
-     *
      * @return the command word
      */
     public CommandWord getCommandWord()
@@ -37,7 +35,6 @@ public class Command
 
     /**
      * Gets second word.
-     *
      * @return the second word
      */
     public String getSecondWord()
@@ -47,7 +44,6 @@ public class Command
 
     /**
      * Gets third word.
-     *
      * @return the third word
      */
     public String getThirdWord()
@@ -57,7 +53,6 @@ public class Command
 
     /**
      * Check if command is valid.
-     *
      * @return the boolean
      */
     public boolean isUnknown()
@@ -67,7 +62,6 @@ public class Command
 
     /**
      * Check if command has a second word.
-     *
      * @return the boolean
      */
     public boolean hasSecondWord()
@@ -77,7 +71,6 @@ public class Command
 
     /**
      * Check if command has a third word.
-     *
      * @return the boolean
      */
     public boolean hasThirdWord()

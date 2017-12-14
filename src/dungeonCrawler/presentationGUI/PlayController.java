@@ -260,7 +260,7 @@ public class PlayController implements Initializable
         labelName.setText("Name: " + player.getName());
         labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
         labelWeapon.setText("Weapon: " + ((IItem) player.getWeapon()).getName());
-        labelTime.setText("Time: " + String.valueOf(player.getTime()));
+        labelTime.setText("Time is under: " + String.valueOf(player.getTime())+" seconds");
 
         //checkRoom();
     }
@@ -510,7 +510,7 @@ public class PlayController implements Initializable
      */
     public void checkRoom()
     {
-        labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
+        labelTime.setText("Time is under: " + timeTracker.calculateRemainingTime()+" seconds");
 
         if (timeTracker.calculateRemainingTime() <= 0)
         {
@@ -1069,7 +1069,7 @@ public class PlayController implements Initializable
 
                 textAreaMain.appendText("\n" + gameText.getBattle(battle));
                 labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
-                labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
+                labelTime.setText("Time is under: " + timeTracker.calculateRemainingTime()+" seconds");
 
                 if (battle.getIsBattleOver())
                 {

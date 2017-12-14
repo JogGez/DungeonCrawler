@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * The type Monster.
  *
- * @author Computer
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 //Monster Class, inherit from IRoomContent because ???
 class Monster implements RoomContent, IMonster, Serializable
@@ -19,7 +19,7 @@ class Monster implements RoomContent, IMonster, Serializable
     private int power;
 
     /**
-     * 
+     * Constructor for Monster
      * @param name
      * @param description
      * @param ascii
@@ -36,9 +36,8 @@ class Monster implements RoomContent, IMonster, Serializable
     }
 
     /**
-     * Gets the name.
-     *
-     * @return the name
+     * Getter method for monster name
+     * @return String
      */
     @Override
     public String getName()
@@ -47,9 +46,8 @@ class Monster implements RoomContent, IMonster, Serializable
     }
 
     /**
-     * Sets name.
-     *
-     * @param name the name
+     * Setter method for monster name
+     * @param name
      */
     @Override
     public void setName(String name)
@@ -58,9 +56,8 @@ class Monster implements RoomContent, IMonster, Serializable
     }
 
     /**
-     * Gets health.
-     *
-     * @return the health
+     * Getter method for monster health
+     * @return int
      */
     @Override
     public int getHealth()
@@ -69,9 +66,8 @@ class Monster implements RoomContent, IMonster, Serializable
     }
 
     /**
-     * Sets health.
-     *
-     * @param health the health
+     * Setter method for monster health
+     * @param health
      */
     @Override
     public void setHealth(int health)
@@ -81,9 +77,8 @@ class Monster implements RoomContent, IMonster, Serializable
 
 
     /**
-     * Gets power.
-     *
-     * @return the power
+     * Getter Method for monster power
+     * @return int
      */
     @Override
     public int getPower()
@@ -92,9 +87,8 @@ class Monster implements RoomContent, IMonster, Serializable
     }
 
     /**
-     * Sets power.
-     *
-     * @param power the power
+     * Setter method for monster power
+     * @param power
      */
     @Override
     public void setPower(int power)
@@ -103,9 +97,8 @@ class Monster implements RoomContent, IMonster, Serializable
     }
 
     /**
-     * Gets description.
-     *
-     * @return the description
+     * Getter method for monster description
+     * @return String
      */
     @Override
     public String getDescription()
@@ -114,9 +107,8 @@ class Monster implements RoomContent, IMonster, Serializable
     }
 
     /**
-     * Sets description.
-     *
-     * @param description the description
+     * Setter method for mosnter
+     * @param description
      */
     @Override
     public void setDescription(String description)
@@ -125,7 +117,7 @@ class Monster implements RoomContent, IMonster, Serializable
     }
 
     /**
-     * Getter method for Ascii
+     * Getter method for ascii
      * @return String
      */
     @Override

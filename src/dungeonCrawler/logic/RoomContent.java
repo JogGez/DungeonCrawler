@@ -10,8 +10,8 @@ import dungeonCrawler.aqu.IRoomContent;
 import java.io.Serializable;
 
 /**
- *
- * @author Frederik
+ * Used for polymorphic
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 interface RoomContent extends IRoomContent, Serializable
 {

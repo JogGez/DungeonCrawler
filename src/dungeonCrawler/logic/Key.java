@@ -9,11 +9,17 @@ import dungeonCrawler.aqu.IKey;
 import java.io.Serializable;
 
 /**
- *
- * @author Linea Hoffmann
+ * Inherit from the Item class
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class Key extends Item implements IKey, Serializable
 {
+    /**
+     * Constructor for Key
+     * @param name
+     * @param description
+     * @param ascii
+     */
     public Key (String name, String description, String ascii)
     {
         this.setName(name);

@@ -11,11 +11,11 @@ import java.util.ArrayList;
 /**
  * The type Merchant.
  *
- * @author Jonathan & Linea
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 
 // Merchant class, the old helper that doesn't move
-class Merchant implements IRoomContent, IMerchant, Serializable
+class Merchant implements IMerchant, Serializable
 {
     private String name;
     private String description;
@@ -24,7 +24,7 @@ class Merchant implements IRoomContent, IMerchant, Serializable
     private Inventory inventory;
 
     /**
-     * Instantiates a new Merchant.
+     * Constructor for Merchant
      */
 
     public Merchant(String name, String description, String ascii)
@@ -40,6 +40,10 @@ class Merchant implements IRoomContent, IMerchant, Serializable
         inventory.addItem(PotionEnum.getRandomPotion(), 2);
     }
 
+    /**
+     * Getter method for merchants inventory
+     * @return IInventory
+     */
     @Override
     public IInventory getInventory()
     {
@@ -47,9 +51,8 @@ class Merchant implements IRoomContent, IMerchant, Serializable
     }
 
     /**
-     * Gets name.
-     *
-     * @return the name
+     * Getter method for merchants name
+     * @return String
      */
     @Override
     public String getName()
@@ -58,10 +61,8 @@ class Merchant implements IRoomContent, IMerchant, Serializable
     }
 
     /**
-     * To use merchants current location
-     * Method
-     *
-     * @return the current location
+     * Getter method for merchants location
+     * @return Point
      */
     @Override
     public Point getLocation()
@@ -69,6 +70,10 @@ class Merchant implements IRoomContent, IMerchant, Serializable
         return location;
     }
 
+    /**
+     * Method for merchant move
+     * @param exitList
+     */
     @Override
     public void move(ArrayList<String> exitList)
     {
@@ -94,6 +99,10 @@ class Merchant implements IRoomContent, IMerchant, Serializable
         }
     }
 
+    /**
+     * Method to set merchants position to a random place on the map
+     * @param mapSize
+     */
     @Override
     public void setRandomLocation(Point mapSize)
     {
@@ -104,9 +113,8 @@ class Merchant implements IRoomContent, IMerchant, Serializable
 
 
     /**
-     * Gets description.
-     *
-     * @return the description
+     * Getter method for merchants description
+     * @return String
      */
     @Override
     public String getDescription()
@@ -115,8 +123,7 @@ class Merchant implements IRoomContent, IMerchant, Serializable
     }
 
     /**
-     * gets GameTextASCII
-     *
+     * Getter method for merchants ascii
      * @return String
      */
     @Override

@@ -14,24 +14,40 @@ import java.util.*;
 //import javax.xml.transform.stream.*;
 
 /**
- * The type High score handler.
+ * HighScore Class
  *
- * @author Gruppen, minus Morten Bindslev
+ * implements IHighScore and Serializable
+ *
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 public class HighScore implements IHighScore, Serializable
 {
+    /**
+     * ScoreItem Next Class
+     * Inner Class of HighScore
+     * implements Comparable<ScoreItem>
+     */
     private class ScoreItem implements Comparable<ScoreItem>
     {
         String name;
         int score;
 
-
+        /**
+         * Constructor for ScoreItem
+         * @param name
+         * @param score
+         */
         public ScoreItem(String name, int score)
         {
             this.name = name;
             this.score = score;
         }
 
+        /**
+         * Method to compare context of text file
+         * @param o
+         * @return int
+         */
         @Override
         public int compareTo(ScoreItem o)
         {
@@ -41,12 +57,10 @@ public class HighScore implements IHighScore, Serializable
     }
     private String filename;
     private ArrayList<ScoreItem>highScore;
-
     private int maxNumberOfScores;
 
     /**
-     * Instantiates a new High score handler.
-     *
+     * Constructor for HighScore
      * @param filename the filename
      */
     public HighScore(String filename)
@@ -58,7 +72,7 @@ public class HighScore implements IHighScore, Serializable
     }
 
     /**
-     * Write text to file.
+     * Method to write text to file.
      */
     public void writeText()
     {
@@ -94,9 +108,7 @@ public class HighScore implements IHighScore, Serializable
 
 
     /**
-     * Read text from file into TreeMap.
-     *
-     * @return the tree map
+     * Method to read text to IDE
      */
     public void readText()
     {
@@ -108,7 +120,6 @@ public class HighScore implements IHighScore, Serializable
             {
                 String[] split = input.nextLine().split("\\s");
                 highScore.add(new ScoreItem(split[1],Integer.parseInt(split[0])));
-
             }
 
             //remember to close input for garbage collection
@@ -122,6 +133,11 @@ public class HighScore implements IHighScore, Serializable
         Collections.sort(highScore);
     }
 
+    /**
+     * Method for HighScore to add player score to text file
+     * @param player
+     */
+
     public void addHighScore(IPlayer player)
     {
         readText();
@@ -132,6 +148,10 @@ public class HighScore implements IHighScore, Serializable
         writeText();
     }
 
+    /**
+     * Getter method for HighScore Array
+     * @return String []
+     */
     public String[] getHighScoreArray()
     {
         String[] highScoreArray = new String[maxNumberOfScores];
@@ -148,8 +168,7 @@ public class HighScore implements IHighScore, Serializable
     }
 
     /**
-     * Check if file exists and is a file and not a folder.
-     *
+     * Method to check if file exists and is a file and not a folder.
      * @param filename String
      * @return boolean
      */
@@ -159,10 +178,9 @@ public class HighScore implements IHighScore, Serializable
     }
 
     /**
-     * Create the file
-     *
+     * Method to create the file
      * @param filename
-     * @return
+     * @return boolean
      */
     private boolean createFile(String filename)
     {
