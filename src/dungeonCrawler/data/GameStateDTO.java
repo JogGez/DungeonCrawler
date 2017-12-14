@@ -10,8 +10,12 @@ import dungeonCrawler.aqu.IPlayer;
 import java.io.Serializable;
 
 /**
+ * GameStateDTO Class
  *
- * @author Gruppen, minus Morten Bindslev
+ * This Class creates a Data Transfer Object of current gamestate
+ *
+ * Implements Serializable
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 public class GameStateDTO implements Serializable
 {

@@ -14,24 +14,38 @@ import java.util.*;
 //import javax.xml.transform.stream.*;
 
 /**
- * The type High score handler.
+ * HighScore Class
  *
- * @author Gruppen, minus Morten Bindslev
+ * implements IHighScore and Serializable
+ *
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 public class HighScore implements IHighScore, Serializable
 {
+    /**
+     * ScoreItem Class
+     * Inner Class of HighScore
+     * implements Comparable<ScoreItem>
+     */
     private class ScoreItem implements Comparable<ScoreItem>
     {
         String name;
         int score;
 
-
+        /**
+         * @param name
+         * @param score
+         */
         public ScoreItem(String name, int score)
         {
             this.name = name;
             this.score = score;
         }
 
+        /**
+         * @param o
+         * @return
+         */
         @Override
         public int compareTo(ScoreItem o)
         {
@@ -95,7 +109,6 @@ public class HighScore implements IHighScore, Serializable
 
     /**
      * Read text from file into TreeMap.
-     *
      * @return the tree map
      */
     public void readText()
@@ -108,7 +121,6 @@ public class HighScore implements IHighScore, Serializable
             {
                 String[] split = input.nextLine().split("\\s");
                 highScore.add(new ScoreItem(split[1],Integer.parseInt(split[0])));
-
             }
 
             //remember to close input for garbage collection
@@ -122,6 +134,11 @@ public class HighScore implements IHighScore, Serializable
         Collections.sort(highScore);
     }
 
+    /**
+     * Add highscore if the new score is higher than
+     * @param player
+     */
+
     public void addHighScore(IPlayer player)
     {
         readText();
@@ -132,6 +149,9 @@ public class HighScore implements IHighScore, Serializable
         writeText();
     }
 
+    /**
+     * @return String []
+     */
     public String[] getHighScoreArray()
     {
         String[] highScoreArray = new String[maxNumberOfScores];
@@ -162,7 +182,7 @@ public class HighScore implements IHighScore, Serializable
      * Create the file
      *
      * @param filename
-     * @return
+     * @return boolean
      */
     private boolean createFile(String filename)
     {
