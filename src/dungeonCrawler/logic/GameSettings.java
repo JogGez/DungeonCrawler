@@ -9,7 +9,7 @@ import java.awt.*;
 import java.io.Serializable;
 
 /**
- *
+ * Gamesettings, static variables for the game.
  * @author Gruppen, minus Morten Bindslev
  */
 class GameSettings implements Serializable

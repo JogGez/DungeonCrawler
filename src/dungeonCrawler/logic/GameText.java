@@ -12,11 +12,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
+ * Used for all Strings in the game
  * @author Gruppen, minus Morten Bindslev
  */
-
-
 public class GameText implements Serializable
 {
     Player player;
@@ -835,8 +833,8 @@ public class GameText implements Serializable
     }
 
     /**
-     * String
-     * @return
+     * String for no keys
+     * @return String
      */
     public String getRoomIsLockedNoKey()
     {
@@ -844,13 +842,19 @@ public class GameText implements Serializable
 
     }
 
+    /**
+     * String for have a key
+     * @return String
+     */
     public String getRoomIsLockedHaveKey()
     {
         return "Room is locked, but you have a key :)";
     }
 
-
-
+    /**
+     * String for Map
+     * @return String
+     */
     public String getMap()
     {
         ArrayList<String> mapList = new ArrayList<>();
@@ -1002,27 +1006,47 @@ public class GameText implements Serializable
         return output;
     }
 
+    /**
+     * String for finding merchant
+     * @return String
+     */
     public String getMerchant()
     {
         return "You found a merchant and he offers you a trade";
     }
 
+    /**
+     * String for finding thief
+     * @return String
+     */
     public String getThief()
     {
         return "You found a thief and for his crime you take his life";
     }
-    
+
+    /**
+     * String for Player name too long
+     * @return String
+     */
     public String getWrongPlayerNameLength()
     {
         return  "Name is too long, must be under 10 characters...";
     }
 
+    /**
+     * String for welcome back
+     * @return String
+     */
     public String getWelcomeBack()
     {
         return "Welcome back " + player.getName() + "\n" +
                 "Nice to have you back.";
     }
 
+    /**
+     * String for Separator line
+     * @return String
+     */
     public String getSeperator()
     {
         return "✪►----⇹-----✫-----⇹-----⇥ ╭∩╮ʕ•ᴥ•ʔ╭∩╮ ⇤-----⇹-----✫-----⇹-----◄✪";
@@ -1082,6 +1106,10 @@ public class GameText implements Serializable
                 ;
     }
 
+    /**
+     * String for a lot of symbols
+     * @return String
+     */
     public String getSymbols()
     {
         return  "㊀ ㊁ ㊂ ㊃ ㊄ ㊅ ㊆ ㊇ ㊈ ㊉ ㊊ ㊋ ㊌ ㊍ ㊎ ㊏ ㊐ ㊑ ㊒ ㊓ ㊔ " +
@@ -1149,6 +1177,11 @@ public class GameText implements Serializable
                 "椹– 畱 – 煵 – 田 – つ – 煵 – 엌 – 嫠 – 쯦 – 案 – 迎 – 是 – 從 – 事 – 網 – 頁 – 設 – 計 – 簡";
     }
 
+    /**
+     * String for printing file
+     * @param files
+     * @return String
+     */
     public String getFilesInFolder(File[] files)
     {
         String output = "";
@@ -1159,41 +1192,73 @@ public class GameText implements Serializable
         return output;
     }
 
+    /**
+     * String for invalid use of key
+     * @return String
+     */
     public String getUseKey()
     {
         return "You can't use a key here.";
     }
 
+    /**
+     * String for players name
+     * @return
+     */
     public String getPlayerName()
     {
         return "Name: " + player.getName();
     }
 
+    /**
+     * String for X coordinate
+     * @return String
+     */
     public String getTypeXCoordinate()
     {
         return type + " X Coordinate";
     }
 
+    /**
+     * String for Y coordinate
+     * @return String
+     */
     public String getTypeYCoordinate()
     {
         return type + " Y Coordinate";
     }
 
+    /**
+     * String for wrong coordinate inuput
+     * @return
+     */
     public String getWrongInputCoordinate()
     {
         return "Must only contain digits and be inside the range of the coordinate system.";
     }
 
+    /**
+     * String for teleporting to locked room
+     * @return String
+     */
     public String getTeleportToLockedRoomNoKey()
     {
         return "You teleported to a locked room and have no keys ;/ ... Teleport Wasted...";
     }
 
+    /**
+     * String for bomb use
+     * @return String
+     */
     public String getUseSpecialBomb()
     {
         return "BOOM ... Monsters health reduced by 50%";
     }
 
+    /**
+     * String for vision use
+     * @return String
+     */
     public String getVisionMap()
     {
         ArrayList<String> topLeft = new ArrayList<>();
@@ -1261,6 +1326,11 @@ public class GameText implements Serializable
         return null;
     }
 
+    /**
+     * String for room content
+     * @param room
+     * @return String
+     */
     private ArrayList<String> getContentFromRoom(Room room)
     {
         ArrayList<String> list = new ArrayList<>();
@@ -1276,16 +1346,30 @@ public class GameText implements Serializable
         return list;
     }
 
+    /**
+     * String for empty room
+     * @return
+     */
     public String getRoomIsEmpty()
     {
         return "Room is empty...";
     }
 
+    /**
+     * String for unlocking room
+     * @return String
+     */
     public String getRoomHasBeenUnlocked()
     {
         return "Room has been unlocked.";
     }
 
+    /**
+     * String for inventory slot
+     * @param index
+     * @param inventory
+     * @return String
+     */
     public String getInventorySlot(int index, IInventory inventory)
     {
         String inventoriesItem;
@@ -1312,11 +1396,19 @@ public class GameText implements Serializable
         return inventoriesItem;
     }
 
+    /**
+     * String for talking too much
+     * @return String
+     */
     public String getGuideLimit()
     {
         return "My daily limit of 10 answers has been reached. Please find another guide to keep talking...";
     }
 
+    /**
+     * String for using extra slot item
+     * @return String
+     */
     public String getUseSpecialExtraSlot()
     {
         return "You just go an extra inventory slot. Good on ya mate :)";

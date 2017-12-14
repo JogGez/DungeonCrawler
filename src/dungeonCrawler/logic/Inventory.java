@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * @author
+ * 
+ * @author Gruppen, mins Morten Bindslev
  */
 class Inventory implements IInventory, Serializable
 {
