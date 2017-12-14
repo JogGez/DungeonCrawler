@@ -23,7 +23,7 @@ import java.util.*;
 public class HighScore implements IHighScore, Serializable
 {
     /**
-     * ScoreItem Class
+     * ScoreItem Next Class
      * Inner Class of HighScore
      * implements Comparable<ScoreItem>
      */
@@ -33,6 +33,7 @@ public class HighScore implements IHighScore, Serializable
         int score;
 
         /**
+         * Constructor for ScoreItem
          * @param name
          * @param score
          */
@@ -43,8 +44,9 @@ public class HighScore implements IHighScore, Serializable
         }
 
         /**
+         * Method to compare context of text file
          * @param o
-         * @return
+         * @return int
          */
         @Override
         public int compareTo(ScoreItem o)
@@ -55,12 +57,10 @@ public class HighScore implements IHighScore, Serializable
     }
     private String filename;
     private ArrayList<ScoreItem>highScore;
-
     private int maxNumberOfScores;
 
     /**
-     * Instantiates a new High score handler.
-     *
+     * Constructor for HighScore
      * @param filename the filename
      */
     public HighScore(String filename)
@@ -72,7 +72,7 @@ public class HighScore implements IHighScore, Serializable
     }
 
     /**
-     * Write text to file.
+     * Method to write text to file.
      */
     public void writeText()
     {
@@ -108,8 +108,7 @@ public class HighScore implements IHighScore, Serializable
 
 
     /**
-     * Read text from file into TreeMap.
-     * @return the tree map
+     * Method to read text to IDE
      */
     public void readText()
     {
@@ -135,7 +134,7 @@ public class HighScore implements IHighScore, Serializable
     }
 
     /**
-     * Add highscore if the new score is higher than
+     * Method for HighScore to add player score to text file
      * @param player
      */
 
@@ -150,6 +149,7 @@ public class HighScore implements IHighScore, Serializable
     }
 
     /**
+     * Getter method for HighScore Array
      * @return String []
      */
     public String[] getHighScoreArray()
@@ -168,8 +168,7 @@ public class HighScore implements IHighScore, Serializable
     }
 
     /**
-     * Check if file exists and is a file and not a folder.
-     *
+     * Method to check if file exists and is a file and not a folder.
      * @param filename String
      * @return boolean
      */
@@ -179,8 +178,7 @@ public class HighScore implements IHighScore, Serializable
     }
 
     /**
-     * Create the file
-     *
+     * Method to create the file
      * @param filename
      * @return boolean
      */

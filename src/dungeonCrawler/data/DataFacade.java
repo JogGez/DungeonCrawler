@@ -18,7 +18,7 @@ public class DataFacade implements IDataFacade, Serializable
 {
 
     /**
-     *
+     * Getter method for HighScore
      * @return IHighScore
      */
     @Override
@@ -30,7 +30,7 @@ public class DataFacade implements IDataFacade, Serializable
     }
 
     /**
-     *
+     * Method for HighScore to load game
      * @param gameStateDTO
      * @param filename
      * @return GameStateDTO
@@ -42,7 +42,7 @@ public class DataFacade implements IDataFacade, Serializable
     }
 
     /**
-     *
+     * Method for HighScore to save game
      * @param gameStateDTO
      * @param filename
      */
@@ -50,11 +50,4 @@ public class DataFacade implements IDataFacade, Serializable
     {
         GameHandler.saveGame(gameStateDTO,filename);
     }
-
-
-
-
-
-
-  
 }

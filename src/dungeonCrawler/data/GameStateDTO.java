@@ -17,22 +17,32 @@ public class GameStateDTO implements Serializable
     private IPlayer player;
     private IMap map;
 
+    /**
+     * Constructor for GameStateDTO
+     * @param player
+     * @param map
+     */
     public GameStateDTO(IPlayer player, IMap map)
     {
         this.player = player;
         this.map = map;
     }
 
+    /**
+     * Getter method for GameStateDTO player
+     * @return IPlayer
+     */
     public IPlayer getPlayer()
     {
         return player;
     }
 
+    /**
+     * Getter method for GameStateDTO map
+     * @return IMap
+     */
     public IMap getMap()
     {
         return map;
     }
-    
-    
-    
 }

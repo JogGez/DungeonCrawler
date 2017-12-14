@@ -14,7 +14,7 @@ import java.io.*;
 class GameHandler implements Serializable
 {
     /**
-     * This method
+     * Method for game handler to save current Game state
      * @param gameStateDTO
      * @param fileName
      */
@@ -34,10 +34,10 @@ class GameHandler implements Serializable
     }
 
     /**
-     *
+     * Method for game handler to load an existing game
      * @param gameStateDTO
      * @param fileName
-     * @return
+     * @return GameStateDTO
      */
     public static GameStateDTO loadGame(GameStateDTO gameStateDTO, String fileName)
     {
@@ -61,7 +61,4 @@ class GameHandler implements Serializable
 
         return gameStateDTO;
     }
-
-
-    
 }
