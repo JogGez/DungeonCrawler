@@ -5,7 +5,7 @@ import java.util.Random;
 
 /**
  * Static guides
- * @author Gruppen, minus Morten Bindslev
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 enum GuideEnum implements Serializable
 {
@@ -22,11 +22,19 @@ enum GuideEnum implements Serializable
         this.guide = guide;
     }
 
+    /**
+     * Getter method for a guide in the enum.
+     * @return Guide
+     */
     public Guide getGuide()
     {
         return new Guide(guide.getName(), guide.getDescription(), guide.getAscii());
     }
 
+    /**
+     * Random getter method that returns a random guide from the enum.
+     * @return Guide
+     */
     public static Guide getRandomGuide()
     {
         // Creates a reference to the guide, g.

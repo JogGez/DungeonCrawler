@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * Inherit from the Item class
- * @author 
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class Potion extends Item implements IPotion, Serializable
 {
@@ -15,7 +15,7 @@ class Potion extends Item implements IPotion, Serializable
 
     
     /**
-     * 
+     * Constructor for Potion
      * @param name
      * @param description
      * @param ascii
@@ -33,7 +33,7 @@ class Potion extends Item implements IPotion, Serializable
     
 
     /**
-     * Getter method for HealthRecovery
+     * Getter method for potion HealthRecovery
      * @return int
      */
     @Override
@@ -41,7 +41,11 @@ class Potion extends Item implements IPotion, Serializable
     {
         return healthRecovery;
     }
-    
+
+    /**
+     * Getter method for potion TimeRecovery
+     * @return int
+     */
     @Override
     public int getTimeRecovery()
     {

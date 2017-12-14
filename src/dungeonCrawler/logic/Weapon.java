@@ -3,12 +3,23 @@ package dungeonCrawler.logic;
 import dungeonCrawler.aqu.IWeapon;
 import java.io.Serializable;
 
+/**
+ * Inherit from the Item class
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
+ */
 class Weapon extends Item implements IWeapon, Serializable
 {
     private int power;
     private int multiplier;
 
-
+    /**
+     * Constructor for Weapon
+     * @param name
+     * @param description
+     * @param ascii
+     * @param power
+     * @param multiplier
+     */
     public Weapon(String name, String description, String ascii, int power, int multiplier)
     {
         //Weapon inheriet from Item.
@@ -20,13 +31,20 @@ class Weapon extends Item implements IWeapon, Serializable
         this.multiplier = multiplier;
     }
 
-
+    /**
+     * Getter method for weapon power
+     * @return int
+     */
     @Override
     public int getPower()
     {
         return power;
     }
 
+    /**
+     * Getter method for weapon multiplier
+     * @return int
+     */
     @Override
     public int getMultiplier()
     {

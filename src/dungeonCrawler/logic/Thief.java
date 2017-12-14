@@ -10,6 +10,10 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * The type Thief
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
+ */
 class Thief implements IThief, Serializable
 {
     private String ascii;
@@ -20,31 +24,10 @@ class Thief implements IThief, Serializable
     private int currentJobCompletion;
 
 
-
-    @Override
-    public String getAscii()
-    {
-        return ascii;
-    }
-
-    @Override
-    public String getName()
-    {
-        return name;
-    }
-
-    @Override
-    public String getDescription()
-    {
-        return description;
-    }
-
-    @Override
-    public Point getLocation()
-    {
-        return location;
-    }
-
+    /**
+     * Constructor for Thief
+     * @param map
+     */
     public Thief(Map map)
     {
         this.name = "Thief";
@@ -53,6 +36,51 @@ class Thief implements IThief, Serializable
         this.location = getRandomLocation(map.getMapSize());
     }
 
+    /**
+     * Getter method for thief ascii
+     * @return String
+     */
+    @Override
+    public String getAscii()
+    {
+        return ascii;
+    }
+
+    /**
+     * Getter method for thief name
+     * @return String
+     */
+    @Override
+    public String getName()
+    {
+        return name;
+    }
+
+    /**
+     * Getter method for thief description
+     * @return String
+     */
+    @Override
+    public String getDescription()
+    {
+        return description;
+    }
+
+    /**
+     * Getter method for thief location
+     * @return Point
+     */
+    @Override
+    public Point getLocation()
+    {
+        return location;
+    }
+
+    /**
+     * Getter method for thief random location
+     * @param point
+     * @return Point
+     */
     public Point getRandomLocation(Point point)
     {
         int randomX = (int)(Math.random()*point.x);
@@ -61,6 +89,11 @@ class Thief implements IThief, Serializable
     }
 
 
+    /**
+     * Method for thief move
+     * @param exitList
+     * @param map
+     */
     public void move(ArrayList<String> exitList, Map map)
     {
         for (RoomContent roomContent : map.getRoom(this.location).getContentArray())

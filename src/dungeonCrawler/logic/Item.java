@@ -4,8 +4,8 @@ import dungeonCrawler.aqu.IItem;
 import java.io.Serializable;
 
 /**
- *
- * @author Linea Hoffmann
+ * Type item class
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 abstract class Item implements IItem, Serializable
 {
@@ -14,42 +14,70 @@ abstract class Item implements IItem, Serializable
     private String ascii;
 
 
+    /**
+     * Getter method for player name
+     * @return String
+     */
     @Override
     public String getName()
     {
         return name;
     }
 
+    /**
+     * Setter method for name
+     * @param name
+     */
     @Override
     public void setName(String name)
     {
         this.name = name;
     }
 
+    /**
+     * Getter method for description
+     * @return String
+     */
     @Override
     public String getDescription()
     {
         return description;
     }
 
+    /**
+     * Setter method for description
+     * @param description
+     */
     @Override
     public void setDescription(String description)
     {
         this.description = description;
     }
 
+    /**
+     * Getter method for ascii
+     * @return
+     */
     @Override
     public String getAscii()
     {
         return ascii;
     }
 
+    /**
+     * Setter method for ascii
+     * @param ascii
+     */
     @Override
     public void setAscii(String ascii)
     {
         this.ascii = ascii;
     }
-    
+
+    /**
+     * Getter method for a random item
+     * @return Item
+     */
     static Item getRandomItem()
     {
         int randomItem = (int)(Math.random()*100);

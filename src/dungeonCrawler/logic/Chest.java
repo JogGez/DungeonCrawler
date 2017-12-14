@@ -13,7 +13,7 @@ import java.io.Serializable;
 /**
  * The type Chest.
  *
- * @author Gruppen, minus Mortens Bindslev
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class Chest implements RoomContent, IChest, Serializable
 {

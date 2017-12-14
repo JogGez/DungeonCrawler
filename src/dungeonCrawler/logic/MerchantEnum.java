@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- *
- * @author Linea Hoffmann
+ * Static merchants
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 enum MerchantEnum implements Serializable
 {
@@ -22,11 +22,19 @@ enum MerchantEnum implements Serializable
         this.merchant = merchant;
     }
 
+    /**
+     * Getter method for a merchant in the enum
+     * @return Merchant
+     */
     public Merchant getMerchant()
     {
         return new Merchant(merchant.getName(), merchant.getDescription(), merchant.getAscii());
     }
 
+    /**
+     * Getter method to get a random merchant from the enum
+     * @return Merchant
+     */
     public static Merchant getRandomMerchant()
     {
         // Creates a reference to the merchant, g.

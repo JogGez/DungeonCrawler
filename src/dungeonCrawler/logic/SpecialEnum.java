@@ -3,6 +3,10 @@ package dungeonCrawler.logic;
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ * Static special items
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
+ */
 enum SpecialEnum implements Serializable
 {
     TELEPORT (new Special("Teleport","Teleport to anywhere on the map",GameTextASCII.getTeleporter(),Special.Type.TELEPORT)),
@@ -21,8 +25,8 @@ enum SpecialEnum implements Serializable
     }
 
     /**
-     *
-     * @return object
+     * Getter method for a special in enum
+     * @return Special
      */
     public Special getSpecial()
     {
@@ -30,8 +34,8 @@ enum SpecialEnum implements Serializable
     }
 
     /**
-     *
-     * @return random weapon
+     * Getter method for a random special in enum
+     * @return Special
      */
     public static Special getRandomSpecial()
     {

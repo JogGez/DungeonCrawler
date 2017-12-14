@@ -15,7 +15,7 @@ import java.io.Serializable;
 /**
  * The Player class
  *
- * @author Jonathan
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class Player implements IPlayer, Serializable
 {
@@ -35,7 +35,6 @@ class Player implements IPlayer, Serializable
 
      /**
      * Constructor for player
-     * 
      * @param name 
      */
     public Player(String name)
@@ -51,9 +50,8 @@ class Player implements IPlayer, Serializable
     }
     
     /**
-     * To use inventory
-     * Method
-     * @return inventory
+     * Getter method for players inventory
+     * @return IInventory
      */
     @Override
     public IInventory getInventory()
@@ -62,9 +60,8 @@ class Player implements IPlayer, Serializable
     }
     
     /**
-     * To use players current location
-     * Method
-     * @return the current location
+     * Getter method for players location
+     * @return Point
      */
     @Override
     public Point getLocation()
@@ -72,9 +69,8 @@ class Player implements IPlayer, Serializable
         return location;
     }
     /**
-     * To use players last location, further use for a back command
-     * Method
-     * @return the last location
+     * Getter method for player last location
+     * @return Point
      */
     @Override
     public Point getLastLocation()
@@ -83,8 +79,7 @@ class Player implements IPlayer, Serializable
     }
     
     /**
-     * Setter for location
-     * Method
+     * Setter  method for player location
      * @param location 
      */
     @Override
@@ -95,9 +90,8 @@ class Player implements IPlayer, Serializable
     }
 
     /**
-     * Gets name.
-     * Method
-     * @return the name
+     * Getter method for player name
+     * @return String
      */
     @Override
     public String getName()
@@ -106,9 +100,8 @@ class Player implements IPlayer, Serializable
     }
 
     /**
-     * Gets health.
-     * Method
-     * @return the health
+     * Getter method for player health
+     * @return int
      */
     @Override
     public int getHealth()
@@ -117,9 +110,8 @@ class Player implements IPlayer, Serializable
     }
 
     /**
-     * Sets health.
-     * Method
-     * @param health the health
+     * Setter method for player health
+     * @param health
      */
     @Override
     public void setHealth(int health)
@@ -128,9 +120,8 @@ class Player implements IPlayer, Serializable
     }
 
     /**
-     * Gets score.
-     *
-     * @return the score
+     * Getter method for player score
+     * @return int
      */
     @Override
     public int getScore()
@@ -138,6 +129,10 @@ class Player implements IPlayer, Serializable
         return score;
     }
 
+    /**
+     * Getter method for player weapon
+     * @return IWeapon
+     */
     @Override
     public IWeapon getWeapon()
     {
@@ -145,9 +140,8 @@ class Player implements IPlayer, Serializable
     }
 
     /**
-     * Sets score.
-     * Method
-     * @param score the score
+     * Setter method for player score
+     * @param score
      */
     @Override
     public void setScore(int score)
@@ -156,8 +150,7 @@ class Player implements IPlayer, Serializable
     }
 
     /**
-     * Sets current weapon
-     * Method
+     * Setter method for player weapon
      * @param weapon 
      */
     @Override
@@ -166,24 +159,40 @@ class Player implements IPlayer, Serializable
         this.weapon = (Weapon) weapon;
     }
 
+    /**
+     * Getter method for player time
+     * @return int
+     */
     @Override
     public int getTime()
     {
         return time;
     }
 
+    /**
+     * Setter method for player time
+     * @param time
+     */
     @Override
     public void setTime(int time) 
     {
         this.time = time;
     }
 
+    /**
+     * Getter method for player inventory
+     * @return int
+     */
     @Override
     public int getInventorySize()
     {
         return inventory.getSize();
     }
 
+    /**
+     * Setter method for player name
+     * @param name
+     */
     @Override
     public void setName(String name)
     {

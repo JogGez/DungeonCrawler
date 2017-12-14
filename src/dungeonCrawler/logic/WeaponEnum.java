@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- *
- * @author Linea Hoffmann
+ *  Static weapons
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 enum WeaponEnum implements Serializable
 {
@@ -19,19 +19,15 @@ enum WeaponEnum implements Serializable
     ;
     
     private final Weapon weapon;
-    
-    /**
-     * 
-     * @param weapon 
-     */
+
     WeaponEnum (Weapon weapon)
     {
         this.weapon = weapon;
     }
     
     /**
-     * 
-     * @return object
+     * Getter method for a weapon in enum
+     * @return Weapon
      */
     public Weapon getWeapon()
     {
@@ -39,8 +35,8 @@ enum WeaponEnum implements Serializable
     }
     
     /**
-     * 
-     * @return random weapon
+     * Getter method for a random weapon in enum
+     * @return Weapon
      */
     public static Weapon getRandomWeapon()
     {

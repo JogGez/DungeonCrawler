@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Battle class
  * The class where the methods for battles plays out.
  * Implements IBattle and Serializable. 
- * @author Gruppen, minus Morten Bindslev
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class Battle implements IBattle, Serializable
 {

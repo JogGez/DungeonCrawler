@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  * Used for all Strings in the game
- * @author Gruppen, minus Morten Bindslev
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 public class GameText implements Serializable
 {

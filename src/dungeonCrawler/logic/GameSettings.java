@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * Gamesettings, static variables for the game.
- * @author Gruppen, minus Morten Bindslev
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class GameSettings implements Serializable
 {

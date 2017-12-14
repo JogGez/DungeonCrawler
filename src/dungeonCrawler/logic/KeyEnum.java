@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- *
- * @author Linea Hoffmann
+ * Static keys
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 enum KeyEnum implements Serializable
 {
@@ -26,16 +26,23 @@ enum KeyEnum implements Serializable
         this.key = key;
     }
 
+    /**
+     * Getter method for a key in the enum
+     * @return Key
+     */
     public Key getKey()
     {
         return new Key(key.getName(), key.getDescription(), key.getAscii());
     }
 
+    /**
+     * Getter method for a random key in the enum
+     * @return Key
+     */
     public static Key getRandomKey()
     {
         Key keyValues = values()[new Random().nextInt(values().length)].key;
         return new Key(keyValues.getName(), keyValues.getDescription(), keyValues.getAscii());
-                
     }
     
     
