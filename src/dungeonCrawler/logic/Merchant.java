@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 
 // Merchant class, the old helper that doesn't move
-class Merchant implements IRoomContent, IMerchant, Serializable
+class Merchant implements IMerchant, Serializable
 {
     private String name;
     private String description;
