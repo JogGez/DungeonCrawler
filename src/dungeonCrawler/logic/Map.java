@@ -148,7 +148,7 @@ class Map implements IMap, Serializable
 
     /**
      * Setter method for Room Has Been Entered
- Controls the Arraylist roomlist, that was created from the Map.
+     * Controls the Arraylist roomlist, that was created from the Map.
      *
      * @param playerLocation
      */
@@ -197,6 +197,11 @@ class Map implements IMap, Serializable
         return roomList;
     }
 
+    /**
+     * Counter for entered rooms
+     *
+     * @return int
+     */
     @Override
     public int numberOfEnteredRooms()
     {
@@ -211,6 +216,12 @@ class Map implements IMap, Serializable
         return numberOfRoomsEntered;
     }
 
+    /**
+     * Checks if room is locked.
+     *
+     * @param checkPoint
+     * @return boolean
+     */
     @Override
     public boolean isRoomLocked(Point checkPoint)
     {
@@ -226,6 +237,10 @@ class Map implements IMap, Serializable
     }
 
     // TODO Move method and send map & roomList with it
+
+    /**
+     * Makes the merchant move
+     */
     @Override
     public void merchantMove()
     {
@@ -260,6 +275,9 @@ class Map implements IMap, Serializable
         }
     }
 
+    /**
+     * Makes the thiefMove
+     */
     @Override
     public void thiefMove()
     {
@@ -293,13 +311,22 @@ class Map implements IMap, Serializable
             thief.move(exitList, this);
         }
     }
-    
+
+    /**
+     * Checks if all rooms has been entered.
+     * @return boolean
+     */
     @Override
     public boolean hasAllRoomBeenEntered()
     {
         return numberOfEnteredRooms() == roomList.size();
     }
 
+    /**
+     * Looks at what object is in the room
+     * @param index
+     * @return String
+     */
     @Override
     public String checkRoomContent(int index)
     {
@@ -328,16 +355,28 @@ class Map implements IMap, Serializable
         return "";
     }
 
+    /**
+     * List of merchants
+     * @return ArrayList
+     */
     public ArrayList<? extends IMerchant> merchantArrayList()
     {
         return merchantList;
     }
 
+    /**
+     * List of thieves
+     * @return Arraylist
+     */
     public ArrayList<? extends IThief> thiefArrayList()
     {
         return thiefList;
     }
-    
+
+    /**
+     * Sets the boolean locked to false
+     * @param location
+     */
     public void unlockRoom(Point location)
     {
         for (Room room : roomList)
@@ -349,6 +388,10 @@ class Map implements IMap, Serializable
         }
     }
 
+    /**
+     * Getter method for merchant
+     * @return IMerchant
+     */
     @Override
     public IMerchant getMerchant()
     {
@@ -363,6 +406,10 @@ class Map implements IMap, Serializable
         return null;
     }
 
+    /**
+     * Getter method for the room the player is in
+     * @return Room
+     */
     @Override
     public Room getCurrentRoom()
     {
@@ -376,6 +423,10 @@ class Map implements IMap, Serializable
         return new Room(new Point(0, 0), 0, "Empty", "none", false);
     }
 
+    /**
+     * Checks if the room has a thief or not
+     * @return boolean
+     */
     @Override
     public boolean roomContainsThief()
     {
@@ -390,6 +441,10 @@ class Map implements IMap, Serializable
         return false;
     }
 
+    /**
+     * Checks if the room has a merchant or not
+     * @return boolean
+     */
     @Override
     public boolean roomContainsMerchant()
     {
@@ -404,6 +459,9 @@ class Map implements IMap, Serializable
         return false;
     }
 
+    /**
+     * Removes the thief from the room
+     */
     @Override
     public void removeThief()
     {
@@ -411,10 +469,11 @@ class Map implements IMap, Serializable
         thiefList.removeIf(thief -> getCurrentRoom().getLocation().equals(thief.getLocation()));
     }
 
-   
-
-
-
+    /**
+     *
+     * @param point
+     * @return Room
+     */
     public Room getRoom(Point point)
     {
         for (Room room : roomList)
@@ -427,7 +486,10 @@ class Map implements IMap, Serializable
         return new Room(new Point(0, 0), 0, "Empty", "none", false);
     }
 
-
+    /**
+     * Gives you X and Y for the Map Size
+     * @return Point
+     */
     Point getMapSize()
     {
         return mapSize;

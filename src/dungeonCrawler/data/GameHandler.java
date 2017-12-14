@@ -10,7 +10,7 @@ import java.io.*;
 
 /**
  *
- * @author Computer
+ * @author Gruppen, minus Morten Bindslev
  */
 class GameHandler implements Serializable
 {

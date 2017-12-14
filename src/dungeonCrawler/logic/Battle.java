@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Battle class
  * The class where the methods for battles plays out.
  * Implements IBattle and Serializable. 
- * @author Linea Hoffmann
+ * @author Gruppen, minus Morten Bindslev
  */
 class Battle implements IBattle, Serializable
 {
@@ -46,13 +46,9 @@ class Battle implements IBattle, Serializable
 
     
     //Method start, returns a String
+
     /**
-     * Method start. 
-     * Contains two refrence variables int playerHit & int monsterHit 
-     * which gives us the player current weapon and generetes monsters hit.
-     * The if statement checks if the player health is = 0 is true and then returns a string. 
-     * else it checks the monsters health if that is = 0 is true and returns a string.
-     * if none of the above is true the method will return a string. 
+     * Starts a battle, sets boolean IsBattleOver when health reaches 0 for either player/monster
      * @return String
      */
     @Override
