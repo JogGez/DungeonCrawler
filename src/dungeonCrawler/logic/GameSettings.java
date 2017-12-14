@@ -9,8 +9,8 @@ import java.awt.*;
 import java.io.Serializable;
 
 /**
- *
- * @author Computer
+ * Gamesettings, static variables for the game.
+ * @author Gruppen, minus Morten Bindslev
  */
 class GameSettings implements Serializable
 {
@@ -43,11 +43,17 @@ class GameSettings implements Serializable
 
     // Private constructor to maintain static and to prevent instantiating
 
+    /**
+     * Private constructor
+     */
     private GameSettings()
     {
 
     }
 
+    /**
+     * Sets GameSettings fields to a variable
+     */
     public static void setEasyDifficulty()
     {
        mapSize = new Point (3,4);
@@ -74,6 +80,9 @@ class GameSettings implements Serializable
        scoreMulitplier = 1;
     }
 
+    /**
+     * Sets GameSettings fields to a variable
+     */
     public static void setNormalDifficulty()
     {
         mapSize = new Point (4,5);
@@ -101,6 +110,9 @@ class GameSettings implements Serializable
     }
 
 
+    /**
+     * Sets GameSettings fields to a variable
+     */
     public static void setHardDifficulty()
     {
         mapSize = new Point (5,6);
@@ -126,98 +138,179 @@ class GameSettings implements Serializable
 
         scoreMulitplier = 3;
     }
+
+    /**
+     * Getter method for chance of a key
+     * @return int
+     */
     static int getChanceOfKey()
     {
         return chanceOfKey;
     }
 
+    /**
+     * Getter method for difficulty level
+     * @return int
+     */
     static int getDifficultyLevel(){return scoreMulitplier;}
 
+    /**
+     * Getter method for how many rounds it takes the thief to steal a chest
+     * @return int
+     */
     static int getThiefPickingRounds()
     {
         return thiefPickingRounds;
     }
 
+    /**
+     * Getter method for chance of a special item
+     * @return int
+     */
     static int getChanceOfSpecial()
     {
         return chanceOfSpecial;
     }
 
+    /**
+     * Getter method for chance of a monster
+     * @return int
+     */
     static int getChanceOfMonster()
     {
         return chanceOfMonster;
     }
 
+    /**
+     * Getter method for chance of a chest
+     * @return int
+     */
     static int getChanceOfChest()
     {
         return chanceOfChest;
     }
 
+    /**
+     * Getter method for chance of a guide
+     * @return int
+     */
     static int getChanceOfGuide()
     {
         return chanceOfGuide;
     }
 
+    /**
+     * Getter method for chance of a weapon
+     * @return int
+     */
     static int getChanceOfWeapon()
     {
         return chanceOfWeapon;
     }
 
+    /**
+     * Getter method for chance of a health potion
+     * @return int
+     */
     static int getChanceOfHealthPotion()
     {
         return chanceOfHealthPotion;
     }
 
+    /**
+     * Getter method for chance of a time potion
+     * @return int
+     */
     static int getChanceOfTimePotion()
     {
         return chanceOfTimePotion;
     }
 
+    /**
+     * Getter method for number of locked rooms
+     * @return int
+     */
     static int getLockedRooms()
     {
         return lockedRooms;
     }
 
+    /**
+     * Getter method for map size. X * Y
+     * @return Point
+     */
     static Point getMapSize()
     {
         return mapSize;
     }
 
+    /**
+     * Getter method for amount of content a room can contain
+     * @return int
+     */
     static int getRoomContents()
     {
         return roomContents;
     }
 
+    /**
+     * Getter method for players start health
+     * @return int
+     */
     static int getPlayerHealth()
     {
         return playerHealth;
     }
 
+    /**
+     * Getter method for how many slots the inventory have
+     * @return int
+     */
     static int getInventorySize()
     {
         return inventorySize;
     }
 
+    /**
+     * Getter method for the start time of the game
+     * @return int
+     */
     static int getPlayerTime()
     {
         return playerTime;
     }
 
+    /**
+     * Getter method for the players default attack value
+     * @return int
+     */
     static int getPlayerPower()
     {
         return playerPower;
     }
 
+    /**
+     * Getter method for how many merchants there is in the game
+     * @return int
+     */
     static int getNumberOfMerchants()
     {
         return numberOfMerchants;
     }
 
+    /**
+     * Getter method for how many thieves there is in the game
+     * @return int
+     */
     static int getNumberOfThieves()
     {
         return numberOfThieves;
     }
 
+    /**
+     * Getter method for how many rounds it takes the thief to steal a chest
+     * @return int
+     */
     static int getThiftPickingRounds()
     {
         return thiefPickingRounds;

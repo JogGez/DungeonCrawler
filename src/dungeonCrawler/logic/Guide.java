@@ -4,9 +4,9 @@ import dungeonCrawler.aqu.IGuide;
 import java.io.Serializable;
 
 /**
- * The type Merchant.
+ * The type guide
  *
- * @author Jonathan & Linea
+ * @author Gruppen, minus Morten Bindslev
  */
 // Guide class, the old helper that doesn't move
 class Guide implements RoomContent, IGuide, Serializable
@@ -16,7 +16,7 @@ class Guide implements RoomContent, IGuide, Serializable
     private String ascii;
 
     /**
-     * Instantiates a new Guide.
+     * Constructor for guide
      */
     public Guide(String name, String description, String ascii)
     {
@@ -26,9 +26,9 @@ class Guide implements RoomContent, IGuide, Serializable
     }
 
     /**
-     * Gets name.
+     * Getter method for guide name.
      *
-     * @return the name
+     * @return String
      */
     @Override
     public String getName()
@@ -37,9 +37,9 @@ class Guide implements RoomContent, IGuide, Serializable
     }
 
     /**
-     * Gets description.
+     * Getter method for description.
      *
-     * @return the description
+     * @return String
      */
     @Override
     public String getDescription()
@@ -48,7 +48,7 @@ class Guide implements RoomContent, IGuide, Serializable
     }
 
     /**
-     * gets GameTextASCII
+     * Getter method for GameTextASCII
      *
      * @return String
      */

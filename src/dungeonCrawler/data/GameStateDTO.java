@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dungeonCrawler.data;
 
 import dungeonCrawler.aqu.IMap;
@@ -10,8 +5,12 @@ import dungeonCrawler.aqu.IPlayer;
 import java.io.Serializable;
 
 /**
+ * GameStateDTO Class
  *
- * @author Computer
+ * This Class creates a Data Transfer Object of current gamestate
+ *
+ * Implements Serializable
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 public class GameStateDTO implements Serializable
 {

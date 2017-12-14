@@ -61,8 +61,10 @@ class Thief implements IThief, Serializable
     }
 
 
+
     public void move(ArrayList<String> exitList, Map map)
     {
+
         for (RoomContent roomContent : map.getRoom(this.location).getContentArray())
         {
             if (roomContent instanceof Chest && currentJob == null)
