@@ -57,6 +57,9 @@ public class MainMenuController implements Initializable
         fadeTransition.setCycleCount(1);
         fadeTransition.setInterpolator(Interpolator.LINEAR);
         fadeTransition.play();
+
+        logic = Game.getLogic();
+        lblTitle.setText(logic.getGameText().getAsciiTitle());
     }
 
     @FXML
@@ -102,12 +105,6 @@ public class MainMenuController implements Initializable
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
         Platform.exit();
-    }
-
-    public void injectLogic(ILogicFacade logicLayer)
-    {
-        logic = logicLayer;
-        lblTitle.setText(logic.getGameText().getAsciiTitle());
     }
 
 }

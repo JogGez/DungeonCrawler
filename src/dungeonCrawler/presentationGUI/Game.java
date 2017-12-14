@@ -49,9 +49,6 @@ public class Game extends Application
         root.setTop(menuBar);
         root.setCenter(menu);
 
-        MainMenuController controller = menuLoader.getController();
-        controller.injectLogic(logic);
-
         stage.getIcons().add(new Image("file:Swords.png"));
         stage.setTitle("Dungeon Crawler");
         stage.setMinWidth(1280);

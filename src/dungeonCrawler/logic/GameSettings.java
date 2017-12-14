@@ -45,10 +45,12 @@ class GameSettings implements Serializable
 
     private GameSettings()
     {
+
     }
+
     public static void setEasyDifficulty()
     {
-       mapSize = new Point (2,2);
+       mapSize = new Point (3,4);
        roomContents = 2;
        playerHealth = 1000;
        inventorySize = 5;
@@ -59,16 +61,15 @@ class GameSettings implements Serializable
        thiefPickingRounds = 3;
        lockedRooms = 0;
 
-       //Chance has to be a total of 100
-       chanceOfMonster = 40;
-       chanceOfChest = 40;
-       chanceOfGuide = 20;
+       chanceOfMonster = 0;
+       chanceOfChest = 100;
+       chanceOfGuide = 0;
 
-       chanceOfWeapon = 15;
-       chanceOfHealthPotion = 15;
-       chanceOfTimePotion = 15;
-       chanceOfKey = 15;
-       chanceOfSpecial = 40;
+       chanceOfWeapon = 0;
+       chanceOfHealthPotion = 0;
+       chanceOfTimePotion = 0;
+       chanceOfKey = 0;
+       chanceOfSpecial = 100;
 
        scoreMulitplier = 1;
     }
@@ -86,7 +87,6 @@ class GameSettings implements Serializable
         thiefPickingRounds = 3;
         lockedRooms = 4;
 
-        //Chance has to be a total of 100
         chanceOfMonster = 25;
         chanceOfChest = 50;
         chanceOfGuide = 15;
@@ -114,7 +114,6 @@ class GameSettings implements Serializable
         thiefPickingRounds = 2;
         lockedRooms = 6;
 
-        //Chance has to be a total of 100
         chanceOfMonster = 25;
         chanceOfChest = 50;
         chanceOfGuide = 15;

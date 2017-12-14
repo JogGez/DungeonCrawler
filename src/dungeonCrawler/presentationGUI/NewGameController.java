@@ -89,7 +89,8 @@ public class NewGameController implements Initializable
         dialog.setTitle("Player Name:");
         dialog.setHeaderText(null);
         dialog.setContentText("Name:");
-
+        dialog.setGraphic(null);
+        dialog.getDialogPane().setMinWidth(400);
 
         Optional<String> result = dialog.showAndWait();
 
