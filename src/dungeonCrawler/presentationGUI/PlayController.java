@@ -260,7 +260,7 @@ public class PlayController implements Initializable
         labelName.setText("Name: " + player.getName());
         labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
         labelWeapon.setText("Weapon: " + ((IItem) player.getWeapon()).getName());
-        labelTime.setText("Time: " + String.valueOf(player.getTime()));
+        labelTime.setText("Time is under: " + String.valueOf(player.getTime())+" seconds");
 
         //checkRoom();
     }
@@ -423,7 +423,7 @@ public class PlayController implements Initializable
             else
             {
                 //Prints "You entered new room."
-                textAreaMain.setText(gameText.getYouEnteredANewRoom(logic.getCurrentRoom()));
+                textAreaMain.setText(gameText.getYouEnteredANewRoom(map.getCurrentRoom()));
                 map.setRoomHasBeenEntered(player.getLocation());
             }
 
@@ -469,13 +469,13 @@ public class PlayController implements Initializable
             if (result.get().getText().matches("[0-9]+"))
             {
                 logic.useKey(Integer.parseInt(result.get().getText()) - 1);
-                logic.getCurrentRoom().setLocked(false);
+                map.getCurrentRoom().setLocked(false);
                 map.unlockRoom(location);
                 player.setLocation(location);
 
                 textAreaMain.setText(gameText.getRoomHasBeenUnlocked());
 
-                textAreaMain.setText(gameText.getYouEnteredANewRoom(logic.getCurrentRoom()));
+                textAreaMain.setText(gameText.getYouEnteredANewRoom(map.getCurrentRoom()));
 
                 map.setRoomHasBeenEntered(player.getLocation());
                 map.merchantMove();
@@ -510,7 +510,7 @@ public class PlayController implements Initializable
      */
     public void checkRoom()
     {
-        labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
+        labelTime.setText("Time is under: " + timeTracker.calculateRemainingTime()+" seconds");
 
         if (timeTracker.calculateRemainingTime() <= 0)
         {
@@ -694,7 +694,7 @@ public class PlayController implements Initializable
         {
             player.getInventory().addItem(((IChest) map.getCurrentRoom().getContent(ContentIndex)).getItem(), index);
             updateInventory();
-            logic.getCurrentRoom().removeContent(ContentIndex);
+            map.getCurrentRoom().removeContent(ContentIndex);
             disableButtons();
             btnContinue.setVisible(true);
         }
@@ -759,6 +759,8 @@ public class PlayController implements Initializable
         {
             if (((ISpecial) item).getTypeString().equals("teleport"))
             {
+                showImage("Resources\\images\\Warp.gif", 3);
+
                 Dialog<Pair<String, String>> dialog = new Dialog<>();
                 dialog.setTitle("Teleport");
                 dialog.setHeaderText("Type in an X and Y cordinate to teleport to.");
@@ -858,6 +860,7 @@ public class PlayController implements Initializable
                         }
                         else
                         {
+
                             player.getInventory().removeItem(player.getInventory().getItemIndex(item));
                             playerMove(point);
                         }
@@ -865,6 +868,7 @@ public class PlayController implements Initializable
             }
             else if (((ISpecial) item).getTypeString().equals("bomb"))
             {
+                showImage("Resources\\images\\Bomb2.gif", 2.3);
                 textAreaMain.setText(gameText.getUseSpecialBomb());
                 ((ISpecial) item).use(player, map);
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
@@ -877,6 +881,7 @@ public class PlayController implements Initializable
             }
             else if (((ISpecial) item).getTypeString().equals("vision"))
             {
+                showImage("Resources\\images\\Glasses.gif", 2.5);
                 //((ISpecial) item).use(player);
                 textAreaMain.setText(gameText.getVisionMap());
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
@@ -938,20 +943,23 @@ public class PlayController implements Initializable
      */
     private void showImage(String imagePath, double time)
     {
-        ImagePane.setOpacity(1);
-        ImagePane.setVisible(true);
-        ImagePlaceHolder.setImage(new Image(new File(imagePath).toURI().toString()));
-        imageTimeline = new Timeline();
-        imageTimeline.setCycleCount(2);
-        imageTimeline.setAutoReverse(true);
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(time), new KeyValue(ImagePlaceHolder.opacityProperty(), 1.0));
-        imageTimeline.getKeyFrames().add(keyFrame);
-        imageTimeline.setOnFinished(arg0 ->
-                               {
-                                   ImagePane.setVisible(false);
-                                   ImagePlaceHolder.setOpacity(0);
-                               });
-        imageTimeline.play();
+        if (!SettingsController.getSkibAnimation())
+        {
+            ImagePane.setOpacity(1);
+            ImagePane.setVisible(true);
+            ImagePlaceHolder.setImage(new Image(new File(imagePath).toURI().toString()));
+            imageTimeline = new Timeline();
+            imageTimeline.setCycleCount(2);
+            imageTimeline.setAutoReverse(true);
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(time), new KeyValue(ImagePlaceHolder.opacityProperty(), 1.0));
+            imageTimeline.getKeyFrames().add(keyFrame);
+            imageTimeline.setOnFinished(arg0 ->
+                                   {
+                                       ImagePane.setVisible(false);
+                                       ImagePlaceHolder.setOpacity(0);
+                                   });
+            imageTimeline.play();
+        }
     }
 
     /**
@@ -1061,14 +1069,14 @@ public class PlayController implements Initializable
 
                 textAreaMain.appendText("\n" + gameText.getBattle(battle));
                 labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
-                labelTime.setText("Time: " + timeTracker.calculateRemainingTime());
+                labelTime.setText("Time is under: " + timeTracker.calculateRemainingTime()+" seconds");
 
                 if (battle.getIsBattleOver())
                 {
                     playAudio("Resources\\sounds\\TheWilhelmScream.mp3",0,1);
 
                     battle = null;
-                    logic.getCurrentRoom().removeContent(ContentIndex);
+                    map.getCurrentRoom().removeContent(ContentIndex);
                     disableButtons();
                     btnContinue.setVisible(true);
                 }

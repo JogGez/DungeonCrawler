@@ -82,6 +82,11 @@
                   </Label>
                </children>
             </VBox>
+            <CheckBox fx:id="cbxSkipAnimation" mnemonicParsing="false" onAction="#handleSkipAnimation" text="Skip Animation" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Monospaced Regular" size="18.0" />
+               </font>
+            </CheckBox>
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

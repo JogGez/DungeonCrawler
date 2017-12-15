@@ -657,7 +657,7 @@ public class Game implements IGame, Serializable
             else
             {
                 //Prints "You entered new room."
-                printToConsole.print(gameText.getYouEnteredANewRoom(logic.getCurrentRoom()));
+                printToConsole.print(gameText.getYouEnteredANewRoom(map.getCurrentRoom()));
                 map.setRoomHasBeenEntered(player.getLocation());
             }
 
@@ -682,7 +682,7 @@ public class Game implements IGame, Serializable
             }
             String input = parser.getUserInput();
             int index = Integer.parseInt(input) -1;
-            logic.getCurrentRoom().setLocked(false);
+            map.getCurrentRoom().setLocked(false);
             map.unlockRoom(location);
 
             logic.useKey(index);
@@ -693,7 +693,7 @@ public class Game implements IGame, Serializable
             player.setLocation(location);
 
             //Prints "You entered new room."
-            printToConsole.print(gameText.getYouEnteredANewRoom(logic.getCurrentRoom()));
+            printToConsole.print(gameText.getYouEnteredANewRoom(map.getCurrentRoom()));
 
             map.setRoomHasBeenEntered(player.getLocation());
             map.merchantMove();
@@ -777,7 +777,7 @@ public class Game implements IGame, Serializable
                     {
                         startBattle(logic.doBattle(i));
 
-                        logic.getCurrentRoom().removeContent(i);
+                        map.getCurrentRoom().removeContent(i);
 
                         break;
                     }
@@ -809,7 +809,7 @@ public class Game implements IGame, Serializable
                         changeInventory(((IChest)map.getCurrentRoom().getContent(i)).getItem());
 
                         //This removes the chest
-                        logic.getCurrentRoom().removeContent(i);
+                        map.getCurrentRoom().removeContent(i);
 
                         break;
                     }
@@ -896,12 +896,12 @@ public class Game implements IGame, Serializable
 
     private void drinkPotion()
     {
-        if (logic.getNumberOfAvailablePotions() > 0)
+        if (player.getInventory().potionArrayList().size() > 0)
         {
             //Prints "Type number to use."
             printToConsole.print(gameText.getTypeSlotNumberToUse());
 
-            for (int j = 0; j < logic.getNumberOfAvailablePotions(); j++)
+            for (int j = 0; j < player.getInventory().potionArrayList().size(); j++)
             {
                 //Prints
                 printToConsole.print(gameText.getPotionRecovery(j));

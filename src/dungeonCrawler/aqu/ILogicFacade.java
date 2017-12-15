@@ -24,25 +24,15 @@ public interface ILogicFacade  extends Serializable
 
     IHighScore getHighScore();
 
-//    ArrayList<IMerchant> merchantList();
-
     GameText getGameText();
 
     void injectGameText();
-
-    IRoom getCurrentRoom();
-
-    void saveItemToInventory(int inventoryIndex, int contensIndex);
-
-    int getNumberOfAvailablePotions();
 
     void usePotion(int index);
 
     int getNumberOfAvailableKeys();
 
     void useKey(int index);
-
-    void useItem(int index);
 
     void setDifficultyLevel(int i);
 
