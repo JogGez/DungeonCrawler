@@ -67,15 +67,15 @@ class GameSettings implements Serializable
        thiefPickingRounds = 3;
        lockedRooms = 2;
 
-       chanceOfMonster = 50;
-       chanceOfChest = 30;
-       chanceOfGuide = 20;
+       chanceOfMonster = 0;
+       chanceOfChest = 100;
+       chanceOfGuide = 0;
 
-       chanceOfWeapon = 20;
-       chanceOfHealthPotion = 15;
-       chanceOfTimePotion = 15;
-       chanceOfKey = 10;
-       chanceOfSpecial = 40;
+       chanceOfWeapon = 0;
+       chanceOfHealthPotion = 0;
+       chanceOfTimePotion = 0;
+       chanceOfKey = 0;
+       chanceOfSpecial = 100;
 
        scoreMulitplier = 1;
     }

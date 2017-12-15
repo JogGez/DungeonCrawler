@@ -1,16 +1,18 @@
 .root{
     /*-fx-font-size: 13px;*/
     /*-fx-font-family: "Monospaced";*/
-    -fx-base: rgb(221, 221, 221);
+    -fx-base: rgb(220, 220, 220);
     -fx-background: rgb(240, 240, 240);
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
 
-.pane{
+
+
+.anchor {
     -fx-background-color: rgb(240, 240, 240);
 }
 
-.anchor {
+#ImagePane{
     -fx-background-color: rgb(240, 240, 240);
 }

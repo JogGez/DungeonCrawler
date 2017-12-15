@@ -138,42 +138,63 @@
                      <children>
                         <Label fx:id="labelName" focusTraversable="false" text="labelPlayerName" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Monospaced Bold" size="18.0" />
+                              <Font name="Monospaced Regular" size="18.0" />
                            </font>
                         </Label>
                         <Label fx:id="labelHealth" focusTraversable="false" text="labelPlayerHealth">
                            <font>
-                              <Font name="Monospaced Bold" size="18.0" />
+                              <Font name="Monospaced Regular" size="18.0" />
                            </font>
                         </Label>
                         <Label fx:id="labelWeapon" focusTraversable="false" text="labelPlayerWeapon">
                            <font>
-                              <Font name="Monospaced Bold" size="18.0" />
+                              <Font name="Monospaced Regular" size="18.0" />
                            </font>
                         </Label>
                      </children>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
                   </HBox>
                   <Label fx:id="labelTime" focusTraversable="false" text="labelTime" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
-                        <Font name="Monospaced Bold" size="18.0" />
+                        <Font name="Monospaced Regular" size="18.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="10.0" top="5.0" />
+                     </GridPane.margin>
                   </Label>
                   <Button fx:id="btnEnter" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startGame" text="ENTER (e)" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="Monospaced Regular" size="36.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </Button>
                   <Button fx:id="btnContinue" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleContinue" text="Continue (c)" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="Monospaced Regular" size="36.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
                   </Button>
                   <HBox fx:id="hboxInventory" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </HBox>
-                  <StackPane fx:id="ImagePane" opacity="0.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <StackPane fx:id="ImagePane" opacity="0.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>

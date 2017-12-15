@@ -8,10 +8,11 @@
     -fx-faint-focus-color: transparent;
 }
 
-.pane{
-    -fx-background-color: rgb(25, 25, 25);
-}
 
 .anchor {
     -fx-background-color: rgb(25, 25, 25);
+}
+
+#ImagePane{
+    -fx-background-color: rgb(75, 75, 75);
 }
