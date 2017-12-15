@@ -159,6 +159,12 @@ class Player implements IPlayer, Serializable
         this.weapon = (Weapon) weapon;
     }
 
+    @Override
+    public void setWeaponDefault()
+    {
+        this.weapon = new Weapon("Hands", "Puny hands, not good for fighting :(", "", GameSettings.getPlayerPower(), 0);
+    }
+
     /**
      * Getter method for player time
      * @return int

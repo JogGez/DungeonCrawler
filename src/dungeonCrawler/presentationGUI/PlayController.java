@@ -33,6 +33,7 @@ import java.awt.*;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -805,11 +806,18 @@ public class PlayController implements Initializable
      */
     private void addItem(int index)
     {
+        if(player.getInventory().getItem(index) == player.getWeapon())
+        {
+            player.setWeaponDefault();
+            labelWeapon.setText("Weapon: " + ((IItem) player.getWeapon()).getName());
+        }
+
         if (itemFrom.equals("chest"))
         {
             player.getInventory().addItem(((IChest) map.getCurrentRoom().getContent(ContentIndex)).getItem(), index);
             updateInventory();
             map.getCurrentRoom().removeContent(ContentIndex);
+
             disableButtons();
             btnContinue.setVisible(true);
         }

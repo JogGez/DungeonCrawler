@@ -27,6 +27,8 @@ public interface IPlayer extends Serializable
 
     void setWeapon(IWeapon weapon);
 
+    void setWeaponDefault();
+
     int getTime();
 
     void setTime(int time);
