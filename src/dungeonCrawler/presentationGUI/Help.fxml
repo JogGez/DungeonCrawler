@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.MainMenuController">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="5.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="90.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="5.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints percentHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="80.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="5.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Help" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Monospaced Regular" size="32.0" />
+               </font>
+            </Label>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <tabs>
+                  <Tab text="Story">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane prefHeight="506.0" prefWidth="922.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="2.5" />
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="95.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="2.5" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                    <RowConstraints percentHeight="90.0" vgrow="SOMETIMES" />
+                                    <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextArea prefHeight="200.0" prefWidth="200.0" text="The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                <Tab text="Mission">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane prefHeight="506.0" prefWidth="922.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="2.5" />
+                                  <ColumnConstraints hgrow="SOMETIMES" percentWidth="95.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" percentWidth="2.5" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                  <RowConstraints percentHeight="90.0" vgrow="SOMETIMES" />
+                                  <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <TextArea text="Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Controls">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane prefHeight="506.0" prefWidth="922.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="2.5" />
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="95.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="2.5" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                    <RowConstraints percentHeight="90.0" vgrow="SOMETIMES" />
+                                    <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextArea prefHeight="200.0" prefWidth="200.0" text="Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Interface">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane prefHeight="506.0" prefWidth="922.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="2.5" />
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="95.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="2.5" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                    <RowConstraints percentHeight="90.0" vgrow="SOMETIMES" />
+                                    <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <SplitPane dividerPositions="0.41189931350114417" prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                             <children>
+                                                <TextArea prefHeight="525.0" prefWidth="362.0" text="The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm.........................................................." />
+                                             </children>
+                                          </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="532.0">
+                                             <children>
+                                                <ImageView fitHeight="373.0" fitWidth="497.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+                                                   <image>
+                                                      <Image url="@Playskærm%20med%20hjælp.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </GridPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
