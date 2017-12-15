@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * Static keys
+ * Static keys for the game
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 enum KeyEnum implements Serializable

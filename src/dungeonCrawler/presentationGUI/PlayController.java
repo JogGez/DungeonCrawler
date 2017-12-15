@@ -1280,14 +1280,12 @@ public class PlayController implements Initializable
             if (player.getHealth() <= 0)
             {
                 gameOver();
-                return;
             }
             else
             {
                 textAreaMain.setText(gameText.getIsLuciferDead());
             }
             gameOver();
-            return;
         }
         else
         {

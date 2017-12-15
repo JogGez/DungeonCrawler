@@ -4,7 +4,10 @@ import dungeonCrawler.aqu.IItem;
 import java.io.Serializable;
 
 /**
- * Type item class
+ * Item abstract class
+ * Used as an abstract class to make, some objects have things incommon
+ * so we can store them all up.
+ * implements IItem Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 abstract class Item implements IItem, Serializable

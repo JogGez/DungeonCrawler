@@ -4,8 +4,9 @@ import dungeonCrawler.aqu.IGuide;
 import java.io.Serializable;
 
 /**
- * The type guide
- *
+ * Guide class
+ * Used to interact with player and gives tips
+ * implements RoomContent, IGuide, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 // Guide class, the old helper that doesn't move

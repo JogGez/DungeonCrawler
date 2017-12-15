@@ -5,8 +5,9 @@ import dungeonCrawler.aqu.IRoomContent;
 import java.io.Serializable;
 
 /**
- * The type Monster.
- *
+ * Monster class
+ * Hostile npc and do battle with player
+ * implements IMonster, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 //Monster Class, inherit from IRoomContent because ???

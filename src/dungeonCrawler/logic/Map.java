@@ -9,8 +9,9 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
- * The Map class.
- *
+ * Map class
+ * Used as the game world
+ * implements IMap, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class Map implements IMap, Serializable

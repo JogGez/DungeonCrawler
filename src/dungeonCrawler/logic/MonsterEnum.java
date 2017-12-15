@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * Static monsters
+ * Static monsters for the game
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 enum MonsterEnum implements Serializable
