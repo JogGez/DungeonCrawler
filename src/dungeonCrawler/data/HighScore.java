@@ -25,7 +25,7 @@ public class HighScore implements IHighScore, Serializable
     /**
      * ScoreItem Next Class
      * Inner Class of HighScore
-     * implements Comparable<ScoreItem>
+     * implements Comparable
      */
     private class ScoreItem implements Comparable<ScoreItem>
     {
