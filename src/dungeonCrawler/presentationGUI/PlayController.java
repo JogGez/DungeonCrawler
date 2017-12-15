@@ -433,6 +433,7 @@ public class PlayController implements Initializable
      */
     private void gameOver()
     {
+        btnContinue.setVisible(false);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("GAME OVER");
         alert.setHeaderText(null);
@@ -455,6 +456,8 @@ public class PlayController implements Initializable
         }
 
         alert.showAndWait();
+
+        lastBattle = false;
 
         Game.switchScene("MainMenu.fxml");
 
