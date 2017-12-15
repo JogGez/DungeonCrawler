@@ -721,7 +721,7 @@ public class GameText implements Serializable
 
     /**
      * String for encounter of the chest
-     * @return
+     * @return String
      */
     public String getThereIsAChest()
     {
@@ -824,7 +824,7 @@ public class GameText implements Serializable
 
     /**
      * String for Lucifer defeated
-     * @return
+     * @return String
      */
     public String getIsLuciferDead ()
     {
@@ -1348,7 +1348,7 @@ public class GameText implements Serializable
 
     /**
      * String for empty room
-     * @return
+     * @return String
      */
     public String getRoomIsEmpty()
     {
