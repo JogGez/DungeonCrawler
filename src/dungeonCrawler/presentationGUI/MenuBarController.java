@@ -134,4 +134,31 @@ public class MenuBarController implements Initializable
         logic = Game.getLogic();
         player = logic.getPlayer();
     }
+
+    @FXML
+    private void changeTheme(ActionEvent actionEvent)
+    {
+//        System.out.println(actionEvent.toString());
+//        System.out.println(((MenuItem)actionEvent.getSource()).getText());
+//        System.out.println(actionEvent.getSource().toString());
+        if (((MenuItem)actionEvent.getSource()).getText().contains("Default"))
+        {
+            Game.getScene().getStylesheets().clear();
+            Game.setUserAgentStylesheet(null);
+            Game.getScene().getStylesheets().add(getClass().getResource("default.css").toExternalForm());
+        }
+        else if (((MenuItem)actionEvent.getSource()).getText().contains("White"))
+        {
+            Game.getScene().getStylesheets().clear();
+            Game.setUserAgentStylesheet(null);
+            Game.getScene().getStylesheets().add(getClass().getResource("white.css").toExternalForm());
+        }
+        else if (((MenuItem)actionEvent.getSource()).getText().contains("Dark"))
+        {
+            Game.getScene().getStylesheets().clear();
+            Game.setUserAgentStylesheet(null);
+            Game.getScene().getStylesheets().add(getClass().getResource("dark.css").toExternalForm());
+        }
+
+    }
 }
