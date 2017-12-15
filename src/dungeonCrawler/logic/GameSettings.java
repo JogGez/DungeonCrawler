@@ -58,7 +58,7 @@ class GameSettings implements Serializable
     {
        mapSize = new Point (3,4);
        roomContents = 2;
-       playerHealth = 1000;
+       playerHealth = 100;
        inventorySize = 5;
        playerTime = 300;
        playerPower = 25;
@@ -67,8 +67,8 @@ class GameSettings implements Serializable
        thiefPickingRounds = 3;
        lockedRooms = 2;
 
-       chanceOfMonster = 0;
-       chanceOfChest = 100;
+       chanceOfMonster = 100;
+       chanceOfChest = 0;
        chanceOfGuide = 0;
 
        chanceOfWeapon = 0;
