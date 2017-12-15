@@ -68,6 +68,7 @@ class Battle implements IBattle, Serializable
         //If, else if that use the get.Health, from the calculation above
         if (player.getHealth() <= 0)
         {
+            player.setHealth(0);
             isBattleOver = true;// sets the value + (While loop in game, that would continue forever, if not set.)
             return "You have died...";
         }

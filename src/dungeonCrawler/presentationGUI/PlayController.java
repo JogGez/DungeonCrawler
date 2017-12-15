@@ -437,6 +437,7 @@ public class PlayController implements Initializable
         alert.setTitle("GAME OVER");
         alert.setHeaderText(null);
 
+
         player.setScore(timeTracker.calculateRemainingTime() * logic.getDifficultyLevel() + (player.getHealth() / 2));
         logic.getHighScore().addHighScore(player);
 

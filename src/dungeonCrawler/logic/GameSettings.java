@@ -56,16 +56,16 @@ class GameSettings implements Serializable
      */
     public static void setEasyDifficulty()
     {
-       mapSize = new Point (3,4);
+       mapSize = new Point (2,2);
        roomContents = 2;
        playerHealth = 1000;
        inventorySize = 5;
        playerTime = 300;
-       playerPower = 25;
-       numberOfMerchants = 2;
+       playerPower = 400;
+       numberOfMerchants = 0;
        numberOfThieves = 2;
        thiefPickingRounds = 3;
-       lockedRooms = 2;
+       lockedRooms = 0;
 
        chanceOfMonster = 50;
        chanceOfChest = 30;
@@ -87,7 +87,7 @@ class GameSettings implements Serializable
     {
         mapSize = new Point (4,5);
         roomContents = 2;
-        playerHealth = 500;
+        playerHealth = 50;
         inventorySize = 4;
         playerTime = 240;
         playerPower = 20;
@@ -117,7 +117,7 @@ class GameSettings implements Serializable
     {
         mapSize = new Point (5,6);
         roomContents = 3;
-        playerHealth = 300;
+        playerHealth = 100;
         inventorySize = 3;
         playerTime = 180;
         playerPower = 10;
