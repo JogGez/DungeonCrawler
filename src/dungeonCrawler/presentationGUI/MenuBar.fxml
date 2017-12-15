@@ -8,24 +8,26 @@
 
 <MenuBar xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.MenuBarController">
     <menus>
-        <Menu mnemonicParsing="false" text="Game">
+        <Menu fx:id="menuGame" mnemonicParsing="false" text="Game">
             <items>
-                <MenuItem fx:id="menuNewGame" mnemonicParsing="false" onAction="#switchToNewGame" text="New Game" />
-            <MenuItem fx:id="menuSaveGame" disable="true" mnemonicParsing="false" onAction="#switchToSaveGame" text="Save Game" />
-                <MenuItem fx:id="menuLoadGame" mnemonicParsing="false" onAction="#switchToLoadGame" text="Load Game" />
+                <MenuItem fx:id="menuItemNewGame" mnemonicParsing="false" onAction="#switchToNewGame" text="New Game" />
+            <MenuItem fx:id="menuItemSaveGame" disable="true" mnemonicParsing="false" onAction="#switchToSaveGame" text="Save Game" />
+                <MenuItem fx:id="menuItemLoadGame" mnemonicParsing="false" onAction="#switchToLoadGame" text="Load Game" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#exitGame" text="Exit" />
+            <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#exitGame" text="Exit" />
             </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Theme">
+        <Menu fx:id="menuTheme" mnemonicParsing="false" text="Theme">
          <items>
             <MenuItem fx:id="menuThemeDefault" mnemonicParsing="false" onAction="#changeTheme" text="Default" />
             <MenuItem fx:id="menuThemeWhite" mnemonicParsing="false" onAction="#changeTheme" text="White" />
             <MenuItem fx:id="menuThemeDarrk" mnemonicParsing="false" onAction="#changeTheme" text="Dark" />
          </items></Menu>
-      <Menu mnemonicParsing="false" text="Help">
+      <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
         <items>
-          <MenuItem mnemonicParsing="false" text="About" />
+            <MenuItem fx:id="menuItemHelp" mnemonicParsing="false" onAction="#openHelp" text="Help" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+          <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" text="About" />
         </items>
       </Menu>
     </menus>
