@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
@@ -18,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.HelpController">
+<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.HelpController">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -55,7 +50,10 @@
                                     <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" text="The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;The story goes blablablablaalblbaalbalbala&#10;..............................hmmmm......................................&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextArea prefHeight="200.0" prefWidth="200.0" text="Joyful summers and the loving atmosphere of familylife was once suddently brought to its knees....&#10;&#10;It happend one tormenting night. She was killed. He took the lifes of the younglings aswel...&#10;&#10;Revenge.... &#10;&#10;The only thing that kept me going.... &#10;&#10;Help me... &#10;&#10;Help me find him, and make him pay for what he did!" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="18.0" />
+                                       </font></TextArea>
                                  </children>
                               </GridPane>
                            </children>
@@ -78,7 +76,10 @@
                                   <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <TextArea text="Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your mission is to blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextArea text="Your mission is to defeat the Devil.&#10;&#10;1. Make your way through the dungeon.&#10;2. Explore all rooms to unlock the Devils lair.&#10;3. Defeat the Devil.&#10;&#10;Tips:&#10;Guide - May give advice for the player.&#10;Merchant - May trade with the player.&#10;Thief - Steals the chests around the map if not stopped." GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="18.0" />
+                                       </font></TextArea>
                                  </children>
                               </GridPane>
                            </children>
@@ -101,7 +102,10 @@
                                     <RowConstraints percentHeight="5.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" text="Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;Your controls are blalblabalalbablablab......&#10;..............................hmmmm......................................&#10;&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextArea prefHeight="200.0" prefWidth="200.0" text="Enter dungeon&#9;- e&#10;Continue&#9;- c&#10;Attack&#9;&#9;- a&#10;Open&#9;&#9;- o&#10;Talk&#9;&#9;- t&#10;Skip&#9;&#9;- s&#10;Flee&#9;&#9;- f&#10;Up&#9;&#9;- Up arrow&#10;Down&#9;&#9;- Down arrow&#10;Left&#9;&#9;- Left arrow&#10;Right&#9;&#9;- Right arrow&#10;Place in slot 1&#9;- 1&#10;Place in slot 2&#9;- 2&#10;Place in slot 3&#9;- 3&#10;Place in slot 4&#9;- 4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="18.0" />
+                                       </font></TextArea>
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -127,7 +131,10 @@
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                              <children>
-                                                <TextArea prefHeight="525.0" prefWidth="362.0" text="The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm..........................................................&#10;The interface looks like blalabalbalalablablala..&#10;.................hmmmm.........................................................." />
+                                                <TextArea editable="false" prefHeight="525.0" prefWidth="362.0" text="1) Player name, health and weapon&#10;2) Remaining time&#10;3) Game graphics and text&#10;4) Map&#10;5) Player inventory&#10;6) Action buttons&#10;&#10;Map legend:&#10;- Player (P)&#10;- Locked room (L)&#10;- Unexplored room (X)&#10;- Explored room (O)&#10;- Merchants (M)&#10;- Guides (G)&#10;- Thiefs (T)">
+                                                   <font>
+                                                      <Font name="Monospaced Regular" size="17.0" />
+                                                   </font></TextArea>
                                              </children>
                                           </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="532.0">
