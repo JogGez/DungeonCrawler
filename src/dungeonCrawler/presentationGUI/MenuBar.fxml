@@ -17,7 +17,12 @@
             <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#exitGame" text="Exit" />
             </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Theme" />
+        <Menu mnemonicParsing="false" text="Theme">
+         <items>
+            <MenuItem fx:id="menuThemeDefault" mnemonicParsing="false" onAction="#changeTheme" text="Default" />
+            <MenuItem fx:id="menuThemeWhite" mnemonicParsing="false" onAction="#changeTheme" text="White" />
+            <MenuItem fx:id="menuThemeDarrk" mnemonicParsing="false" onAction="#changeTheme" text="Dark" />
+         </items></Menu>
       <Menu mnemonicParsing="false" text="Help">
         <items>
           <MenuItem mnemonicParsing="false" text="About" />

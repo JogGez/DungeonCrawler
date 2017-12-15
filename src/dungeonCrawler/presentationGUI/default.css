@@ -1,31 +1,40 @@
 .root{
-    -fx-font-size: 13px;
-    -fx-font-family: "Consolas";
-    -fx-base: rgb(221, 221, 221);
-    -fx-background: rgb(240, 240, 240);
+    /*-fx-font-size: 13px;*/
+    /*-fx-font-family: "Monospaced";*/
+    -fx-base: rgb(209, 209, 209);
+    -fx-background: rgb(209, 209, 209);
+    -fx-background-color: rgb(209, 209, 209);
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
 
-.button{
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-background-radius: 0;
-    -fx-background-color: transparent;
-    -fx-font-family: "Monospaced";
-    -fx-font-size: 1em; /* 13 */
-    -fx-text-fill: #828282;
+.pane{
+    -fx-background-color: rgb(209, 209, 209);
 }
 
-.button:focused {
-    -fx-border-color: transparent, black;
-    -fx-border-width: 1, 1;
-    -fx-border-style: solid, segments(1, 2);
-    -fx-border-radius: 0, 0;
-    -fx-border-insets: 1 1 1 1, 0;
+.anchor {
+    -fx-background-color: rgb(209, 209, 209);
 }
 
-.button:pressed {
-    -fx-background-color: black;
-    -fx-text-fill: white;
-}
+/*.button{*/
+    /*-fx-border-color: transparent;*/
+    /*-fx-border-width: 0;*/
+    /*-fx-background-radius: 0;*/
+    /*-fx-background-color: transparent;*/
+    /*-fx-font-family: "Monospaced";*/
+    /*-fx-font-size: 1em; !* 13 *!*/
+    /*-fx-text-fill: #828282;*/
+/*}*/
+
+/*.button:focused {*/
+    /*-fx-border-color: transparent, black;*/
+    /*-fx-border-width: 1, 1;*/
+    /*-fx-border-style: solid, segments(1, 2);*/
+    /*-fx-border-radius: 0, 0;*/
+    /*-fx-border-insets: 1 1 1 1, 0;*/
+/*}*/
+
+/*.button:pressed {*/
+    /*-fx-background-color: black;*/
+    /*-fx-text-fill: white;*/
+/*}*/
