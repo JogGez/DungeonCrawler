@@ -1,21 +1,23 @@
 .root{
     /*-fx-font-size: 13px;*/
     /*-fx-font-family: "Monospaced";*/
-    -fx-base: rgb(209, 209, 209);
-    -fx-background: rgb(209, 209, 209);
-    -fx-background-color: rgb(209, 209, 209);
+    -fx-base: rgb(190, 190, 190);
+    -fx-background: rgb(210, 210, 210);
+    -fx-background-color: rgb(210, 210, 210);
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
 
-.pane{
-    -fx-background-color: rgb(209, 209, 209);
-}
+
 
 .anchor {
-    -fx-background-color: rgb(209, 209, 209);
+    -fx-background-color: rgb(210, 210, 210);
 }
 
+
+#ImagePane{
+    -fx-background-color: rgb(210, 210, 210);
+}
 /*.button{*/
     /*-fx-border-color: transparent;*/
     /*-fx-border-width: 0;*/

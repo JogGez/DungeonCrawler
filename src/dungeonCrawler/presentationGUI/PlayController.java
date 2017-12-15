@@ -420,9 +420,9 @@ public class PlayController implements Initializable
 
         if (audioS != null) audioS.stop();
 
-        playAnimation("Resources\\images\\Gate2.gif", 2.5);
+        playAnimation("Resources\\images\\Gate.gif", 2.5);
 
-        playAudio("Resources\\sounds\\GateOpen.mp3", 1, 1,true);
+        playAudio("Resources\\sounds\\Gate.mp3", 1, 1,true);
 
 
         checkRoom();
@@ -541,7 +541,7 @@ public class PlayController implements Initializable
             map.merchantMove();
             map.thiefMove();
 
-            playAnimation("Resources\\images\\G4.gif", 2.5);
+            playAnimation("Resources\\images\\Door.gif", 2.5);
 
             playAudio("Resources\\sounds\\Door.wav", 2, 0.2,true);
 
@@ -596,7 +596,7 @@ public class PlayController implements Initializable
 
                 updateInventory();
 
-                playAnimation("Resources\\images\\Key4.gif", 2);
+                playAnimation("Resources\\images\\Lock.gif", 2);
 
                 checkRoom();
             }
@@ -736,7 +736,7 @@ public class PlayController implements Initializable
             alert.setContentText(gameText.getAllRoomsEntered());
             alert.showAndWait();
 
-            playAnimation("Resources\\images\\DevilTrans.gif", 6);
+            playAnimation("Resources\\images\\Devil.gif", 6);
 
             playAudio("Resources\\sounds\\DevilTheme.mp3", 0.7, 0.7,false);
 
@@ -979,7 +979,7 @@ public class PlayController implements Initializable
             }
             else if (((ISpecial) item).getTypeString().equals("bomb"))
             {
-                playAnimation("Resources\\images\\Bomb2.gif", 2.3);
+                playAnimation("Resources\\images\\Bomb.gif", 2.3);
                 playAudio("Resources\\sounds\\Explosion.mp3", 2,1,true);
                 textAreaMain.setText(gameText.getUseSpecialBomb());
                 ((ISpecial) item).use(player, map);
@@ -1159,17 +1159,6 @@ public class PlayController implements Initializable
      */
     public void handleAttack(ActionEvent event)
     {
-//        ArrayList<String> sounds = new ArrayList<>() ;
-//        sounds.add("Resources\\sounds\\Hit1.wav");
-//        sounds.add("Resources\\sounds\\Hit2.wav");
-//        sounds.add("Resources\\sounds\\Hit3.wav");
-//        sounds.add("Resources\\sounds\\Hit4.wav");
-//        sounds.add("Resources\\sounds\\Hit32.mp3");
-//        sounds.add("Resources\\sounds\\Hit33.mp3");
-//        sounds.add("Resources\\sounds\\Hit34.mp3");
-//        sounds.add("Resources\\sounds\\Hit35.mp3");
-//        sounds.add("Resources\\sounds\\Hit36.mp3");
-
         if (lastBattle)
         {
             textAreaMain.appendText("\n" + gameText.getBattle(battle));
@@ -1262,7 +1251,7 @@ public class PlayController implements Initializable
 
         disableButtons(new Button[]{btnSkip}, false, true);
 
-        playAnimation("Resources\\images\\ChestTrans3.gif", 2.5);
+        playAnimation("Resources\\images\\Chest.gif", 2.5);
 
         playAudio("Resources\\sounds\\ChestOpen.mp3", 0.7, 0.7,true);
     }
