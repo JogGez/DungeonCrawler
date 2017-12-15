@@ -33,8 +33,8 @@ public class SettingsController implements Initializable {
     @FXML
     private Slider sldrMusicVolume;
 
-    private static double effectVolume = 100;
-    private static double musicVolume = 100;
+    private static double effectVolume = 1;
+    private static double musicVolume = 1;
     private static boolean skipAnimation = false;
     @FXML
     private CheckBox cbxSkipAnimation;
@@ -48,17 +48,17 @@ public class SettingsController implements Initializable {
 
         lblEffectsVolume.setText("");
         lblMusicVolume.setText("");
-        sldrEffectsVolume.setValue(effectVolume);
+        sldrEffectsVolume.setValue(effectVolume*100);
         sldrEffectsVolume.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val)
             {
                     lblEffectsVolume.setText(String.format("%.0f", new_val) + "%");
-                    effectVolume = new_val.doubleValue();
+                    effectVolume = new_val.doubleValue()/100;
 
             }
         });
 
-        sldrMusicVolume.setValue(musicVolume);
+        sldrMusicVolume.setValue(musicVolume*100);
         sldrMusicVolume.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val)
             {
@@ -66,7 +66,7 @@ public class SettingsController implements Initializable {
                 Game.mediaPlayer.setVolume(new_val.doubleValue()/100);
                 Game.mediaPlayer1.setVolume(new_val.doubleValue()/100);
 //                PlayController.mediaPlayer.setVolume(new_val.doubleValue()/100);
-                musicVolume = new_val.doubleValue();
+                musicVolume = new_val.doubleValue()/100;
             }
         });
     }

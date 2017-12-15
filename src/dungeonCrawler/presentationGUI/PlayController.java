@@ -19,6 +19,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
@@ -207,6 +209,14 @@ public class PlayController implements Initializable
     {
         logic = Game.getLogic();
 
+//        textAreaMain.setOnMouseClicked((ActionEvent event) -> {
+//            Game.getRoot().requestFocus();
+//        });
+
+        textAreaMain.setOnKeyReleased(key -> handleKeyPress(key.getCode()));
+        textAreaMap.setOnKeyReleased(key -> handleKeyPress(key.getCode()));
+        Game.getScene().addEventHandler(KeyEvent.KEY_RELEASED , (key) -> handleKeyPress(key.getCode()));
+
         gameText = logic.getGameText();
         gameText.setType("press");
 
@@ -223,10 +233,10 @@ public class PlayController implements Initializable
 
             textAreaMain.setText(gameText.getMessageHello());
 
-            btnEnter.setText("Enter");
+            btnEnter.setVisible(true);
+            btnEnter.setText("Enter (e)");
 
-            gatekeepAudio = new AudioClip(new File("Resources\\sounds\\blah-blah-blah.mp3").toURI().toString());
-            gatekeepAudio.play();
+            playAudio("Resources\\sounds\\blah-blah-blah.mp3",0,1,true);
 
         }
         else
@@ -239,7 +249,8 @@ public class PlayController implements Initializable
 
             textAreaMain.setText(gameText.getWelcomeBack());
 
-            btnEnter.setText("Continue");
+            btnEnter.setVisible(true);
+            btnEnter.setText("Continue (e)");
 
             NewGame = true;
         }
@@ -265,6 +276,101 @@ public class PlayController implements Initializable
         //checkRoom();
     }
 
+    private void handleKeyPress(KeyCode key)
+    {
+        if (key==KeyCode.C && btnContinue.isVisible())
+        {
+            btnContinue.fire();
+        }
+        else if (key==KeyCode.E && btnEnter.isVisible())
+        {
+            btnEnter.fire();
+        }
+
+        if (!btnEnter.isVisible() && !btnContinue.isVisible())
+        {
+            if(key==KeyCode.SPACE)
+            {
+                handleImageClick();
+            }
+            else if(key==KeyCode.A)
+            {
+                btnAttack.fire();
+            }
+            else if (key==KeyCode.O)
+            {
+                btnOpen.fire();
+            }
+            else if (key==KeyCode.F)
+            {
+                btnFlee.fire();
+            }
+            else if (key==KeyCode.T)
+            {
+                btnTalk.fire();
+            }
+            else if (key==KeyCode.S)
+            {
+                btnSkip.fire();
+            }
+            else if (key==KeyCode.UP)
+            {
+                btnUp.fire();
+            }
+            else if (key==KeyCode.DOWN)
+            {
+                btnDown.fire();
+            }
+            else if (key==KeyCode.LEFT)
+            {
+                btnLeft.fire();
+            }
+            else if (key==KeyCode.RIGHT)
+            {
+                btnRight.fire();
+            }
+
+            else if (key==KeyCode.DIGIT1)
+            {
+                addItem(0);
+            }
+            else if (key==KeyCode.DIGIT2)
+            {
+                addItem(1);
+            }
+            else if (key==KeyCode.DIGIT3)
+            {
+                addItem(2);
+            }
+            else if (key==KeyCode.DIGIT4)
+            {
+                addItem(3);
+            }
+            else if (key==KeyCode.DIGIT5)
+            {
+                addItem(4);
+            }
+            else if (key==KeyCode.DIGIT6)
+            {
+                addItem(5);
+            }
+            else if (key==KeyCode.DIGIT7)
+            {
+                addItem(6);
+            }
+            else if (key==KeyCode.DIGIT8)
+            {
+                addItem(7);
+            }
+            else if (key==KeyCode.DIGIT9)
+            {
+                addItem(8);
+            }
+        }
+
+
+    }
+
     /**
      * Start game method used when the play screen is first loaded.
      */
@@ -273,22 +379,26 @@ public class PlayController implements Initializable
         for (int i = 0; i < player.getInventory().getSize(); i++)
         {
             TextArea textArea = new TextArea(gameText.getInventorySlot(i, player.getInventory()));
+            textArea.setFocusTraversable(false);
             textArea.setWrapText(true);
 
             Button btnAdd = new Button(String.valueOf(i + 1));
             btnAdd.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             btnAdd.setStyle("-fx-font: 14px Monospaced;");
+            btnAdd.setFocusTraversable(false);
             int finalI = i;
             btnAdd.setOnAction((ActionEvent event) -> addItem(finalI));
 
             Button btnUse = new Button("Use");
             btnUse.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             btnUse.setStyle("-fx-font: 14px Monospaced;");
+            btnUse.setFocusTraversable(false);
             btnUse.setOnAction((ActionEvent event) -> useItem(finalI));
 
             Button btnShow = new Button("Show");
             btnShow.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             btnShow.setStyle("-fx-font: 14px Monospaced;");
+            btnShow.setFocusTraversable(false);
             btnShow.setOnAction((ActionEvent event) -> showItem(finalI));
 
             VBox vBox = new VBox();
@@ -306,13 +416,13 @@ public class PlayController implements Initializable
             }
         }
 
-        if (gatekeepAudio != null) gatekeepAudio.stop();
-
         btnEnter.setVisible(false);
 
-        showImage("Resources\\images\\Gate2.gif", 2.5);
+        if (audioS != null) audioS.stop();
 
-        playAudio("Resources\\sounds\\GateOpen.mp3", 1, 1);
+        playAnimation("Resources\\images\\Gate2.gif", 2.5);
+
+        playAudio("Resources\\sounds\\GateOpen.mp3", 1, 1,true);
 
 
         checkRoom();
@@ -430,9 +540,9 @@ public class PlayController implements Initializable
             map.merchantMove();
             map.thiefMove();
 
-            showImage("Resources\\images\\G4.gif", 2.5);
+            playAnimation("Resources\\images\\G4.gif", 2.5);
 
-            playAudio("Resources\\sounds\\Door.wav", 1, 0.2);
+            playAudio("Resources\\sounds\\Door.wav", 2, 0.2,true);
 
             textAreaMap.setText(gameText.getMap());
             checkRoom();
@@ -485,7 +595,7 @@ public class PlayController implements Initializable
 
                 updateInventory();
 
-                showImage("Resources\\images\\Key4.gif", 2);
+                playAnimation("Resources\\images\\Key4.gif", 2);
 
                 checkRoom();
             }
@@ -625,15 +735,15 @@ public class PlayController implements Initializable
             alert.setContentText(gameText.getAllRoomsEntered());
             alert.showAndWait();
 
-            showImage("Resources\\images\\DevilTrans.gif", 6);
+            playAnimation("Resources\\images\\DevilTrans.gif", 6);
 
-            playAudio("Resources\\sounds\\DevilTheme.mp3", 0.7, 0.7);
+            playAudio("Resources\\sounds\\DevilTheme.mp3", 0.7, 0.7,false);
 
-            playAudio("Resources\\sounds\\DevilGrowl.mp3", 3, 0.7);
+            playAudio("Resources\\sounds\\DevilGrowl.mp3", 3, 0.7,false);
 
-            playAudio("Resources\\sounds\\Monster_04.mp3", 5, 0.7);
+            playAudio("Resources\\sounds\\Monster_04.mp3", 5, 0.7,false);
 
-            playAudio("Resources\\sounds\\AmbienceHell.mp3", 0, 0.7);
+            playAudio("Resources\\sounds\\AmbienceHell.mp3", 0, 0.7,false);
 
             mediaPlayer.stop();
 
@@ -733,7 +843,7 @@ public class PlayController implements Initializable
             textAreaMain.setText(gameText.getSetCurrentWeapon());
             labelWeapon.setText("Weapon: " + ((IItem) player.getWeapon()).getName());
 
-            showImage("Resources\\images\\Sword.gif", 2);
+            playAnimation("Resources\\images\\Sword.gif", 2);
         }
         else if (item instanceof IPotion)
         {
@@ -748,7 +858,7 @@ public class PlayController implements Initializable
             labelTime.setText("Time: " + String.valueOf(timeTracker.calculateRemainingTime()));
 
 
-            showImage("Resources\\images\\Heart.gif", 2);
+            playAnimation("Resources\\images\\Heart.gif", 2);
 
         }
         else if (item instanceof IKey)
@@ -759,7 +869,7 @@ public class PlayController implements Initializable
         {
             if (((ISpecial) item).getTypeString().equals("teleport"))
             {
-                showImage("Resources\\images\\Warp.gif", 3);
+                playAnimation("Resources\\images\\Warp.gif", 3);
 
                 Dialog<Pair<String, String>> dialog = new Dialog<>();
                 dialog.setTitle("Teleport");
@@ -868,7 +978,8 @@ public class PlayController implements Initializable
             }
             else if (((ISpecial) item).getTypeString().equals("bomb"))
             {
-                showImage("Resources\\images\\Bomb2.gif", 2.3);
+                playAnimation("Resources\\images\\Bomb2.gif", 2.3);
+                playAudio("Resources\\sounds\\Explosion.mp3", 2,1,true);
                 textAreaMain.setText(gameText.getUseSpecialBomb());
                 ((ISpecial) item).use(player, map);
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
@@ -881,7 +992,7 @@ public class PlayController implements Initializable
             }
             else if (((ISpecial) item).getTypeString().equals("vision"))
             {
-                showImage("Resources\\images\\Glasses.gif", 2.5);
+                playAnimation("Resources\\images\\Glasses.gif", 2.5);
                 //((ISpecial) item).use(player);
                 textAreaMain.setText(gameText.getVisionMap());
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
@@ -933,7 +1044,7 @@ public class PlayController implements Initializable
     /**
      * Timeline for all image animations.
      */
-    Timeline imageTimeline;
+    Timeline animationTimeline = new Timeline();
 
     /**
      * Show image.
@@ -941,24 +1052,24 @@ public class PlayController implements Initializable
      * @param imagePath the image path
      * @param time      the time
      */
-    private void showImage(String imagePath, double time)
+    private void playAnimation(String imagePath, double time)
     {
         if (!SettingsController.getSkibAnimation())
         {
+            animationTimeline.stop();
             ImagePane.setOpacity(1);
             ImagePane.setVisible(true);
             ImagePlaceHolder.setImage(new Image(new File(imagePath).toURI().toString()));
-            imageTimeline = new Timeline();
-            imageTimeline.setCycleCount(2);
-            imageTimeline.setAutoReverse(true);
+            animationTimeline.setCycleCount(2);
+            animationTimeline.setAutoReverse(true);
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(time), new KeyValue(ImagePlaceHolder.opacityProperty(), 1.0));
-            imageTimeline.getKeyFrames().add(keyFrame);
-            imageTimeline.setOnFinished(arg0 ->
+            animationTimeline.getKeyFrames().add(keyFrame);
+            animationTimeline.setOnFinished(arg0 ->
                                    {
                                        ImagePane.setVisible(false);
                                        ImagePlaceHolder.setOpacity(0);
                                    });
-            imageTimeline.play();
+            animationTimeline.play();
         }
     }
 
@@ -966,9 +1077,7 @@ public class PlayController implements Initializable
      * Timeline for all audio effects.
      */
     Timeline audioTimeline;
-
-
-    AudioClip audio;
+    AudioClip audioS;
 
     /**
      * Method for playing audio.
@@ -977,22 +1086,38 @@ public class PlayController implements Initializable
      * @param delay     the delay time in seconds
      * @param volume    the volume at which the audio is player
      */
-    private void playAudio(String audioPath, double delay, double volume)
+    private void playAudio(String audioPath, double delay, double volume, boolean stoppable)
     {
-        audio = new AudioClip(new File(audioPath).toURI().toString());
-        audio.setVolume(volume);
+        if (stoppable)
+        {
+            if (audioTimeline != null) audioTimeline.stop();
+            if (audioS != null) audioS.stop();
+            audioS = new AudioClip(new File(audioPath).toURI().toString());
+            audioS.setVolume(volume*SettingsController.getEffectVolume());
 
-        audioTimeline = new Timeline();
-        audioTimeline.setCycleCount(2);
-        audioTimeline.setAutoReverse(true);
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(delay));
-//        KeyFrame keyFrame = new KeyFrame(Duration.seconds(delay), new KeyValue(ImagePlaceHolder.opacityProperty(), 1.0));
-        audioTimeline.getKeyFrames().add(keyFrame);
-        audioTimeline.setOnFinished(arg0 ->
-                               {
-                                   audio.play();
-                               });
-        audioTimeline.play();
+            audioTimeline = new Timeline();
+            audioTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(delay)));
+            audioTimeline.setOnFinished(arg0 ->
+                                        {
+                                            audioS.play();
+                                        });
+            audioTimeline.play();
+        }
+        else
+        {
+            AudioClip audio = new AudioClip(new File(audioPath).toURI().toString());
+            audio.setVolume(volume*SettingsController.getEffectVolume());
+
+            Timeline audioTimeline = new Timeline();
+            audioTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(delay)));
+            audioTimeline.setOnFinished(arg0 ->
+                                        {
+                                            audio.play();
+                                        });
+            audioTimeline.play();
+        }
+
+
     }
 
     /**
@@ -1014,6 +1139,7 @@ public class PlayController implements Initializable
      * The Attack sounds.
      */
     final String[] attackSounds = new String[]{
+            "Resources\\sounds\\DuckToy.aiff",
             "Resources\\sounds\\Hit1.wav",
             "Resources\\sounds\\Hit2.wav",
             "Resources\\sounds\\Hit3.wav",
@@ -1048,7 +1174,7 @@ public class PlayController implements Initializable
             textAreaMain.appendText("\n" + gameText.getBattle(battle));
 
             int random = new Random().nextInt(attackSounds.length);
-            playAudio(attackSounds[random],0,1);
+            playAudio(attackSounds[random],0,1,false);
 
             if (battle.getIsBattleOver())
             {
@@ -1073,7 +1199,7 @@ public class PlayController implements Initializable
 
                 if (battle.getIsBattleOver())
                 {
-                    playAudio("Resources\\sounds\\TheWilhelmScream.mp3",0,1);
+                    playAudio("Resources\\sounds\\TheWilhelmScream.mp3",0,1,false);
 
                     battle = null;
                     map.getCurrentRoom().removeContent(ContentIndex);
@@ -1083,15 +1209,15 @@ public class PlayController implements Initializable
                 else
                 {
                     int random = new Random().nextInt(attackSounds.length);
-                    playAudio(attackSounds[random],0,1);
+                    playAudio(attackSounds[random],0,1,false);
 
                 }
                 break;
             case "Guide":
-                if (guideAudio != null) guideAudio.stop();
+                if (audioS != null) audioS.stop();
 
                 int random = new Random().nextInt(attackSounds.length);
-                playAudio(attackSounds[random],0,1);
+                playAudio(attackSounds[random],0,1,false);
 
                 textAreaMain.appendText("\n" + gameText.getKilledGuide());
                 map.getCurrentRoom().removeContent(ContentIndex);
@@ -1116,7 +1242,7 @@ public class PlayController implements Initializable
 
         textAreaMap.setText(gameText.getMap());
 
-        if (guideAudio != null) guideAudio.stop();
+        if (audioS != null) audioS.stop();
 
         checkRoom();
     }
@@ -1135,9 +1261,9 @@ public class PlayController implements Initializable
 
         disableButtons(new Button[]{btnSkip}, false, true);
 
-        showImage("Resources\\images\\ChestTrans3.gif", 2.5);
+        playAnimation("Resources\\images\\ChestTrans3.gif", 2.5);
 
-        playAudio("Resources\\sounds\\ChestOpen.mp3", 0.7, 0.7);
+        playAudio("Resources\\sounds\\ChestOpen.mp3", 0.7, 0.7,true);
     }
 
     /**
@@ -1163,8 +1289,6 @@ public class PlayController implements Initializable
             return;
         }
         else
-
-
         {
             btnContinue.setVisible(false);
         }
@@ -1179,11 +1303,6 @@ public class PlayController implements Initializable
     int guideTalkCount = 0;
 
     /**
-     * The Guide audio.
-     */
-    AudioClip guideAudio;
-
-    /**
      * Handle talk.
      *
      * @param actionEvent the action event
@@ -1193,10 +1312,9 @@ public class PlayController implements Initializable
     {
         if (guideTalkCount < 10)
         {
-            if (guideAudio != null) guideAudio.stop();
+            if (audioS != null) audioS.stop();
 
-            guideAudio = new AudioClip(new File("Resources\\sounds\\wa-wa-effect.mp3").toURI().toString());
-            guideAudio.play();
+            playAudio("Resources\\sounds\\wa-wa-effect.mp3",0,1,true);
 
             textAreaMain.appendText("\n\n" + gameText.getGuideTalk());
             guideTalkCount++;
@@ -1226,7 +1344,7 @@ public class PlayController implements Initializable
             ContentIndex++;
         }
 
-        if (guideAudio != null) guideAudio.stop();
+        if (audioS != null) audioS.stop();
         checkRoom();
 
     }
@@ -1330,14 +1448,15 @@ public class PlayController implements Initializable
 
     /**
      * Handle image click.
-     *
-     * @param mouseEvent the mouse event
      */
     @FXML
-    private void handleImageClick(MouseEvent mouseEvent)
+    private void handleImageClick()
     {
-        imageTimeline.stop();
+        if (animationTimeline != null) animationTimeline.stop();
+        if (audioTimeline != null) audioTimeline.stop();
+        if (audioS != null) audioS.stop();
         ImagePane.setVisible(false);
         ImagePlaceHolder.setOpacity(0);
     }
+
 }

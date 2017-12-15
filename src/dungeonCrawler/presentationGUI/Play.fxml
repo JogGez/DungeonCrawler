@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -33,7 +39,7 @@
                   <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="3.0" vgrow="NEVER" />
                </rowConstraints>
                <children>
-                  <TextArea fx:id="textAreaMain" editable="false" promptText="Main" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextArea fx:id="textAreaMain" editable="false" focusTraversable="false" pickOnBounds="false" promptText="Main" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Monospaced Regular" size="16.0" />
                      </font>
@@ -56,47 +62,47 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button fx:id="btnUp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Up" GridPane.columnIndex="1">
+                        <Button fx:id="btnUp" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Up" GridPane.columnIndex="1">
                            <font>
                               <Font name="Monospaced Regular" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnDown" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="btnDown" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Monospaced Regular" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnRight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="btnRight" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <font>
                               <Font name="Monospaced Regular" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Left" GridPane.rowIndex="1">
+                        <Button fx:id="btnLeft" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMove" prefHeight="25.0" prefWidth="50.0" text="Left" GridPane.rowIndex="1">
                            <font>
                               <Font name="Monospaced Regular" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnAttack" mnemonicParsing="false" onAction="#handleAttack" text="Attack" GridPane.halignment="CENTER">
+                        <Button fx:id="btnAttack" focusTraversable="false" mnemonicParsing="false" onAction="#handleAttack" text="Attack (a)" GridPane.halignment="CENTER">
                            <font>
                               <Font name="Monospaced Regular" size="13.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnFlee" mnemonicParsing="false" onAction="#handleFlee" text="Flee" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                        <Button fx:id="btnFlee" focusTraversable="false" mnemonicParsing="false" onAction="#handleFlee" text="Flee (f)" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                            <font>
                               <Font name="Monospaced Regular" size="13.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnOpen" mnemonicParsing="false" onAction="#handleOpen" text="Open" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Button fx:id="btnOpen" focusTraversable="false" mnemonicParsing="false" onAction="#handleOpen" text="Open (o)" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                            <font>
                               <Font name="Monospaced Regular" size="13.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnSkip" mnemonicParsing="false" onAction="#handleSkip" text="Skip" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Button fx:id="btnSkip" focusTraversable="false" mnemonicParsing="false" onAction="#handleSkip" text="Skip (s)" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                            <font>
                               <Font name="Monospaced Regular" size="13.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnTalk" mnemonicParsing="false" onAction="#handleTalk" text="Talk" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Button fx:id="btnTalk" focusTraversable="false" mnemonicParsing="false" onAction="#handleTalk" text="Talk (t)" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
                               <Font name="Monospaced Regular" size="13.0" />
                            </font>
@@ -106,7 +112,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </GridPane>
-                  <TextArea fx:id="textAreaMap" editable="false" promptText="Map" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextArea fx:id="textAreaMap" editable="false" focusTraversable="false" promptText="Map" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -117,7 +123,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextArea>
-                  <TextArea fx:id="textAreaInventory" editable="false" promptText="Inventory" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextArea fx:id="textAreaInventory" editable="false" focusTraversable="false" mouseTransparent="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -130,34 +136,34 @@
                   </TextArea>
                   <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Label fx:id="labelName" text="labelPlayerName" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="labelName" focusTraversable="false" text="labelPlayerName" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Monospaced Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelHealth" text="labelPlayerHealth">
+                        <Label fx:id="labelHealth" focusTraversable="false" text="labelPlayerHealth">
                            <font>
                               <Font name="Monospaced Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelWeapon" text="labelPlayerWeapon">
+                        <Label fx:id="labelWeapon" focusTraversable="false" text="labelPlayerWeapon">
                            <font>
                               <Font name="Monospaced Bold" size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <Label fx:id="labelTime" text="labelTime" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  <Label fx:id="labelTime" focusTraversable="false" text="labelTime" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
                         <Font name="Monospaced Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnEnter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startGame" text="ENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="btnEnter" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startGame" text="ENTER (e)" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="Monospaced Regular" size="36.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnContinue" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleContinue" text="Continue" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="btnContinue" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleContinue" text="Continue (c)" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="Monospaced Regular" size="36.0" />
                      </font>

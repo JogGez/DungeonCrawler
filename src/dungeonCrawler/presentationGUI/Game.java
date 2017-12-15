@@ -35,10 +35,12 @@ public class Game extends Application
         return root;
     }
 
+    static Stage stage;
+
     @Override
     public void start(Stage stage) throws Exception
     {
-        Stage stage1 = stage;
+        this.stage = stage;
 
         MenuBar menuBar = FXMLLoader.load(getClass().getResource("MenuBar.fxml"));
         this.menuBar = menuBar;
@@ -96,6 +98,12 @@ public class Game extends Application
     {
         return logic;
     }
+
+    public static Scene getScene()
+    {
+        return stage.getScene();
+    }
+
 
 
     public void injectLogic(ILogicFacade logicLayer)
