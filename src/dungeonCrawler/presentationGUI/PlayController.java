@@ -19,9 +19,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
@@ -33,7 +31,6 @@ import java.awt.*;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -214,9 +211,9 @@ public class PlayController extends HighscoreController implements Initializable
 //            Game.getRoot().requestFocus();
 //        });
 
-        textAreaMain.setOnKeyReleased(key -> handleKeyPress(key.getCode()));
-        textAreaMap.setOnKeyReleased(key -> handleKeyPress(key.getCode()));
-        Game.getScene().addEventHandler(KeyEvent.KEY_RELEASED , (key) -> handleKeyPress(key.getCode()));
+        textAreaMain.setOnKeyReleased(key -> handleKeyPress(key));
+        textAreaMap.setOnKeyReleased(key -> handleKeyPress(key));
+        Game.getScene().addEventHandler(KeyEvent.KEY_RELEASED, (key) -> handleKeyPress(key));
 
         this.gameText = logic.getGameText();
         gameText.setType("press");
@@ -237,7 +234,7 @@ public class PlayController extends HighscoreController implements Initializable
             btnEnter.setVisible(true);
             btnEnter.setText("Enter (e)");
 
-            playAudio("Resources\\sounds\\blah-blah-blah.mp3",0,1,true);
+            playAudio("Resources\\sounds\\blah-blah-blah.mp3", 0, 1, true);
 
         }
         else
@@ -272,101 +269,198 @@ public class PlayController extends HighscoreController implements Initializable
         labelName.setText("Name: " + player.getName());
         labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
         labelWeapon.setText("Weapon: " + ((IItem) player.getWeapon()).getName());
-        labelTime.setText("Time is under: " + String.valueOf(player.getTime())+" seconds");
+        labelTime.setText("Time is under: " + String.valueOf(player.getTime()) + " seconds");
 
         //checkRoom();
     }
 
-    private void handleKeyPress(KeyCode key)
+
+    final KeyCombination keyShiftOne = new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.SHIFT_DOWN);
+    final KeyCombination keyShiftTwo = new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.SHIFT_DOWN);
+    final KeyCombination keyShiftTree = new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.SHIFT_DOWN);
+    final KeyCombination keyShiftFour = new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.SHIFT_DOWN);
+    final KeyCombination keyShiftFive = new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.SHIFT_DOWN);
+    final KeyCombination keyShiftSix = new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.SHIFT_DOWN);
+    final KeyCombination keyShiftSeven = new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.SHIFT_DOWN);
+    final KeyCombination keyShiftEight = new KeyCodeCombination(KeyCode.DIGIT8, KeyCombination.SHIFT_DOWN);
+    final KeyCombination keyShiftNine = new KeyCodeCombination(KeyCode.DIGIT9, KeyCombination.SHIFT_DOWN);
+
+
+    private void handleKeyPress(KeyEvent key)
     {
-        if (key==KeyCode.C && btnContinue.isVisible())
+        if (key.getCode() == KeyCode.C && btnContinue.isVisible())
         {
             btnContinue.fire();
         }
-        else if (key==KeyCode.E && btnEnter.isVisible())
+        else if (key.getCode() == KeyCode.E && btnEnter.isVisible())
         {
             btnEnter.fire();
         }
 
         if (!btnEnter.isVisible() && !btnContinue.isVisible())
         {
-            if(key==KeyCode.SPACE)
+
+
+            if (key.getCode() == KeyCode.SPACE)
             {
                 handleImageClick();
             }
-            else if(key==KeyCode.A)
+            else if (key.getCode() == KeyCode.A)
             {
                 btnAttack.fire();
             }
-            else if (key==KeyCode.O)
+            else if (key.getCode() == KeyCode.O)
             {
                 btnOpen.fire();
             }
-            else if (key==KeyCode.F)
+            else if (key.getCode() == KeyCode.F)
             {
                 btnFlee.fire();
             }
-            else if (key==KeyCode.T)
+            else if (key.getCode() == KeyCode.T)
             {
                 btnTalk.fire();
             }
-            else if (key==KeyCode.S)
+            else if (key.getCode() == KeyCode.S)
             {
                 btnSkip.fire();
             }
-            else if (key==KeyCode.UP)
+            else if (key.getCode() == KeyCode.UP)
             {
                 btnUp.fire();
             }
-            else if (key==KeyCode.DOWN)
+            else if (key.getCode() == KeyCode.DOWN)
             {
                 btnDown.fire();
             }
-            else if (key==KeyCode.LEFT)
+            else if (key.getCode() == KeyCode.LEFT)
             {
                 btnLeft.fire();
             }
-            else if (key==KeyCode.RIGHT)
+            else if (key.getCode() == KeyCode.RIGHT)
             {
                 btnRight.fire();
             }
 
-            else if (key==KeyCode.DIGIT1)
+            else if (key.getCode() == KeyCode.DIGIT1 && player.getInventory().getSize() >= 1 && itemAddAvailable)
             {
                 addItem(0);
             }
-            else if (key==KeyCode.DIGIT2)
+            else if (key.getCode() == KeyCode.DIGIT2 && player.getInventory().getSize() >= 2 && itemAddAvailable)
             {
                 addItem(1);
             }
-            else if (key==KeyCode.DIGIT3)
+            else if (key.getCode() == KeyCode.DIGIT3 && player.getInventory().getSize() >= 3 && itemAddAvailable)
             {
                 addItem(2);
             }
-            else if (key==KeyCode.DIGIT4)
+            else if (key.getCode() == KeyCode.DIGIT4 && player.getInventory().getSize() >= 4 && itemAddAvailable)
             {
                 addItem(3);
             }
-            else if (key==KeyCode.DIGIT5)
+            else if (key.getCode() == KeyCode.DIGIT5 && player.getInventory().getSize() >= 5 && itemAddAvailable)
             {
                 addItem(4);
             }
-            else if (key==KeyCode.DIGIT6)
+            else if (key.getCode() == KeyCode.DIGIT6 && player.getInventory().getSize() >= 6 && itemAddAvailable)
             {
                 addItem(5);
             }
-            else if (key==KeyCode.DIGIT7)
+            else if (key.getCode() == KeyCode.DIGIT7 && player.getInventory().getSize() >= 7 && itemAddAvailable)
             {
                 addItem(6);
             }
-            else if (key==KeyCode.DIGIT8)
+            else if (key.getCode() == KeyCode.DIGIT8 && player.getInventory().getSize() >= 8 && itemAddAvailable)
             {
                 addItem(7);
             }
-            else if (key==KeyCode.DIGIT9)
+            else if (key.getCode() == KeyCode.DIGIT9 && player.getInventory().getSize() >= 9 && itemAddAvailable)
             {
                 addItem(8);
             }
+
+
+            else if (keyShiftOne.match(key) && player.getInventory().getSize() >= 1 && itemUseAvailable)
+            {
+                showItem(0);
+            }
+            else if (keyShiftTwo.match(key) && player.getInventory().getSize() >= 2 && itemUseAvailable)
+            {
+                showItem(1);
+            }
+            else if (keyShiftTree.match(key) && player.getInventory().getSize() >= 3 && itemUseAvailable)
+            {
+                showItem(2);
+            }
+            else if (keyShiftFour.match(key) && player.getInventory().getSize() >= 4 && itemUseAvailable)
+            {
+                showItem(3);
+            }
+            else if (keyShiftFive.match(key) && player.getInventory().getSize() >= 5 && itemUseAvailable)
+            {
+                showItem(4);
+            }
+            else if (keyShiftSix.match(key) && player.getInventory().getSize() >= 6 && itemUseAvailable)
+            {
+                showItem(5);
+            }
+            else if (keyShiftSeven.match(key) && player.getInventory().getSize() >= 7 && itemUseAvailable)
+            {
+                showItem(6);
+            }
+            else if (keyShiftEight.match(key) && player.getInventory().getSize() >= 8 && itemUseAvailable)
+            {
+                showItem(7);
+            }
+            else if (keyShiftNine.match(key) && player.getInventory().getSize() >= 9 && itemUseAvailable)
+            {
+                showItem(8);
+            }
+
+
+
+            else if (key.getCode() == KeyCode.DIGIT1 && player.getInventory().getSize() >= 1 && itemUseAvailable)
+            {
+                useItem(0);
+            }
+            else if (key.getCode() == KeyCode.DIGIT2 && player.getInventory().getSize() >= 2 && itemUseAvailable)
+            {
+                useItem(1);
+            }
+            else if (key.getCode() == KeyCode.DIGIT3 && player.getInventory().getSize() >= 3 && itemUseAvailable)
+            {
+                useItem(2);
+            }
+            else if (key.getCode() == KeyCode.DIGIT4 && player.getInventory().getSize() >= 4 && itemUseAvailable)
+            {
+                useItem(3);
+            }
+            else if (key.getCode() == KeyCode.DIGIT5 && player.getInventory().getSize() >= 5 && itemUseAvailable)
+            {
+                useItem(4);
+            }
+            else if (key.getCode() == KeyCode.DIGIT6 && player.getInventory().getSize() >= 6 && itemUseAvailable)
+            {
+                useItem(5);
+            }
+            else if (key.getCode() == KeyCode.DIGIT7 && player.getInventory().getSize() >= 7 && itemUseAvailable)
+            {
+                useItem(6);
+            }
+            else if (key.getCode() == KeyCode.DIGIT8 && player.getInventory().getSize() >= 8 && itemUseAvailable)
+            {
+                useItem(7);
+            }
+            else if (key.getCode() == KeyCode.DIGIT9 && player.getInventory().getSize() >= 9 && itemUseAvailable)
+            {
+                useItem(8);
+            }
+            else if (key.getCode() == KeyCode.DIGIT9 && player.getInventory().getSize() >= 9 && itemUseAvailable)
+            {
+                useItem(8);
+            }
+
+
         }
 
 
@@ -423,7 +517,7 @@ public class PlayController extends HighscoreController implements Initializable
 
         playAnimation("Resources\\images\\Gate.gif", 2.5);
 
-        playAudio("Resources\\sounds\\Gate.mp3", 1, 1,true);
+        playAudio("Resources\\sounds\\Gate.mp3", 1, 1, true);
 
 
         checkRoom();
@@ -549,7 +643,7 @@ public class PlayController extends HighscoreController implements Initializable
 
             playAnimation("Resources\\images\\Door.gif", 2.5);
 
-            playAudio("Resources\\sounds\\Door.wav", 2, 0.2,true);
+            playAudio("Resources\\sounds\\Door.wav", 2, 0.2, true);
 
             textAreaMap.setText(gameText.getMap());
             checkRoom();
@@ -627,7 +721,7 @@ public class PlayController extends HighscoreController implements Initializable
      */
     public void checkRoom()
     {
-        labelTime.setText("Time is under: " + timeTracker.calculateRemainingTime()+" seconds");
+        labelTime.setText("Time is under: " + timeTracker.calculateRemainingTime() + " seconds");
 
         if (timeTracker.calculateRemainingTime() <= 0)
         {
@@ -744,13 +838,13 @@ public class PlayController extends HighscoreController implements Initializable
 
             playAnimation("Resources\\images\\Devil.gif", 6);
 
-            playAudio("Resources\\sounds\\DevilTheme.mp3", 0.7, 0.7,false);
+            playAudio("Resources\\sounds\\DevilTheme.mp3", 0.7, 0.7, false);
 
-            playAudio("Resources\\sounds\\DevilGrowl.mp3", 3, 0.7,false);
+            playAudio("Resources\\sounds\\DevilGrowl.mp3", 3, 0.7, false);
 
-            playAudio("Resources\\sounds\\Monster_04.mp3", 5, 0.7,false);
+            playAudio("Resources\\sounds\\Monster_04.mp3", 5, 0.7, false);
 
-            playAudio("Resources\\sounds\\AmbienceHell.mp3", 0, 0.7,false);
+            playAudio("Resources\\sounds\\AmbienceHell.mp3", 0, 0.7, false);
 
             mediaPlayer.stop();
 
@@ -807,7 +901,7 @@ public class PlayController extends HighscoreController implements Initializable
      */
     private void addItem(int index)
     {
-        if(player.getInventory().getItem(index) == player.getWeapon())
+        if (player.getInventory().getItem(index) == player.getWeapon())
         {
             player.setWeaponDefault();
             labelWeapon.setText("Weapon: " + ((IItem) player.getWeapon()).getName());
@@ -915,85 +1009,85 @@ public class PlayController extends HighscoreController implements Initializable
                 AtomicBoolean fieldTwo = new AtomicBoolean(false);
 
                 xCordinate.textProperty().addListener((observable, oldValue, newValue) ->
-                    {
-                      if (newValue.matches("\\d+") && Integer.parseInt(newValue) >= 0 && Integer.parseInt(newValue) <= map.getWidth() - 1)
-                      {
-                          fieldOne.set(true);
-                      }
-                      else
-                      {
-                          fieldOne.set(false);
-                      }
+                                                      {
+                                                          if (newValue.matches("\\d+") && Integer.parseInt(newValue) >= 0 && Integer.parseInt(newValue) <= map.getWidth() - 1)
+                                                          {
+                                                              fieldOne.set(true);
+                                                          }
+                                                          else
+                                                          {
+                                                              fieldOne.set(false);
+                                                          }
 
-                      if (fieldOne.get() && fieldTwo.get())
-                      {
-                          loginButton.setDisable(false);
-                      }
-                      else
-                      {
-                          loginButton.setDisable(true);
-                      }
+                                                          if (fieldOne.get() && fieldTwo.get())
+                                                          {
+                                                              loginButton.setDisable(false);
+                                                          }
+                                                          else
+                                                          {
+                                                              loginButton.setDisable(true);
+                                                          }
 
-                    });
+                                                      });
 
                 yCordinate.textProperty().addListener((observable, oldValue, newValue) ->
-                    {
-                      if (newValue.matches("\\d+") && Integer.parseInt(newValue) >= 0 && Integer.parseInt(newValue) <= map.getHeight() - 1)
-                      {
-                          fieldTwo.set(true);
-                      }
-                      else
-                      {
-                          fieldTwo.set(false);
-                      }
+                                                      {
+                                                          if (newValue.matches("\\d+") && Integer.parseInt(newValue) >= 0 && Integer.parseInt(newValue) <= map.getHeight() - 1)
+                                                          {
+                                                              fieldTwo.set(true);
+                                                          }
+                                                          else
+                                                          {
+                                                              fieldTwo.set(false);
+                                                          }
 
-                      if (fieldOne.get() && fieldTwo.get())
-                      {
-                          loginButton.setDisable(false);
-                      }
-                      else
-                      {
-                          loginButton.setDisable(true);
-                      }
-                    });
+                                                          if (fieldOne.get() && fieldTwo.get())
+                                                          {
+                                                              loginButton.setDisable(false);
+                                                          }
+                                                          else
+                                                          {
+                                                              loginButton.setDisable(true);
+                                                          }
+                                                      });
 
                 dialog.getDialogPane().setContent(grid);
 
                 Platform.runLater(() -> xCordinate.requestFocus());
 
                 dialog.setResultConverter(dialogButton ->
-                    {
-                      if (dialogButton == okButtonType)
-                      {
-                          return new Pair<>(xCordinate.getText(), yCordinate.getText());
-                      }
-                      return null;
-                    });
+                                          {
+                                              if (dialogButton == okButtonType)
+                                              {
+                                                  return new Pair<>(xCordinate.getText(), yCordinate.getText());
+                                              }
+                                              return null;
+                                          });
 
                 Optional<Pair<String, String>> result = dialog.showAndWait();
 
                 result.ifPresent(cordinates ->
-                    {
+                                 {
 
-                        Point point = new Point(Integer.parseInt(cordinates.getKey()), Integer.parseInt(cordinates.getValue()));
+                                     Point point = new Point(Integer.parseInt(cordinates.getKey()), Integer.parseInt(cordinates.getValue()));
 
-                        if (map.isRoomLocked(point) && player.getInventory().keyArrayList().size() == 0)
-                        {
-                            player.getInventory().removeItem(player.getInventory().getItemIndex(item));
-                            textAreaMain.setText(gameText.getTeleportToLockedRoomNoKey());
-                        }
-                        else
-                        {
+                                     if (map.isRoomLocked(point) && player.getInventory().keyArrayList().size() == 0)
+                                     {
+                                         player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+                                         textAreaMain.setText(gameText.getTeleportToLockedRoomNoKey());
+                                     }
+                                     else
+                                     {
 
-                            player.getInventory().removeItem(player.getInventory().getItemIndex(item));
-                            playerMove(point);
-                        }
-                    });
+                                         player.getInventory().removeItem(player.getInventory().getItemIndex(item));
+                                         playerMove(point);
+                                     }
+                                 });
             }
             else if (((ISpecial) item).getTypeString().equals("bomb"))
             {
                 playAnimation("Resources\\images\\Bomb.gif", 2.3);
-                playAudio("Resources\\sounds\\Explosion.mp3", 2,1,true);
+                playAudio("Resources\\sounds\\Explosion.mp3", 2, 1, true);
                 textAreaMain.setText(gameText.getUseSpecialBomb());
                 ((ISpecial) item).use(player, map);
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
@@ -1079,10 +1173,10 @@ public class PlayController extends HighscoreController implements Initializable
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(time), new KeyValue(ImagePlaceHolder.opacityProperty(), 1.0));
             animationTimeline.getKeyFrames().add(keyFrame);
             animationTimeline.setOnFinished(arg0 ->
-                                   {
-                                       ImagePane.setVisible(false);
-                                       ImagePlaceHolder.setOpacity(0);
-                                   });
+                                            {
+                                                ImagePane.setVisible(false);
+                                                ImagePlaceHolder.setOpacity(0);
+                                            });
             animationTimeline.play();
         }
     }
@@ -1107,7 +1201,7 @@ public class PlayController extends HighscoreController implements Initializable
             if (audioTimeline != null) audioTimeline.stop();
             if (audioS != null) audioS.stop();
             audioS = new AudioClip(new File(audioPath).toURI().toString());
-            audioS.setVolume(volume*SettingsController.getEffectVolume());
+            audioS.setVolume(volume * SettingsController.getEffectVolume());
 
             audioTimeline = new Timeline();
             audioTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(delay)));
@@ -1120,7 +1214,7 @@ public class PlayController extends HighscoreController implements Initializable
         else
         {
             AudioClip audio = new AudioClip(new File(audioPath).toURI().toString());
-            audio.setVolume(volume*SettingsController.getEffectVolume());
+            audio.setVolume(volume * SettingsController.getEffectVolume());
 
             Timeline audioTimeline = new Timeline();
             audioTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(delay)));
@@ -1177,7 +1271,7 @@ public class PlayController extends HighscoreController implements Initializable
             textAreaMain.appendText("\n" + gameText.getBattle(battle));
 
             int random = new Random().nextInt(attackSounds.length);
-            playAudio(attackSounds[random],0,1,false);
+            playAudio(attackSounds[random], 0, 1, false);
 
             if (battle.getIsBattleOver())
             {
@@ -1198,11 +1292,11 @@ public class PlayController extends HighscoreController implements Initializable
 
                 textAreaMain.appendText("\n" + gameText.getBattle(battle));
                 labelHealth.setText("Health: " + String.valueOf(player.getHealth()));
-                labelTime.setText("Time is under: " + timeTracker.calculateRemainingTime()+" seconds");
+                labelTime.setText("Time is under: " + timeTracker.calculateRemainingTime() + " seconds");
 
                 if (battle.getIsBattleOver())
                 {
-                    playAudio("Resources\\sounds\\TheWilhelmScream.mp3",0,1,false);
+                    playAudio("Resources\\sounds\\TheWilhelmScream.mp3", 0, 1, false);
 
                     battle = null;
                     map.getCurrentRoom().removeContent(ContentIndex);
@@ -1212,7 +1306,7 @@ public class PlayController extends HighscoreController implements Initializable
                 else
                 {
                     int random = new Random().nextInt(attackSounds.length);
-                    playAudio(attackSounds[random],0,1,false);
+                    playAudio(attackSounds[random], 0, 1, false);
 
                 }
                 break;
@@ -1220,7 +1314,7 @@ public class PlayController extends HighscoreController implements Initializable
                 if (audioS != null) audioS.stop();
 
                 int random = new Random().nextInt(attackSounds.length);
-                playAudio(attackSounds[random],0,1,false);
+                playAudio(attackSounds[random], 0, 1, false);
 
                 textAreaMain.appendText("\n" + gameText.getKilledGuide());
                 map.getCurrentRoom().removeContent(ContentIndex);
@@ -1266,7 +1360,7 @@ public class PlayController extends HighscoreController implements Initializable
 
         playAnimation("Resources\\images\\Chest.gif", 2.5);
 
-        playAudio("Resources\\sounds\\ChestOpen.mp3", 0.7, 0.7,true);
+        playAudio("Resources\\sounds\\ChestOpen.mp3", 0.7, 0.7, true);
     }
 
     /**
@@ -1317,7 +1411,7 @@ public class PlayController extends HighscoreController implements Initializable
         {
             if (audioS != null) audioS.stop();
 
-            playAudio("Resources\\sounds\\wa-wa-effect.mp3",0,1,true);
+            playAudio("Resources\\sounds\\wa-wa-effect.mp3", 0, 1, true);
 
             textAreaMain.appendText("\n\n" + gameText.getGuideTalk());
             guideTalkCount++;
@@ -1352,6 +1446,9 @@ public class PlayController extends HighscoreController implements Initializable
 
     }
 
+    boolean itemAddAvailable = false;
+    boolean itemUseAvailable = false;
+
     /**
      * Disable buttons.
      *
@@ -1380,19 +1477,23 @@ public class PlayController extends HighscoreController implements Initializable
                     {
                         if (showInventory)
                         {
+                            itemUseAvailable = true;
                             nodeIn2.setDisable(false);
                         }
                         else
                         {
+                            itemUseAvailable = false;
                             nodeIn2.setDisable(true);
                         }
 
                         if (showInventoryNumbers && ((Button) nodeIn2).getText().matches("[0-9]+"))
                         {
+                            itemAddAvailable = true;
                             nodeIn2.setDisable(false);
                         }
                         else if (!showInventoryNumbers && ((Button) nodeIn2).getText().matches("[0-9]+"))
                         {
+                            itemAddAvailable = false;
                             nodeIn2.setDisable(true);
                         }
                     }
