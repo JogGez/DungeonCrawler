@@ -1167,7 +1167,7 @@ public class PlayController extends HighscoreController implements Initializable
      */
     private void playAnimation(String imagePath, double time)
     {
-        if (!SettingsController.getSkibAnimation())
+        if (!SettingsController.getSkipAnimation())
         {
             animationTimeline.stop();
             ImagePane.setOpacity(1);
