@@ -16,7 +16,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.media.AudioClip;
 import jdk.nashorn.internal.ir.IfNode;
 
-public class SettingsController implements Initializable {
+public class SettingsController extends LoadController implements Initializable {
 
     @FXML
     private Slider sldrSound;

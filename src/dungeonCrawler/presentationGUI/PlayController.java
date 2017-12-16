@@ -39,7 +39,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * The type Play controller.
  */
-public class PlayController implements Initializable
+public class PlayController extends HighscoreController implements Initializable
 {
     /**
      * The Logic.
@@ -218,7 +218,7 @@ public class PlayController implements Initializable
         textAreaMap.setOnKeyReleased(key -> handleKeyPress(key.getCode()));
         Game.getScene().addEventHandler(KeyEvent.KEY_RELEASED , (key) -> handleKeyPress(key.getCode()));
 
-        gameText = logic.getGameText();
+        this.gameText = logic.getGameText();
         gameText.setType("press");
 
         if (NewGame)

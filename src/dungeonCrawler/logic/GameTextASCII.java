@@ -430,51 +430,6 @@ final class GameTextASCII implements Serializable
 
     }
 
-    public static String getPope()
-    {
-        return  "              /\n" +
-                "         /\\   |\n" +
-                "        /  \\  |/\n" +
-                "       |    | |>\n" +
-                "       \\____/ |\n" +
-                "       ( .. ) |\n" +
-                "       /\\__/\\ |\n" +
-                "      /\\ qp /\\|\n" +
-                "     /  |  |  |\n" +
-                "    /|  |db| /\\`\\\n" +
-                "    | \\ |  | \\|_|\n" +
-                "    \\  \\|qp|  |\n" +
-                "     \\__/  |  |\n" +
-                "     |/||db|  |\n" +
-                "     |  |  |  |" ;
-
-    }
-
-    private static String getPreacher()
-    {
-        return  "         ___\n" +
-                "        /___\\\n" +
-                "       |/. .\\|\n" +
-                "       (   > )\n" +
-                "        \\ < /\n" +
-                "         )_(\n" +
-                "       .;_u_;.\n" +
-                "      /       \\\n" +
-                "     ; / _|_ \\ ;\n" +
-                "     | |  |  | |\n" +
-                "     | \\  '  / |\n" +
-                "     | /\\   /\\ |\n" +
-                "     |/\\/   \\/\\|\n" +
-                "     `|       |`\n" +
-                "      |       |\n" +
-                "      `;\"\"\"\"\";`\n" +
-                "       |     |\n" +
-                "       |_____|\n" +
-                "        / | \\\n" +
-                "       (_/ \\_)" ;
-
-    }
-
     public static String getGanesha()
     {
         return  "             _.!._\n" +
@@ -563,31 +518,6 @@ final class GameTextASCII implements Serializable
                 "                    ) `{\n" +
                 "                    \\__)" ;
 
-    }
-
-    public static String getPentacle()
-    {
-        return  "                    ooo OOOAOOO ooo\n" +
-                "                oOO       / \\       OOo\n" +
-                "            oOO          /   \\          OOo\n" +
-                "         oOO            /     \\            OOo\n" +
-                "       oOO             /       \\             OOo\n" +
-                "     oOO -_-----------/---------\\-----------_- OOo\n" +
-                "    oOO     -_       /           \\       _-     OOo\n" +
-                "   oOO         -_   /             \\   _-         OOo\n" +
-                "  oOO             -/_             _\\-             OOo\n" +
-                "  oOO             /  -_         _-  \\             OOo\n" +
-                "  oOO            /      -_   _-      \\            OOo\n" +
-                "  oOO           /         _-_         \\           OOo\n" +
-                "  oOO          /       _-     -_       \\          OOo\n" +
-                "   oOO        /     _-           -_     \\        OOo\n" +
-                "    oOO      /   _-                 -_   \\      OOo\n" +
-                "     oOO    / _-                       -_ \\    OOo\n" +
-                "       oOO _-                             -_ OOo\n" +
-                "        oOO                                OOo\n" +
-                "            oOO                         OOo\n" +
-                "               oOO                 OOo\n" +
-                "                    ooo OOO OOO ooo" ;
     }
 
     public static String getPikachu()
@@ -943,53 +873,6 @@ final class GameTextASCII implements Serializable
                 "   `'-------`      `--------'`" ;
     }
 
-    public static String getNakedWoman()
-    {
-        return  "                               _.._\n" +
-                "                             .'    '.\n" +
-                "                            (____/`\\ \\\n" +
-                "                           (  |' ' )  )\n" +
-                "                           )  _\\= _/  (\n" +
-                "                 __..---.(`_.'  ` \\    )\n" +
-                "                `;-\"\"-._(_( .      `; (\n" +
-                "                /       `-`'--'     ; )\n" +
-                "               /    /  .    ( .  ,| |(\n" +
-                "_.-`'---...__,'    /-,..___.-'--'_| |_)\n" +
-                "'-'``'-.._       ,'  |   / .........'\n" +
-                "          ``;--\"`;   |   `-`\n" +
-                "             `'..__.'" ;
-    }
-
-    public static String getYourMom()
-    {
-        return  "               .-''-''-.\n" +
-                "              /   '-'  .: __\n" +
-                "      .._    /  /|||\\\\  Y`  `\\\n" +
-                "     |:  `-.J  /__ __.., )   |\n" +
-                "     |  .   ( ( ==|<== : )   |\n" +
-                "     :   `.(  )\\ _L__ /( )   |\n" +
-                "      \\    \\(  )\\\\__//(  )   |\n" +
-                "       \\    \\  ):`'':(  /    \\\n" +
-                "        -_   -.-   .'-'` ` . |\n" +
-                "         `. :           .  ' :\n" +
-                "          )            :    /\n" +
-                "         /    : /   _   :  :\n" +
-                "        @)    : |  (@)  | :\n" +
-                "         \\   /   \\     / /  \n" +
-                "          `i`     `---' /\n" +
-                "           |           (\n" +
-                "           |           \\\n" +
-                "          /   )         \\\n" +
-                "         |               \\\n" +
-                "         |                |\n" +
-                "         \\                |\n" +
-                "         |  `\\__          \\  \n" +
-                "         |    |#\\ /        |\n" +
-                "         |     \\#Y         |\n" +
-                "         |       |        /\n" +
-                "    " ;
-    }
-
     public static String getPotion()
     {
         return  "      _____\n" +
@@ -1022,32 +905,6 @@ final class GameTextASCII implements Serializable
                 "    d888a888zzzzzzzzzzzzzzzzzzzz8     8b\n" +
                 "     `\"\"^\"\"'                    ?o___oP'";
 
-    }
-
-
-    public static String getKey3()
-    {
-        return  "           xxxxxxx                 mmmmmmmmmmmm               \n" +
-                "           xxx   xxx               mmm        mmm              \n" +
-                "      xxxxxxx     xxxxxxx         mm            mm             \n" +
-                "      xx   xxx   xxx   xx         mm            mm             \n" +
-                "     xx     xxxxxxx     xx       mm              mm            \n" +
-                "      xx   xxxxxxxxx   xx        mm              mm            \n" +
-                "       xxxxx xxxxx xxxxx         mm              mm            \n" +
-                "             xxxxx               mm              mm            \n" +
-                "             xxxxx              UUUUUUUUUUUUUUUUUUUU           \n" +
-                "             xxxxx              UUUUUUUUUUUUUUUUUUUU           \n" +
-                "             xxxxx              UUUUUUUUU   UUUUUUUU           \n" +
-                "             xxxxx              UUUUUUUU     UUUUUUU           \n" +
-                "             xxxxx              UUUUUUUUU   UUUUUUUU           \n" +
-                "             xxxxx               UUUUUUUI   IUUUUUU            \n" +
-                "             xxxxx               UUUUUUUI   IUUUUUU            \n" +
-                "          xxxxxxxx                UUUUUUUuuuUUUUUU             \n" +
-                "          xxxxxxxx                 UUUUUUUUUUUUUU              \n" +
-                "             xxxxx                                             \n" +
-                "          xxxxxxxx                                             \n" +
-                "          xxxxxxxx                                             \n" +
-                "             xxxxx  ";
     }
 
     public static String getBombSmall()

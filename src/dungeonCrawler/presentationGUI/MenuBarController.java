@@ -22,7 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class MenuBarController implements Initializable
+public class MenuBarController extends SettingsController implements Initializable
 {
     private ILogicFacade logic;
     private IPlayer player;
@@ -149,19 +149,19 @@ public class MenuBarController implements Initializable
         {
             Game.getScene().getStylesheets().clear();
             Game.setUserAgentStylesheet(null);
-            Game.getScene().getStylesheets().add(getClass().getResource("default.css").toExternalForm());
+            Game.getScene().getStylesheets().add(getClass().getResource("ThemeDefault.css").toExternalForm());
         }
         else if (((MenuItem)actionEvent.getSource()).getText().contains("White"))
         {
             Game.getScene().getStylesheets().clear();
             Game.setUserAgentStylesheet(null);
-            Game.getScene().getStylesheets().add(getClass().getResource("white.css").toExternalForm());
+            Game.getScene().getStylesheets().add(getClass().getResource("ThemeWhite").toExternalForm());
         }
         else if (((MenuItem)actionEvent.getSource()).getText().contains("Dark"))
         {
             Game.getScene().getStylesheets().clear();
             Game.setUserAgentStylesheet(null);
-            Game.getScene().getStylesheets().add(getClass().getResource("dark.css").toExternalForm());
+            Game.getScene().getStylesheets().add(getClass().getResource("ThemeDark.css").toExternalForm());
         }
 
     }

@@ -1,6 +1,7 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.*;
+import org.omg.PortableServer.RequestProcessingPolicy;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -83,6 +84,21 @@ class Map implements IMap, Serializable
                 // Constructoren if the room should be locked or not, the last param (locked)
                 roomList.add(new Room(new Point(x, y), numberOfContent, roomStrings[0], roomStrings[1], locked));//Point class in Java.
                 roomNumber++;
+            }
+        }
+
+        // Prevent 2 rooms from being locked at the same time. Around spawn.
+        for (Room room : roomList)
+        {
+            for (Room room2 : roomList)
+            {
+                if(room.getLocation().equals(new Point(1,0)) && room2.getLocation().equals(new Point(0,1)))
+                {
+                    if (room.isLocked() && room2.isLocked())
+                    {
+
+                    }
+                }
             }
         }
 

@@ -60,12 +60,12 @@
             </VBox>
             <ImageView pickOnBounds="true" smooth="false" GridPane.rowIndex="2">
                <image>
-                  <Image url="@fire2_asciianimator.gif" />
+                  <Image url="@Fire.gif" />
                </image>
             </ImageView>
             <ImageView nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <image>
-                  <Image url="@fire2_asciianimator.gif" />
+                  <Image url="@Fire.gif" />
                </image>
             </ImageView>
             <Label text="Settings" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">

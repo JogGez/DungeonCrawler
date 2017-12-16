@@ -40,10 +40,10 @@ public class Game extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        this.stage = stage;
+        Game.stage = stage;
 
         MenuBar menuBar = FXMLLoader.load(getClass().getResource("MenuBar.fxml"));
-        this.menuBar = menuBar;
+        Game.menuBar = menuBar;
 
         FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
         AnchorPane menu = menuLoader.load();
@@ -51,11 +51,18 @@ public class Game extends Application
         root.setTop(menuBar);
         root.setCenter(menu);
 
+
+
         stage.getIcons().add(new Image("file:Swords.png"));
         stage.setTitle("Dungeon Crawler");
         stage.setMinWidth(1280);
         stage.setMinHeight(768);
         stage.setScene(new Scene(root));
+
+        stage.getScene().getStylesheets().clear();
+        setUserAgentStylesheet(null);
+        stage.getScene().getStylesheets().add(getClass().getResource("ThemeDefault.css").toExternalForm());
+
         stage.show();
 
         Media sound = new Media(new File("Resources\\sounds\\Fire.mp3").toURI().toString());

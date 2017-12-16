@@ -11,7 +11,7 @@ enum KeyEnum implements Serializable
 {
     KEY1 (new Key ("The Normal Key", "The key to unlock the all locked rooms", GameTextASCII.getKey())),
     KEY2 (new Key("The Sweet Key", "The key to unlock all your childhood memories", GameTextASCII.getKey2())),
-    KEY3 (new Key ("The Awesome Key", "The key to unlock all the rooms, and whishes", GameTextASCII.getKey3()))
+    KEY3 (new Key ("The Awesome Key", "The key to unlock all the rooms, and whishes", GameTextASCII.getKey2()))
     ;
     
     private final Key key;

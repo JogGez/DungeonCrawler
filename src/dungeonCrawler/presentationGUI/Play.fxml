@@ -201,6 +201,9 @@
                      <children>
                         <ImageView fx:id="ImagePlaceHolder" fitHeight="400.0" fitWidth="400.0" onMouseClicked="#handleImageClick" opacity="0.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </StackPane>
                </children>
             </GridPane>

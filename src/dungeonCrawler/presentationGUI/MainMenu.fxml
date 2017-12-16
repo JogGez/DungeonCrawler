@@ -35,12 +35,12 @@
          <children>
             <ImageView pickOnBounds="true" smooth="false" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <image>
-                  <Image url="@fire2_asciianimator.gif" />
+                  <Image url="@Fire.gif" />
                </image>
             </ImageView>
             <ImageView nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" smooth="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@fire2_asciianimator.gif" />
+                  <Image url="@Fire.gif" />
                </image>
             </ImageView>
             <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">

@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class NewGameController implements Initializable
+public class NewGameController extends MainMenuController implements Initializable
 {
     private ILogicFacade logic;
     public static String playerName;
