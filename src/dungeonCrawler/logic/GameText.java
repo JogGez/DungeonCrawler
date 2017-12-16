@@ -1272,58 +1272,86 @@ public class GameText implements Serializable
 
         for (Room room : ((ArrayList<Room>) map.getRoomList()))
         {
-            System.out.println((room.getLocation().y + 1) == (player.getLocation().y + 1) && (room.getLocation().x - 1) == (player.getLocation().x - 1));
-            if ((room.getLocation().y + 1) == (player.getLocation().y + 1) && (room.getLocation().x - 1) == (player.getLocation().x - 1))
+            if ((room.getLocation().y) == (player.getLocation().y + 1) && (room.getLocation().x) == (player.getLocation().x - 1))
             {
-                System.out.println(room.getLocation());
                 topLeft = getContentFromRoom(room);
             }
-            else if (room.getLocation().y + 1 == player.getLocation().y + 1)
+            else if (topLeft.size() == 0) topLeft = getEmptyArray();
+
+            if ((room.getLocation().y) == (player.getLocation().y + 1) && (room.getLocation().x) == (player.getLocation().x))
             {
                 topCenter = getContentFromRoom(room);
             }
-            else if (room.getLocation().y + 1 == player.getLocation().y + 1 && room.getLocation().x + 1 == player.getLocation().x + 1)
+            else if (topCenter.size() == 0) topCenter = getEmptyArray();
+
+            if ((room.getLocation().y) == (player.getLocation().y + 1) && (room.getLocation().x) == (player.getLocation().x + 1))
             {
                 topRight = getContentFromRoom(room);
             }
-            else if (room.getLocation().x - 1 == player.getLocation().x - 1)
+            else if (topRight.size() == 0) topRight = getEmptyArray();
+
+            if ((room.getLocation().y) == (player.getLocation().y) && (room.getLocation().x) == (player.getLocation().x - 1))
             {
                 left = getContentFromRoom(room);
             }
-            else if (room.getLocation().x + 1 == player.getLocation().x + 1)
+            else if (left.size() == 0) left = getEmptyArray();
+
+            if ((room.getLocation().y) == (player.getLocation().y) && (room.getLocation().x) == (player.getLocation().x + 1))
             {
                 right = getContentFromRoom(room);
             }
-            else if (room.getLocation().y - 1 == player.getLocation().y - 1 && room.getLocation().x - 1 == player.getLocation().x - 1)
+            else if (right.size() == 0) right = getEmptyArray();
+
+            if ((room.getLocation().y) == (player.getLocation().y - 1) && (room.getLocation().x) == (player.getLocation().x - 1))
             {
                 bottomLeft = getContentFromRoom(room);
             }
-            else if (room.getLocation().y - 1 == player.getLocation().y - 1)
+            else if (bottomLeft.size() == 0) bottomLeft = getEmptyArray();
+
+            if ((room.getLocation().y) == (player.getLocation().y - 1) && (room.getLocation().x) == (player.getLocation().x))
             {
                 bottomCenter = getContentFromRoom(room);
             }
-            else if (room.getLocation().y - 1 == player.getLocation().y - 1 && room.getLocation().x + 1 == player.getLocation().x + 1)
+            else if (bottomCenter.size() == 0) bottomCenter = getEmptyArray();
+
+            if ((room.getLocation().y) == (player.getLocation().y - 1) && (room.getLocation().x) == (player.getLocation().x + 1))
             {
                 bottomRight = getContentFromRoom(room);
             }
+            else if (bottomRight.size() == 0) bottomRight = getEmptyArray();
         }
 
-        ArrayList<String> top = new ArrayList<>();
-        ArrayList<String> middle = new ArrayList<>();
-        ArrayList<String> bottom = new ArrayList<>();
+        String top = "";
+        String middle = "";
+        String bottom = "";
 
-        for (int i = 0; i < GameSettings.getRoomContents()-1; i++)
+        for (int i = 0; i < GameSettings.getRoomContents(); i++)
         {
-            //top.add(topLeft.get(i) + top.get(i)+ topRight.get(i));
-            //System.out.println(topLeft.get(i) + top.get(i)+ topRight.get(i));
+            top += " ║" + topLeft.get(i) + "|" + topCenter.get(i)+ "|" + topRight.get(i) + "║\n";
+            if (i == 0) middle += " ║" + left.get(i) + "|" + "  Player   " + "|" + right.get(i) + "║\n";
+            else middle += " ║" + left.get(i) + "|" + "           " + "|" + right.get(i) + "║\n";
+            bottom += " ║" + bottomLeft.get(i) + "|" + bottomCenter.get(i)+ "|" + bottomRight.get(i) + "║\n";
         }
 
+        String topDecor = " ╔-----------|-----------|-----------╗" + "\n";
+        String seperator =  " ║-----------|-----------|-----------║" + "\n";
+        String empty =  " ║           |           |           ║" + "\n";
+        String bottomDecor = " ╰-----------|-----------|-----------╯" + "\n" ;
 
+        return topDecor + empty + top + empty + seperator + empty + middle + empty + seperator + empty + bottom + empty + bottomDecor;
+    }
 
+    private ArrayList<String> getEmptyArray()
+    {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < GameSettings.getRoomContents(); i++)
+        {
+            if (i == 0) list.add("  #######  ");
+            else if (i == 1) list.add("  #######  ");
+            else list.add("  #######  ");
+        }
 
-
-
-        return null;
+        return list;
     }
 
     /**
@@ -1336,10 +1364,10 @@ public class GameText implements Serializable
         ArrayList<String> list = new ArrayList<>();
         for (RoomContent content : room.getContentArray())
         {
-            if (content instanceof Monster) list.add("Monster");
-            else if (content instanceof Chest) list.add("Chest");
-            else if (content instanceof Guide) list.add("Guide");
-            else if (content == null) list.add("");
+            if (content instanceof Monster) list.add("  Monster  ");
+            else if (content instanceof Chest) list.add("  Chest    ");
+            else if (content instanceof Guide) list.add("  Guide    ");
+            else if (content == null) list.add("           ");
             else list.add("NO ROOM");
         }
 

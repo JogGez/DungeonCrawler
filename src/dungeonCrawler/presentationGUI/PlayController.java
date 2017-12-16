@@ -1102,7 +1102,7 @@ public class PlayController extends HighscoreController implements Initializable
             {
                 playAnimation("Resources\\images\\Glasses.gif", 2.5);
                 //((ISpecial) item).use(player);
-                textAreaMain.setText(gameText.getVisionMap());
+                textAreaMain.setText("\n" + gameText.getVisionMap());
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
             }
             else if (((ISpecial) item).getTypeString().equals("extra_slot"))

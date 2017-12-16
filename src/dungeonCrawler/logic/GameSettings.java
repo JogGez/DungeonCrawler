@@ -24,6 +24,9 @@ class GameSettings implements Serializable
     private static int playerTime;
     private static int playerPower;
     private static int numberOfMerchants;
+    private static int merchantMoveRounds;
+
+
     private static int numberOfThieves;
     private static int thiefPickingRounds;
     private static int lockedRooms;
@@ -62,20 +65,21 @@ class GameSettings implements Serializable
        inventorySize = 5;
        playerTime = 300;
        playerPower = 25;
-       numberOfMerchants = 2;
+       numberOfMerchants = 1;
+        merchantMoveRounds = 1;
        numberOfThieves = 2;
        thiefPickingRounds = 3;
        lockedRooms = 2;
 
-       chanceOfMonster = 20;
-       chanceOfChest = 80;
-       chanceOfGuide = 0;
+       chanceOfMonster = 40;
+       chanceOfChest = 40;
+       chanceOfGuide = 20;
 
-       chanceOfWeapon = 100;
-       chanceOfHealthPotion = 0;
-       chanceOfTimePotion = 0;
-       chanceOfKey = 0;
-       chanceOfSpecial = 0;
+       chanceOfWeapon = 25;
+       chanceOfHealthPotion = 20;
+       chanceOfTimePotion = 20;
+       chanceOfKey = 10;
+       chanceOfSpecial = 25;
 
        scoreMulitplier = 1;
     }
@@ -92,6 +96,7 @@ class GameSettings implements Serializable
         playerTime = 240;
         playerPower = 20;
         numberOfMerchants = 2;
+        merchantMoveRounds = 1;
         numberOfThieves = 2;
         thiefPickingRounds = 3;
         lockedRooms = 4;
@@ -122,6 +127,7 @@ class GameSettings implements Serializable
         playerTime = 180;
         playerPower = 10;
         numberOfMerchants = 3;
+        merchantMoveRounds = 1;
         numberOfThieves = 3;
         thiefPickingRounds = 2;
         lockedRooms = 6;
@@ -298,6 +304,14 @@ class GameSettings implements Serializable
         return numberOfMerchants;
     }
 
+    /**
+     * Getter method for how many rounds it takes a merchant to move
+     * @return int
+     */
+    static int getMerchantMoveRounds()
+    {
+        return merchantMoveRounds;
+    }
     /**
      * Getter method for how many thieves there is in the game
      * @return int
