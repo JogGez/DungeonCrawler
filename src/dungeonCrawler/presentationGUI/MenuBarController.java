@@ -22,6 +22,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * The top menu handler
+ * extends SettingsController
+ * implements Initializable
+ */
 public class MenuBarController extends SettingsController implements Initializable
 {
     private ILogicFacade logic;

@@ -8,8 +8,8 @@ package dungeonCrawler.aqu;
 import java.io.Serializable;
 
 /**
- *
- * @author Linea Hoffmann
+ * IKey interface
+ * @author
  */
 public interface IKey extends Serializable
 {

@@ -34,6 +34,7 @@ enum MonsterEnum implements Serializable
     CENTUAR (new Monster("Posh Centuar", "", GameTextASCII.getCentuar(), 250, ((int)(Math.random()*10+20)))),
     ALIEN (new Monster("Alien", "", GameTextASCII.getAlien(), 42, ((int)(Math.random()*10+5)))),
     GHOST (new Monster("Slimer", "The Jar Jar Binks of the Ghostbusters universe.", GameTextASCII.getGhost(), 90, ((int)(Math.random()*10+3)))),
+    CYCLOPS (new Monster("Cyclops", "", GameTextASCII.getCyclops(), 200, ((int)(Math.random()*10+20))))
     ; // semicolon needed when fields / methods follow
 
     private final Monster monster;

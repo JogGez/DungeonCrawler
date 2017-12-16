@@ -4,6 +4,9 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * IRoom interface
+ */
 public interface IRoom extends Serializable
 {
     int getNumberOfContent();

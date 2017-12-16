@@ -4,6 +4,9 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * IMerchant interface
+ */
 public interface IMerchant extends Serializable
 {
     IInventory getInventory();

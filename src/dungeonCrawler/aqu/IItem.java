@@ -1,6 +1,8 @@
 package dungeonCrawler.aqu;
 
-
+/**
+ * IItem interface
+ */
 public interface IItem
 {
 
