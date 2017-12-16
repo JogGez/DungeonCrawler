@@ -90,7 +90,7 @@ public class SettingsController extends LoadController implements Initializable 
         return musicVolume;
     }
 
-    public static boolean getSkibAnimation()
+    public static boolean getSkipAnimation()
     {
         return skipAnimation;
     }
