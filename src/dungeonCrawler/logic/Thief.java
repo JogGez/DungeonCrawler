@@ -11,7 +11,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * The type Thief
+ * Thief class
+ * A NPC that removes chests in a room after a certain amount of time, set in game settings
+ * implements IThief, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class Thief implements IThief, Serializable

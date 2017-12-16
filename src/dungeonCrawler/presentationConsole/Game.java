@@ -10,8 +10,8 @@ import java.nio.file.Paths;
 import java.util.Date;
 
 /**
- * Class used to get the game running.
- *HEJ
+ * Class used to get the game running in console.
+ * implements IGame, Serializable
  * @author JogGez
  * @version 1.0
  * @since 2017-09-22

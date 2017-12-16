@@ -38,6 +38,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * The type Play controller.
+ * Used to get handle the game itself and what the user is pressing.
+ * implements Initializable
+ * extends HighscoreController
  */
 public class PlayController extends HighscoreController implements Initializable
 {
@@ -204,6 +207,8 @@ public class PlayController extends HighscoreController implements Initializable
 
     /**
      * The initialize method used for when the controller is first initialized
+     * @param location
+     * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources)

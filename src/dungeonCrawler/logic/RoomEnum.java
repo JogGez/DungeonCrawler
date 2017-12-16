@@ -5,6 +5,7 @@ import java.util.Random;
 
 /**
  * Static room names/descriptions
+ * implements Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 enum RoomEnum implements Serializable

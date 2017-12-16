@@ -12,7 +12,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * The type TimeTracker
+ * TimeTracker class
+ * Used to track time in the game for the player.
+ * implements ITimeTracker, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class TimeTracker implements ITimeTracker, Serializable

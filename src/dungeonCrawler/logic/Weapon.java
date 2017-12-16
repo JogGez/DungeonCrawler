@@ -4,7 +4,10 @@ import dungeonCrawler.aqu.IWeapon;
 import java.io.Serializable;
 
 /**
- * Inherit from the Item class
+ * Weapon class
+ * Used for the player to equip and enhance his power to fight monster/NPC's
+ * extends Item
+ * implements IWeapon, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class Weapon extends Item implements IWeapon, Serializable

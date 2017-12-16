@@ -26,6 +26,10 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+/**
+ * Class to handle the main screen in GUI
+ * implements Initializable
+ */
 public class MainMenuController implements Initializable
 {
     ILogicFacade logic;
@@ -48,6 +52,11 @@ public class MainMenuController implements Initializable
     private Button btnSettings;
 
 
+    /**
+     * The initialize method used for when the controller is first initialized
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
@@ -62,6 +71,11 @@ public class MainMenuController implements Initializable
         lblTitle.setText(logic.getGameText().getAsciiTitle());
     }
 
+    /**
+     * Handles btn press play
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     public void handlePlay(ActionEvent actionEvent) throws IOException
     {
@@ -71,6 +85,11 @@ public class MainMenuController implements Initializable
         soundMyNoise.play();
     }
 
+    /**
+     * Handles btn press load
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleLoadGame(ActionEvent event) throws IOException
     {
@@ -80,6 +99,11 @@ public class MainMenuController implements Initializable
         soundMyNoise.play();
     }
 
+    /**
+     * Handles btn press highscore
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     public void handleHighscore(ActionEvent actionEvent) throws IOException
     {
@@ -88,7 +112,11 @@ public class MainMenuController implements Initializable
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
-    
+
+    /**
+     * Handles btn press settings
+     * @param event
+     */
     @FXML
     private void handleSettings(ActionEvent event)
     {
@@ -97,7 +125,11 @@ public class MainMenuController implements Initializable
         soundMyNoise.setVolume(1);
         soundMyNoise.play();
     }
-    
+
+    /**
+     * Handles btn press exit
+     * @param event
+     */
     @FXML
     private void handleExit(ActionEvent event)
     {

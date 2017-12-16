@@ -18,7 +18,11 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-
+/**
+ * Screen for selecting game difficulty
+ * extends MainMenuController
+ * implements Initializable
+ */
 public class NewGameController extends MainMenuController implements Initializable
 {
     private ILogicFacade logic;
@@ -33,14 +37,22 @@ public class NewGameController extends MainMenuController implements Initializab
     @FXML
     private Button btnBack;
 
-
+    /**
+     * The initialize method used for when the controller is first initialized
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
         logic = Game.getLogic();
     }
 
-
+    /**
+     * Handles going back to prev scene
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleBack(ActionEvent event) throws IOException
     {
@@ -50,6 +62,11 @@ public class NewGameController extends MainMenuController implements Initializab
         Game.switchScene("MainMenu.fxml");
     }
 
+    /**
+     * Handles setting gamesettings to easy
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void handleBtnEasy(ActionEvent event) throws IOException
     {
@@ -61,6 +78,11 @@ public class NewGameController extends MainMenuController implements Initializab
 
     }
 
+    /**
+     * Handles setting gamesettings to normal
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void handleBtnNormal(ActionEvent event) throws IOException
     {
@@ -71,6 +93,11 @@ public class NewGameController extends MainMenuController implements Initializab
         showStartScene(event);
     }
 
+    /**
+     * Handles setting gamesettings to hard
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void handleBtnHard(ActionEvent event) throws IOException
     {
@@ -81,6 +108,11 @@ public class NewGameController extends MainMenuController implements Initializab
         showStartScene(event);
     }
 
+    /**
+     * Handles prompt window for player name, and then starts the game.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void showStartScene(ActionEvent event) throws IOException
     {

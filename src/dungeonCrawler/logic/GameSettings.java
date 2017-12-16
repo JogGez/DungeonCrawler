@@ -60,20 +60,21 @@ class GameSettings implements Serializable
        roomContents = 2;
        playerHealth = 1000;
        inventorySize = 5;
-       playerTime = 300;
-       playerPower = 25;
+       playerTime = 30;
+       playerPower = 10;
        numberOfMerchants = 2;
        numberOfThieves = 2;
        thiefPickingRounds = 3;
        lockedRooms = 2;
 
-       chanceOfMonster = 20;
-       chanceOfChest = 80;
+       chanceOfMonster = 0;
+       chanceOfChest = 100;
        chanceOfGuide = 0;
 
-       chanceOfWeapon = 100;
+       chanceOfWeapon = 0;
+       //TODO HP og TP er den samme potion i enummet.
        chanceOfHealthPotion = 0;
-       chanceOfTimePotion = 0;
+       chanceOfTimePotion = 100;
        chanceOfKey = 0;
        chanceOfSpecial = 0;
 

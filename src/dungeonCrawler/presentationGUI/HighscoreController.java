@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class to present highscore in gui from data.
+ * implements Initializable
+ */
 public class HighscoreController implements Initializable
 {
     private ILogicFacade logic;
@@ -22,6 +26,11 @@ public class HighscoreController implements Initializable
     @FXML
     private Button btnBack;
 
+    /**
+     * Handles the back btn press
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void handleBack(ActionEvent event) throws IOException
     {
@@ -31,6 +40,11 @@ public class HighscoreController implements Initializable
         soundMyNoise.play();
     }
 
+    /**
+     * The initialize method used for when the controller is first initialized
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {

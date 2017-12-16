@@ -16,7 +16,13 @@ import javafx.scene.control.Slider;
 import javafx.scene.media.AudioClip;
 import jdk.nashorn.internal.ir.IfNode;
 
-public class SettingsController extends LoadController implements Initializable {
+/**
+ * Class to change settings. Sounds in the game etc.
+ * extends LoadController
+ * implements Initializable
+ */
+public class SettingsController extends LoadController implements Initializable
+{
 
     @FXML
     private Slider sldrSound;
@@ -40,7 +46,7 @@ public class SettingsController extends LoadController implements Initializable 
     private CheckBox cbxSkipAnimation;
 
     /**
-     * Initializes the controller class.
+     * The initialize method used for when the controller is first initialized
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) 

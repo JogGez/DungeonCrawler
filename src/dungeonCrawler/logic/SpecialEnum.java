@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * Static special items
+ * Static special items for the game
+ * implements Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 enum SpecialEnum implements Serializable

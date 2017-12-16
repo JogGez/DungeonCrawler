@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Inherit from the Item class
+ * Special class
+ * Used for special items, with an unique ability.
+ * implements ISpecial, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class Special extends Item implements ISpecial, Serializable
