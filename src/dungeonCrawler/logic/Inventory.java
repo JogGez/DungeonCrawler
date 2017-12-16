@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Inventory for items
+ * Inventory class
+ * Used for NPC's and Player to store items
+ * implements IInventory, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class Inventory implements IInventory, Serializable

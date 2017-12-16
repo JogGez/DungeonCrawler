@@ -13,15 +13,16 @@ import java.awt.*;
 import java.io.Serializable;
 
 /**
- * The Player class
- *
+ * Player class
+ * Playable character can interact with the world
+ * implements IPlayer, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 class Player implements IPlayer, Serializable
 {
     /**
     We aren't making the system print out a line, because later on it would
-    result in a error. Therefore we are going to create a seperate class under game play().
+    result in a error. Therefore we are going to create a separate class under game play().
     this method under game, calls for our parser (which is our primary scanner class) that gets the users next input, and makes it a string that is used for the name.
     */
     private String name;

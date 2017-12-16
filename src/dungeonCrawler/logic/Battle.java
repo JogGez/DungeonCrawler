@@ -57,7 +57,7 @@ class Battle implements IBattle, Serializable
         // (int) in pararentens because it would only be Math.random = 0, which is = 0.
         // We are getting the players current weapons power to add to our calculation, same with the monster.
         int playerHit = player.getWeapon().getPower() + ((int)(Math.random()*20+10)); // caster because Math. is always a double.
-        int monsterHit = monster.getPower() + ((int)(Math.random()*10+5));
+        int monsterHit = monster.getPower();
 
         //Computes the player and monster get.health ( how much the player/monster has, after the Hit)
         // set.Health calls from Player and Monster class
@@ -68,6 +68,7 @@ class Battle implements IBattle, Serializable
         //If, else if that use the get.Health, from the calculation above
         if (player.getHealth() <= 0)
         {
+            player.setHealth(0);
             isBattleOver = true;// sets the value + (While loop in game, that would continue forever, if not set.)
             return "You have died...";
         }

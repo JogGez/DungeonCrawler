@@ -10,6 +10,8 @@ import java.io.Serializable;
 
 /**
  * Inherit from the Item class
+ * used to unlock rooms in map
+ * implements Ikey, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class Key extends Item implements IKey, Serializable

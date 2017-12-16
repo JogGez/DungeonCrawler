@@ -6,8 +6,9 @@ import dungeonCrawler.aqu.IItem;
 import java.io.Serializable;
 
 /**
- * The type Chest.
- *
+ * Chest class
+ * Used for items to be stored in, and as a intractable object in rooms
+ * implements RoomContent, IChest, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class Chest implements RoomContent, IChest, Serializable

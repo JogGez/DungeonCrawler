@@ -6,6 +6,13 @@ import dungeonCrawler.data.GameStateDTO;
 import java.io.Serializable;
 import java.util.Date;
 
+
+/**
+ * LogicFacade class
+ * used for layered structuring
+ * implements dungeonCrawler.aqu.ILogicFacade, Serializable
+ * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
+ */
 public class LogicFacade implements dungeonCrawler.aqu.ILogicFacade, Serializable
 {
     IDataFacade data;

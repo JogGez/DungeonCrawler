@@ -9,8 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * The type Merchant.
- *
+ * Merchant class
+ * Player can trade items from this npc
+ * implements IMerchant, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 

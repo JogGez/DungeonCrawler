@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * Static merchants
+ * Static merchants for the game
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 enum MerchantEnum implements Serializable
