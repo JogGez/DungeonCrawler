@@ -28,7 +28,7 @@ public class HighscoreController implements Initializable
 
     /**
      * Handles the back btn press
-     * @param event
+     * @param event the event to use
      * @throws IOException
      */
     @FXML
@@ -42,8 +42,8 @@ public class HighscoreController implements Initializable
 
     /**
      * The initialize method used for when the controller is first initialized
-     * @param location
-     * @param resources
+     * @param location the URL location to use
+     * @param resources the ResourceBundle to use
      */
     @Override
     public void initialize(URL location, ResourceBundle resources)
