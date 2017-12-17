@@ -5,6 +5,7 @@ import dungeonCrawler.aqu.IDataFacade;
 import dungeonCrawler.aqu.ILogicFacade;
 import dungeonCrawler.data.DataFacade;
 import dungeonCrawler.logic.LogicFacade;
+// Change to dungeonCrawler.presentationConsole.Game; to test console.
 import dungeonCrawler.presentationGUI.Game;
 
 /**
