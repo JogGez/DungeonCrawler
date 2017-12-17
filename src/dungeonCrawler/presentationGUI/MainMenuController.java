@@ -54,8 +54,8 @@ public class MainMenuController implements Initializable
 
     /**
      * The initialize method used for when the controller is first initialized
-     * @param location
-     * @param resources
+     * @param location Sets the location to use.
+     * @param resources Sets the resources to use.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -73,7 +73,7 @@ public class MainMenuController implements Initializable
 
     /**
      * Handles btn press play
-     * @param actionEvent
+     * @param actionEvent Sets the actionEvent to use.
      * @throws IOException
      */
     @FXML
@@ -87,7 +87,7 @@ public class MainMenuController implements Initializable
 
     /**
      * Handles btn press load
-     * @param event
+     * @param event Sets the actionEvent to use.
      * @throws IOException
      */
     @FXML
@@ -101,7 +101,7 @@ public class MainMenuController implements Initializable
 
     /**
      * Handles btn press highscore
-     * @param actionEvent
+     * @param actionEvent Sets the actionEvent to use.
      * @throws IOException
      */
     @FXML
@@ -115,7 +115,7 @@ public class MainMenuController implements Initializable
 
     /**
      * Handles btn press settings
-     * @param event
+     * @param event Sets the event to use.
      */
     @FXML
     private void handleSettings(ActionEvent event)
@@ -128,7 +128,7 @@ public class MainMenuController implements Initializable
 
     /**
      * Handles btn press exit
-     * @param event
+     * @param event Sets the event to use.
      */
     @FXML
     private void handleExit(ActionEvent event)
