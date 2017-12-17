@@ -754,7 +754,7 @@ public class Game implements IGame, Serializable
 
         if (map.roomContainsThief())
         {
-            printToConsole.print(gameText.getThief());
+            printToConsole.print(gameText.getThief(map.getThief()));
             map.removeThief();
         }
         

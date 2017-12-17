@@ -72,7 +72,7 @@ class GameSettings implements Serializable
         roomContents = 2;
         playerHealth = 1000;
         inventorySize = 5;
-        playerTime = 300;
+        playerTime = 320;
         playerPower = 25;
 
         monsterHealth = 0;
@@ -87,9 +87,9 @@ class GameSettings implements Serializable
         thiefPickingRounds = 3;
         lockedRooms = 2;
 
-        chanceOfMonster = 40;
-        chanceOfChest = 40;
-        chanceOfGuide = 20;
+        chanceOfMonster = 45;
+        chanceOfChest = 45;
+        chanceOfGuide = 10;
 
         chanceOfWeapon = 25;
         chanceOfHealthPotion = 20;
@@ -107,33 +107,33 @@ class GameSettings implements Serializable
     {
         mapSize = new Point (4,5);
         roomContents = 2;
-        playerHealth = 500;
+        playerHealth = 900;
         inventorySize = 4;
-        playerTime = 240;
-        playerPower = 20;
+        playerTime = 260;
+        playerPower = 25;
 
-        monsterHealth = 25;
-        monsterPower = 12;
+        monsterHealth = 5;
+        monsterPower = 3;
 
-        luciferHealth = 250;
-        luciferPower = 10;
+        luciferHealth = 100;
+        luciferPower = 5;
 
         numberOfMerchants = 2;
 
         merchantMoveRounds = 1;
         numberOfThieves = 2;
         thiefPickingRounds = 3;
-        lockedRooms = 4;
+        lockedRooms = 3;
 
-        chanceOfMonster = 25;
-        chanceOfChest = 50;
-        chanceOfGuide = 15;
+        chanceOfMonster = 40;
+        chanceOfChest = 40;
+        chanceOfGuide = 20;
 
-        chanceOfWeapon = 30;
-        chanceOfHealthPotion = 30;
+        chanceOfWeapon = 25;
+        chanceOfHealthPotion = 35;
         chanceOfTimePotion = 30;
-        chanceOfKey = 0;
-        chanceOfSpecial = 10;
+        chanceOfKey = 5;
+        chanceOfSpecial = 5;
 
         scoreMulitplier = 2;
     }
@@ -146,31 +146,31 @@ class GameSettings implements Serializable
     {
         mapSize = new Point (5,6);
         roomContents = 3;
-        playerHealth = 300;
+        playerHealth = 750;
         inventorySize = 3;
-        playerTime = 180;
-        playerPower = 10;
+        playerTime = 220;
+        playerPower = 20;
 
-        monsterHealth = 50;
-        monsterPower = 25;
+        monsterHealth = 10;
+        monsterPower = 5;
 
-        luciferHealth = 500;
-        luciferPower = 20;
+        luciferHealth = 200;
+        luciferPower = 10;
 
         numberOfMerchants = 3;
         merchantMoveRounds = 0;
         numberOfThieves = 3;
         thiefPickingRounds = 2;
-        lockedRooms = 6;
+        lockedRooms = 4;
 
-        chanceOfMonster = 25;
-        chanceOfChest = 50;
-        chanceOfGuide = 15;
+        chanceOfMonster = 50;
+        chanceOfChest = 40;
+        chanceOfGuide = 10;
 
         chanceOfWeapon = 30;
-        chanceOfHealthPotion = 30;
+        chanceOfHealthPotion = 25;
         chanceOfTimePotion = 30;
-        chanceOfKey = 0;
+        chanceOfKey = 5;
         chanceOfSpecial = 10;
 
         scoreMulitplier = 3;

@@ -91,11 +91,11 @@ abstract class Item implements IItem, Serializable
         }
         else if (randomItem < GameSettings.getChanceOfWeapon() + GameSettings.getChanceOfHealthPotion())
         {
-            return PotionEnum.getRandomPotion();
+            return PotionEnum.getRandomHealthPotion();
         }
         else if (randomItem < GameSettings.getChanceOfWeapon() + GameSettings.getChanceOfHealthPotion() + GameSettings.getChanceOfTimePotion())
         {
-            return PotionEnum.getRandomPotion();
+            return PotionEnum.getRandomTimePotion();
         }
         else if (randomItem < GameSettings.getChanceOfWeapon() + GameSettings.getChanceOfHealthPotion() + GameSettings.getChanceOfTimePotion() + GameSettings.getChanceOfKey())
         {

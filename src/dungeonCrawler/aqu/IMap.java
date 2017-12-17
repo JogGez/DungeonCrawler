@@ -38,6 +38,8 @@ public interface IMap extends Serializable
 
     String checkRoomContent(int index);
 
+    IThief getThief();
+
     IRoom getCurrentRoom();
 
     boolean roomContainsThief();

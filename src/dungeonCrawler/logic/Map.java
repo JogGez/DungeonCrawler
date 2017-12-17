@@ -430,6 +430,25 @@ class Map implements IMap, Serializable
         return null;
     }
 
+
+    /**
+     * Getter method for thief
+     * @return IThief
+     */
+    @Override
+    public IThief getThief()
+    {
+        for (Thief thief : thiefList)
+        {
+            if (thief.getLocation().equals(player.getLocation()))
+            {
+                return thief;
+            }
+        }
+
+        return null;
+    }
+
     /**
      * Getter method for the room the player is in
      * @return Room

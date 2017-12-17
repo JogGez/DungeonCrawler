@@ -1019,9 +1019,9 @@ public class GameText implements Serializable
      * String for finding thief
      * @return String
      */
-    public String getThief()
+    public String getThief(IThief thief)
     {
-        return "You found a thief and for his crime you take his life";
+        return thief.getAscii() + "\n\n" + "You found a thief and for his crime you take his life";
     }
 
     /**

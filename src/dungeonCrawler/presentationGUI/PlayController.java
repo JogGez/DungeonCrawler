@@ -777,7 +777,7 @@ public class PlayController extends HighscoreController implements Initializable
 
         if (map.roomContainsThief())
         {
-            textAreaMain.setText(gameText.getThief());
+            textAreaMain.setText(gameText.getThief(map.getThief()));
             map.removeThief();
             textAreaMap.setText(gameText.getMap());
 

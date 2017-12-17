@@ -47,4 +47,24 @@ enum PotionEnum implements Serializable
         Potion potionValues = values()[new Random().nextInt(values().length)].potion;
         return new Potion(potionValues.getName(), potionValues.getDescription(), potionValues.getAscii(), potionValues.getHealthRecovery(), potionValues.getTimeRecovery());
     }
+
+    /**
+     * Getter method to get random health potion from enum
+     * @return
+     */
+    public static Potion getRandomHealthPotion()
+    {
+        Potion potionValues = values()[new Random().nextInt(values().length-3)].potion;
+        return new Potion(potionValues.getName(), potionValues.getDescription(), potionValues.getAscii(), potionValues.getHealthRecovery(), potionValues.getTimeRecovery());
+    }
+
+    /**
+     * Getter method to get random time potion from enum
+     * @return
+     */
+    public static Potion getRandomTimePotion()
+    {
+        Potion potionValues = values()[new Random().nextInt(values().length-3)+3].potion;
+        return new Potion(potionValues.getName(), potionValues.getDescription(), potionValues.getAscii(), potionValues.getHealthRecovery(), potionValues.getTimeRecovery());
+    }
 }

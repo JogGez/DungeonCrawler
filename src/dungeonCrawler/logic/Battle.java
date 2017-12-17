@@ -3,6 +3,7 @@ package dungeonCrawler.logic;
 import dungeonCrawler.aqu.IBattle;
 
 import java.io.Serializable;
+import java.util.Random;
 
 /**
  * Battle class
@@ -56,8 +57,8 @@ class Battle implements IBattle, Serializable
     {
         // (int) in pararentens because it would only be Math.random = 0, which is = 0.
         // We are getting the players current weapons power to add to our calculation, same with the monster.
-        int playerHit = (((int)(Math.random()*20 + player.getWeapon().getPower())) * player.getWeapon().getMultiplier()); // caster because Math. is always a double.
-        int monsterHit = monster.getPower();
+        int playerHit = (int)(( GameSettings.getPlayerPower() + player.getWeapon().getPower() * (player.getWeapon().getMultiplier()/100) ) * (Math.random() * 0.5 + 0.70)); // caster because Math. is always a double.
+        int monsterHit = (int)((GameSettings.getMonsterPower() + monster.getPower()) * (Math.random() * 0.5 + 0.75));
 
         //Computes the player and monster get.health ( how much the player/monster has, after the Hit)
         // set.Health calls from Player and Monster class
