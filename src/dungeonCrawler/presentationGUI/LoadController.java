@@ -31,7 +31,7 @@ public class LoadController implements Initializable
 
     /**
      * Handles the back btn
-     * @param event
+     * @param event Sets the event to use.
      * @throws IOException
      */
     @FXML
@@ -45,7 +45,7 @@ public class LoadController implements Initializable
 
     /**
      * Handles load game 1
-     * @param actionEvent
+     * @param actionEvent Sets the actionEvent to use.
      */
     @FXML
     private void handleLoad1(ActionEvent actionEvent)
@@ -57,7 +57,7 @@ public class LoadController implements Initializable
 
     /**
      * Handles load game 2
-     * @param actionEvent
+     * @param actionEvent Sets the actionEvent to use.
      */
     @FXML
     private void handleLoad2(ActionEvent actionEvent)
@@ -69,7 +69,7 @@ public class LoadController implements Initializable
 
     /**
      * Handles load game 3
-     * @param actionEvent
+     * @param actionEvent Sets the actionEvent to use.
      */
     @FXML
     private void handleLoad3(ActionEvent actionEvent)
@@ -81,8 +81,8 @@ public class LoadController implements Initializable
 
     /**
      * The initialize method used for when the controller is first initialized
-     * @param location
-     * @param resources
+     * @param location Sets the location to use.
+     * @param resources Sets the resources to use.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources)
