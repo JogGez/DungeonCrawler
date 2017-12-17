@@ -97,6 +97,19 @@ class Map implements IMap, Serializable
                 {
                     if (room.isLocked() && room2.isLocked())
                     {
+                        if ((new Random(2).nextInt() == 0)) room.setLocked(false);
+                        else  room2.setLocked(false);
+
+                        while (true)
+                        {
+                            int randomRoom = new Random(mapSize.x + mapSize.y).nextInt();
+                            if (!roomList.get(randomRoom).isLocked())
+                            {
+                                roomList.get(randomRoom).setLocked(true);
+                                break;
+                            }
+                        }
+
 
                     }
                 }

@@ -49,7 +49,7 @@ enum MonsterEnum implements Serializable
      */
     public Monster getMonster()
     {
-        return new Monster(monster.getName(), monster.getDescription(), monster.getAscii(), monster.getHealth(), monster.getPower());
+        return new Monster(monster.getName(), monster.getDescription(), monster.getAscii(), monster.getHealth() + GameSettings.getMonsterHealth(), monster.getPower() + GameSettings.getMonsterPower());
     }
 
     /**
@@ -62,7 +62,7 @@ enum MonsterEnum implements Serializable
         Monster monsterValues = values()[new Random().nextInt(values().length)].monster;
 
         // And here we return a new instance of our merchant from our Enumlist. Where it uses the reference MonsterEnum monsterValues
-        return new Monster(monsterValues.getName(), monsterValues.getDescription(), monsterValues.getAscii(), monsterValues.getHealth(), monsterValues.getPower());
+        return new Monster(monsterValues.getName(), monsterValues.getDescription(), monsterValues.getAscii(), monsterValues.getHealth() + GameSettings.getMonsterHealth(), monsterValues.getPower() + GameSettings.getMonsterPower());
     }
 
     /**
@@ -72,6 +72,6 @@ enum MonsterEnum implements Serializable
     public static Monster getLucifer()
     {
         // And here we return a new instance of our merchant from our Enumlist. Where it uses the reference MonsterEnum monsterValues
-        return new Monster("Lucifer", "The LORD of the Underworld, The one true evil.", GameTextASCII.getDevil3(), 1000, 50);
+        return new Monster("Lucifer", "The LORD of the Underworld, The one true evil.", GameTextASCII.getDevil3(), 1000 + GameSettings.getLuciferHealth(), 50 + GameSettings.getLuciferPower());
     }
 }

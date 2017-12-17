@@ -16,27 +16,39 @@ class GameSettings implements Serializable
 {
     // Static because of static methods.
     private static Point mapSize;
+
      // number of contents in a room.
     private static int roomContents;
-    //
+
+    // Player settings.
     private static int playerHealth;
-    private static int inventorySize;
     private static int playerTime;
     private static int playerPower;
+    private static int inventorySize;
+
+    // Monster settings.
+    private static int monsterHealth;
+    private static int monsterPower;
+
+    // Lucifer settings.
+    private static int luciferHealth;
+    private static int luciferPower;
+
+    // Map settings.
     private static int numberOfMerchants;
     private static int merchantMoveRounds;
 
-
     private static int numberOfThieves;
     private static int thiefPickingRounds;
+
     private static int lockedRooms;
 
-    // Combined chance must be under 100%
+    // Room Settiings. (combined chance must be 100% or under)
     private static int chanceOfMonster;
     private static int chanceOfChest;
     private static int chanceOfGuide;
 
-    // Combined chance must be under 100%
+    // Chest Settiings. (combined chance must be 100% or under)
     private static int chanceOfWeapon;
     private static int chanceOfHealthPotion;
     private static int chanceOfTimePotion;
@@ -44,14 +56,11 @@ class GameSettings implements Serializable
     private static int chanceOfSpecial;
     private static int scoreMulitplier;
 
-    // Private constructor to maintain static and to prevent instantiating
-
     /**
-     * Private constructor
+     * Private constructor to maintain static and to prevent instantiating
      */
     private GameSettings()
     {
-
     }
 
     /**
@@ -59,29 +68,36 @@ class GameSettings implements Serializable
      */
     public static void setEasyDifficulty()
     {
-       mapSize = new Point (3,4);
-       roomContents = 2;
-       playerHealth = 1000;
-       inventorySize = 5;
-       playerTime = 300;
-       playerPower = 25;
-       numberOfMerchants = 1;
+        mapSize = new Point (3,4);
+        roomContents = 2;
+        playerHealth = 1000;
+        inventorySize = 5;
+        playerTime = 300;
+        playerPower = 25;
+
+        monsterHealth = 0;
+        monsterPower = 0;
+
+        luciferHealth = 0;
+        luciferPower = 0;
+
+        numberOfMerchants = 1;
         merchantMoveRounds = 1;
-       numberOfThieves = 2;
-       thiefPickingRounds = 3;
-       lockedRooms = 2;
+        numberOfThieves = 2;
+        thiefPickingRounds = 3;
+        lockedRooms = 2;
 
-       chanceOfMonster = 40;
-       chanceOfChest = 40;
-       chanceOfGuide = 20;
+        chanceOfMonster = 40;
+        chanceOfChest = 40;
+        chanceOfGuide = 20;
 
-       chanceOfWeapon = 25;
-       chanceOfHealthPotion = 20;
-       chanceOfTimePotion = 20;
-       chanceOfKey = 10;
-       chanceOfSpecial = 25;
+        chanceOfWeapon = 25;
+        chanceOfHealthPotion = 20;
+        chanceOfTimePotion = 20;
+        chanceOfKey = 10;
+        chanceOfSpecial = 25;
 
-       scoreMulitplier = 1;
+        scoreMulitplier = 1;
     }
 
     /**
@@ -95,7 +111,15 @@ class GameSettings implements Serializable
         inventorySize = 4;
         playerTime = 240;
         playerPower = 20;
+
+        monsterHealth = 25;
+        monsterPower = 12;
+
+        luciferHealth = 250;
+        luciferPower = 10;
+
         numberOfMerchants = 2;
+
         merchantMoveRounds = 1;
         numberOfThieves = 2;
         thiefPickingRounds = 3;
@@ -126,8 +150,15 @@ class GameSettings implements Serializable
         inventorySize = 3;
         playerTime = 180;
         playerPower = 10;
+
+        monsterHealth = 50;
+        monsterPower = 25;
+
+        luciferHealth = 500;
+        luciferPower = 20;
+
         numberOfMerchants = 3;
-        merchantMoveRounds = 1;
+        merchantMoveRounds = 0;
         numberOfThieves = 3;
         thiefPickingRounds = 2;
         lockedRooms = 6;
@@ -160,14 +191,7 @@ class GameSettings implements Serializable
      */
     static int getDifficultyLevel(){return scoreMulitplier;}
 
-    /**
-     * Getter method for how many rounds it takes the thief to steal a chest
-     * @return int
-     */
-    static int getThiefPickingRounds()
-    {
-        return thiefPickingRounds;
-    }
+
 
     /**
      * Getter method for chance of a special item
@@ -296,6 +320,41 @@ class GameSettings implements Serializable
     }
 
     /**
+     * Getter method for the monsters default health value
+     * @return int
+     */
+    static int getMonsterHealth()
+    {
+        return monsterHealth;
+    }
+
+    /**
+     * Getter method for the monsters default attack value
+     * @return int
+     */
+    static int getMonsterPower()
+    {
+        return monsterPower;
+    }
+
+    /**
+     * Getter method for Lucifer default health value
+     * @return int
+     */
+    static int getLuciferHealth()
+    {
+        return luciferHealth;
+    }
+    /**
+     * Getter method for Lucifers default attack value
+     * @return int
+     */
+    static int getLuciferPower()
+    {
+        return luciferPower;
+    }
+
+    /**
      * Getter method for how many merchants there is in the game
      * @return int
      */
@@ -325,7 +384,7 @@ class GameSettings implements Serializable
      * Getter method for how many rounds it takes the thief to steal a chest
      * @return int
      */
-    static int getThiftPickingRounds()
+    static int getThiefPickingRounds()
     {
         return thiefPickingRounds;
     }

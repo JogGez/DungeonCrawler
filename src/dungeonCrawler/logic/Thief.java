@@ -1,10 +1,6 @@
 package dungeonCrawler.logic;
 
-import com.sun.prism.shader.DrawRoundRect_LinearGradient_PAD_Loader;
-import dungeonCrawler.aqu.IMap;
 import dungeonCrawler.aqu.IThief;
-import dungeonCrawler.presentationConsole.Game;
-import jdk.nashorn.internal.ir.IfNode;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -101,7 +97,7 @@ class Thief implements IThief, Serializable
             if (roomContent instanceof Chest && currentJob == null)
             {
                 currentJob = roomContent;
-                currentJobCompletion = GameSettings.getThiftPickingRounds();
+                currentJobCompletion = GameSettings.getThiefPickingRounds();
                 return;
             }
             else if (roomContent instanceof Chest && currentJob != null && currentJobCompletion != 0)

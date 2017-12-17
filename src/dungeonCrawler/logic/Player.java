@@ -36,7 +36,7 @@ class Player implements IPlayer, Serializable
 
      /**
      * Constructor for player
-     * @param name 
+     * @param name the player name.
      */
     public Player(String name)
     {
@@ -81,7 +81,7 @@ class Player implements IPlayer, Serializable
     
     /**
      * Setter  method for player location
-     * @param location 
+     * @param location the location to set.
      */
     @Override
     public void setLocation(Point location)
@@ -112,7 +112,7 @@ class Player implements IPlayer, Serializable
 
     /**
      * Setter method for player health
-     * @param health
+     * @param health the health to set.
      */
     @Override
     public void setHealth(int health)
@@ -142,7 +142,7 @@ class Player implements IPlayer, Serializable
 
     /**
      * Setter method for player score
-     * @param score
+     * @param score the score to set.
      */
     @Override
     public void setScore(int score)
@@ -152,7 +152,7 @@ class Player implements IPlayer, Serializable
 
     /**
      * Setter method for player weapon
-     * @param weapon 
+     * @param weapon the weapon to equip.
      */
     @Override
     public void setWeapon(IWeapon weapon)
@@ -178,7 +178,7 @@ class Player implements IPlayer, Serializable
 
     /**
      * Setter method for player time
-     * @param time
+     * @param time the time to set.
      */
     @Override
     public void setTime(int time) 
@@ -198,7 +198,7 @@ class Player implements IPlayer, Serializable
 
     /**
      * Setter method for player name
-     * @param name
+     * @param name the name to set.
      */
     @Override
     public void setName(String name)

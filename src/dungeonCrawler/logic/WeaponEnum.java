@@ -31,7 +31,7 @@ enum WeaponEnum implements Serializable
      */
     public Weapon getWeapon()
     {
-        return new Weapon(weapon.getName(), weapon.getDescription(), weapon.getAscii(), weapon.getPower(), weapon.getMultiplier());
+        return new Weapon(weapon.getName(), weapon.getDescription(), weapon.getAscii(), weapon.getPower() + GameSettings.getPlayerPower(), weapon.getMultiplier());
     }
     
     /**
@@ -46,7 +46,7 @@ enum WeaponEnum implements Serializable
         
         // Returns a new instances of weapon, where it uses the reference from weaponEnum (w from above)
         // inheriet from Item. 
-        return new Weapon(w.getName(), w.getDescription(), w.getAscii(), w.getPower(), w.getMultiplier());
+        return new Weapon(w.getName(), w.getDescription(), w.getAscii(), w.getPower() + GameSettings.getPlayerPower(), w.getMultiplier());
     }
 }
 
