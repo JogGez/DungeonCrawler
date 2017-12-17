@@ -54,9 +54,9 @@ class Battle implements IBattle, Serializable
     @Override
     public String start()
     {
-        // (int) in pararentens because it would only be Math.random = 0, which is = 0.
+        // (int) in pararentens because it would only be Math.random = 0, which is = 0. Commit test.
         // We are getting the players current weapons power to add to our calculation, same with the monster.
-        int playerHit = (((int)(Math.random()*20 + player.getWeapon().getPower())) * player.getWeapon().getMultiplier()); // caster because Math. is always a double.
+        int playerHit = GameSettings.getPlayerPower() + (((int)(Math.random() * 10 + player.getWeapon().getPower())) * (player.getWeapon().getMultiplier()) / 100); // caster because Math. is always a double.
         int monsterHit = monster.getPower();
 
         //Computes the player and monster get.health ( how much the player/monster has, after the Hit)
