@@ -18,13 +18,13 @@ class Thief implements IThief, Serializable
     private String name;
     private String description;
     private Point location;
-    private RoomContent currentJob;
+    private RoomContent currentJob = null;
     private int currentJobCompletion;
 
 
     /**
      * Constructor for Thief
-     * @param map
+     * @param map set the map for the thief.
      */
     public Thief(Map map)
     {
@@ -76,10 +76,10 @@ class Thief implements IThief, Serializable
 
     /**
      * Getter method for thief random location
-     * @param point
+     * @param point set the point to use.
      * @return Point
      */
-    public Point getRandomLocation(Point point)
+    private Point getRandomLocation(Point point)
     {
         int randomX = (int)(Math.random()*point.x);
         int randomY = (int)(Math.random()*point.y);
@@ -89,8 +89,8 @@ class Thief implements IThief, Serializable
 
     /**
      * Method for thief move
-     * @param exitList
-     * @param map
+     * @param exitList set the arrayList of exits.
+     * @param map set the map the check.
      */
     public void move(ArrayList<String> exitList, Map map)
     {

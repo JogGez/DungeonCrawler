@@ -4,7 +4,6 @@ package dungeonCrawler.logic;
 import dungeonCrawler.aqu.*;
 import dungeonCrawler.data.HighScore;
 import dungeonCrawler.presentationConsole.CommandWord;
-
 import java.awt.*;
 import java.io.File;
 import java.io.Serializable;
@@ -22,14 +21,14 @@ public class GameText implements Serializable
 
     /**
      * Sets type to String
-     * @param type
+     * @param type set the type to console or gui.
      */
     public void setType(String type)
     {
         this.type = type;
     }
 
-    String type = "";
+    private String type = "";
 
 
     /**
@@ -41,22 +40,13 @@ public class GameText implements Serializable
 
     /**
      * Used to get player and map info
-     * @param player
-     * @param map
+     * @param player Set the player reference.
+     * @param map Set the map reference.
      */
     public void injectVariables(Player player, Map map)
     {
         this.player = player;
         this.map = map;
-    }
-
-    /**
-     * White space, String
-     * @return String
-     */
-    public String getEmptyLine()
-    {
-        return "";
     }
 
     /**
@@ -292,7 +282,7 @@ public class GameText implements Serializable
 
     /**
      * String for entered new room
-     * @param room
+     * @param room Set the room you entered.
      * @return String
      */
     public String getYouEnteredANewRoom(IRoom room)
@@ -367,7 +357,7 @@ public class GameText implements Serializable
 
     /**
      * String for inventory items
-     * @param inventory
+     * @param inventory Set the inventory.
      * @return String
      */
     public String getInventory(IInventory inventory)
@@ -413,7 +403,7 @@ public class GameText implements Serializable
 
     /**
      * String for room content
-     * @param index
+     * @param index set the index to get content from.
      * @return String
      */
     public String getContentInfo(int index)
@@ -448,7 +438,7 @@ public class GameText implements Serializable
 
     /**
      * String for guide info
-     * @param guide
+     * @param guide set the guide to get info from.
      * @return String
      */
     private String getGuideInfo(Guide guide)
@@ -460,7 +450,7 @@ public class GameText implements Serializable
 
     /**
      * String for item info
-     * @param item
+     * @param item set the item to get info from.
      * @return String
      */
     public String getItemInfo(IItem item)
@@ -517,7 +507,7 @@ public class GameText implements Serializable
 
     /**
      * String for monster info
-     * @param monster
+     * @param monster set the monster to get info from.
      * @return String
      */
     public String getMonstersInfo(IMonster monster)
@@ -531,10 +521,10 @@ public class GameText implements Serializable
 
     /**
      * String for chest info
-     * @param chest
+     * @param chest set the chest to get info from.
      * @return String
      */
-    public String getChestInfo(IChest chest)
+    private String getChestInfo(IChest chest)
     {
         return  chest.getAscii() +
                 "\n" + "Name: " + chest.getName() +
@@ -570,7 +560,7 @@ public class GameText implements Serializable
 
     /**
      * String for battled started
-     * @param battle
+     * @param battle set battle to get info about.
      * @return String
      */
     public String getBattle(IBattle battle)
@@ -608,7 +598,7 @@ public class GameText implements Serializable
 
     /**
      * String for players current time
-     * @param timeTracker
+     * @param timeTracker set the time tracker to get time from.
      * @return String
      */
     public String getPlayerTime(ITimeTracker timeTracker)
@@ -627,12 +617,12 @@ public class GameText implements Serializable
 
     /**
      * String for health potions healing
-     * @param i
+     * @param index set the index to get potion from.
      * @return String
      */
-    public String getPotionRecovery(int i)
+    public String getPotionRecovery(int index)
     {
-        return (i+1) + ". Potion:" + player.getInventory().potionArrayList().get(i).getHealthRecovery();
+        return (index+1) + ". Potion:" + player.getInventory().potionArrayList().get(index).getHealthRecovery();
     }
 
     /**
@@ -741,12 +731,12 @@ public class GameText implements Serializable
 
     /**
      * String for item saved to slot
-     * @param j
+     * @param index set the index to show.
      * @return String
      */
-    public String getYouSavedItemInThisSlot(int j)
+    public String getYouSavedItemInThisSlot(int index)
     {
-        return "You saved this item in slot: " + (j+1);
+        return "You saved this item in slot: " + (index+1);
     }
 
     /**
@@ -759,33 +749,6 @@ public class GameText implements Serializable
     }
 
     /**
-     * String for wrong command
-     * @return String
-     */
-    public String getHmmWrongCommand()
-    {
-        return "Hmm... Wrong command";
-    }
-
-    /**
-     * String for empty room
-     * @return String
-     */
-    public String getItsAEmptySpace()
-    {
-        return "Empty space :(";
-    }
-
-    /**
-     * String for a line
-     * @return String
-     */
-    public String getManyHyphens()
-    {
-        return "-----------------------------------------------";
-    }
-
-    /**
      * String for quit what
      * @return String
      */
@@ -794,14 +757,6 @@ public class GameText implements Serializable
         return "Quit what?";
     }
 
-    /**
-     * String for battle what
-     * @return String
-     */
-    public String getBattleWhat()
-    {
-        return "Battle what?";
-    }
 
     /**
      * String for time has run out
@@ -861,7 +816,7 @@ public class GameText implements Serializable
         String top = "  " + " ╔-------";
         String space = "  " + " ║-------";
         String bottom = "  " + " ╰-------";
-        String xCordinates = "       ";
+        String xCoordinates = "       ";
 
         int j = 0;
         for (; j < map.getWidth()-1; j++)
@@ -869,13 +824,13 @@ public class GameText implements Serializable
             space += "|-------";
             top += "|-------";
             bottom += "|-------";
-            xCordinates += j + "       ";
+            xCoordinates += j + "       ";
         }
 
         space += "║";
         top += "╗";
         bottom += "╯ x";
-        xCordinates += j + "     ";
+        xCoordinates += j + "     ";
 
         for (int i = 0; i < map.getHeight(); i++)
         {
@@ -970,7 +925,7 @@ public class GameText implements Serializable
         mapList.add(0, top);
         mapList.add(0,"   y");
         mapList.add(bottom);
-        mapList.add(xCordinates);
+        mapList.add(xCoordinates);
 
 //                mapList.set(0 , mapList.get(0) + "   X = Unseen Rooms  ");
 //                mapList.set(1 , mapList.get(1) + "   O = Seen Rooms ");
@@ -1179,7 +1134,7 @@ public class GameText implements Serializable
 
     /**
      * String for printing file
-     * @param files
+     * @param files set array to get files from.
      * @return String
      */
     public String getFilesInFolder(File[] files)
@@ -1203,7 +1158,7 @@ public class GameText implements Serializable
 
     /**
      * String for players name
-     * @return
+     * @return String
      */
     public String getPlayerName()
     {
@@ -1230,7 +1185,7 @@ public class GameText implements Serializable
 
     /**
      * String for wrong coordinate inuput
-     * @return
+     * @return String
      */
     public String getWrongInputCoordinate()
     {
@@ -1356,7 +1311,7 @@ public class GameText implements Serializable
 
     /**
      * String for room content
-     * @param room
+     * @param room set the room from which to return content.
      * @return String
      */
     private ArrayList<String> getContentFromRoom(Room room)
@@ -1394,8 +1349,8 @@ public class GameText implements Serializable
 
     /**
      * String for inventory slot
-     * @param index
-     * @param inventory
+     * @param index set the index the get item from.
+     * @param inventory set which inventory to use.
      * @return String
      */
     public String getInventorySlot(int index, IInventory inventory)
