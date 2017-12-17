@@ -1,9 +1,7 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IBattle;
-
 import java.io.Serializable;
-import java.util.Random;
 
 /**
  * Battle class
@@ -23,8 +21,8 @@ class Battle implements IBattle, Serializable
    
     /**
      * Constructor: set values for player, and monster, and isBattleOver.
-     * @param player
-     * @param monster 
+     * @param player set the player
+     * @param monster set the monster to battle
      */
     public Battle(Player player, Monster monster)
     {

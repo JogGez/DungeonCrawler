@@ -1,8 +1,6 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.*;
-import org.omg.PortableServer.RequestProcessingPolicy;
-
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,7 +29,7 @@ class Map implements IMap, Serializable
 
     /**
      * Constructor for Map
-     * @param player
+     * @param player the player to add to map
      */
     public Map(Player player)
     {
@@ -152,7 +150,7 @@ class Map implements IMap, Serializable
     /**
      * Method that tells if the room exists.
      *
-     * @param exitPoint
+     * @param exitPoint the point to check
      * @return boolean
      */
     @Override
@@ -176,7 +174,7 @@ class Map implements IMap, Serializable
      * Setter method for Room Has Been Entered
      * Controls the Arraylist roomlist, that was created from the Map.
      *
-     * @param playerLocation
+     * @param playerLocation the location to set as entered
      */
     @Override
     public void setRoomHasBeenEntered(Point playerLocation)
@@ -194,7 +192,7 @@ class Map implements IMap, Serializable
      * Getter Method
      * Returns the setter methods value.
      *
-     * @param roomLocation
+     * @param roomLocation the location to check.
      * @return boolean
      */
     @Override
@@ -234,7 +232,7 @@ class Map implements IMap, Serializable
         int numberOfRoomsEntered = 0;
         for (Room room : roomList)
         {
-            if (room.getHasBeenEntered() == true)
+            if (room.getHasBeenEntered())
             {
                 numberOfRoomsEntered++;
             }
@@ -245,7 +243,7 @@ class Map implements IMap, Serializable
     /**
      * Checks if room is locked.
      *
-     * @param checkPoint
+     * @param checkPoint the location to check.
      * @return boolean
      */
     @Override
@@ -261,8 +259,6 @@ class Map implements IMap, Serializable
         return false;
 
     }
-
-    // TODO Move method and send map & roomList with it
 
     /**
      * Makes the merchant move
@@ -328,9 +324,6 @@ class Map implements IMap, Serializable
             {
                 exitList.add("down");
             }
-
-            //TODO Thief skal interagere med os - giv os et eller andet.
-
             //Checks if player and thief is in the same room
             thief.move(exitList, this);
         }
@@ -348,7 +341,7 @@ class Map implements IMap, Serializable
 
     /**
      * Looks at what object is in the room
-     * @param index
+     * @param index the index to check for content.
      * @return String
      */
     @Override
@@ -399,7 +392,7 @@ class Map implements IMap, Serializable
 
     /**
      * Sets the boolean locked to false
-     * @param location
+     * @param location the location to unlock.
      */
     public void unlockRoom(Point location)
     {
@@ -513,8 +506,9 @@ class Map implements IMap, Serializable
     }
 
     /**
+     * Getter method for getting a room.
      *
-     * @param point
+     * @param point the point for the room to get.
      * @return Room
      */
     public Room getRoom(Point point)

@@ -69,7 +69,6 @@ class Room implements IRoom, Serializable
             // GUIDE: If the number generated is under getChangeOfMonster + getChanceOfChest + getChanceOfGuide int a helper is added in the room slot.
             else if (randomNumber <= GameSettings.getChanceOfMonster() + GameSettings.getChanceOfChest() + GameSettings.getChanceOfGuide())
             {
-                // TODO Add someone here
                 roomContent.add(GuideEnum.getRandomGuide());
             }
             // If the number generated is 0-19 nothing here is added in the roomslot.
@@ -82,7 +81,7 @@ class Room implements IRoom, Serializable
 
     /**
      * Setter method for locked Room
-     * @param locked
+     * @param locked set the room to be locked.
      */
     public void setLocked(boolean locked)
     {
@@ -123,7 +122,7 @@ class Room implements IRoom, Serializable
 
     /**
      * Setter method for room has been entered
-     * @param hasBeenEntered
+     * @param hasBeenEntered set hasBeenEntered value.
      */
     @Override
     public void setHasBeenEntered(boolean hasBeenEntered)
@@ -153,7 +152,7 @@ class Room implements IRoom, Serializable
 
     /**
      * Method for finding a value in roomContent array, and returning the value.
-     * @param index
+     * @param index set which room to get content from.
      * @return IRoomContent
      */
     @Override
@@ -173,7 +172,7 @@ class Room implements IRoom, Serializable
 
     /**
      * Method for removing room content in array
-     * @param index
+     * @param index set the index to remove content.
      */
     @Override
     public void removeContent(int index)
@@ -181,30 +180,6 @@ class Room implements IRoom, Serializable
         roomContent.set(index, null);
     }
 
-    /**
-     * Method to check room content
-     * @param index
-     * @return String
-     */
-    public String checkRoomContent(int index)
-    {
-        if (getContent(index) instanceof Monster)
-        {
-            return "Monster";
-        }
-        else if (getContent(index) instanceof Chest)
-        {
-            return "Chest";
-        }
-        else if (getContent(index) instanceof Merchant)
-        {
-            return "Merchant";
-        }
-        else
-        {
-            return "";
-        }
-    }
 
     /**
      * Getter method for room location.
