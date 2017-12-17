@@ -18,9 +18,9 @@ class Guide implements RoomContent, IGuide, Serializable
 
     /**
      * Constructor for guide
-     * @param name
-     * @param description
-     * @param ascii
+     * @param name Sets the name for the guide.
+     * @param description Sets the discription for the guide.
+     * @param ascii Sets the ascii for the guide.
      */
     public Guide(String name, String description, String ascii)
     {

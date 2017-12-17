@@ -25,8 +25,8 @@ class TimeTracker implements ITimeTracker, Serializable
 
     /**
      * Constructor for TimeTracker
-     * @param startTime
-     * @param player
+     * @param startTime Starts the time.
+     * @param player Set the player to use.
      */
     public TimeTracker(Date startTime, IPlayer player)
     {

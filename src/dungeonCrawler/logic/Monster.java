@@ -10,7 +10,7 @@ import java.io.Serializable;
  * implements IMonster, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
-//Monster Class, inherit from IRoomContent because ???
+//Monster Class, inherit from IRoomContent
 class Monster implements RoomContent, IMonster, Serializable
 {
     private String name;
@@ -21,11 +21,11 @@ class Monster implements RoomContent, IMonster, Serializable
 
     /**
      * Constructor for Monster
-     * @param name
-     * @param description
-     * @param ascii
-     * @param health
-     * @param power 
+     * @param name Sets the name to use.
+     * @param description Sets the discription to use.
+     * @param ascii Sets the ascii to use.
+     * @param health Sets the health to use.
+     * @param power Sets the power to use.
      */
     public Monster(String name, String description, String ascii, int health, int power)
     {
@@ -48,7 +48,7 @@ class Monster implements RoomContent, IMonster, Serializable
 
     /**
      * Setter method for monster name
-     * @param name
+     * @param name Sets the name to use.
      */
     @Override
     public void setName(String name)
@@ -68,7 +68,7 @@ class Monster implements RoomContent, IMonster, Serializable
 
     /**
      * Setter method for monster health
-     * @param health
+     * @param health Sets the health to use.
      */
     @Override
     public void setHealth(int health)
@@ -89,7 +89,7 @@ class Monster implements RoomContent, IMonster, Serializable
 
     /**
      * Setter method for monster power
-     * @param power
+     * @param power Sets the power to use.
      */
     @Override
     public void setPower(int power)
@@ -109,7 +109,7 @@ class Monster implements RoomContent, IMonster, Serializable
 
     /**
      * Setter method for mosnter
-     * @param description
+     * @param description Sets the description to use.
      */
     @Override
     public void setDescription(String description)
