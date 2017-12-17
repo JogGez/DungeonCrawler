@@ -4,6 +4,9 @@ import dungeonCrawler.data.GameStateDTO;
 
 import java.io.Serializable;
 
+/**
+ * IDataFacade interface
+ */
 public interface IDataFacade extends Serializable
 {
     IHighScore getHighScore();

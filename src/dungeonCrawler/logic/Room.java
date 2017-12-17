@@ -8,7 +8,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * The type Room.
+ * Room class
+ * Used as intractable places where events can occur, such as battle.
+ * implements IRoom, Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian.
  */
 // Class that hold the information about a room

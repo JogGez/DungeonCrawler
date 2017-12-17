@@ -4,18 +4,19 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- *  Static weapons
+ *  Static weapons for the game
+ *  implements Serializable
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 enum WeaponEnum implements Serializable
 {
-    EXCALIBUR (new Weapon("Excalibur", "The Sword of King Arthur", GameTextASCII.getSword(), 1000, 1000)),
-    DURANDAL ( new Weapon("Durandal", "Sword of Roland, legendary paladin of Charlemagne", GameTextASCII.getSword(), 100, 15 )),
-    LEGBITER ( new Weapon("Legbiter", "The Sword of Viking King Magnus III", GameTextASCII.getSword(), 150, 5)),
-    THE_HOLY_LANCE (new Weapon("The Holy Lance", "Also known as the Spear of Destiny and the Lance of Longinus, was the spear that allegedly pierced the side of Jesus during the crucifixion. ", GameTextASCII.getSword(), 500, 1500)),
-    GOUJIAN(new Weapon("Goujian", "Emperor Goujian, King of Yue States Sword", GameTextASCII.getSword(), 75, 15)),
-    MJÖLNIR (new Weapon("Mjölnir", "The Mighty Hammer of Thor", GameTextASCII.getSword(), 250, 100)),
-    FLOPPY_FISH (new Weapon("Floppy Fish", "Floppy Fish from the sea :(", GameTextASCII.getSword(), 1, 0))
+    EXCALIBUR (new Weapon("Excalibur", "The Sword of King Arthur", GameTextASCII.getSword(), 100, 2)),
+    DURANDAL ( new Weapon("Durandal", "Sword of Roland, legendary paladin of Charlemagne", GameTextASCII.getSword(), 35, 1)),
+    LEGBITER ( new Weapon("Legbiter", "The Sword of Viking King Magnus III", GameTextASCII.getSword(), 40, 1)),
+    THE_HOLY_LANCE (new Weapon("The Holy Lance", "Also known as the Spear of Destiny and the Lance of Longinus, was the spear that allegedly pierced the side of Jesus during the crucifixion. ", GameTextASCII.getSword(), 50, 2)),
+    GOUJIAN(new Weapon("Goujian", "Emperor Goujian, King of Yue States Sword", GameTextASCII.getSword(), 35, 1)),
+    MJÖLNIR (new Weapon("Mjölnir", "The Mighty Hammer of Thor", GameTextASCII.getSword(), 45, 1)),
+    FLOPPY_FISH (new Weapon("Floppy Fish", "Floppy Fish from the sea :(", GameTextASCII.getSword(), 1, 1))
     ;
     
     private final Weapon weapon;

@@ -18,6 +18,10 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
+/**
+ * Class to handle drop down section LoadGame
+ * implements Initializable
+ */
 public class LoadController implements Initializable
 {
     @FXML
@@ -25,6 +29,11 @@ public class LoadController implements Initializable
 
     private ILogicFacade logic;
 
+    /**
+     * Handles the back btn
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleBack(ActionEvent event) throws IOException
     {
@@ -34,6 +43,10 @@ public class LoadController implements Initializable
         soundMyNoise.play();
     }
 
+    /**
+     * Handles load game 1
+     * @param actionEvent
+     */
     @FXML
     private void handleLoad1(ActionEvent actionEvent)
     {
@@ -42,6 +55,10 @@ public class LoadController implements Initializable
         Game.switchScene("Play.fxml");
     }
 
+    /**
+     * Handles load game 2
+     * @param actionEvent
+     */
     @FXML
     private void handleLoad2(ActionEvent actionEvent)
     {
@@ -50,6 +67,10 @@ public class LoadController implements Initializable
         Game.switchScene("Play.fxml");
     }
 
+    /**
+     * Handles load game 3
+     * @param actionEvent
+     */
     @FXML
     private void handleLoad3(ActionEvent actionEvent)
     {
@@ -58,6 +79,11 @@ public class LoadController implements Initializable
         Game.switchScene("Play.fxml");
     }
 
+    /**
+     * The initialize method used for when the controller is first initialized
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {

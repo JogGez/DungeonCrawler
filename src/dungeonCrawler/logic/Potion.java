@@ -4,7 +4,9 @@ import dungeonCrawler.aqu.IPotion;
 import java.io.Serializable;
 
 /**
- * Inherit from the Item class
+ * Potion class
+ * Inherit from Item, used to restore health points and time points for the player.
+ * implements IPotion, Serializable.
  * @author Peter Jonathan, Joakim, Linea, Frederik, Simon og Brian
  */
 class Potion extends Item implements IPotion, Serializable

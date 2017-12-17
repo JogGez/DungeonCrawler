@@ -3,6 +3,9 @@ package dungeonCrawler.aqu;
 import java.awt.*;
 import java.io.Serializable;
 
+/**
+ * IPlayer interface
+ */
 public interface IPlayer extends Serializable
 {
     IInventory getInventory();

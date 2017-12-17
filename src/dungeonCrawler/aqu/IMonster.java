@@ -2,6 +2,9 @@ package dungeonCrawler.aqu;
 
 import java.io.Serializable;
 
+/**
+ * IMonster interface
+ */
 public interface IMonster extends Serializable
 {
     String getName();

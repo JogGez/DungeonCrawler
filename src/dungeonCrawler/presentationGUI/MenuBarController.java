@@ -22,6 +22,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * The top menu handler
+ * extends SettingsController
+ * implements Initializable
+ */
 public class MenuBarController extends SettingsController implements Initializable
 {
     private ILogicFacade logic;
@@ -31,6 +36,7 @@ public class MenuBarController extends SettingsController implements Initializab
 
     /**
      * Event handler for MenuItem one
+     * @param event
      */
     @FXML
     void switchToMainMenu(ActionEvent event)
@@ -51,6 +57,10 @@ public class MenuBarController extends SettingsController implements Initializab
 
     }
 
+    /**
+     * Event handler for a new game
+     * @param event
+     */
     @FXML
     void switchToNewGame(ActionEvent event)
     {
@@ -89,6 +99,10 @@ public class MenuBarController extends SettingsController implements Initializab
         }
     }
 
+    /**
+     * Event handler to switch to save game 1 to 3
+     * @param actionEvent
+     */
     @FXML
     private void switchToSaveGame(ActionEvent actionEvent)
     {
@@ -126,12 +140,21 @@ public class MenuBarController extends SettingsController implements Initializab
 
     }
 
+    /**
+     * handler for exiting game
+     * @param actionEvent
+     */
     @FXML
     private void exitGame(ActionEvent actionEvent)
     {
         Platform.exit();
     }
 
+    /**
+     * The initialize method used for when the controller is first initialized
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
@@ -139,6 +162,10 @@ public class MenuBarController extends SettingsController implements Initializab
         player = logic.getPlayer();
     }
 
+    /**
+     * Handler for changing theme
+     * @param actionEvent
+     */
     @FXML
     private void changeTheme(ActionEvent actionEvent)
     {
@@ -166,6 +193,11 @@ public class MenuBarController extends SettingsController implements Initializab
 
     }
 
+    /**
+     * method to open help scene
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void openHelp(ActionEvent actionEvent) throws IOException
     {

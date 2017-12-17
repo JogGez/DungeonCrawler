@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * Static potions
+ * Static potions for the game
+ * implements Serializable
  * @author Morten Bindslev
  */
 enum PotionEnum implements Serializable

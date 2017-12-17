@@ -3,6 +3,9 @@ package dungeonCrawler.aqu;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * IInventory interface
+ */
 public interface IInventory extends Serializable
 {
 //    void addItem(IItem item, int index);

@@ -11,13 +11,15 @@ import javafx.fxml.Initializable;
 
 /**
  * FXML Controller class
- *
+ * used for the help drop down section.
+ * implements Initializable
  * @author Slayga
  */
-public class HelpController implements Initializable {
+public class HelpController implements Initializable
+{
 
     /**
-     * Initializes the controller class.
+     * The initialize method used for when the controller is first initialized
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

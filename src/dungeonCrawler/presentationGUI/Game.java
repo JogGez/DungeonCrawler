@@ -19,7 +19,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-
+/**
+ * Class used to get the game running in GUI
+ */
 public class Game extends Application
 {
     private static ILogicFacade logic;
@@ -30,6 +32,10 @@ public class Game extends Application
     private static BorderPane root = new BorderPane();
     public static MenuBar menuBar;
 
+    /**
+     * Is the border pane
+     * @return BorderPane
+     */
     public static BorderPane getRoot()
     {
         return root;
@@ -37,6 +43,11 @@ public class Game extends Application
 
     static Stage stage;
 
+    /**
+     * Start scene
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception
     {
@@ -85,6 +96,10 @@ public class Game extends Application
 //        stage.setScene(new Scene(root));
 //    }
 
+    /**
+     * switches the current viewable scene
+     * @param fxml
+     */
     public static void switchScene(String fxml) {
 
         try {
@@ -101,23 +116,37 @@ public class Game extends Application
 
     }
 
+    /**
+     * Getter method for ILogicFacade
+     * @return ILogicFacade
+     */
     public static ILogicFacade getLogic()
     {
         return logic;
     }
 
+    /**
+     * Getter method to get scene
+     * @return Scene
+     */
     public static Scene getScene()
     {
         return stage.getScene();
     }
 
 
-
+    /**
+     * Injector method for logic
+     * @param logicLayer
+     */
     public void injectLogic(ILogicFacade logicLayer)
     {
         logic = logicLayer;
     }
 
+    /**
+     * Method to launch the game
+     */
     public void begin()
     {
         launch();

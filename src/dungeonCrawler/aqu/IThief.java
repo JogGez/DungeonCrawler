@@ -4,6 +4,9 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * IThief interface
+ */
 public interface IThief extends Serializable
 {
     String getAscii();

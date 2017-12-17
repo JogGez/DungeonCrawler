@@ -8,8 +8,8 @@ package dungeonCrawler.aqu;
 import java.io.Serializable;
 
 /**
- *
- * @author Frederik
+ * IRoomContent interface
+ * @author
  */
 public interface IRoomContent extends Serializable
 {     

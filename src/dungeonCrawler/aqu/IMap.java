@@ -5,6 +5,9 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * IMap interface
+ */
 public interface IMap extends Serializable
 {
     int getHeight();
