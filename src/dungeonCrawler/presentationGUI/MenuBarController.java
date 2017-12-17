@@ -36,7 +36,7 @@ public class MenuBarController extends SettingsController implements Initializab
 
     /**
      * Event handler for MenuItem one
-     * @param event
+     * @param event Sets the event to use.
      */
     @FXML
     void switchToMainMenu(ActionEvent event)
@@ -59,7 +59,7 @@ public class MenuBarController extends SettingsController implements Initializab
 
     /**
      * Event handler for a new game
-     * @param event
+     * @param event Sets the event to use.
      */
     @FXML
     void switchToNewGame(ActionEvent event)
@@ -101,7 +101,7 @@ public class MenuBarController extends SettingsController implements Initializab
 
     /**
      * Event handler to switch to save game 1 to 3
-     * @param actionEvent
+     * @param actionEvent Sets the actionEvent to use.
      */
     @FXML
     private void switchToSaveGame(ActionEvent actionEvent)
@@ -142,7 +142,7 @@ public class MenuBarController extends SettingsController implements Initializab
 
     /**
      * handler for exiting game
-     * @param actionEvent
+     * @param actionEvent Sets the actionEvent to use.
      */
     @FXML
     private void exitGame(ActionEvent actionEvent)
@@ -152,8 +152,8 @@ public class MenuBarController extends SettingsController implements Initializab
 
     /**
      * The initialize method used for when the controller is first initialized
-     * @param location
-     * @param resources
+     * @param location Sets the location to use.
+     * @param resources Sets the resources to use.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -164,7 +164,7 @@ public class MenuBarController extends SettingsController implements Initializab
 
     /**
      * Handler for changing theme
-     * @param actionEvent
+     * @param actionEvent Sets the actionEvent to use.
      */
     @FXML
     private void changeTheme(ActionEvent actionEvent)
@@ -195,7 +195,7 @@ public class MenuBarController extends SettingsController implements Initializab
 
     /**
      * method to open help scene
-     * @param actionEvent
+     * @param actionEvent Sets the actionEvent to use.
      * @throws IOException
      */
     @FXML
