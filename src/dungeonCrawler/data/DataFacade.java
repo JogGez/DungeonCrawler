@@ -1,8 +1,7 @@
 package dungeonCrawler.data;
+
 import dungeonCrawler.aqu.IDataFacade;
 import dungeonCrawler.aqu.IHighScore;
-import dungeonCrawler.aqu.IMap;
-import dungeonCrawler.aqu.IPlayer;
 
 import java.io.Serializable;
 

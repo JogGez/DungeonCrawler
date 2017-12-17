@@ -1,30 +1,25 @@
 package dungeonCrawler.presentationGUI;
 
 //import dungeonCrawler.aqu.IGame;
+
 import dungeonCrawler.aqu.ILogicFacade;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.AudioClip;
-import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 
 /**
  * Class to handle the main screen in GUI

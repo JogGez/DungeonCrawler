@@ -1,6 +1,10 @@
 package dungeonCrawler.logic;
 
-import dungeonCrawler.aqu.*;
+import dungeonCrawler.aqu.IMap;
+import dungeonCrawler.aqu.IMerchant;
+import dungeonCrawler.aqu.IRoom;
+import dungeonCrawler.aqu.IThief;
+
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;

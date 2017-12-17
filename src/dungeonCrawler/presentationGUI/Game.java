@@ -1,11 +1,8 @@
 package dungeonCrawler.presentationGUI;
 
 import dungeonCrawler.aqu.ILogicFacade;
-import dungeonCrawler.logic.GameText;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
@@ -17,7 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * Class used to get the game running in GUI

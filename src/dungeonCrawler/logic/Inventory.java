@@ -2,11 +2,10 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IInventory;
 import dungeonCrawler.aqu.IItem;
-import dungeonCrawler.aqu.IPotion;
 import dungeonCrawler.aqu.IKey;
+import dungeonCrawler.aqu.IPotion;
 
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 

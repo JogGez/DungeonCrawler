@@ -6,7 +6,9 @@ import dungeonCrawler.aqu.IHighScore;
 import dungeonCrawler.aqu.IPlayer;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 //// Test to XML file
 //import javax.xml.parsers.*;
 //import javax.xml.transform.*;

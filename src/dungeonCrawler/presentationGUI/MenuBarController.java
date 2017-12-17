@@ -1,10 +1,5 @@
 package dungeonCrawler.presentationGUI;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Optional;
-import java.util.ResourceBundle;
-
 import dungeonCrawler.aqu.ILogicFacade;
 import dungeonCrawler.aqu.IPlayer;
 import javafx.application.Platform;
@@ -21,6 +16,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 /**
  * The top menu handler
@@ -182,7 +182,7 @@ public class MenuBarController extends SettingsController implements Initializab
         {
             Game.getScene().getStylesheets().clear();
             Game.setUserAgentStylesheet(null);
-            Game.getScene().getStylesheets().add(getClass().getResource("ThemeWhite").toExternalForm());
+            Game.getScene().getStylesheets().add(getClass().getResource("ThemeWhite.css").toExternalForm());
         }
         else if (((MenuItem)actionEvent.getSource()).getText().contains("Dark"))
         {

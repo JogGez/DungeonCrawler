@@ -19,8 +19,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.*;
-import javafx.scene.layout.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -30,7 +36,10 @@ import javafx.util.Pair;
 import java.awt.*;
 import java.io.File;
 import java.net.URL;
-import java.util.*;
+import java.util.Date;
+import java.util.Optional;
+import java.util.Random;
+import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -132,11 +141,6 @@ public class PlayController extends HighscoreController implements Initializable
     @FXML
     private Button btnOpen;
     /**
-     * The Anchor pane.
-     */
-    @FXML
-    private AnchorPane anchorPane;
-    /**
      * The Btn enter.
      */
     @FXML
@@ -195,17 +199,12 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * The constant mediaPlayer.
      */
-    public static MediaPlayer mediaPlayer;
-
-    /**
-     * The Gatekeep audio.
-     */
-    AudioClip gatekeepAudio;
+    private static MediaPlayer mediaPlayer;
 
     /**
      * The initialize method used for when the controller is first initialized
-     * @param location
-     * @param resources
+     * @param location set the URL location.
+     * @param resources set the ResourceBundle.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -280,15 +279,15 @@ public class PlayController extends HighscoreController implements Initializable
     }
 
 
-    final KeyCombination keyShiftOne = new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.SHIFT_DOWN);
-    final KeyCombination keyShiftTwo = new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.SHIFT_DOWN);
-    final KeyCombination keyShiftTree = new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.SHIFT_DOWN);
-    final KeyCombination keyShiftFour = new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.SHIFT_DOWN);
-    final KeyCombination keyShiftFive = new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.SHIFT_DOWN);
-    final KeyCombination keyShiftSix = new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.SHIFT_DOWN);
-    final KeyCombination keyShiftSeven = new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.SHIFT_DOWN);
-    final KeyCombination keyShiftEight = new KeyCodeCombination(KeyCode.DIGIT8, KeyCombination.SHIFT_DOWN);
-    final KeyCombination keyShiftNine = new KeyCodeCombination(KeyCode.DIGIT9, KeyCombination.SHIFT_DOWN);
+    private final KeyCombination keyShiftOne = new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.SHIFT_DOWN);
+    private final KeyCombination keyShiftTwo = new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.SHIFT_DOWN);
+    private final KeyCombination keyShiftTree = new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.SHIFT_DOWN);
+    private final KeyCombination keyShiftFour = new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.SHIFT_DOWN);
+    private final KeyCombination keyShiftFive = new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.SHIFT_DOWN);
+    private final KeyCombination keyShiftSix = new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.SHIFT_DOWN);
+    private final KeyCombination keyShiftSeven = new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.SHIFT_DOWN);
+    private final KeyCombination keyShiftEight = new KeyCodeCombination(KeyCode.DIGIT8, KeyCombination.SHIFT_DOWN);
+    private final KeyCombination keyShiftNine = new KeyCodeCombination(KeyCode.DIGIT9, KeyCombination.SHIFT_DOWN);
 
 
     private void handleKeyPress(KeyEvent key)
@@ -550,7 +549,7 @@ public class PlayController extends HighscoreController implements Initializable
         {
             alert.setContentText(gameText.getTimeRanOut() + "\nAnd your score was " + player.getScore());
         }
-        else if (lastBattle == true)
+        else if (lastBattle)
         {
             alert.setContentText(gameText.getIsLuciferDead() + "\nAnd your score was " + player.getScore());
         }
@@ -724,7 +723,7 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Method that checks a room for its content and acts accordingly.
      */
-    public void checkRoom()
+    private void checkRoom()
     {
         labelTime.setText("Time is under: " + timeTracker.calculateRemainingTime() + " seconds");
 
@@ -872,7 +871,7 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Method that updates the inventory view.
      */
-    public void updateInventory()
+    private void updateInventory()
     {
         for (int i = 0; i < player.getInventory().getSize(); i++)
         {
@@ -946,7 +945,7 @@ public class PlayController extends HighscoreController implements Initializable
      *
      * @param index the index
      */
-    public void useItem(int index)
+    private void useItem(int index)
     {
         IItem item = player.getInventory().getItem(index);
 
@@ -980,8 +979,9 @@ public class PlayController extends HighscoreController implements Initializable
         }
         else if (item instanceof ISpecial)
         {
-            if (((ISpecial) item).getTypeString().equals("teleport"))
+            switch (((ISpecial) item).getTypeString())
             {
+            case "teleport":
                 playAnimation("Resources\\images\\Warp.gif", 3);
 
                 Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -1088,30 +1088,26 @@ public class PlayController extends HighscoreController implements Initializable
                                          playerMove(point);
                                      }
                                  });
-            }
-            else if (((ISpecial) item).getTypeString().equals("bomb"))
-            {
+                break;
+            case "bomb":
                 playAnimation("Resources\\images\\Bomb.gif", 2.3);
                 playAudio("Resources\\sounds\\Explosion.mp3", 2, 1, true);
                 textAreaMain.setText(gameText.getUseSpecialBomb());
                 ((ISpecial) item).use(player, map);
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
-            }
-            else if (((ISpecial) item).getTypeString().equals("awesome_name"))
-            {
+                break;
+            case "awesome_name":
                 ((ISpecial) item).use(player);
                 textAreaMain.setText(gameText.getPlayerName());
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
-            }
-            else if (((ISpecial) item).getTypeString().equals("vision"))
-            {
+                break;
+            case "vision":
                 playAnimation("Resources\\images\\Glasses.gif", 2.5);
                 //((ISpecial) item).use(player);
                 textAreaMain.setText("\n" + gameText.getVisionMap());
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
-            }
-            else if (((ISpecial) item).getTypeString().equals("extra_slot"))
-            {
+                break;
+            case "extra_slot":
                 ((ISpecial) item).use(player);
                 textAreaMain.setText(gameText.getUseSpecialExtraSlot());
 
@@ -1122,18 +1118,17 @@ public class PlayController extends HighscoreController implements Initializable
                 Button btnAdd = new Button(String.valueOf(i + 1));
                 btnAdd.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 btnAdd.setStyle("-fx-font: 14px Monospaced;");
-                int finalI = i;
-                btnAdd.setOnAction((ActionEvent event) -> addItem(finalI));
+                btnAdd.setOnAction((ActionEvent event) -> addItem(i));
 
                 Button btnUse = new Button("Use");
                 btnUse.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 btnUse.setStyle("-fx-font: 14px Monospaced;");
-                btnUse.setOnAction((ActionEvent event) -> useItem(finalI));
+                btnUse.setOnAction((ActionEvent event) -> useItem(i));
 
                 Button btnShow = new Button("Show");
                 btnShow.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 btnShow.setStyle("-fx-font: 14px Monospaced;");
-                btnShow.setOnAction((ActionEvent event) -> showItem(finalI));
+                btnShow.setOnAction((ActionEvent event) -> showItem(i));
 
                 VBox vBox = new VBox();
                 vBox.setId(String.valueOf(i));
@@ -1143,6 +1138,7 @@ public class PlayController extends HighscoreController implements Initializable
                 updateInventory();
                 player.getInventory().removeItem(player.getInventory().getItemIndex(item));
                 disableButtons(new Button[]{btnUp, btnDown, btnLeft, btnRight}, true, false);
+                break;
             }
         }
         else
@@ -1157,13 +1153,13 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Timeline for all image animations.
      */
-    Timeline animationTimeline = new Timeline();
+    private Timeline animationTimeline = new Timeline();
 
     /**
      * Show image.
      *
-     * @param imagePath the image path
-     * @param time      the time
+     * @param imagePath the image path to use.
+     * @param time      the duration of the animation.
      */
     private void playAnimation(String imagePath, double time)
     {
@@ -1189,8 +1185,8 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Timeline for all audio effects.
      */
-    Timeline audioTimeline;
-    AudioClip audioS;
+    private Timeline audioTimeline;
+    private AudioClip audioS;
 
     /**
      * Method for playing audio.
@@ -1238,7 +1234,7 @@ public class PlayController extends HighscoreController implements Initializable
      *
      * @param index the index
      */
-    public void showItem(int index)
+    private void showItem(int index)
     {
         textAreaMain.setText(gameText.getItemInfo(player.getInventory().getItem(index)));
     }
@@ -1246,12 +1242,12 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Boolean that holds whether or not the final boss battle is on.
      */
-    boolean lastBattle = false;
+    private boolean lastBattle = false;
 
     /**
      * The Attack sounds.
      */
-    final String[] attackSounds = new String[]{
+    private final String[] attackSounds = new String[]{
             "Resources\\sounds\\DuckToy.aiff",
             "Resources\\sounds\\Hit1.wav",
             "Resources\\sounds\\Hit2.wav",
@@ -1267,9 +1263,8 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Handle attack.
      *
-     * @param event the event
      */
-    public void handleAttack(ActionEvent event)
+    public void handleAttack()
     {
         if (lastBattle)
         {
@@ -1336,9 +1331,8 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Handle flee.
      *
-     * @param event the event
      */
-    public void handleFlee(ActionEvent event)
+    public void handleFlee()
     {
         player.setLocation(player.getLastLocation());
 
@@ -1353,10 +1347,9 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Handle open.
      *
-     * @param actionEvent the action event
      */
     @FXML
-    private void handleOpen(ActionEvent actionEvent)
+    private void handleOpen()
     {
         textAreaMain.setText(gameText.getItemInfo(((IChest) map.getCurrentRoom().getContent(ContentIndex)).getItem()));
         textAreaMain.appendText("\n" + gameText.getWhatSlot());
@@ -1371,12 +1364,11 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Handle continue.
      *
-     * @param actionEvent the action event
      */
     @FXML
-    private void handleContinue(ActionEvent actionEvent)
+    private void handleContinue()
     {
-        if (lastBattle == true || player.getHealth() <= 0)
+        if (lastBattle || player.getHealth() <= 0)
         {
             if (player.getHealth() <= 0)
             {
@@ -1402,15 +1394,14 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * The Guide talk count.
      */
-    int guideTalkCount = 0;
+    private int guideTalkCount = 0;
 
     /**
      * Handle talk.
      *
-     * @param actionEvent the action event
      */
     @FXML
-    private void handleTalk(ActionEvent actionEvent)
+    private void handleTalk()
     {
         if (guideTalkCount < 10)
         {
@@ -1431,10 +1422,9 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Handle skip.
      *
-     * @param actionEvent the action event
      */
     @FXML
-    private void handleSkip(ActionEvent actionEvent)
+    private void handleSkip()
     {
         if (map.roomContainsMerchant())
         {
@@ -1451,8 +1441,8 @@ public class PlayController extends HighscoreController implements Initializable
 
     }
 
-    boolean itemAddAvailable = false;
-    boolean itemUseAvailable = false;
+    private boolean itemAddAvailable = false;
+    private boolean itemUseAvailable = false;
 
     /**
      * Disable buttons.
@@ -1461,7 +1451,7 @@ public class PlayController extends HighscoreController implements Initializable
      * @param showInventory        the show inventory
      * @param showInventoryNumbers the show inventory numbers
      */
-    public void disableButtons(Button[] buttons, boolean showInventory, boolean showInventoryNumbers)
+    private void disableButtons(Button[] buttons, boolean showInventory, boolean showInventoryNumbers)
     {
         for (Node nodeIn : buttonGridPane.getChildren())
         {
@@ -1515,7 +1505,7 @@ public class PlayController extends HighscoreController implements Initializable
     /**
      * Disable buttons.
      */
-    public void disableButtons()
+    private void disableButtons()
     {
         for (Node nodeIn : buttonGridPane.getChildren())
         {

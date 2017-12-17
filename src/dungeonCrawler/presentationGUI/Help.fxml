@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.HelpController">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dungeonCrawler.presentationGUI.HelpController">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -131,7 +123,7 @@
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                              <children>
-                                                <TextArea editable="false" prefHeight="525.0" prefWidth="362.0" text="1) Player name, health and weapon&#10;2) Remaining time&#10;3) Game graphics and text&#10;4) Map&#10;5) Player inventory&#10;6) Action buttons&#10;&#10;Map legend:&#10;- Player (P)&#10;- Locked room (L)&#10;- Unexplored room (X)&#10;- Explored room (O)&#10;- Merchants (M)&#10;- Guides (G)&#10;- Thiefs (T)">
+                                                <TextArea editable="false" prefHeight="525.0" prefWidth="362.0" text="1) Player name, health and weapon&#10;2) Remaining time&#10;3) Game graphics and text&#10;4) Map&#10;5) Player inventory&#10;6) Action buttons&#10;&#10;Map legend:&#10;- Player (P)&#10;- Locked room (L)&#10;- Unexplored room (X)&#10;- Explored room (O)&#10;- Merchants (M)&#10;- Thiefs (T)">
                                                    <font>
                                                       <Font name="Monospaced Regular" size="17.0" />
                                                    </font></TextArea>

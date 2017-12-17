@@ -6,8 +6,8 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IInventory;
-import dungeonCrawler.aqu.IWeapon;
 import dungeonCrawler.aqu.IPlayer;
+import dungeonCrawler.aqu.IWeapon;
 
 import java.awt.*;
 import java.io.Serializable;

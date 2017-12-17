@@ -1,9 +1,5 @@
 package dungeonCrawler.presentationGUI;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,7 +10,11 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.media.AudioClip;
-import jdk.nashorn.internal.ir.IfNode;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Class to change settings. Sounds in the game etc.

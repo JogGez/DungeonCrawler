@@ -1,6 +1,7 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IGuide;
+
 import java.io.Serializable;
 
 /**

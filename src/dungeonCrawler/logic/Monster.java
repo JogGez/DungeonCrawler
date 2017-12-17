@@ -1,7 +1,7 @@
 package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IMonster;
-import dungeonCrawler.aqu.IRoomContent;
+
 import java.io.Serializable;
 
 /**
