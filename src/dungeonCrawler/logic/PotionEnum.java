@@ -31,7 +31,7 @@ enum PotionEnum implements Serializable
 
     /**
      * Getter method to get a potion from enum
-     * @return
+     * @return  Potion
      */
     public Potion getPotion()
     {
@@ -40,7 +40,7 @@ enum PotionEnum implements Serializable
 
     /**
      * Getter method to get random potion from enum
-     * @return
+     * @return Potion
      */
     public static Potion getRandomPotion()
     {
@@ -50,7 +50,7 @@ enum PotionEnum implements Serializable
 
     /**
      * Getter method to get random health potion from enum
-     * @return
+     * @return Potion
      */
     public static Potion getRandomHealthPotion()
     {
@@ -60,7 +60,7 @@ enum PotionEnum implements Serializable
 
     /**
      * Getter method to get random time potion from enum
-     * @return
+     * @return Potion
      */
     public static Potion getRandomTimePotion()
     {
