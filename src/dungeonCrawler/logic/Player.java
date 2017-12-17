@@ -48,6 +48,11 @@ class Player implements IPlayer, Serializable
         this.lastLocation = new Point(0,0);
         this.inventory = new Inventory(GameSettings.getInventorySize());
         this.time = GameSettings.getPlayerTime();
+
+        inventory.addItem(SpecialEnum.VISION.getSpecial(),0);
+        inventory.addItem(SpecialEnum.VISION.getSpecial(),1);
+        inventory.addItem(SpecialEnum.VISION.getSpecial(),2);
+        inventory.addItem(SpecialEnum.VISION.getSpecial(),3);
     }
     
     /**
