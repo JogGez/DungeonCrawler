@@ -19,10 +19,10 @@ class Potion extends Item implements IPotion, Serializable
     
     /**
      * Constructor for Potion
-     * @param name
-     * @param description
-     * @param ascii
-     * @param healthRecovery 
+     * @param name Sets the name to use.
+     * @param description Sets the discription to use.
+     * @param ascii Sets the ascii to use.
+     * @param healthRecovery  Sets the healthRecovery to use.
      */
     public Potion(String name, String description, String ascii, int healthRecovery, int timeRecovery)
     {

@@ -30,7 +30,7 @@ abstract class Item implements IItem, Serializable
 
     /**
      * Setter method for name
-     * @param name
+     * @param name Sets the name of the item.
      */
     @Override
     public void setName(String name)
@@ -50,7 +50,7 @@ abstract class Item implements IItem, Serializable
 
     /**
      * Setter method for description
-     * @param description
+     * @param description Sets the discription of the item.
      */
     @Override
     public void setDescription(String description)
@@ -70,7 +70,7 @@ abstract class Item implements IItem, Serializable
 
     /**
      * Setter method for ascii
-     * @param ascii
+     * @param ascii Sets the ascii of the item.
      */
     @Override
     public void setAscii(String ascii)

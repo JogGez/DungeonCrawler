@@ -41,7 +41,7 @@ public class Game extends Application
 
     /**
      * Start scene
-     * @param stage
+     * @param stage Sets the stage to use.
      * @throws Exception
      */
     @Override
@@ -83,18 +83,9 @@ public class Game extends Application
         mediaPlayer1.play();
     }
 
-//    public static void changeScene(String fxml) throws IOException
-//    {
-//        FXMLLoader loader = new FXMLLoader(Game.class.getResource(fxml));
-//        Parent root = loader.load();
-//
-//
-//        stage.setScene(new Scene(root));
-//    }
-
     /**
      * switches the current viewable scene
-     * @param fxml
+     * @param fxml Sets the fxml to use.
      */
     public static void switchScene(String fxml) {
 
@@ -108,8 +99,6 @@ public class Game extends Application
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     /**
@@ -130,10 +119,9 @@ public class Game extends Application
         return stage.getScene();
     }
 
-
     /**
      * Injector method for logic
-     * @param logicLayer
+     * @param logicLayer Sets the logicLayer to use.
      */
     public void injectLogic(ILogicFacade logicLayer)
     {
@@ -147,6 +135,4 @@ public class Game extends Application
     {
         launch();
     }
-
-
 }

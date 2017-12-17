@@ -26,10 +26,10 @@ class Special extends Item implements ISpecial, Serializable
 
     /**
      * Constructor for Special
-     * @param name
-     * @param description
-     * @param ascii
-     * @param type
+     * @param name The name of special
+     * @param description Set the description of the special
+     * @param ascii Set the ascii
+     * @param type Set the type
      */
     public Special(String name, String description, String ascii, Type type)
     {
@@ -41,7 +41,7 @@ class Special extends Item implements ISpecial, Serializable
 
     /**
      * Method to use special item
-     * @param player
+     * @param player set the player to use
      */
     @Override
     public void use(IPlayer player)
@@ -59,8 +59,8 @@ class Special extends Item implements ISpecial, Serializable
 
     /**
      * Method to use special item
-     * @param player
-     * @param map
+     * @param player set the player to use
+     * @param map sets the map
      */
     @Override
     public void use(IPlayer player, IMap map)
@@ -88,9 +88,9 @@ class Special extends Item implements ISpecial, Serializable
 
     /**
      * Method to use special item
-     * @param player
-     * @param map
-     * @param point
+     * @param player sets the player to use
+     * @param map sets the map
+     * @param point sets the point
      */
     @Override
     public void use(IPlayer player, IMap map, Point point)

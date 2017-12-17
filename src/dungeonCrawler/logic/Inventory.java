@@ -21,7 +21,7 @@ class Inventory implements IInventory, Serializable
 
     /**
      * Constructor for inventory
-     * @param size
+     * @param size sets the size of inventory
      */
     public Inventory(int size)
     {
@@ -39,7 +39,7 @@ class Inventory implements IInventory, Serializable
 
     /**
      * Getter method for item
-     * @param index
+     * @param index sets the Item's index
      * @return IItem
      */
     @Override
@@ -50,7 +50,7 @@ class Inventory implements IInventory, Serializable
 
     /**
      * Getter method for index for item slot
-     * @param item
+     * @param item sets the item
      * @return int
      */
     @Override
@@ -61,7 +61,7 @@ class Inventory implements IInventory, Serializable
 
     /**
      * Method for removing item on index number
-     * @param index
+     * @param index sets the Item index
      */
     @Override
     public void removeItem(int index)
@@ -71,7 +71,6 @@ class Inventory implements IInventory, Serializable
 
     /**
      * Method that creats a empty array, and adds our potions.
-     *
      * @return ArrayList with potions
      */
     @Override
@@ -94,7 +93,6 @@ class Inventory implements IInventory, Serializable
     /**
      * Tells how big the ArrayList is.
      * Used to control our ArrayList size.
-     *
      * @return int
      */
     @Override
@@ -103,6 +101,10 @@ class Inventory implements IInventory, Serializable
         return items.length;
     }
 
+    /**
+     * Method that creates a empty array, and adds our keys.
+     * @return ArrayList
+     */
     @Override
     public ArrayList<IKey> keyArrayList()
     {
@@ -123,6 +125,8 @@ class Inventory implements IInventory, Serializable
     @Override
     /**
      * Method for adding items to the array
+     * @param item sets the item
+     * @param inventoryIndex sets the inventory index
      */
     public void addItem(IItem item, int inventoryIndex)
     {
