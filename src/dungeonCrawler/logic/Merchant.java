@@ -71,6 +71,7 @@ class Merchant implements IMerchant, Serializable
         return location;
     }
 
+    int moveTime = GameSettings.getMerchantMoveRounds();
     /**
      * Method for merchant move
      * @param exitList
@@ -78,26 +79,36 @@ class Merchant implements IMerchant, Serializable
     @Override
     public void move(ArrayList<String> exitList)
     {
-        int random = (int) (Math.random() * (exitList.size() + 1));
-        if (random == exitList.size())
+        if (moveTime == 0)
         {
+            int random = (int) (Math.random() * (exitList.size() + 1));
+            if (random == exitList.size())
+            {
+            }
+            else if (exitList.get(random).equals("left"))
+            {
+                location = (new Point(getLocation().x - 1, getLocation().y));
+            }
+            else if (exitList.get(random).equals("right"))
+            {
+                location = (new Point(getLocation().x + 1, getLocation().y));
+            }
+            else if (exitList.get(random).equals("up"))
+            {
+                location = (new Point(getLocation().x, getLocation().y + 1));
+            }
+            else if (exitList.get(random).equals("down"))
+            {
+                location = (new Point(getLocation().x, getLocation().y - 1));
+            }
+            moveTime = GameSettings.getMerchantMoveRounds();
+
         }
-        else if (exitList.get(random).equals("left"))
+        else
         {
-            location = (new Point(getLocation().x - 1, getLocation().y));
+            moveTime--;
         }
-        else if (exitList.get(random).equals("right"))
-        {
-            location = (new Point(getLocation().x + 1, getLocation().y));
-        }
-        else if (exitList.get(random).equals("up"))
-        {
-            location = (new Point(getLocation().x, getLocation().y + 1));
-        }
-        else if (exitList.get(random).equals("down"))
-        {
-            location = (new Point(getLocation().x, getLocation().y - 1));
-        }
+
     }
 
     /**
