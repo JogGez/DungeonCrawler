@@ -17,11 +17,11 @@ class Weapon extends Item implements IWeapon, Serializable
 
     /**
      * Constructor for Weapon
-     * @param name
-     * @param description
-     * @param ascii
-     * @param power
-     * @param multiplier
+     * @param name set the name of the weapon.
+     * @param description set the description of the weapon.
+     * @param ascii set the ascii of the weapon.
+     * @param power set the power of the weapon.
+     * @param multiplier set the multiplier of the weapon.
      */
     public Weapon(String name, String description, String ascii, int power, int multiplier)
     {

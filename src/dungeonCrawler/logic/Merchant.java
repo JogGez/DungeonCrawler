@@ -2,8 +2,6 @@ package dungeonCrawler.logic;
 
 import dungeonCrawler.aqu.IInventory;
 import dungeonCrawler.aqu.IMerchant;
-import dungeonCrawler.aqu.IRoomContent;
-
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -71,10 +69,10 @@ class Merchant implements IMerchant, Serializable
         return location;
     }
 
-    int moveTime = GameSettings.getMerchantMoveRounds();
+    private int moveTime = GameSettings.getMerchantMoveRounds();
     /**
      * Method for merchant move
-     * @param exitList
+     * @param exitList set the arrayList to use.
      */
     @Override
     public void move(ArrayList<String> exitList)
@@ -113,7 +111,7 @@ class Merchant implements IMerchant, Serializable
 
     /**
      * Method to set merchants position to a random place on the map
-     * @param mapSize
+     * @param mapSize set the mapSize to use.
      */
     @Override
     public void setRandomLocation(Point mapSize)
